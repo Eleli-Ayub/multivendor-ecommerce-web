@@ -32,11 +32,11 @@ const Index = () => {
   return (
     <div className="" style={{ maxWidth: "100vw" }}>
       <Navbar SetShowLogin={setShowLogin} SetShowAdsForm={setShowAdsForm} />
-   
-    
+
+
       <ToastContainer position="top-center" />
       <AdsForm showAdsForm={showAdsForm} setShowAdsForm={setShowAdsForm} />
-      <div className=" mt-24 md:mt-40">
+      <div className=" mt-20 md:mt-40">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/Dashboard" element={<UserDashboard />} />
@@ -58,7 +58,7 @@ const Index = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
 
-        
+
         </Routes>
       </div>
       <Footer />

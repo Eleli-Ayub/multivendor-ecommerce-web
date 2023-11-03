@@ -9,7 +9,7 @@ function AnotherSlider() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [intervalId, setIntervalId] = useState<NodeJS.Timeout | undefined>();
 
-    const sliderWidth = 300; // Assuming each card is 300px wide
+    const sliderWidth = 220; // Assuming each card is 300px wide
     const totalAds = Ads.length;
 
     const slideLeft = () => {
@@ -68,46 +68,49 @@ function AnotherSlider() {
     };
 
     return (
-        <div className="flex mt-5">
-            <MdChevronLeft
-                className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"
-                onClick={slideLeft}
-                size={20}
-            />
-            <div
-                ref={sliderRef}
-                className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hide"
-                style={{
-                    display: 'flex',
-                    overflowX: 'hidden',
-                    position: 'relative',
-                }}
-            >
-                <div style={sliderStyle}>
-                    {clonedAds.map((item, index) => (
-                        <div
-                            key={index}
-                            className="p-4 gap-3 responsive"
-                            style={{ width: `${sliderWidth}px` }}
-                        >
-                            <Productcard
-                                key={item.name}
-                                image={item.image}
-                                name={item?.name}
-                                price={item.price}
-                                seller={item.seller}
-                                id={item.name}
-                            />
-                        </div>
-                    ))}
+        <>
+            <h1 className='mt-2 lg:mt-5 px-2 text-stone-500 lg:px-7 text-md capitalize'>top products</h1>
+            <div className="">
+                <MdChevronLeft
+                    className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"
+                    onClick={slideLeft}
+                    size={20}
+                />
+                <div
+                    ref={sliderRef}
+                    className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hide"
+                    style={{
+                        display: 'flex',
+                        overflowX: 'hidden',
+                        position: 'relative',
+                    }}
+                >
+                    <div style={sliderStyle}>
+                        {clonedAds.map((item, index) => (
+                            <div
+                                key={index}
+                                className="p-4 lg:gap-3 "
+                                style={{ width: `${sliderWidth}px` }}
+                            >
+                                <Productcard
+                                    key={item.name}
+                                    image={item.image}
+                                    name={item?.name}
+                                    price={item.price}
+                                    seller={item.seller}
+                                    id={item.name}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
+                <MdChevronRight
+                    className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"
+                    onClick={slideRight}
+                    size={20}
+                />
             </div>
-            <MdChevronRight
-                className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"
-                onClick={slideRight}
-                size={20}
-            />
-        </div>
+        </>
     );
 }
 

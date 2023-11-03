@@ -44,54 +44,46 @@ function AnotherSlider() {
     const clonedCategories = [...Categories, ...Categories, ...Categories];
 
     return (
-        <div className="relative flex items-center mt-3">
-            <MdChevronLeft
-                className="opacity-50 cursor-pointer hover:opacity-100"
-                onClick={slideLeft}
-                size={40}
-            />
-            <div
-                ref={sliderRef}
-                className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hide"
-                style={{
-                    display: 'flex',
-                }}
-            >
-                {clonedCategories.map((item, index) => (
-                    <div
-                        key={index}
-                        className="relative text-gray-400 rounded shadow-custom gap-3 w-40 text-center"
-                        style={{
-                            flex: '0 0 auto',
-                            margin: '0 8px', // Add margin
-                            backgroundColor: '#2c3e50',
-                            display:
-                                index >= currentIndex && index < currentIndex + Categories.length
-                                    ? 'block'
-                                    : 'none',
-                        }}
-                    >
-                        <img
-                            src={Cart} // Replace this with your cart image
-                            alt="Cart"
-                            className="w-full h-full rounded" // Adjust image size
-                        />
+        <>
+            <h1 className='my-2 px-2 text-stone-500 capitalize text-sm lg:hidden'>browse by categories</h1>
+            <div className="relative flex items-center mt-3 px-2">
+                <div
+                    ref={sliderRef}
+                    className="relative w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hide rounded"
+                    style={{
+                        display: 'flex',
+                    }}
+                >
+                    {clonedCategories.map((item, index) => (
                         <div
-                            className="absolute top-0 left-0 w-full h-full rounded"
-                            style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
+                            key={index}
+                            className="cursor-pointer relative text-gray-400 rounded duration-300 gap-3 w-40 text-center"
+                            style={{
+                                flex: '0 0 auto',
+                                margin: '0 8px', // Add margin
+                                display:
+                                    index >= currentIndex && index < currentIndex + Categories.length
+                                        ? 'block'
+                                        : 'none',
+                            }}
                         >
-                            <Category />
-                            <p className="text-sm truncate text-white">{item.name}</p>
+                            <img
+                                src={Cart} // Replace this with your cart image
+                                alt="Cart"
+                                className="w-full h-full rounded" // Adjust image size
+                            />
+                            <div
+                                className="absolute rounded top-0 left-0 w-full h-full bg-black bg-opacity-70 hover:bg-opacity-40 duration-300"
+                            >
+                                <Category />
+                                <p className="text-sm truncate text-white">{item.name}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+
             </div>
-            <MdChevronRight
-                className="opacity-50 cursor-pointer hover:opacity-100"
-                onClick={slideRight}
-                size={40}
-            />
-        </div>
+        </>
     );
 }
 

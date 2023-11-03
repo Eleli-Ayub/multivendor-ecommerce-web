@@ -51,32 +51,31 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowLogin, SetShowAdsForm }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {}, [user]);
+  useEffect(() => { }, [user]);
   const [userSmallnav, setUserSmallNav] = useState(false);
   // console.log(user);
 
   return (
     <nav
-      className={`w-full  flex flex-col items-center price justify-center p-3  fixed top-0 z-20 ${
-        scrolled ? "bg-white" : "bg-white"
-      }`}
-      // style={{ marginBottom: "2px" }}
+      className={`w-full  flex flex-col items-center price justify-center p-3  fixed top-0 z-20 ${scrolled ? "bg-white" : "bg-white"
+        }`}
+    // style={{ marginBottom: "2px" }}
     >
       <div className="w-full flex  justify-between items-center max-w-7xl mx-auto">
         <div className="flex gap-2 items-center ">
-     {
-      user &&      <AiOutlineMenuUnfold
-      size="32"
-      className="text-black bg-gray-light p-2 rounded-full md:hidden"
-      onClick={() => {
-        dispatch(setProfileOpener(!profileOpener));
-        // console.log("hello , this is my",profileOpener);
-      }}
-    />
-     }
+          {
+            user && <AiOutlineMenuUnfold
+              size="32"
+              className="text-black bg-gray-light p-2 rounded-full md:hidden"
+              onClick={() => {
+                dispatch(setProfileOpener(!profileOpener));
+                // console.log("hello , this is my",profileOpener);
+              }}
+            />
+          }
           <Link
             to="/"
-            className="flex flex-col items-center "
+            className="flex flex-row gap-2 lg:flex-col items-center "
             onClick={() => {
               setActive("");
               window.scrollTo(0, 0);
@@ -85,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowLogin, SetShowAdsForm }) => {
             <img
               src={logo}
               alt="logo"
-              className=" p-0 m-0 object-contain rounded h-[50px] price "
+              className=" p-0 m-0 object-contain rounded h-[30px] lg:h-[50px] price "
             />
             <p className="text-slate-600 text-xs italic">let's help you sell</p>
           </Link>
@@ -96,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowLogin, SetShowAdsForm }) => {
             <button
               className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
               onClick={() => {
-                user ? SetShowAdsForm(true) :navigate("/login")
+                user ? SetShowAdsForm(true) : navigate("/login")
               }}
             >
               Sell
@@ -105,9 +104,8 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowLogin, SetShowAdsForm }) => {
           {Links.map((nav) => (
             <li
               key={nav.name}
-              className={`${
-                active === nav.name ? "text-primary-orange" : "text-black"
-              } capitalize hover:text-primary-orange text-[18px] font-medium cursor-pointer`}
+              className={`${active === nav.name ? "text-primary-orange" : "text-black"
+                } capitalize hover:text-primary-orange text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.name)}
             >
               <Link to={nav.url}>{nav.name}</Link>
@@ -192,16 +190,15 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowLogin, SetShowAdsForm }) => {
           </IconButton>
 
           <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
+            className={`${!toggle ? "hidden" : "flex"
+              } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
               <div>
                 <button
                   className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
                   onClick={() => {
-                    user? SetShowAdsForm(true) :navigate("/login")
+                    user ? SetShowAdsForm(true) : navigate("/login")
                   }}
                 >
                   Sell
@@ -210,11 +207,10 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowLogin, SetShowAdsForm }) => {
               {Links.map((nav) => (
                 <li
                   key={nav.name}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.name
-                      ? "text-primary-orange"
-                      : "text-secondary"
-                  }`}
+                  className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.name
+                    ? "text-primary-orange"
+                    : "text-secondary"
+                    }`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(nav.url);
