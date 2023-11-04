@@ -10,6 +10,7 @@ import { GettingUserById } from '../Redux/slices/AuthSlice';
 import { Avatar } from 'antd';
 import { WhatsApp, Facebook, YouTube, Phone } from '@mui/icons-material';
 import { products } from '../data/sponsered';
+import Store from '../assets/store.avif';
 
 const SellersAdsComp = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -31,57 +32,67 @@ const SellersAdsComp = () => {
 
     return (
         <div className="flex flex-col ">
-            <div className="p-5 m-5 border rounded-lg sm:flex md:justify-around price ">
-                {/* User Image and Join Date */}
-                <div className=" mb-4 sm:mb-0">
-                    <Avatar
-                        // src={`data:image/jpeg;base64, ${theSeller?.userimage}`}
-                        src={image}
-                        className="w-24 h-24 object-cover mx-auto"
-                    />
-                    <p className="text-gray-700">
-                        Joined Eduka:{' '}
-                        <span className="text-gray-500 underline font-bold">
-                            {/* {theSeller?.CreatedAt
-                                ? new Date(theSeller?.CreatedAt).toLocaleDateString()
-                                : 'Date Not Available'} */}
-                            22/09/2023
-                        </span>
-                    </p>
-                </div>
+            <div className=" bg-yellow-600 rounded relative w-[100%] h-[55vh] md:h-[30vh]">
+                <img src={Store} alt="" className="w-full h-full rounded" />
+                <div className="p-5 bg-black bg-opacity-80 justify-center  border rounded-lg sm:flex md:justify-around price absolute top-0 left-0 w-full h-full">
+                    {/* User Image and Join Date */}
+                    <div className=" mb-4 sm:mb-0 flex flex-col justify-between">
+                        <Avatar
+                            // src={`data:image/jpeg;base64, ${theSeller?.userimage}`}
+                            src={image}
+                            className="w-24 h-24 object-cover mx-auto"
+                        />
+                        <p className="text-stone-300 ">
+                            <i>"Sellers tagline goes here"</i>
+                        </p>
+                        <div className="flex mt-2 space-x-2">
+                            <button className="p-2 bg-gray-200 rounded-full h-12 w-12">
+                                <WhatsApp className="text-green-500" />
+                            </button>
+                            <button className="p-2 bg-gray-200 rounded-full h-12 w-12">
+                                <Facebook className="text-blue-500" />
+                            </button>
+                            <button className="p-2 bg-gray-200 rounded-full h-12 w-12">
+                                <YouTube className="text-red-500" />
+                            </button>
+                            <button className="p-2 bg-gray-200 rounded-full h-12 w-12">
+                                <Phone />
+                            </button>
+                        </div>
+                    </div>
 
-                {/* User Information */}
-                <div className="flex flex-col sm:items-start sm:pl-4">
-                    <p className="mb-2">
-                        Name:{' '}
-                        <span className="capitalize font-bold text-secondary-orange">
-                            {/* {`${theSeller?.firstname} ${theSeller?.middlename} ${theSeller?.lastname}`} */}
-                            Emma Marcy
-                        </span>
-                    </p>
-                    <p className="mb-2">
-                        Email:
-                        {/* {theSeller?.email    } */}
-                        emma@gmail.com
-                    </p>
-                    <button className="p-2 bg-green-500 text-white my-2 hover:bg-green-700 rounded-md">
-                        {/* {theSeller?.phone} */}
-                        0791076354
-                    </button>
-                    <div className="flex mt-2 space-x-2">
-                        <button className="p-2 bg-gray-200 rounded-full">
-                            <WhatsApp className="text-green-500" />
-                        </button>
-                        <button className="p-2 bg-gray-200 rounded-full">
-                            <Facebook className="text-blue-500" />
-                        </button>
-                        <button className="p-2 bg-gray-200 rounded-full">
-                            <YouTube className="text-red-500" />
-                        </button>
-                        <button className="p-2 bg-gray-200 rounded-full">
-                            <Phone />
+                    {/* User Information */}
+                    <div className="flex flex-col sm:items-start sm:pl-4 text-gray-300">
+                        <p className="mb-2">
+                            Name:{' '}
+                            <span className="capitalize font-bold text-secondary-orange">
+                                {/* {`${theSeller?.firstname} ${theSeller?.middlename} ${theSeller?.lastname}`} */}
+                                Emma Marcy
+                            </span>
+                        </p>
+                        <p className="mb-2">
+                            Email:
+                            {/* {theSeller?.email    } */}
+                            emma@gmail.com
+                        </p>
+                        <button className="p-2 bg-green-500 text-white my-2 hover:bg-green-700 rounded-md">
+                            {/* {theSeller?.phone} */}
+                            0791076354
                         </button>
                     </div>
+                    {/* user ads info */}
+                    <div className="grid grid-cols-2 gap-4 mt-2 text-gray-500">
+                        <span>Total products:</span>
+                        <span>45</span>
+                        <span>Total Reviews:</span>
+                        <span>45</span>
+                        <span>Total comments:</span>
+                        <span>45</span>
+                        <span>Date Joined:</span>
+                        <span>22/7/2023</span>
+                    </div>
+
+                    {/* user contacts */}
                 </div>
             </div>
 
