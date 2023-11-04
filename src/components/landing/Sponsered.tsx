@@ -6,6 +6,7 @@ import SponsereCard from '../Global/SponseredCard';
 // import { ProductData } from '../../interface/common';
 // import { AppDispatch } from '../../Redux/store';
 import { products } from '../../data/sponsered';
+import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
 // import Loader from '../../constants/loader';
 const Popular = () => {

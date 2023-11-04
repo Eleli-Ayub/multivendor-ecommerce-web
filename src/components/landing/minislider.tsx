@@ -7,14 +7,14 @@ function AnotherSlider() {
     const Ads = products;
     const sliderRef = useRef<HTMLDivElement | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [intervalId, setIntervalId] = useState<NodeJS.Timeout | undefined>();
+    const [intervalId, setIntervalId] = useState<number | undefined>();
 
     const sliderWidth = 220; // Assuming each card is 300px wide
     const totalAds = Ads.length;
 
     const slideLeft = () => {
         // Add a delay in milliseconds
-        const delay = 500; // Adjust this value as needed
+        const delay = 0; // Adjust this value as needed
 
         // Set a timeout to delay the sliding action
         setTimeout(() => {
@@ -29,13 +29,10 @@ function AnotherSlider() {
     const slideRight = () => {
         setCurrentIndex((prevIndex) => {
             let nextIndex = prevIndex + 1;
-
             // Set the max index value
-            const maxIndex = totalAds * 2;
-
+            // const maxIndex = totalAds * 2;
             // Calculate the adjusted index to maintain continuous scrolling
-            const adjustedIndex = nextIndex % maxIndex;
-
+            // const adjustedIndex = nextIndex % maxIndex;
             // Update the index
 
             if (nextIndex == Ads.length) nextIndex = 0;
@@ -48,7 +45,7 @@ function AnotherSlider() {
     };
 
     useEffect(() => {
-        const id = setInterval(autoSlide, 7000);
+        const id = setInterval(autoSlide, 5000);
         setIntervalId(id);
 
         return () => {
@@ -69,7 +66,9 @@ function AnotherSlider() {
 
     return (
         <>
-            <h1 className='mt-2 lg:mt-5 px-2 text-stone-500 lg:px-7 text-md capitalize'>top products</h1>
+            <h1 className="mt-2 lg:mt-5 px-2 text-stone-500 lg:px-7 text-md capitalize">
+                top products
+            </h1>
             <div className="">
                 <MdChevronLeft
                     className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"

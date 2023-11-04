@@ -1,13 +1,13 @@
-import ProductInfo from "../components/SingleProduct/Detail";
-import Popular from "../components/AdsCard";
+import ProductInfo from '../components/SingleProduct/Detail';
+import Related from '../components/SingleProduct/Related';
 
 const AdInfo = () => {
-  return (
-    <div className="mt-20 ">
-      <ProductInfo />
-      <Popular />
-    </div>
-  );
+    return (
+        <div className="">
+            <ProductInfo />
+            <Related />
+        </div>
+    );
 };
 
 export default AdInfo;

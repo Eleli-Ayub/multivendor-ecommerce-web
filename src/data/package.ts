@@ -1,0 +1,42 @@
+export const sliderContent = [
+    {
+      title: 'Freemium Kshs:0',
+      features: [
+        ' &#x2713; Get up to 20 free ads per month',
+        '&#x2716; priority ads per week',
+        '&#x2716; priority ads per month',
+        '&#x2716; Sponsered ads per month',
+      ],
+      button: 'Get Started',
+    },
+    {
+      title: 'Basic Kshs:2500',
+      features: [
+        'Get up to 50 ads per month',
+        'Get upto 10 ads per week @ Kes 700',
+        'Get upto 10 priority ads per month',
+        'No ads Sponsorship',
+      ],
+      button: 'Get Started',
+    },
+    {
+      title: 'Standard Ksh: 3500',
+      features: [
+        'Get upto 100 ads per month',
+        'Get upto 25 ads per week @ Kes 900',
+        'Get upto 25 priority ads per month',
+        'No Ads Sponsorship',
+      ],
+      button: 'Get Started',
+    },
+    {
+      title: 'Premium Ksh: 4500',
+      features: [
+        'Get unlimited ads per month',
+        'Get upto 25 ads per week @ Kes 1200',
+        'Get upto 50 priority ads per month',
+        'Get Bonus sponsorship for your ads',
+      ],
+      button: 'Get started',
+    },
+  ];

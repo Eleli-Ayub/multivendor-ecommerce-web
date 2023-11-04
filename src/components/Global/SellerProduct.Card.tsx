@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { productCard } from '../../interface/common';
-import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
 function Productcard({
     image,
@@ -12,12 +11,7 @@ function Productcard({
 }: productCard) {
     const navigate = useNavigate();
     return (
-        <div className="relative w-full lg:w-72 lg:h-96 h-32 mb-2 cursor-pointer">
-            <div className="absolute top-0 right-[5px] lg:left-0 z-10 ">
-                <button className="bg-blue-800 text-[8px] px-[3px] py-[1px] lg:text-sm text-white lg:px-2 lg:py-1 rounded ">
-                    Sponsored
-                </button>
-            </div>
+        <div className="w-full lg:w-72 lg:h-96 h-36 mb-2 cursor-pointer">
             <div
                 className="flex h-full py-1 flex-row lg:flex-col max-w-sm rounded-lg bg-stone-50 radius-2xl  border-gray-300 mb-2 price relative hover:bg-green-100 hover:scale-105 duration-300"
                 onClick={() => navigate(`/ad_info/${id}`)}
@@ -39,20 +33,9 @@ function Productcard({
                         <p className="text-xs text-slate-400 my-2">(of 200 reviews)</p>
                     </div>
 
-                    <div className="flex  gap-2">
-                        <FaWhatsapp
-                            className="text-green-600 bg-gray-light p-1 rounded-full "
-                            size="28"
-                        />
-                        <FaPhone
-                            className="text-gray-500 bg-gray-light p-1 rounded-full"
-                            size="28"
-                        />
-                        <FaFacebook
-                            className="text-blue-600 bg-gray-light p-1 rounded-full"
-                            size="28"
-                        />
-                    </div>
+                    <button className="p-2 bg-orange-600 rounded-[0.25rem] text-white">
+                        View Ad
+                    </button>
                 </div>
             </div>
         </div>
