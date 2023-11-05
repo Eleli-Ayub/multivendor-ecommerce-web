@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from 'react-router-dom';
 import { FetchProduct, FetchProductImages, FetchProductSeller } from '../../Redux/slices/adSlice';
@@ -20,7 +20,7 @@ import Loader from '../../constants/loader';
 
 const ProductInfo = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const { ad, adImages, seller, isLoading } = useSelector((state: any) => state.ad);
 

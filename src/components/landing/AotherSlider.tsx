@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { Categories } from '../../data/categories';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+// import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { Category } from '@mui/icons-material';
 import Cart from '../../assets/shopping.jpg';
 
@@ -8,15 +8,15 @@ function AnotherSlider() {
     const sliderRef = useRef<HTMLDivElement | null>(null); // Explicitly specify the type
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const slideLeft = () => {
-        const slider = sliderRef.current;
-        if (slider) {
-            const firstChild = slider.firstElementChild as HTMLElement;
-            const itemWidth = firstChild.offsetWidth + 24; // Adjust 16 to match your margin or padding
-            setCurrentIndex((prevIndex) => (prevIndex - 1 + Categories.length) % Categories.length);
-            slider.scrollLeft -= itemWidth;
-        }
-    };
+    // const slideLeft = () => {
+    //     const slider = sliderRef.current;
+    //     if (slider) {
+    //         const firstChild = slider.firstElementChild as HTMLElement;
+    //         const itemWidth = firstChild.offsetWidth + 24; // Adjust 16 to match your margin or padding
+    //         setCurrentIndex((prevIndex) => (prevIndex - 1 + Categories.length) % Categories.length);
+    //         slider.scrollLeft -= itemWidth;
+    //     }
+    // };
 
     const slideRight = () => {
         const slider = sliderRef.current;
@@ -45,7 +45,9 @@ function AnotherSlider() {
 
     return (
         <>
-            <h1 className='my-2 px-2 text-stone-500 capitalize text-sm lg:hidden'>browse by categories</h1>
+            <h1 className="my-2 px-2 text-stone-500 capitalize text-sm lg:hidden">
+                browse by categories
+            </h1>
             <div className="relative flex items-center mt-3 px-2">
                 <div
                     ref={sliderRef}
@@ -62,7 +64,8 @@ function AnotherSlider() {
                                 flex: '0 0 auto',
                                 margin: '0 8px', // Add margin
                                 display:
-                                    index >= currentIndex && index < currentIndex + Categories.length
+                                    index >= currentIndex &&
+                                    index < currentIndex + Categories.length
                                         ? 'block'
                                         : 'none',
                             }}
@@ -72,16 +75,13 @@ function AnotherSlider() {
                                 alt="Cart"
                                 className="w-full h-full rounded" // Adjust image size
                             />
-                            <div
-                                className="absolute rounded top-0 left-0 w-full h-full bg-black bg-opacity-70 hover:bg-opacity-40 duration-300"
-                            >
+                            <div className="absolute rounded top-0 left-0 w-full h-full bg-black bg-opacity-70 hover:bg-opacity-40 duration-300">
                                 <Category />
                                 <p className="text-sm truncate text-white">{item.name}</p>
                             </div>
                         </div>
                     ))}
                 </div>
-
             </div>
         </>
     );

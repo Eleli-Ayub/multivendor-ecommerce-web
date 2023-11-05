@@ -3,19 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FetchSellerProducts } from '../Redux/slices/AdsSlice';
 import { useParams } from 'react-router-dom';
 import { AppDispatch } from '../Redux/store';
-import Productcard from './Global/SellerProduct.Card';
-import Loader from '../constants/loader';
-import { ProductData } from '../interface/common';
+// import Productcard from './Global/SellerProduct.Card';
+// import Loader from '../constants/loader';
+// import { ProductData } from '../interface/common';
 import { GettingUserById } from '../Redux/slices/AuthSlice';
 import { Avatar } from 'antd';
 import { WhatsApp, Facebook, YouTube, Phone } from '@mui/icons-material';
-import { products } from '../data/sponsered';
+// import { products } from '../data/sponsered';
 import Store from '../assets/store.avif';
 
 const SellersAdsComp = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { isLoading } = useSelector((state: any) => state.AllAds);
-    const Ads = products;
+    // const { isLoading } = useSelector((state: any) => state.AllAds);
+    // const Ads = products;
     const theSeller = useSelector((state: any) => state.auth.theSeller);
     const { id } = useParams();
     const image =
@@ -98,7 +98,7 @@ const SellersAdsComp = () => {
 
             {/* seller's ads */}
             <div>
-                <div className="flex flex-wrap gap-3 mx-auto p-5 ">
+                {/* <div className="flex flex-wrap gap-3 mx-auto p-5 ">
                     {isLoading ? (
                         // Show loading indicator or message
                         <div>
@@ -108,17 +108,17 @@ const SellersAdsComp = () => {
                         // Render products if not loading
                         Ads.map((product: ProductData) => (
                             <Productcard
-                                key={product.name}
-                                // image={`data:image/jpeg;base64, ${product.mainimage}`}
-                                image={product.image}
+                                key={product.productname}
+                                image={`data:image/jpeg;base64, ${product.mainimage}`}
+                                // image={product.image}
                                 name={product.name}
                                 price={product.price}
                                 seller="John Doe"
-                                id={product.name}
+                                id={product.producttid}
                             />
                         ))
                     )}
-                </div>
+                </div> */}
             </div>
         </div>
     );

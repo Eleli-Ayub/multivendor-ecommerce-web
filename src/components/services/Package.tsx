@@ -8,15 +8,15 @@ const Package = () => {
     const [intervalId, setIntervalId] = useState<number | undefined>();
 
     const sliderWidth = 300; // Assuming each card is 300px wide
-    const totalAds = sliderContent.length;
+    // const totalAds = sliderContent.length;
 
-    const slideLeft = () => {
-        const delay = 0;
+    // const slideLeft = () => {
+    //     const delay = 0;
 
-        setTimeout(() => {
-            setCurrentIndex((prevIndex) => (prevIndex - 1 + totalAds) % totalAds);
-        }, delay);
-    };
+    //     setTimeout(() => {
+    //         setCurrentIndex((prevIndex) => (prevIndex - 1 + totalAds) % totalAds);
+    //     }, delay);
+    // };
 
     const slideRight = () => {
         setCurrentIndex((prevIndex) => {
