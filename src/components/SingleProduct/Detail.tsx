@@ -33,53 +33,39 @@ const ProductInfo = () => {
         dispatch(FetchProductSeller(id));
     }, [dispatch]);
 
+    console.log(adImages);
     if (isLoading) {
         return <Loader />;
     }
-    const pictures = [
-        'https://img.freepik.com/free-photo/phone-screen-with-abstract-marble-aesthetic_53876-145553.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
-        'https://img.freepik.com/free-photo/still-life-books-versus-technology_23-2150063043.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
-        'https://img.freepik.com/free-photo/smartphone-balancing-with-violet-background_23-2150271744.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
-        'https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437105.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
-    ];
+    // const pictures = [
+    //     'https://img.freepik.com/free-photo/phone-screen-with-abstract-marble-aesthetic_53876-145553.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
+    //     'https://img.freepik.com/free-photo/still-life-books-versus-technology_23-2150063043.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
+    //     'https://img.freepik.com/free-photo/smartphone-balancing-with-violet-background_23-2150271744.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
+    //     'https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437105.jpg?size=626&ext=jpg&ga=GA1.1.1961618914.1698752855&semt=sph',
+    // ];
     return (
-        <div className="flex flex-col md:flex-row gap-5 p-5 bg-gray-light mb-10 h-auto">
+        <div className="flex flex-col md:flex-row lg:gap-5 lg:p-5 max-w-screen mb-10 h-auto">
             {/* Part 1 */}
             <div className="md:flex-1">
-                <div>
-                    <h2 className="text-center text-2xl capitalize font-bold">{ad?.productname}</h2>
-                    <div className="flex flex-col gap-2 md:flex-row md:gap-5">
-                        <span>Posted on: 22 April 2023</span>
-                        <span>
-                            {/* Category: <i className="text-primary-orange">{ad?.category}</i> */}
-                            Category: <i className="text-primary-orange">Home and Office</i>
-                        </span>
-                        <span>
-                            {/* Brand: <i className="text-primary-orange">{ad?.brand}</i>{' '} */}
-                            Brand: <i className="text-primary-orange">Innovia</i>{' '}
-                        </span>
-                    </div>
-                </div>
-
                 <div className="flex flex-col md:flex-row md:gap-5">
                     {/* Images */}
                     <div className="md:flex-1">
                         <div className="flex flex-col gap-4">
                             <div>
                                 <img
-                                    // src={`data:image/jpeg;base64, ${adImages[selectedImageIndex]}`}
-                                    src={pictures[selectedImageIndex]}
-                                    className="main w-full"
+                                    src={`data:image/jpeg;base64, ${adImages[selectedImageIndex]}`}
+                                    // src={pictures[selectedImageIndex]}
+                                    className="h-72"
                                     alt=""
                                 />
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex gap-4 p-4">
                                 {/* {adImages.map((image: any, index: number) => ( */}
-                                {pictures.map((image: any, index: number) => (
+                                {adImages?.map((image: any, index: number) => (
                                     <img
                                         key={index}
-                                        // src={`data:image/jpeg;base64, ${image}`}
-                                        src={image}
+                                        src={`data:image/jpeg;base64, ${image}`}
+                                        // src={image}
                                         className={
                                             'h-16 w-16 object-cover rounded-md bg-gray-100 cursor-pointer' +
                                             (index === selectedImageIndex
@@ -96,12 +82,19 @@ const ProductInfo = () => {
                 </div>
 
                 <div className="flex flex-col"></div>
-                {/* <div className="border border-gray-300 p-2 m-2 rounded">
-                    <h1> Location:</h1>
-                    <p className="text-gray-600">Nairobi Area</p>
-                </div> */}
+                <div className="flex flex-col gap-2 md:flex-row md:gap-5 p-5">
+                    {/* <span>{ad?.CreatedAt}</span> */}
+                    <span>
+                        Category: <i className="text-primary-orange">{ad?.category}</i>
+                        {/* Category: <i className="text-primary-orange">Home and Office</i> */}
+                    </span>
+                    <span>
+                        Brand: <i className="text-primary-orange">{ad?.brand}</i>{' '}
+                        {/* Brand: <i className="text-primary-orange">Innovia</i>{' '} */}
+                    </span>
+                </div>
 
-                <div className="flex gap-5 items-center">
+                <div className="flex gap-5 items-center p-4">
                     <div>
                         <Favorite className="text-secondary-orange font-bold  animate-pulse" />
                         <span className="text-gray-500">20</span>
@@ -121,36 +114,28 @@ const ProductInfo = () => {
             {/* part3 */}
             <div className="md:flex-1  h-full w-screen p-4">
                 <div>
-                    <p className="text-[20px] text-[#313133] font-bold">
+                    <div>
+                        <h2 className=" text-2xl capitalize font-bold">{ad?.productname}</h2>
+                    </div>
+                    <div className="text-2xl font-bold text-secondary-orange">
                         {' '}
-                        {/* Ksh {ad?.productprice} */}
-                        XIAOMI Redmi Note 12 Pro 4G, 6.67'' 8GB + 256GB, 108MP, 5000mAh + Magnifier
-                        & Tripod
-                    </p>
-                    <p className="text-2xl font-bold text-secondary-orange">
-                        {' '}
-                        {/* Ksh {ad?.productprice} */}
-                        <h2> KSh:27,000</h2>
+                        <h2> KSh {ad?.productprice}</h2>
                         <span className="text-sm text-gray-500">
                             {' '}
                             {'{'}Fixed price{'}'}
                         </span>
-                    </p>
+                    </div>
 
                     <div className="">
                         {/* <h1> Description:</h1> */}
                         {/* <p className="text-gray-600">{ad?.productdescription}</p> */}
                         <p className="text-gray-600">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam rerum
-                            ab animi maxime, suscipit sed et vel consequuntur ullam nobis libero
-                            blanditiis perspiciatis eius optio aspernatur, a dolor, provident sunt?
-                            ab animi maxime, suscipit sed et vel consequuntur ullam nobis libero
-                            blanditiis perspiciatis eius optio aspernatur, a dolor, provident sunt?
+                            <p className="text-gray-600">{ad?.productdescription}</p>
                         </p>
                     </div>
                     <div className="flex mt-2">
                         <LocationOn className="text-secondary-orange" />
-                        <p className="text-gray-700">Nairobi </p>
+                        <p className="text-gray-700 capitalize">{seller?.seller_location} </p>
                     </div>
                     <div className="mt-2">
                         <p className="capitalize text-sm text-gray-700">stock: 5</p>
@@ -223,22 +208,22 @@ const ProductInfo = () => {
                             <div className="sm:flex-1 flex-col md:justify-around  gap-4 px-5">
                                 <div className="text-center">
                                     <Avatar
-                                        src={`data:image/jpeg;base64, ${seller.seller_image}`}
+                                        src={`data:image/jpeg;base64, ${seller?.user_profile}`}
                                         className="h-24 w-24 "
                                     />
                                 </div>
                                 <div>
                                     <div className="text-gray-600 ">
                                         <p className="capitalize text-center">
-                                            {/* Name: {seller.seller_name} */}
-                                            Name: John Doe
+                                            Name: {seller?.seller_name}
+                                            {/* Name: John Doe */}
                                         </p>
                                         <p className="text-center">
-                                            {/* Phone:{seller.seller_phonenumber}{' '} */}
-                                            Phone : 0791055992
+                                            Phone:{seller?.seller_phonenumber}{' '}
+                                            {/* Phone : 0791055992 */}
                                         </p>
-                                        {/* <p className="text-center">Email:{seller.seller_email} </p> */}
-                                        <p className="text-center">Email:janedoe@gmail.com </p>
+                                        <p className="text-center">Email:{seller?.seller_email} </p>
+                                        {/* <p className="text-center">Email:janedoe@gmail.com </p> */}
                                         {/* <div className="text-center p-2">
                                             <button
                                                 className="bg-black-200 text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover:bg-white transition-colors delay-300"

@@ -6,7 +6,7 @@ import SponsereCard from '../Global/SponseredCard';
 // import { ProductData } from '../../interface/common';
 // import { AppDispatch } from '../../Redux/store';
 import { products } from '../../data/sponsered';
-import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
+// import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
 // import Loader from '../../constants/loader';
 const Popular = () => {
@@ -20,15 +20,15 @@ const Popular = () => {
     console.log(products);
 
     return (
-        <div className="bg-stone-200 bg-opacity-10 mx-auto pb-2 ">
-            <div className="py-3  flex flex-row items-center justify-between px-5 ">
+        <div className="bg-yellow-700 bg-opacity-10 mx-auto pb-2 ">
+            <div className="py-3  flex flex-row items-center justify-between px-5 flex-wrap ">
                 <h1 className="text-stone-500">Sponsered Ads</h1>
                 <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">
                     see all
                 </button>
             </div>
 
-            <div className=" flex flex-col lg:flex-row flex-wrap lg:gap-5 mx-2 lg:mx-10 ">
+            <div className="flex flex-wrap gap-3 px-2 lg:px-10 lg:gap-5">
                 {products.map((product) => (
                     <SponsereCard
                         key={product.name}

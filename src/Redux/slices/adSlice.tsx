@@ -1,113 +1,105 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProductData } from "../../interface/common";
-import { fetchOurSingleProduct } from "../hooks/Ads.actions";
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ProductData } from '../../interface/common';
+import { fetchOurSingleProduct } from '../hooks/Ads.actions';
 
 interface AdState {
-  ad: ProductData | null;
-  adImages: [];
-  seller: [];
-  isLoading: boolean;
+    ad: ProductData | null;
+    adImages: [];
+    seller: [];
+    isLoading: boolean;
 }
 
 const initialState: AdState = {
-  ad: null, // Set the initial state as null
-  adImages: [],
-  seller: [],
-  isLoading: false,
+    ad: null, // Set the initial state as null
+    adImages: [],
+    seller: [],
+    isLoading: false,
 };
 
-export const FetchProduct = createAsyncThunk(
-  "ad/fetchproduct",
-  async (id: any) => {
+export const FetchProduct = createAsyncThunk('ad/fetchproduct', async (id: any) => {
     try {
-      const response = await fetchOurSingleProduct(id);
-      return response.data.Data.productdata;
+        const response = await fetchOurSingleProduct(id);
+        console.log(response);
+        return response.data.Data.product_data;
     } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error; // Re-throw the error to be caught by the rejection handler
+        console.error('Error fetching product:', error);
+        throw error; // Re-throw the error to be caught by the rejection handler
     }
-  }
-);
+});
 
-export const FetchProductImages = createAsyncThunk(
-  "ad/fetchproductimages",
-  async (id: any) => {
+export const FetchProductImages = createAsyncThunk('ad/fetchproductimages', async (id: any) => {
     try {
-      const response = await fetchOurSingleProduct(id);
-      return response.data.Data.images;
+        const response = await fetchOurSingleProduct(id);
+        return response.data.Data.product_images;
     } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error; // Re-throw the error to be caught by the rejection handler
+        console.error('Error fetching productimages:', error);
+        throw error; // Re-throw the error to be caught by the rejection handler
     }
-  }
-);
+});
 
-export const FetchProductSeller = createAsyncThunk(
-  "ad/fetchproductseller",
-  async (id: any) => {
+export const FetchProductSeller = createAsyncThunk('ad/fetchproductseller', async (id: any) => {
     try {
-      const response = await fetchOurSingleProduct(id);
-      return response.data.Data.seller_details;
+        const response = await fetchOurSingleProduct(id);
+        return response.data.Data.seller_details;
     } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error; // Re-throw the error to be caught by the rejection handler
+        console.error('Error fetching product seller:', error);
+        throw error; // Re-throw the error to be caught by the rejection handler
     }
-  }
-);
+});
 const AdSlice = createSlice({
-  name: "Ad",
-  initialState,
-  reducers: {
-    setAd: (state, action: PayloadAction<ProductData>) => {
-      state.ad = action.payload;
+    name: 'Ad',
+    initialState,
+    reducers: {
+        setAd: (state, action: PayloadAction<ProductData>) => {
+            state.ad = action.payload;
+        },
+        setAdImages: (state, action: PayloadAction<[]>) => {
+            state.adImages = action.payload;
+        },
+        setSeller: (state, action: PayloadAction<[]>) => {
+            state.seller = action.payload;
+        },
     },
-    setAdImages: (state, action: PayloadAction<[]>) => {
-      state.adImages = action.payload;
-    },
-    setSeller: (state, action: PayloadAction<[]>) => {
-      state.seller = action.payload;
-    },
-  },
 
-  extraReducers: (builder) => {
-    builder
-      .addCase(FetchProduct.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(FetchProductImages.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(FetchProductSeller.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(FetchProduct.fulfilled, (state, action) => {
-        // console.log(action);
-        state.isLoading = false;
-        state.ad = action.payload;
-      })
-      .addCase(FetchProductImages.fulfilled, (state, action) => {
-        // console.log(action);
-        state.isLoading = false;
-        state.adImages = action.payload;
-      })
-      .addCase(FetchProductSeller.fulfilled, (state, action) => {
-        // console.log(action);
-        state.isLoading = false;
-        state.seller = action.payload;
-      })
-      .addCase(FetchProduct.rejected, (state, action) => {
-        console.log(action);
-        state.isLoading = false;
-      })
-      .addCase(FetchProductImages.rejected, (state, action) => {
-        console.log(action);
-        state.isLoading = false;
-      })
-      .addCase(FetchProductSeller.rejected, (state, action) => {
-        console.log(action);
-        state.isLoading = false;
-      });
-  },
+    extraReducers: (builder) => {
+        builder
+            .addCase(FetchProduct.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(FetchProductImages.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(FetchProductSeller.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(FetchProduct.fulfilled, (state, action) => {
+                // console.log(action);
+                state.isLoading = false;
+                state.ad = action.payload;
+            })
+            .addCase(FetchProductImages.fulfilled, (state, action) => {
+                // console.log(action);
+                state.isLoading = false;
+                state.adImages = action.payload;
+            })
+            .addCase(FetchProductSeller.fulfilled, (state, action) => {
+                // console.log(action);
+                state.isLoading = false;
+                state.seller = action.payload;
+            })
+            .addCase(FetchProduct.rejected, (state, action) => {
+                console.log(action);
+                state.isLoading = false;
+            })
+            .addCase(FetchProductImages.rejected, (state, action) => {
+                console.log(action);
+                state.isLoading = false;
+            })
+            .addCase(FetchProductSeller.rejected, (state, action) => {
+                console.log(action);
+                state.isLoading = false;
+            });
+    },
 });
 
 export const { setAd, setAdImages, setSeller } = AdSlice.actions;

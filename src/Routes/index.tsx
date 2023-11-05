@@ -30,7 +30,7 @@ const Index = () => {
 
     const [showAdsForm, setShowAdsForm] = useState<boolean>(false);
     return (
-        <div className="" style={{ maxWidth: '100vw' }}>
+        <div className=" ">
             <Navbar SetShowLogin={setShowLogin} SetShowAdsForm={setShowAdsForm} />
 
             <ToastContainer position="top-center" />

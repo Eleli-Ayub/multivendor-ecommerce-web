@@ -3,7 +3,7 @@ import Related from '../components/SingleProduct/Related';
 
 const AdInfo = () => {
     return (
-        <div className="">
+        <div className=" ">
             <ProductInfo />
             <Related />
         </div>
