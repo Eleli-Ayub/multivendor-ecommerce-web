@@ -23,7 +23,6 @@ import FAQSPage from '../pages/FAQSPage';
 import Profile from '../pages/userDash/profile';
 import Login from '../pages/login';
 import Register from '../pages/Register';
-import ScrollNumber from 'antd/es/badge/ScrollNumber';
 import ScrollToTop from '../components/ScrollToTop';
 // import ProtectedRoutes from "./ProtectedRoutes";
 
