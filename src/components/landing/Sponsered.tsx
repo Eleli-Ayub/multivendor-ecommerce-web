@@ -20,7 +20,7 @@ const Popular = () => {
     console.log(products);
 
     return (
-        <div className="bg-yellow-700 bg-opacity-10 mx-auto pb-2 ">
+        <div className=" bg-opacity-10 mx-auto pb-2 ">
             <div className="py-3  flex flex-row items-center justify-between px-5 flex-wrap ">
                 <h1 className="text-stone-500">Sponsered Ads</h1>
                 <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">

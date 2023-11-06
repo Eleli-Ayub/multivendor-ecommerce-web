@@ -34,7 +34,7 @@ const Landing = () => {
             dispatch(setUser(response.data.Data));
             dispatch(setLoader(false));
         } catch (error: any) {
-            toast.error(error.message);
+            // toast.error(error.message);
         }
     };
 

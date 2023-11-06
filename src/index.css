@@ -57,7 +57,7 @@
   background: radial-gradient(10px, currentColor 94%, #0000);
 }
 .loader-index {
-  /* z-index: 100; */
+  z-index: 100;
 }
 .loader:before {
   content: "";

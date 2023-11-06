@@ -12,7 +12,7 @@ function Productcard({
 }: productCard) {
     // const navigate = useNavigate();
     return (
-        <div className="relative w-[45vw] lg:w-72 lg:h-96 h-[15rem] mb-2 cursor-pointer">
+        <div className="relative w-[45vw] lg:w-72 lg:h-[21rem] h-[14rem] mb-2 cursor-pointer">
             <div className="absolute top-0 right-[5px] lg:left-0 z-10 ">
                 <button className="bg-blue-800 text-[8px] px-[3px] py-[1px] lg:text-sm text-white lg:px-2 lg:py-1 rounded ">
                     Sponsored
