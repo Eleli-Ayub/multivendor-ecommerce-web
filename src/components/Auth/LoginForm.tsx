@@ -6,7 +6,7 @@ import { FaEyeSlash, FaEye } from 'react-icons/fa';
 import { LoggingUser } from '../../Redux/slices/AuthSlice';
 import { AppDispatch } from '../../Redux/store';
 import Loader from '../../constants/loader';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginForm: React.FC = ({}) => {
     const navigate = useNavigate();
@@ -105,15 +105,15 @@ const LoginForm: React.FC = ({}) => {
 
                         <p className="text-gray-500 text-center mt-3">
                             Forgot Password?
-                            <a href="/login" className="ml-2 text-blue-500">
+                            <Link to="/login" className="ml-2 text-blue-500">
                                 Reset Password
-                            </a>{' '}
+                            </Link>{' '}
                         </p>
                         <p className="text-gray-500 text-center mt-3">
                             You do not have an account?
-                            <a href="/register" className="ml-2 text-blue-500">
+                            <Link to="/register" className="ml-2 text-blue-500">
                                 Sign Up
-                            </a>{' '}
+                            </Link>{' '}
                         </p>
                     </form>
                 </div>

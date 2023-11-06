@@ -7,7 +7,7 @@ import { RegisteringUser } from '../../Redux/slices/AuthSlice';
 import { AppDispatch } from '../../Redux/store';
 import Loader from '../../constants/loader';
 import { locations } from '../../data/Location';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const RegisterForm: React.FC = ({}) => {
     const navigate = useNavigate();
@@ -318,9 +318,9 @@ const RegisterForm: React.FC = ({}) => {
                         </button>
                         <p className="text-gray-500 text-center mt-3">
                             Already have an account?
-                            <a href="/login" className="ml-2 text-blue-500">
+                            <Link to="/login" className="ml-2 text-blue-500">
                                 Sign in
-                            </a>{' '}
+                            </Link>{' '}
                         </p>
                     </form>
                 </div>
