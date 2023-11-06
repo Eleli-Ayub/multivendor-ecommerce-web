@@ -3,7 +3,7 @@ import { Accordions } from '../../data/slider';
 import { IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { FaQuestion, FaServicestack, FaRegMoneyBillAlt } from 'react-icons/fa';
-import Logo from '../../assets/logo.jpeg';
+import Logo from '../../assets/logo.png';
 
 const ImageSlider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -122,7 +122,7 @@ const ImageSlider = () => {
                         <p className="text-sm">Join over 5000 sellers</p>
                     </div>
                 </div>
-                <div className="p-2 py-8">
+                <div className="p-2 py-20">
                     <img
                         src={Logo}
                         alt=""

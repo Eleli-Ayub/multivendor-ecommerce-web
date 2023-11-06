@@ -1,13 +1,28 @@
 import { useRef, useEffect, useState } from 'react';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import Productcard from '../Global/Productcard';
-import { products } from '../../data/sponsered';
+// import { products } from '../../data/sponsered';
+import { useSelector, useDispatch } from 'react-redux';
+import { FetchProductsAsync } from '../../Redux/slices/AdsSlice';
+import { AppDispatch } from '../../Redux/store';
 
 function AnotherSlider() {
-    const Ads = products;
+    const Ads = useSelector((state: any) => state.AllAds.Ads);
+    console.log(Ads);
+    // const isLoading = useSelector((state: any) => state.AllAds.isLoading);
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(FetchProductsAsync());
+    }, [dispatch]);
+    function formatPriceWithCommas(price: any) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
     const sliderRef = useRef<HTMLDivElement | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [intervalId, setIntervalId] = useState<number | undefined>();
+    // const userId = '8522c53e-6473-472d-bb09-49095097c1ba';
 
     const sliderWidth = 220; // Assuming each card is 300px wide
     const totalAds = Ads.length;
@@ -63,6 +78,13 @@ function AnotherSlider() {
         transform: `translateX(-${currentIndex * sliderWidth}px)`,
         width: `${clonedAds.length * sliderWidth}px`,
     };
+    // if (isLoading) {
+    //     return (
+    //         <div className="">
+    //             <Loader />
+    //         </div>
+    //     );
+    // }
 
     return (
         <>
@@ -92,12 +114,12 @@ function AnotherSlider() {
                                 style={{ width: `${sliderWidth}px` }}
                             >
                                 <Productcard
-                                    key={item.name}
-                                    image={item.image}
-                                    name={item?.name}
-                                    price={item.price}
-                                    seller={item.seller}
-                                    id={item.name}
+                                    key={item.productid}
+                                    image={`data:image/jpeg;base64, ${item.mainimage}`}
+                                    name={item?.productname}
+                                    price={formatPriceWithCommas(item.productprice)}
+                                    seller="Innovia"
+                                    id={item.producttid}
                                 />
                             </div>
                         ))}

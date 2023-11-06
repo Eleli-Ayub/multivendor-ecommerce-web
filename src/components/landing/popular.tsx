@@ -15,6 +15,9 @@ const Popular = () => {
         dispatch(FetchProductsAsync());
     }, [dispatch]);
 
+    function formatPriceWithCommas(price: any) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
     return (
         <div className="">
             <div className="py-3  flex flex-row items-center justify-between px-5">
@@ -32,12 +35,12 @@ const Popular = () => {
                     </div>
                 ) : (
                     // Render products if not loading
-                    Ads.map((product: ProductData) => (
+                    Ads?.map((product: ProductData) => (
                         <Productcard
                             key={product.producttid}
                             image={`data:image/jpeg;base64, ${product.mainimage}`}
                             name={product.productname}
-                            price={product.productprice}
+                            price={formatPriceWithCommas(product.productprice)}
                             seller="John Doe"
                             id={product.producttid}
                         />

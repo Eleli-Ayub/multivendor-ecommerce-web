@@ -11,7 +11,7 @@ function Productcard({
 }: productCard) {
     const navigate = useNavigate();
     return (
-        <div className="w-[45vw]   lg:w-80 lg:h-[21rem] h-[14rem] mb-2 cursor-pointer">
+        <div className="w-[45vw]   lg:w-72 lg:h-[21rem] h-[14rem] mb-2 cursor-pointer">
             <div
                 className="flex h-full py-1 flex-col max-w-sm rounded-lg bg-stone-50 radius-2xl  border-gray-300 mb-2 price relative hover:bg-green-100 hover:scale-105 duration-300"
                 onClick={() => navigate(`/ad_info/${id}`)}

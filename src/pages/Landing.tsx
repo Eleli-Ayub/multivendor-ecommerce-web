@@ -55,7 +55,7 @@ const Landing = () => {
                         <ImageSlider />
                     </div>
                 </div>
-                <AnotherSlider />
+                {/* <AnotherSlider /> */}
 
                 <div className="flex parent">
                     <Filters />

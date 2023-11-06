@@ -49,6 +49,7 @@ const ProductInfo = () => {
             <div className="md:flex-1">
                 <div className="flex flex-col md:flex-row md:gap-5">
                     {/* Images */}
+                    {/* <p>{ad.userid}</p> */}
                     <div className="md:flex-1">
                         <div className="flex flex-col gap-4">
                             <div>

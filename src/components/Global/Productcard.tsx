@@ -33,7 +33,7 @@ function Productcard({
                     <p className="text-slate-400 text-xs"> rated 4.5 </p>
                     <p className="text-xs text-slate-400">(of 200 reviews)</p>
                 </div>
-                <button className=" bg-secondary-orange mt-2 w-full rounded-[20px] duration-300 hover:bg-orange-300 hover:scale-105 ">
+                <button className=" bg-primary-orange mt-2 w-full rounded-[15px] duration-300 hover:bg-orange-300 hover:scale-105 ">
                     Inquire
                 </button>
             </div>

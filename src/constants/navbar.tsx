@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Links } from '../data/links';
 import close from '../assets/close.png';
 import menu from '../assets/menu.png';
-import logo from '../assets/logo.jpeg';
+import logo from '../assets/logo.png';
 import { IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
@@ -51,15 +51,16 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    useEffect(() => { }, [user]);
+    useEffect(() => {}, [user]);
     const [userSmallnav, setUserSmallNav] = useState(false);
     // console.log(user);
 
     return (
         <nav
-            className={`w-full  flex flex-col items-center justify-center p-1 price  fixed top-0 z-20 ${scrolled ? 'bg-white' : 'bg-white'
-                }`}
-        // style={{ marginBottom: "2px" }}
+            className={`w-full  flex flex-col items-center justify-center px-1 price  fixed top-0 z-20 ${
+                scrolled ? 'bg-white' : 'bg-white'
+            }`}
+            // style={{ marginBottom: "2px" }}
         >
             <div className="w-full flex  justify-between items-center">
                 <div className="flex gap-2 items-center ">
@@ -84,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                         <img
                             src={logo}
                             alt="logo"
-                            className=" p-0 m-0 object-contain rounded h-[30px] lg:h-[50px] price "
+                            className=" p-0 m-0 object-cover object-center rounded h-[50px] lg:h-[70px] "
                         />
                         <p className="text-slate-600 text-xs italic">let's help you sell</p>
                     </Link>
@@ -104,15 +105,16 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                     {Links.map((nav) => (
                         <li
                             key={nav.name}
-                            className={`${active === nav.name ? 'text-primary-orange' : 'text-black'
-                                } capitalize hover:text-primary-orange text-[18px] font-medium cursor-pointer`}
+                            className={`${
+                                active === nav.name ? 'text-primary-orange' : 'text-black'
+                            } capitalize hover:text-primary-orange text-[18px] font-medium cursor-pointer`}
                             onClick={() => setActive(nav.name)}
                         >
                             <Link to={nav.url}>{nav.name}</Link>
                         </li>
                     ))}
                     {user ? (
-                        <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
+                        <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
                             <div
                                 className="h-[50px] w-[50px] rounded-full border border-slate-500 p-1 relative cursor-pointer"
                                 onClick={() => {
@@ -190,8 +192,9 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                     </IconButton>
 
                     <div
-                        className={`${!toggle ? 'hidden' : 'flex'
-                            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
+                        className={`${
+                            !toggle ? 'hidden' : 'flex'
+                        } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
                     >
                         <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
                             <div>
@@ -207,10 +210,11 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                             {Links.map((nav) => (
                                 <li
                                     key={nav.name}
-                                    className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.name
+                                    className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                                        active === nav.name
                                             ? 'text-primary-orange'
                                             : 'text-secondary'
-                                        }`}
+                                    }`}
                                     onClick={() => {
                                         setToggle(!toggle);
                                         setActive(nav.url);
@@ -220,7 +224,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                 </li>
                             ))}
                             {user ? (
-                                <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
+                                <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
                                     <div
                                         className="h-[50px] w-[50px] rounded-full border border-slate-500 p-1 relative cursor-pointer"
                                         onClick={() => {
