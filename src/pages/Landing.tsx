@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLoader } from '../Redux/slices/LoaderSlice';
 import { setUser } from '../Redux/slices/AuthSlice';
 import Minslider from '../components/landing/minislider';
-import AnotherSlider from '../components/landing/AotherSlider';
+// import AnotherSlider from '../components/landing/AotherSlider';
 import Filters from '../constants/Filters';
 // import Packages from "../components/packages";
 import Package from '../components/services/Package';

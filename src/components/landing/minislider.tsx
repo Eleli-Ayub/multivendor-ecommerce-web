@@ -70,7 +70,34 @@ function AnotherSlider() {
         };
     }, [currentIndex]); // Update based on currentIndex
 
-    const clonedAds = Ads.length ? [...Ads, ...Ads, ...Ads, ...Ads, ...Ads, ...Ads] : [];
+    const clonedAds = Ads.length
+        ? [
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+              ...Ads,
+          ]
+        : [];
 
     const sliderStyle: React.CSSProperties = {
         display: 'flex',

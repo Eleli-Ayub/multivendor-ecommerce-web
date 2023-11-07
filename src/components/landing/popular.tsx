@@ -21,9 +21,9 @@ const Popular = () => {
     return (
         <div className="">
             <div className="py-3  flex flex-row items-center justify-between px-5">
-                <h1 className="text-stone-500">Popular Ads</h1>
+                <h1 className="text-stone-500">Suggested Ads</h1>
                 <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">
-                    see all of them
+                    see all
                 </button>
             </div>
 

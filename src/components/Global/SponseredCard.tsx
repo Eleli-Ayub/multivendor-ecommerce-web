@@ -1,4 +1,4 @@
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { productCard } from '../../interface/common';
 import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
@@ -10,7 +10,7 @@ function Productcard({
     // description,
     id,
 }: productCard) {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     return (
         <div className="relative w-[45vw] lg:w-72 lg:h-[21rem] h-[14rem] mb-2 cursor-pointer">
             <div className="absolute top-0 right-[5px] lg:left-0 z-10 ">
@@ -20,7 +20,7 @@ function Productcard({
             </div>
             <div
                 className="flex h-full py-1 flex-col lg:flex-col max-w-sm rounded-lg bg-stone-50 radius-2xl  border-gray-300 mb-2 price relative lg:hover:bg-green-100 hover:scale-105 duration-300"
-                onClick={() => console.log(id)}
+                onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
                     className="rounded-lg w-full h-1/3 lg:h-3/5 lg:w-full object-cover bg-gray-light "
