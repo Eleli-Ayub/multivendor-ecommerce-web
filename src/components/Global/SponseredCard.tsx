@@ -12,7 +12,7 @@ function Productcard({
 }: productCard) {
     const navigate = useNavigate();
     return (
-        <div className="relative w-[45vw] lg:w-72 lg:h-[21rem] h-[14rem] mb-2 cursor-pointer">
+        <div className="relative w-[45vw] lg:w-72 lg:h-[21rem] h-[15rem] mb-2 cursor-pointer">
             <div className="absolute top-0 right-[5px] lg:left-0 z-10 ">
                 <button className="bg-blue-800 text-[8px] px-[3px] py-[1px] lg:text-sm text-white lg:px-2 lg:py-1 rounded ">
                     Sponsored
@@ -23,7 +23,7 @@ function Productcard({
                 onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
-                    className="rounded-lg w-full h-1/3 lg:h-3/5 lg:w-full object-cover bg-gray-light "
+                    className="rounded-lg w-full h-1/3 lg:h-3/5 lg:w-full  object-contain lg:object-cover bg-gray-light "
                     src={image}
                 />
                 <div className="px-3 py-2 w-2/3">

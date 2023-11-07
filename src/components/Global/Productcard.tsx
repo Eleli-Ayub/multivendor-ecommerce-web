@@ -20,7 +20,10 @@ function Productcard({
       h-[200px] lg:h-[300px] mb-2  border border-gray-300 duration-200 cursor-pointer hover:bg-stone-200 hover:scale-95"
             onClick={() => console.log(id)}
         >
-            <img className="rounded-lg h-2/5 lg:h-3/5 w-full object-cover " src={image} />
+            <img
+                className="rounded-lg h-2/5 lg:h-3/5 w-full object-contain lg:object-cover "
+                src={image}
+            />
             <div className="px-3 py-1">
                 <div className="flex flex-col justify-between text-md">
                     <h1 className="text-slate-700 text-[14px] font-bold uppercase truncate">

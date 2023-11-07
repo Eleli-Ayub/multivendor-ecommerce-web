@@ -47,7 +47,7 @@ const ImageSlider = () => {
                             className="object-cover rounded-[0.25rem] w-[100%] p-0 m-0 h-[20vh] lg:h-[55vh]"
                         />
                         <div
-                            className=" flex flex-col py-4 absolute top-0 left-0 text-white text-center 
+                            className=" hidden lg:flex flex-col py-4 absolute top-0 left-0 text-white text-center 
               rounded-[20px] w-[90%] p-[1rem] "
                             style={{
                                 position: 'absolute',

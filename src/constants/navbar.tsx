@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                         <img
                             src={logo}
                             alt="logo"
-                            className=" p-0 m-0 object-cover object-center rounded h-[50px] lg:h-[70px] "
+                            className=" p-0 m-0 object-cover object-center rounded h-[50px] lg:h-[50px] "
                         />
                         <p className="text-slate-600 text-xs italic">let's help you sell</p>
                     </Link>
