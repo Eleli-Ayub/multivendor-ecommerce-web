@@ -73,8 +73,9 @@ const Footer = () => {
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
+                                    color: 'blue',
                                     padding: '0.4rem',
-                                    borderRadius: '50%',
+                                    borderRadius: '0.25rem',
                                 }}
                             >
                                 <a href="#" className="text-white flex items-center">
@@ -87,7 +88,7 @@ const Footer = () => {
                                 style={{
                                     backgroundColor: 'white',
                                     padding: '0.4rem',
-                                    borderRadius: '50%',
+                                    borderRadius: '0.25rem',
                                 }}
                             >
                                 <a href="#" className="text-white flex items-center">
@@ -100,7 +101,7 @@ const Footer = () => {
                                 style={{
                                     backgroundColor: 'white',
                                     padding: '0.4rem',
-                                    borderRadius: '50%',
+                                    borderRadius: '0.25rem',
                                 }}
                             >
                                 <a href="#" className="text-white flex items-center">
@@ -113,7 +114,7 @@ const Footer = () => {
                                 style={{
                                     backgroundColor: 'white',
                                     padding: '0.4rem',
-                                    borderRadius: '50%',
+                                    borderRadius: '0.25rem',
                                 }}
                             >
                                 <a href="#" className="text-white flex items-center">
@@ -126,7 +127,7 @@ const Footer = () => {
                                 style={{
                                     backgroundColor: 'white',
                                     padding: '0.4rem',
-                                    borderRadius: '50%',
+                                    borderRadius: '0.25rem',
                                 }}
                             >
                                 <a href="#" className="text-white flex items-center">

@@ -15,8 +15,12 @@ function AnotherSlider() {
     useEffect(() => {
         dispatch(FetchProductsAsync());
     }, [dispatch]);
+
     function formatPriceWithCommas(price: any) {
-        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        if (price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        return ''; // or any default value you prefer if price is undefined
     }
 
     const sliderRef = useRef<HTMLDivElement | null>(null);
@@ -141,12 +145,12 @@ function AnotherSlider() {
                                 style={{ width: `${sliderWidth}px` }}
                             >
                                 <Productcard
-                                    key={item.productid}
-                                    image={`data:image/jpeg;base64, ${item.mainimage}`}
-                                    name={item?.productname}
-                                    price={formatPriceWithCommas(item.productprice)}
-                                    seller="Innovia"
-                                    id={item.producttid}
+                                    key={item.product_data.productid}
+                                    image={`data:image/jpeg;base64, ${item?.product_data.mainimage}`}
+                                    name={item?.product_data.productname}
+                                    price={formatPriceWithCommas(item?.product_data.productprice)}
+                                    seller={item?.user_name}
+                                    id={item?.product_data.producttid}
                                 />
                             </div>
                         ))}

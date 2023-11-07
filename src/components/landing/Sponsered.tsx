@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FetchProductsAsync } from '../../Redux/slices/AdsSlice';
 import { AppDispatch } from '../../Redux/store';
-import { ProductData } from '../../interface/common';
+// import { ProductData } from '../../interface/common';
 import Loader from '../../constants/loader';
 // import { FaFacebook, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
@@ -26,7 +26,10 @@ const Popular = () => {
     // console.log(products);
 
     function formatPriceWithCommas(price: any) {
-        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        if (price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        return ''; // or any default value you prefer if price is undefined
     }
 
     if (isLoading) {
@@ -47,14 +50,14 @@ const Popular = () => {
             </div>
 
             <div className="flex flex-wrap gap-3 px-2 lg:px-10 lg:gap-5">
-                {Ads.map((product: ProductData) => (
+                {Ads.map((product: any) => (
                     <SponsereCard
-                        key={product.producttid}
-                        image={`data:image/jpeg;base64, ${product.mainimage}`}
-                        name={product.productname}
-                        price={formatPriceWithCommas(product.productprice)}
-                        seller="Magiccolors"
-                        id={product.producttid}
+                        key={product.product_data.producttid}
+                        image={`data:image/jpeg;base64, ${product.product_data.mainimage}`}
+                        name={product.product_data.productname}
+                        price={formatPriceWithCommas(product?.product_data.productprice)}
+                        seller={product?.user_name}
+                        id={product?.product_data.producttid}
                     />
                 ))}
             </div>

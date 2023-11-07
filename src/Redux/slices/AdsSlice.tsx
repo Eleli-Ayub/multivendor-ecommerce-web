@@ -21,7 +21,6 @@ const initialState: ProductsState = {
 export const FetchProductsAsync = createAsyncThunk('ads/fetchproductsasync', async () => {
     try {
         const response = await fetchOurProducts();
-        console.log(response);
         return response.data.Data;
     } catch (error) {
         console.error('Error fetching products:', error);

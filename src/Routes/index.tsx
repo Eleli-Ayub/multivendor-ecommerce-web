@@ -25,21 +25,23 @@ import Login from '../pages/login';
 import Register from '../pages/Register';
 import ScrollToTop from '../components/ScrollToTop';
 // import ProtectedRoutes from "./ProtectedRoutes";
+import Notification from '../pages/userDash/Notifications';
+import Messages from '../pages/userDash/Messages';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
-        const auth = localStorage.getItem("userToken")
+        const auth = localStorage.getItem('userToken');
         console.log(auth);
 
-        if (auth == "" || auth == null || auth == undefined) {
-            setLoggedIn(false)
+        if (auth == '' || auth == null || auth == undefined) {
+            setLoggedIn(false);
         } else {
-            setLoggedIn(true)
+            setLoggedIn(true);
         }
-    }, [])
+    }, []);
 
     const [showAdsForm, setShowAdsForm] = useState<boolean>(false);
     return (
@@ -70,6 +72,11 @@ const Index = () => {
                         <Route path="/new-ad" element={<CreateAds />} />
                         <Route path="/profile/closed" element={<Closed />} />
                         <Route path="/profile/drafts" element={<Drafts />} />
+                        <Route
+                            path="/notifications"
+                            element={loggedIn ? <Notification /> : <Login />}
+                        />
+                        <Route path="/messages" element={loggedIn ? <Messages /> : <Login />} />
                     </Routes>
                 </ScrollToTop>
             </div>

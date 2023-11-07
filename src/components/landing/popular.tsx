@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchProductsAsync } from '../../Redux/slices/AdsSlice';
 import Productcard from '../Global/PopularCard';
-import { ProductData } from '../../interface/common';
+// import { ProductData } from '../../interface/common';
 import { AppDispatch } from '../../Redux/store';
 
 import Loader from '../../constants/loader';
@@ -16,8 +16,12 @@ const Popular = () => {
     }, [dispatch]);
 
     function formatPriceWithCommas(price: any) {
-        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        if (price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        return ''; // or any default value you prefer if price is undefined
     }
+
     return (
         <div className="">
             <div className="py-3  flex flex-row items-center justify-between px-5">
@@ -35,14 +39,14 @@ const Popular = () => {
                     </div>
                 ) : (
                     // Render products if not loading
-                    Ads?.map((product: ProductData) => (
+                    Ads?.map((product: any) => (
                         <Productcard
-                            key={product.producttid}
-                            image={`data:image/jpeg;base64, ${product.mainimage}`}
-                            name={product.productname}
-                            price={formatPriceWithCommas(product.productprice)}
-                            seller="John Doe"
-                            id={product.producttid}
+                            key={product.product_data.producttid}
+                            image={`data:image/jpeg;base64, ${product.product_data.mainimage}`}
+                            name={product.product_data.productname}
+                            price={formatPriceWithCommas(product?.product_data.productprice)}
+                            seller={product?.user_name}
+                            id={product?.product_data.producttid}
                         />
                     ))
                 )}

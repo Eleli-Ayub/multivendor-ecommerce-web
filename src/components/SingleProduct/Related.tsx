@@ -1,7 +1,14 @@
+import { useSelector } from 'react-redux';
 import Productcard from '../Global/RelatedCard';
-import { products } from '../../data/sponsered';
 
 const Related = () => {
+    const Ads = useSelector((state: any) => state.AllAds.Ads);
+    function formatPriceWithCommas(price: any) {
+        if (price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+        return ''; // or any default value you prefer if price is undefined
+    }
     return (
         <div className="lg:p-5 ">
             <div className="bg-green-700 bg-opacity-10 pb-2 ">
@@ -13,14 +20,14 @@ const Related = () => {
                 </div>
 
                 <div className="flex lg:px-5 gap-3 lg:gap-10 px-2 flex-wrap ">
-                    {products.map((product) => (
+                    {Ads.map((product: any) => (
                         <Productcard
-                            key={product.name}
-                            image={product.image}
-                            name={product.name}
-                            price={product.price}
-                            seller={product.seller}
-                            id={product.name}
+                            key={product?.product_data.producttid}
+                            image={`data:image/jpeg;base64, ${product?.product_data.mainimage}`}
+                            name={product?.product_data.productname}
+                            price={formatPriceWithCommas(product?.product_data.productprice)}
+                            seller={product?.user_name}
+                            id={product?.product_data.producttid}
                         />
                     ))}
                 </div>

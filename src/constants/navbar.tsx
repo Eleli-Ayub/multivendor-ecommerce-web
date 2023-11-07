@@ -89,6 +89,17 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                         />
                         <p className="text-slate-600 text-xs italic">let's help you sell</p>
                     </Link>
+
+                    <div className="p-2 ml-5 block md:hidden">
+                        <button
+                            className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
+                            onClick={() => {
+                                user ? SetShowAdsForm(true) : navigate('/login');
+                            }}
+                        >
+                            Sell
+                        </button>
+                    </div>
                 </div>
 
                 <ul className="list-none hidden sm:flex flex-row gap-10">

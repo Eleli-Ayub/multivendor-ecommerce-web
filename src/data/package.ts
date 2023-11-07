@@ -1,3 +1,8 @@
+import basic from "../assets/basic.jpg"
+import standard from "../assets/standard.avif"
+import premium from "../assets/premium.jpg"
+import freemium from "../assets/free.jpg"
+
 export const sliderContent = [
     {
       title: 'Freemium Kshs:0',
@@ -8,6 +13,7 @@ export const sliderContent = [
         '🗙 Sponsered ads per month',
       ],
       button: 'Get Started',
+      image: freemium
     },
     {
       title: 'Basic Kshs:2500',
@@ -18,6 +24,7 @@ export const sliderContent = [
         '🗙 No ads Sponsorship',
       ],
       button: 'Get Started',
+      image: basic
     },
     {
       title: 'Standard Ksh: 3500',
@@ -28,6 +35,7 @@ export const sliderContent = [
         '🗙 No Ads Sponsorship',
       ],
       button: 'Get Started',
+      image: standard
     },
     {
       title: 'Premium Ksh: 4500',
@@ -38,5 +46,6 @@ export const sliderContent = [
         ' ✔Get Bonus sponsorship for your ads',
       ],
       button: 'Get started',
+      image: premium
     },
   ];

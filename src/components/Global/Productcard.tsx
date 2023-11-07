@@ -1,4 +1,4 @@
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { productCard } from '../../interface/common';
 // import { BsBookmarkPlus, BsCloudDownload, BsWhatsapp } from "react-icons/bs";
 // import { PiShareFatLight } from "react-icons/pi";
@@ -13,12 +13,12 @@ function Productcard({
     // description,
     id,
 }: productCard) {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     return (
         <div
             className="rounded-lg bg-stone-100 radius-2xl w-[200px]
       h-[200px] lg:h-[300px] mb-2  border border-gray-300 duration-200 cursor-pointer hover:bg-stone-200 hover:scale-95"
-            onClick={() => console.log(id)}
+            onClick={() => navigate(`/ad_info/${id}`)}
         >
             <img
                 className="rounded-lg h-2/5 lg:h-3/5 w-full object-contain lg:object-cover "
