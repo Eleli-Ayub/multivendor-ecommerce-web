@@ -7,7 +7,7 @@ import Declined from '../pages/userDash/Declined';
 import Closed from '../pages/userDash/Closed';
 import Drafts from '../pages/userDash/Drafts';
 import Pricing from '../pages/Pricing';
-import CreateAds from '../pages/CreateAds';
+// import CreateAds from '../pages/CreateAds';
 import { useEffect, useState } from 'react';
 import AdsForm from '../components/Ad/AdForm';
 import Footer from '../constants/footer';
@@ -56,7 +56,10 @@ const Index = () => {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/" element={<Landing />} />
-                        <Route path="/Dashboard" element={<UserDashboard />} />
+                        <Route
+                            path="/Dashboard"
+                            element={loggedIn ? <UserDashboard /> : <Login />}
+                        />
                         <Route path="/pricing" element={<Pricing />} />
                         <Route path="/ads" element={<AdsPage />} />
                         <Route path="/terms_and_conditions" element={<Terms />} />
@@ -66,12 +69,18 @@ const Index = () => {
                         <Route path="/ad_info/:id" element={<AdInfo />} />
                         <Route path="/seller/store/" element={<SellersAds />} />
                         <Route path="/profile" element={loggedIn ? <Profile /> : <Login />} />
-                        <Route path="/profile/myads" element={<MyAds />} />
-                        <Route path="/profile/pending" element={<Pending />} />
-                        <Route path="/profile/declined" element={<Declined />} />
-                        <Route path="/new-ad" element={<CreateAds />} />
-                        <Route path="/profile/closed" element={<Closed />} />
-                        <Route path="/profile/drafts" element={<Drafts />} />
+                        <Route path="/profile/myads" element={loggedIn ? <MyAds /> : <Login />} />
+                        <Route
+                            path="/profile/pending"
+                            element={loggedIn ? <Pending /> : <Login />}
+                        />
+                        <Route
+                            path="/profile/declined"
+                            element={loggedIn ? <Declined /> : <Login />}
+                        />
+                        {/* <Route path="/new-ad" element={<CreateAds />} /> */}
+                        <Route path="/profile/closed" element={loggedIn ? <Closed /> : <Login />} />
+                        <Route path="/profile/drafts" element={loggedIn ? <Drafts /> : <Login />} />
                         <Route
                             path="/notifications"
                             element={loggedIn ? <Notification /> : <Login />}
