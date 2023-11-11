@@ -3,7 +3,7 @@ import ImageSlider from '../components/landing/slider';
 import Popular from '../components/landing/popular';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GettingSellers, getLoggedInUser } from '../Redux/slices/AuthSlice';
+import { getLoggedInUser } from '../Redux/slices/AuthSlice';
 import Minslider from '../components/landing/minislider';
 import Package from '../components/services/Package';
 import Sponsered from '../components/landing/Sponsered';

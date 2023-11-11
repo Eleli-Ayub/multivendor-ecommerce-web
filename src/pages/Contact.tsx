@@ -1,9 +1,9 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { FaFacebook, FaPhone, FaEnvelope, FaYoutube, FaWhatsapp } from 'react-icons/fa';
-import { IconButton } from '@mui/material';
+// import { IconButton } from '@mui/material';
 
 const Contact = () => {
-    const [loading] = useState(false);
+    // const [loading] = useState(false);
 
     return (
         <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 p-20  bg-gray-200 shadow-xl ">

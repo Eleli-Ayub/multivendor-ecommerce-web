@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import Photo from '../../assets/M-PESA.jpeg';
+// import Photo from '../../assets/M-PESA.jpeg';
 import { sliderContent } from '../../data/package';
 
 const Package = () => {
