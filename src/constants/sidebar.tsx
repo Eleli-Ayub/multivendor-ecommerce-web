@@ -71,7 +71,7 @@ const Sidebar = () => {
                     {categories.map((Menu: categoryData, index: number) => (
                         <div>
                             <li
-                                key={index}
+                                key={Menu.categoryname}
                                 className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
@@ -79,7 +79,7 @@ const Sidebar = () => {
                                     setSubmenuOpen(false);
                                 }}
                             >
-                                <img src={Menu.categoryimage} className="h-3 w-3 " object-cover />
+                                <img src={Menu.categoryimage} className="h-3 w-3 object-cover  " />
                                 <span
                                     className={`${
                                         !open && ''
@@ -98,7 +98,7 @@ const Sidebar = () => {
                     {categories.map((Menu: categoryData, index: number) => (
                         <div>
                             <li
-                                key={index}
+                                key={Menu.categoryname}
                                 className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
@@ -106,7 +106,7 @@ const Sidebar = () => {
                                     setSubmenuOpen(false);
                                 }}
                             >
-                                <img src={Menu.categoryimage} className="h-3 w-3 " object-cover />
+                                <img src={Menu.categoryimage} className="h-3 w-3 object-cover " />
                                 <span
                                     className={`${
                                         !open && ''

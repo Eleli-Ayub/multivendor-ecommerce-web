@@ -111,13 +111,13 @@ function AnotherSlider({ Ads }: any) {
                                 style={{ width: `${sliderWidth}px` }}
                             >
                                 <Productcard
-                                    key={item.product_data.productid}
-                                    image={` ${item?.product_data.mainimage}`}
-                                    name={item?.product_data.productname}
-                                    price={formatPriceWithCommas(item?.product_data.productprice)}
+                                    key={item.product_data?.productid}
+                                    image={` ${item?.product_data?.mainimage}`}
+                                    name={item?.product_data?.productname}
+                                    price={formatPriceWithCommas(item?.product_data?.productprice)}
                                     seller={item?.user_name}
-                                    id={item?.product_data.producttid}
-                                    description={item?.product_data.productdescription}
+                                    id={item?.product_data?.producttid}
+                                    description={item?.product_data?.productdescription}
                                 />
                             </div>
                         ))}

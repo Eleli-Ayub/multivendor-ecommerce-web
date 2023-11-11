@@ -2,40 +2,31 @@ import Sidebar from '../constants/sidebar';
 import ImageSlider from '../components/landing/slider';
 import Popular from '../components/landing/popular';
 import { useEffect } from 'react';
-import { currentUser } from '../Redux/hooks/user.actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLoader } from '../Redux/slices/LoaderSlice';
-import { setUser } from '../Redux/slices/AuthSlice';
+import { GettingSellers, getLoggedInUser } from '../Redux/slices/AuthSlice';
 import Minslider from '../components/landing/minislider';
-// import AnotherSlider from '../components/landing/AotherSlider';
-// import Filters from '../constants/Filters';
-// import Packages from "../components/packages";
 import Package from '../components/services/Package';
 import Sponsered from '../components/landing/Sponsered';
 import { FetchProductsAsync } from '../Redux/slices/AdsSlice';
 import { AppDispatch } from '../Redux/store';
-// import axios from "axios";
 
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
     const dispatch = useDispatch<AppDispatch>();
     const Ads = useSelector((state: any) => state.AllAds.Ads);
+    const sellers = useSelector((state: any) => state.auth.sellers);
+    console.log(sellers);
 
     const getUser = async () => {
-        try {
-            dispatch(setLoader(true));
-            const response = await currentUser();
-            // toast.success("user Fetched successfully");
-            // console.log(response.data.Data);
-            dispatch(setUser(response.data.Data));
-            dispatch(setLoader(false));
-        } catch (error: any) {
-            // toast.error(error.message);
-        }
+        dispatch(getLoggedInUser());
     };
     useEffect(() => {
         dispatch(FetchProductsAsync());
     }, []);
+
+    // useEffect(() => {
+    //     dispatch(GettingSellers());
+    // }, []);
 
     useEffect(() => {
         if (userToken) {
@@ -51,7 +42,6 @@ const Landing = () => {
                         <ImageSlider />
                     </div>
                 </div>
-                {/* <AnotherSlider /> */}
 
                 <div className="parent px-0 lg:px-32">
                     <div className="mx-0 lg:mx:auto">

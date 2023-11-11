@@ -34,7 +34,7 @@ const Index = () => {
 
     useEffect(() => {
         const auth = localStorage.getItem('userToken');
-        console.log(auth);
+        // console.log(auth);
 
         if (auth == '' || auth == null || auth == undefined) {
             setLoggedIn(false);
@@ -50,18 +50,18 @@ const Index = () => {
 
             <ToastContainer position="top-center" />
             <AdsForm showAdsForm={showAdsForm} setShowAdsForm={setShowAdsForm} />
-            <div className=" mt-20 md:mt-[9.5rem]">
+            <div className=" mt-20 md:mt-[11rem]" id="root">
                 <ScrollToTop>
                     <Routes>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={loggedIn ? <Login /> : <Landing />} />
+                        <Route path="/register" element={loggedIn ? <Register /> : <Landing />} />
                         <Route path="/" element={<Landing />} />
                         <Route
                             path="/Dashboard"
                             element={loggedIn ? <UserDashboard /> : <Login />}
                         />
                         <Route path="/pricing" element={<Pricing />} />
-                        <Route path="/ads" element={<AdsPage />} />
+                        <Route path="/search/products" element={<AdsPage />} />
                         <Route path="/terms_and_conditions" element={<Terms />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/services" element={<Services />} />
@@ -89,7 +89,9 @@ const Index = () => {
                     </Routes>
                 </ScrollToTop>
             </div>
-            <Footer />
+            <footer>
+                <Footer />
+            </footer>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { userProps } from '../../interface/common';
 import {
+    GetSellers,
     GetUserById,
     LogginOfUser,
     RegistrationOfUser,
@@ -15,6 +16,7 @@ interface AuthState {
     isLoading: boolean;
     userToken: string | null;
     theSeller: userProps | null;
+    sellers: userProps | [];
 }
 
 const initialState: AuthState = {
@@ -22,6 +24,7 @@ const initialState: AuthState = {
     isLoading: false,
     userToken: localStorage.getItem('userToken') || null,
     theSeller: null,
+    sellers: [],
 };
 
 export const getLoggedInUser = createAsyncThunk('auth/getLoggedInUser', async () => {
@@ -69,7 +72,6 @@ export const LoggingUser = createAsyncThunk('auth/logginguser', async (formData:
 
 export const GettingUserById = createAsyncThunk('auth/gettinguserbyid', async (id: any) => {
     const response = await GetUserById(id);
-    console.log(response.data.Data);
     return response.data.Data;
 });
 
@@ -81,6 +83,12 @@ export const UpdattingOfUser = createAsyncThunk(
         return response.data.Data;
     }
 );
+
+export const GettingSellers = createAsyncThunk('auth/getsellers', async () => {
+    const response = await GetSellers();
+    console.log(response.data.Data);
+    return response.data.Data;
+});
 
 const authSlice = createSlice({
     name: 'auth',
@@ -139,9 +147,21 @@ const authSlice = createSlice({
             .addCase(GettingUserById.rejected, (state) => {
                 state.isLoading = false;
             })
+            .addCase(GettingSellers.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(GettingSellers.fulfilled, (state, action) => {
+                state.isLoading = false;
+                // Update state.user with the user data received in the action payload
+                state.sellers = action.payload; // Adjust this to match your response structure
+            })
+            .addCase(GettingSellers.rejected, (state) => {
+                state.isLoading = false;
+            })
             .addCase(UpdattingOfUser.pending, (state) => {
                 state.isLoading = true;
             })
+
             .addCase(UpdattingOfUser.fulfilled, (state, action) => {
                 state.isLoading = false;
                 // Handle the fulfilled action here, e.g., update user data

@@ -12,6 +12,7 @@ import { axiosService } from '../../Redux/helpers/axios';
 import { useNavigate } from 'react-router-dom';
 import { Delete } from '@mui/icons-material';
 import Loader from '../../constants/loader';
+// import Loader from '../../constants/loader';
 
 // Define the types for your props
 type AdFormProps = {
@@ -23,18 +24,19 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
     const categories = useSelector((state: any) => state.categories.categories);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [subcategories, setSubcategories] = useState<subcategoryData[]>([]);
-    const { isLoading } = useSelector((state: any) => state.loaders);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
     const getCategory = async () => {
-        dispatch(setLoader(true));
+        setLoading(true);
         const response = await fetchCategories();
         dispatch(setCategories(response.data.Data));
-        dispatch(setLoader(false));
+        setLoading(false);
     };
+    console.log(`is loading,`, loading);
 
     useEffect(() => {
         getCategory();
@@ -68,10 +70,10 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
         setSelectedCategory(newCategory);
 
         if (newCategory) {
-            dispatch(setLoader(true));
+            setLoading(true);
             const subcategoriesData = await tryfetchingSubcategories(newCategory);
             setSubcategories(subcategoriesData);
-            dispatch(setLoader(false));
+            setLoading(false);
 
             // Update formData.category here
             setFormData((prevData) => ({
@@ -266,20 +268,11 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
         setSelectedImages([]);
     };
 
-    // console.log(subcategories);
-
-    if (isLoading) {
-        return (
-            <div style={{ zIndex: '9999' }}>
-                <Loader />
-            </div>
-        );
-    }
-
     return (
         <>
             {showAdsForm && (
                 <div className="fixed inset-0 px-5 min-h-full w-full bg-stone-300/50 z-50 flex items-center justify-center py-2 overflow-y-auto">
+                    {loading && <Loader />}
                     <form
                         className="w-full lg:w-4/6 h-5/6  rounded-2xl shadow-2xl"
                         onSubmit={handleSubmit}

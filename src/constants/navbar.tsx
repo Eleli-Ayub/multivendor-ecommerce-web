@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
 
     return (
         <nav
-            className={`w-full  flex flex-col items-center justify-center px-1 lg:px-20 fixed top-0 z-20 ${
+            className={`w-full  flex flex-col items-center justify-center py-0 px-1 lg:px-20 fixed price top-0 z-20 ${
                 scrolled ? 'bg-white' : 'bg-white'
             }`}
             // style={{ marginBottom: "2px" }}
@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                             className="text-black bg-gray-light p-2 rounded-full md:hidden"
                             onClick={() => {
                                 dispatch(setProfileOpener(!profileOpener));
-                                // console.log("hello , this is my",profileOpener);
+                                console.log('hello , this is my', profileOpener);
                             }}
                         />
                     )}
@@ -90,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                         <p className="text-slate-600 text-xs italic">let's help you sell</p>
                     </Link>
 
-                    <div className="p-2 ml-5 block md:hidden">
+                    <div className="p-2 ml-5 block sm:hidden">
                         <button
                             className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
                             onClick={() => {
@@ -208,19 +208,19 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                     <div
                         className={`${
                             !toggle ? 'hidden' : 'flex'
-                        } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
+                        } p-6 black-gradient absolute top-10 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
                     >
                         <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-                            <div>
+                            {/* <div>
                                 <button
                                     className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
                                     onClick={() => {
                                         user ? SetShowAdsForm(true) : navigate('/login');
                                     }}
                                 >
-                                    Sell
+                                    Sell me
                                 </button>
-                            </div>
+                            </div> */}
                             {Links.map((nav) => (
                                 <li
                                     key={nav.name}

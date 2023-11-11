@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { axiosService } from '../Redux/helpers/axios';
 import { fetchCategories } from '../Redux/hooks/categories.actions';
-import { useSelector } from 'react-redux';
-import { Search } from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
+import { SearchingProduct } from '../Redux/slices/AdsSlice';
+import { AppDispatch } from '../Redux/store';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar: React.FC = () => {
     const [category, setCategory] = useState<string>('all');
-    const [subcategory, setSubcategory] = useState<string>('all');
-    const [minPrice, setMinPrice] = useState<string>('0');
-    const [maxPrice, setMaxPrice] = useState<string>('100000000');
+    const [, setSubcategory] = useState<string>('all');
     const [categories, setCategories] = useState<any[]>([]);
-    const [subcategories, setSubcategories] = useState<any[]>([]);
+    const [, setSubcategories] = useState<any[]>([]);
     const [, setIsLoading] = useState<boolean>(false);
-    const navigate = useNavigate;
     const { open } = useSelector((state: any) => state.opener);
+    const [searchParam, setSearchParam] = useState<string>('');
+
     const Ads = useSelector((state: any) => state.AllAds.Ads);
+
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
 
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedCategory = e.target.value;
@@ -60,12 +63,21 @@ const SearchBar: React.FC = () => {
     }, []);
 
     const handleSearch = () => {
-        // Add your search functionality here
+        console.log('Search button clicked');
+        dispatch(SearchingProduct(searchParam));
+        navigate('/search/products');
+        console.log(searchParam);
     };
 
     return (
         <>
-            <div className=" hidden h-[50px] md:flex items-center   p-3 w-screen my-4 px-40 bg-[white]">
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault(); // Prevents the form from submitting and triggering a full-page reload
+                    handleSearch();
+                }}
+                className=" hidden h-[auto] md:flex items-center w-screen my-4 px-40 bg-[white] mb-2"
+            >
                 <select
                     id="categorySelect"
                     value={category}
@@ -81,21 +93,33 @@ const SearchBar: React.FC = () => {
                 </select>
 
                 <div className="relative w-[70%] border border-l-0 px-10 py-1">
-                    <input type="text" placeholder="search for anything" className="px-10    " />
+                    <input
+                        type="text"
+                        placeholder="search for anything"
+                        className="px-10    "
+                        value={searchParam}
+                        onChange={(e) => setSearchParam(e.target.value)}
+                    />
                 </div>
 
                 <button
-                    onClick={handleSearch}
+                    type="submit"
                     className="bg-primary-orange text-white rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom py-5 rounded-r-[20px]"
                 >
                     Search [{Ads?.length}Ads]
                 </button>
-            </div>
+            </form>
 
             {/* for smaller devices */}
 
             {open && (
-                <div className=" search h-[60px] flex items-center w-screen my-4 px-1">
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault(); // Prevents the form from submitting and triggering a full-page reload
+                        handleSearch();
+                    }}
+                    className=" search h-[60px] flex items-center w-screen my-4 px-1"
+                >
                     <select
                         id="categorySelect"
                         value={category}
@@ -119,12 +143,12 @@ const SearchBar: React.FC = () => {
                     </div>
 
                     <button
-                        onClick={handleSearch}
+                        type="submit"
                         className="bg-primary-orange text-white rounded hover:bg-secondary-orange transition-colors delay-300 outline-none shadow-custom rounded-r-[20px] p-[1.2rem]"
                     >
                         Search
                     </button>
-                </div>
+                </form>
             )}
         </>
     );

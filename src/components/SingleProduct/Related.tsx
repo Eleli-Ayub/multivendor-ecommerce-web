@@ -22,13 +22,13 @@ const Related = () => {
                 <div className="flex lg:px-5 gap-3 lg:gap-10 px-2 flex-wrap ">
                     {Ads?.map((product: any) => (
                         <Productcard
-                            key={product?.product_data.producttid}
-                            image={`${product?.product_data.mainimage}`}
-                            name={product?.product_data.productname}
-                            price={formatPriceWithCommas(product?.product_data.productprice)}
+                            key={product?.product_data?.producttid}
+                            image={`${product?.product_data?.mainimage}`}
+                            name={product?.product_data?.productname}
+                            price={formatPriceWithCommas(product?.product_data?.productprice)}
                             seller={product?.user_name}
-                            id={product?.product_data.producttid}
-                            description={product?.product_data.productdescription}
+                            id={product?.product_data?.producttid}
+                            description={product?.product_data?.productdescription}
                         />
                     ))}
                 </div>

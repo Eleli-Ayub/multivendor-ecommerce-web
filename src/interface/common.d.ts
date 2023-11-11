@@ -48,6 +48,7 @@ type ProductData = {
 interface categoryData {
   categoryname: string;
   categoryimage: string;
+  categoryid: string;
 }
 
 interface subcategoryData {

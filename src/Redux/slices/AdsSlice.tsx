@@ -5,17 +5,22 @@ import {
     fetchLoggedUsersProducts,
     fetchOurProducts,
     fetchSellersProduct,
+    searchOurProducts,
 } from '../hooks/Ads.actions';
 import { toast } from 'react-toastify';
 
 interface ProductsState {
     Ads: ProductData[];
     isLoading: boolean;
+    SearchResults: ProductData[];
+    searchStatus: 'idle' | 'pending' | 'fulfilled' | 'rejected';
 }
 
 const initialState: ProductsState = {
     Ads: [],
     isLoading: false,
+    SearchResults: [],
+    searchStatus: 'idle',
 };
 
 export const FetchProductsAsync = createAsyncThunk('ads/fetchproductsasync', async () => {
@@ -25,6 +30,19 @@ export const FetchProductsAsync = createAsyncThunk('ads/fetchproductsasync', asy
     } catch (error) {
         console.error('Error fetching products:', error);
         throw error; // Re-throw the error to be caught by the rejection handler
+    }
+});
+
+export const SearchingProduct = createAsyncThunk('ad/searchproduct', async (param: any) => {
+    try {
+        const response = await searchOurProducts(param);
+        console.log(param);
+        console.log(response);
+        console.log(response.data.Data);
+        return response.data.Data;
+    } catch (error) {
+        console.error('Error searching product:', error);
+        throw error;
     }
 });
 
@@ -60,6 +78,9 @@ const productsSlice = createSlice({
         setAds: (state, action) => {
             state.Ads = action.payload;
         },
+        setSearchResults: (state, action) => {
+            state.SearchResults = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -72,6 +93,21 @@ const productsSlice = createSlice({
             })
             .addCase(FetchProductsAsync.rejected, (state, action) => {
                 state.isLoading = false;
+                console.error('Error fetching products:', action.error);
+            });
+        builder
+            .addCase(SearchingProduct.pending, (state) => {
+                state.isLoading = true;
+                state.searchStatus = 'pending';
+            })
+            .addCase(SearchingProduct.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.searchStatus = 'fulfilled';
+                state.SearchResults = action.payload;
+            })
+            .addCase(SearchingProduct.rejected, (state, action) => {
+                state.isLoading = false;
+                state.searchStatus = 'rejected';
                 console.error('Error fetching products:', action.error);
             });
         builder
@@ -101,6 +137,6 @@ const productsSlice = createSlice({
     },
 });
 
-export const { setAds } = productsSlice.actions;
+export const { setAds, setSearchResults } = productsSlice.actions;
 
 export default productsSlice.reducer;

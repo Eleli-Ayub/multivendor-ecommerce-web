@@ -1,10 +1,7 @@
-import { useSelector } from 'react-redux';
 import Productcard from '../Global/PopularCard';
 // import { ProductData } from '../../interface/common';
 
-import Loader from '../../constants/loader';
 const Popular = ({ Ads }: any) => {
-    const isLoading = useSelector((state: any) => state.AllAds.isLoading);
     // const dispatch = useDispatch<AppDispatch>();
 
     function formatPriceWithCommas(price: any) {
@@ -24,25 +21,17 @@ const Popular = ({ Ads }: any) => {
             </div>
 
             <div className="flex px-2 gap-3 flex-wrap lg:gap-5">
-                {isLoading ? (
-                    // Show loading indicator or message
-                    <div>
-                        <Loader />
-                    </div>
-                ) : (
-                    // Render products if not loading
-                    Ads?.map((product: any) => (
-                        <Productcard
-                            key={product.product_data.producttid}
-                            image={product.product_data.mainimage}
-                            name={product.product_data.productname}
-                            price={formatPriceWithCommas(product?.product_data.productprice)}
-                            seller={product?.user_name}
-                            id={product?.product_data.producttid}
-                            description={product?.product_data.productdescription}
-                        />
-                    ))
-                )}
+                {Ads?.map((product: any) => (
+                    <Productcard
+                        key={product.product_data?.producttid}
+                        image={product.product_data?.mainimage}
+                        name={product.product_data?.productname}
+                        price={formatPriceWithCommas(product?.product_data?.productprice)}
+                        seller={product?.user_name}
+                        id={product?.product_data?.producttid}
+                        description={product?.product_data?.productdescription}
+                    />
+                ))}
             </div>
         </div>
     );

@@ -44,13 +44,13 @@ const Popular = ({ Ads }: any) => {
             <div className="flex px-2 flex-wrap gap-3 lg:gap-5">
                 {Ads?.map((product: any) => (
                     <SponsereCard
-                        key={product.product_data.producttid}
-                        image={`${product.product_data.mainimage}`}
-                        name={product.product_data.productname}
-                        price={formatPriceWithCommas(product?.product_data.productprice)}
+                        key={product.product_data?.producttid}
+                        image={`${product.product_data?.mainimage}`}
+                        name={product.product_data?.productname}
+                        price={formatPriceWithCommas(product?.product_data?.productprice)}
                         seller={product?.user_name}
-                        id={product?.product_data.producttid}
-                        description={product?.product_data.productdescription}
+                        id={product?.product_data?.producttid}
+                        description={product?.product_data?.productdescription}
                     />
                 ))}
             </div>
