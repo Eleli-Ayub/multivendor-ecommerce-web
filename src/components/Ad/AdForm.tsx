@@ -27,7 +27,6 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
 
     const getCategory = async () => {
@@ -237,16 +236,20 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
         try {
             dispatch(setLoader(true));
             const response = await createProduct(formData);
-            dispatch(setLoader(false));
-            toast.success('product added successfully');
-            setShowAdsForm(false);
-            navigate('/');
+            if (response.status === 201) {
+                dispatch(setLoader(false));
+                toast.success('product added successfully');
+                navigate('/profile/pending');
+                setShowAdsForm(false);
+            } else {
+                toast.success('product not added, Please try again');
+                setShowAdsForm(true);
+            }
             console.log(response);
         } catch (error: any) {
             // toast.error(error.message || 'Duplicate product!');
             dispatch(setLoader(false));
         }
-        navigate('/profile/pending');
 
         // clear form data after submission
         setFormData({

@@ -31,7 +31,7 @@ const ProductInfo = () => {
         dispatch(FetchProduct(id));
         dispatch(FetchProductImages(id));
         dispatch(FetchProductSeller(id));
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     console.log(adImages);
     if (isLoading) {
@@ -45,6 +45,7 @@ const ProductInfo = () => {
     // ];
     return (
         <div className="flex flex-col md:flex-row lg:gap-5 lg:p-5 max-w-screen mb-10 h-auto">
+            {/* {isLoading && <Loader />} */}
             {/* Part 1 */}
             <div className="md:flex-1">
                 <div className="flex flex-col md:flex-row md:gap-5">
@@ -54,9 +55,9 @@ const ProductInfo = () => {
                         <div className="flex flex-col gap-4">
                             <div>
                                 <img
-                                    src={`data:image/jpeg;base64, ${adImages[selectedImageIndex]}`}
+                                    src={` ${adImages && adImages[selectedImageIndex]}`}
                                     // src={pictures[selectedImageIndex]}
-                                    className="h-72"
+                                    className="h-auto w-full max-h-[30rem] rounded-md"
                                     alt=""
                                 />
                             </div>
@@ -65,7 +66,7 @@ const ProductInfo = () => {
                                 {adImages?.map((image: any, index: number) => (
                                     <img
                                         key={index}
-                                        src={`data:image/jpeg;base64, ${image}`}
+                                        src={` ${image}`}
                                         // src={image}
                                         className={
                                             'h-16 w-16 object-cover rounded-md bg-gray-100 cursor-pointer' +
