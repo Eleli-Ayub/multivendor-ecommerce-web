@@ -36,7 +36,7 @@
   height: 600px;
 }
 
-.gallery {
+/* .gallery {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -45,30 +45,9 @@
     height: 100px;
     cursor: pointer;
   }
-}
-.active {
-  border: 2px solid orange;
-}
-@media (max-width: 576px) {
-  .main {
-    height: 300px;
-  }
-  .gallery {
-    img {
-      height: 50px;
-    }
-  }
-}
-@media (min-width: 992px) {
-  .main {
-    height: 500px;
-  }
-  .gallery {
-    img {
-      height: 75px;
-    }
-  }
-}
+} */
+
+
 
 .section-center {
   width: 90vw;
@@ -130,7 +109,7 @@
 .submenu li {
   margin: 0 1rem; /* Add margin between submenu items */
 }
-enu::before {
+.submenu::before {
   content: "";
   display: block;
   width: 0;

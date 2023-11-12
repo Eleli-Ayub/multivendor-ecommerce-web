@@ -234,10 +234,10 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
             return;
         }
         try {
-            dispatch(setLoader(true));
+            setLoading(true);
             const response = await createProduct(formData);
             if (response.status === 201) {
-                dispatch(setLoader(false));
+                setLoading(false);
                 toast.success('product added successfully');
                 navigate('/profile/pending');
                 setShowAdsForm(false);

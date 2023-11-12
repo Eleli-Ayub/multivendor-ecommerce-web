@@ -10,12 +10,12 @@ function Productcard({ image, name, price, seller, description, id }: productCar
                 onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
-                    className="rounded-xl w-full h-2/3 lg:h-3/5  object-contain lg-object-cover"
+                    className="rounded-xl w-full h-2/3 lg:h-3/5  object-contain lg:object-cover"
                     src={image}
                 />
                 <div className="px-3 py-2">
                     <div className="flex flex-row justify-between text-md">
-                        <p className="text-green-400 truncate text-[12px] font-bold lg:text-md ">
+                        <p className="text-green-400 truncate text-[12px] font-bold lg:text-md capitalize ">
                             {seller}{' '}
                         </p>
                     </div>

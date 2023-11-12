@@ -26,12 +26,7 @@ form {
   }
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  line-height: 1.7;
-  overflow-x: hidden;
-  background: white;
-}
+
 
 @layer utilities {
   @variants responsive {

@@ -5,7 +5,7 @@ import { productCard } from '../../interface/common';
 function Productcard({ image, name, price, seller, description, id }: productCard) {
     const navigate = useNavigate();
     return (
-        <div className="relative w-[45vw] md:w-72 lg:h-[350px]  p-0 h-[auto] mb-2 cursor-pointer sm:-w-[360px] sm:bg-[yellow] rounded-lg radius-2xl ">
+        <div className="relative w-[45vw] md:w-72 lg:h-[350px]  p-0 h-[300px] mb-2 cursor-pointer  rounded-lg radius-2xl ">
             <div className="absolute top-0 right-[5px] lg:left-0 z-10 ">
                 <button className="bg-blue-800 text-[8px] px-[3px] py-[1px] lg:text-[10px] text-white lg:px-3 lg:py-1 rounded ">
                     Sponsored
@@ -16,12 +16,12 @@ function Productcard({ image, name, price, seller, description, id }: productCar
                 onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
-                    className="rounded-xl w-full h-2/3 lg:h-3/5 lg:w-full object-contain lg-object-cover "
+                    className="rounded-xl w-full h-2/3 lg:h-3/5 lg:w-full object-contain lg:object-cover"
                     src={image}
                 />
-                <div className="px-3 py-2">
+                <div className="px-3 py-0 lg:py-2">
                     <div className="flex flex-row justify-between text-md">
-                        <p className="text-green-400 truncate text-[12px] font-bold lg:text-md ">
+                        <p className="text-green-400 truncate text-[12px] font-bold lg:text-md capitalize">
                             {seller}{' '}
                         </p>
                     </div>
