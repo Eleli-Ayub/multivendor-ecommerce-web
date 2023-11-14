@@ -41,17 +41,23 @@ const AdsComp = () => {
                         </div>
                     ) : (
                         // Render products if not loading and filteredAds is not empty
-                        filteredAds.map((product: ProductData) => (
-                            <Productcard
-                                key={product.producttid}
-                                image={`${product.mainimage}`}
-                                name={product.productname}
-                                price={product.productprice}
-                                seller={`${user?.firstname} ${user?.lastname}`}
-                                id={product.producttid}
-                                description={product.productdescription}
-                            />
-                        ))
+                        <div>
+                            <p className="pb-2 text-center text-gray-500">
+                                Your Pending Ads will appear here, Check back the main feed for
+                                approved Ads, and Active Ads
+                            </p>
+                            {filteredAds.map((product: ProductData) => (
+                                <Productcard
+                                    key={product.producttid}
+                                    image={`${product.mainimage}`}
+                                    name={product.productname}
+                                    price={product.productprice}
+                                    seller={`${user?.firstname} ${user?.lastname}`}
+                                    id={product.producttid}
+                                    description={product.productdescription}
+                                />
+                            ))}
+                        </div>
                     )}
                 </div>
             </div>

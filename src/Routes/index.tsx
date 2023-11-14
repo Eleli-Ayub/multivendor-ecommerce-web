@@ -50,7 +50,7 @@ const Index = () => {
 
             <ToastContainer position="top-center" />
             <AdsForm showAdsForm={showAdsForm} setShowAdsForm={setShowAdsForm} />
-            <div className=" mt-20 md:mt-[11rem]" id="root">
+            <div className=" mt-20 md:mt-[11rem] max-w-[100vw]" id="root">
                 <ScrollToTop>
                     <Routes>
                         <Route path="/login" element={<Login />} />
