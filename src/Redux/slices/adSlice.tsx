@@ -27,6 +27,17 @@ export const FetchProduct = createAsyncThunk('ad/fetchproduct', async (id: any) 
     }
 });
 
+export const FetchAd = createAsyncThunk('ad/fetchproduct', async (id: any) => {
+    try {
+        const response = await fetchOurSingleProduct(id);
+        console.log(response);
+        return response.data.Data.product_data;
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        throw error; // Re-throw the error to be caught by the rejection handler
+    }
+});
+
 export const FetchProductImages = createAsyncThunk('ad/fetchproductimages', async (id: any) => {
     try {
         const response = await fetchOurSingleProduct(id);

@@ -1,7 +1,7 @@
 import { Table } from 'antd';
-import { Visibility } from '@mui/icons-material';
+import { Edit, Visibility } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FetchLoggedUsersProducts } from '../../Redux/slices/AdsSlice';
 import { GettingUserById } from '../../Redux/slices/AuthSlice';
 import { AppDispatch } from '../../Redux/store';
@@ -16,6 +16,7 @@ import {
 } from '../../Redux/hooks/Ads.actions';
 import { setLoader } from '../../Redux/slices/LoaderSlice';
 import { useNavigate } from 'react-router-dom';
+import AdForm from '../Ad/AdEditForm';
 
 const AdsTable = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -23,6 +24,8 @@ const AdsTable = () => {
     const { isLoading, Ads } = useSelector((state: any) => state.AllAds);
     const user = useSelector((state: any) => state.auth.user);
     const id = user?.userid;
+    const [isEditing, setIsEditing] = useState(false);
+    const [AdID, setAdID] = useState('');
 
     const getupadated = () => {
         dispatch(GettingUserById(id)).then((action: Action<unknown>) => {
@@ -228,6 +231,13 @@ const AdsTable = () => {
                             navigate(`/ad_info/${record.producttid}`), console.log(text);
                         }}
                     />
+                    <Edit
+                        className="text-green-500"
+                        onClick={() => {
+                            setIsEditing(true);
+                            setAdID(record.producttid);
+                        }}
+                    />
                 </div>
             ),
         },
@@ -246,6 +256,7 @@ const AdsTable = () => {
             <div className=" mt-4 table-responsive">
                 <Table columns={TableData} dataSource={Ads} className="border rounded-sm" />
             </div>
+            {isEditing && <AdForm isEditing={isEditing} id={AdID} setIsEditing={setIsEditing} />}
         </div>
     );
 };
