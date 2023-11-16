@@ -5,51 +5,32 @@ import { useEffect, useState } from 'react';
 import { fetchCategories } from '../Redux/hooks/categories.actions';
 import { setCategories } from '../Redux/slices/categoriesSlice';
 import { categoryData, subcategoryData } from '../interface/common';
-import { axiosService } from '../Redux/helpers/axios';
+// import { axiosService } from '../Redux/helpers/axios';
 import { ChevronRightTwoTone } from '@mui/icons-material';
+import { SearchingProduct } from '../Redux/slices/AdsSlice';
+import { useNavigate } from 'react-router-dom';
+import { AppDispatch } from '../Redux/store';
 // import { TopProducts } from '../data/topproducts';
 
 const Sidebar = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     // const [myCategories, setMyCategories] = useState([]);
     const categories = useSelector((state: any) => state.categories.categories);
 
     const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-    const [subcategories, setSubcategories] = useState<subcategoryData[]>([]);
+    const [subcategories] = useState<subcategoryData[]>([]);
     const [loading, setLoading] = useState(false);
     const [submenuOpen, setSubmenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const { open } = useSelector((state: any) => state.opener);
 
-    // console.log("Hello", open);
-
-    const tryfetchingSubcategories = async (categoryName: string) => {
-        try {
-            const response = await axiosService.get(
-                `/subcategories/getsubcategories/${categoryName}`
-            );
-            return response.data.Data;
-        } catch (error) {
-            // console.error("Error fetching subcategories:", error);
-            return [];
-        }
-    };
-
     const handleCategoryMouseOver = async (categoryName: string) => {
         if (categoryName === hoveredCategory || loading) return;
-
         setLoading(true);
         setHoveredCategory(categoryName);
-
-        const subcategoriesData = await tryfetchingSubcategories(categoryName);
-        setSubcategories(subcategoriesData);
-
         setLoading(false);
     };
-
-    useEffect(() => {
-        getCategory();
-    }, []);
 
     const getCategory = async () => {
         dispatch(setLoader(true));
@@ -60,8 +41,17 @@ const Sidebar = () => {
     };
     useEffect(() => {
         getCategory();
-        // console.log(categories);
     }, []);
+
+    const handleSearch = (categoryname: string) => {
+        handleCategoryMouseOver(categoryname);
+        dispatch(SearchingProduct(categoryname));
+        navigate('/search/products');
+        setHoveredCategory('');
+        console.log('====================================');
+        console.log(`${categoryname}`);
+        console.log('====================================');
+    };
 
     return (
         <div className="rounded">
@@ -75,8 +65,11 @@ const Sidebar = () => {
                                 className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
-                                    handleCategoryMouseOver(Menu.categoryname);
-                                    setSubmenuOpen(false);
+                                    // handleCategoryMouseOver(Menu.categoryname);
+                                    // setSubmenuOpen(false);
+                                }}
+                                onClick={() => {
+                                    handleSearch(Menu.categoryname);
                                 }}
                             >
                                 <img src={Menu.categoryimage} className="h-3 w-3 object-cover  " />
@@ -102,7 +95,7 @@ const Sidebar = () => {
                                 className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
-                                    handleCategoryMouseOver(Menu.categoryname);
+                                    // handleCategoryMouseOver(Menu.categoryname);
                                     setSubmenuOpen(false);
                                 }}
                             >

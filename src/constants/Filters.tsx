@@ -1,22 +1,27 @@
 const Filters = ({ Ads }: any) => {
     // Extract unique categories
-    const categories = Array.from(new Set(Ads.map((ad: any) => ad.product_data.category)));
+    const categories = Array.from(new Set(Ads?.map((ad: any) => ad.product_data.category)));
 
     // Extract unique brands
-    const brands = Array.from(new Set(Ads.map((ad: any) => ad.product_data.brand)));
+    const brands = Array.from(new Set(Ads?.map((ad: any) => ad.product_data.brand)));
 
     // Calculate price ranges dynamically
     const calculatePriceRanges = () => {
-        if (Ads.length === 0) {
+        if (Ads?.length === 0) {
             // Return some default ranges or an empty array based on your requirements
             return [];
         }
-        if (Ads.length === 1) {
-            const price = Ads.map((ad: any) => ad.product_data.productprice);
+        if (Ads?.length === 1) {
+            const price = Ads?.map((ad: any) => ad.product_data.productprice);
             return [price];
         }
 
-        const prices = Ads.map((ad: any) => ad.product_data.productprice);
+        const prices = Ads?.map((ad: any) => ad.product_data.productprice);
+
+        if (!prices || prices.length === 0) {
+            // Handle the case where prices is empty or undefined
+            return [];
+        }
         const minPrice = Math.floor(Math.min(...prices) / 1000) * 1000; // Round down to the nearest thousand
         const maxPrice = Math.ceil(Math.max(...prices) / 1000) * 1000; // Round up to the nearest thousand
 
@@ -62,7 +67,7 @@ const Filters = ({ Ads }: any) => {
                     Price range
                 </button>
                 <div className="scrollable-list">
-                    <ul className="space-y-2 text-[16px] text-gray-500">
+                    <ul className="text-[16px] text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center">
                         {priceRanges.map((priceRange, index) => (
                             <li key={index}>{priceRange}</li>
                         ))}
@@ -75,7 +80,7 @@ const Filters = ({ Ads }: any) => {
                 <button className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2">
                     Brands
                 </button>
-                <div className="scrollable-list text-[16px] text-gray-500">
+                <div className="text-[16px] text-gray-500 cursor-pointer  flex flex-col gap-2 px-2 justify-center">
                     <ul className="space-y-2">
                         {brands.map((brand: any, index) => (
                             <li key={index}>{brand}</li>
