@@ -2,11 +2,13 @@ import { useRef, useState, useEffect } from 'react';
 // import Photo from '../../assets/M-PESA.jpeg';
 import { sliderContent } from '../../data/package';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const Package = () => {
     const sliderRef = useRef<HTMLDivElement | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [intervalId, setIntervalId] = useState<number | undefined>();
+    const navigate = useNavigate();
 
     const sliderWidth = 300; //
 
@@ -87,7 +89,12 @@ const Package = () => {
                             <div className="p-6 mt-auto">
                                 {' '}
                                 {/* Pushes buttons to the bottom */}
-                                <button className="bg-primary-orange text-white py-2 px-4 rounded-md hover-bg-secondary-orange transition-colors duration-300">
+                                <button
+                                    className="bg-primary-orange text-white py-2 px-4 rounded-md hover-bg-secondary-orange transition-colors duration-300"
+                                    onClick={() => {
+                                        navigate(item.button);
+                                    }}
+                                >
                                     Get Started
                                 </button>
                             </div>
@@ -147,7 +154,12 @@ const Package = () => {
                                 <div className="p-6 mt-auto">
                                     {' '}
                                     {/* Pushes buttons to the bottom */}
-                                    <button className="bg-primary-orange text-white py-2 px-4 rounded-md hover-bg-secondary-orange transition-colors duration-300">
+                                    <button
+                                        className="bg-primary-orange text-white py-2 px-4 rounded-md hover-bg-secondary-orange transition-colors duration-300 "
+                                        onClick={() => {
+                                            navigate(item.button);
+                                        }}
+                                    >
                                         Get Started
                                     </button>
                                 </div>

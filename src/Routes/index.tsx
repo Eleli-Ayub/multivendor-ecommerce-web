@@ -83,10 +83,16 @@ const Index = () => {
                             element={loggedIn ? <UserDashboard /> : <Login />}
                         />
                         <Route path="/pricing" element={<Pricing />} />
-                        <Route path="/free" element={<Freemium />} />
-                        <Route path="/basic" element={<BasicPackage />} />
-                        <Route path="/standard" element={<StandardPackage />} />
-                        <Route path="/premium" element={<PremiumPackage />} />
+                        <Route path="/free" element={loggedIn ? <Freemium /> : <Login />} />
+                        <Route path="/basic" element={loggedIn ? <BasicPackage /> : <Login />} />
+                        <Route
+                            path="/standard"
+                            element={loggedIn ? <StandardPackage /> : <Login />}
+                        />
+                        <Route
+                            path="/premium"
+                            element={loggedIn ? <PremiumPackage /> : <Login />}
+                        />
                         <Route path="/search/products" element={<AdsPage />} />
                         <Route path="/terms_and_conditions" element={<Terms />} />
                         <Route path="/contact" element={<Contact />} />

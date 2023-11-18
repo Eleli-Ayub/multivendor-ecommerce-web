@@ -12,7 +12,8 @@ export const sliderContent = [
         '🗙 priority ads per month',
         '🗙 Sponsered ads per month',
       ],
-      button: 'Get Started',
+      button: '/free',
+ 
       image: freemium,
       price:0
     },
@@ -24,7 +25,7 @@ export const sliderContent = [
         ' ✔Get upto 10 priority ads per month',
         '🗙 No ads Sponsorship',
       ],
-      button: 'Get Started',
+      button: '/basic',
       image: basic,
       price:2500
     },
@@ -36,7 +37,7 @@ export const sliderContent = [
         ' ✔Get upto 25 priority ads per month',
         '🗙 No Ads Sponsorship',
       ],
-      button: 'Get Started',
+      button: '/standard',
       image: standard,
       price:3500
     },
@@ -48,7 +49,7 @@ export const sliderContent = [
         ' ✔Get upto 50 priority ads per month',
         ' ✔Get Bonus sponsorship for your ads',
       ],
-      button: 'Get started',
+      button: '/premium',
       image: premium,
       price:4500
     },

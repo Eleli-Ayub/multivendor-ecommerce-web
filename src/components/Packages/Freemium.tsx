@@ -1,14 +1,17 @@
 import { useSelector } from 'react-redux';
 import { sliderContent } from '../../data/package';
 import { Avatar } from 'antd';
+import Loader from '../../constants/loader';
 // import mpesa from '../../assets/M-PESA.jpeg';
 
 const Freemium = () => {
     const freemium = sliderContent[0];
     const user = useSelector((state: any) => state.auth.user);
+    const loading = useSelector((state: any) => state.auth.isLoading);
     // console.log(user);
     return (
         <div className=" w-[100%] lg:p-10 text-white  overflow-x-hidden">
+            {loading && <Loader/>}
             <div className="flex h-auto w-full bg-[white-smoke] rounded-[0.25rem] flex-wrap p-2 ">
                 {/* freemium Information */}
                 <div className="flex flex-col w-full p-[10px] lg:px-20 py-5 lg:w-2/3  gap-3  ">
