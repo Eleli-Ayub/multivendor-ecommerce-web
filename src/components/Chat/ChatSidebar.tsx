@@ -1,11 +1,25 @@
 import { Avatar } from 'antd';
 import { FaBars } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import SideCharts from './SideCharts';
 
-const ChatSidebar = () => {
+type Props = {
+    // id: any;
+    chatBodyActive: boolean;
+    sidebarActive: boolean;
+    setChatBodyActive: React.Dispatch<React.SetStateAction<boolean>>;
+    setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ChatSidebar: React.FC<Props> = ({
+    // chatBodyActive,
+    setChatBodyActive,
+    // sidebarActive,
+    setSidebarActive,
+}) => {
     const user = useSelector((state: any) => state.auth.user);
     return (
-        <div className="flex flex-col ">
+        <div className="flex flex-col overflow-y-auto h-full">
             <div className="flex justify-between items-center p-2 h-[5rem] w-full price bg-gray-300">
                 <Avatar src={`data:image/jpeg;base64,${user?.userimage}`} className="h-12 w-12" />
                 <h1 className="text-gray-500 font-bold">My Messages </h1>
@@ -19,6 +33,40 @@ const ChatSidebar = () => {
                         placeholder="search or start a new chat"
                     />
                 </form>
+            </div>
+            <div>
+                <SideCharts
+                    setChatBodyActive={setChatBodyActive}
+                    setSidebarActive={setSidebarActive}
+                />
+                <SideCharts
+                    setChatBodyActive={setChatBodyActive}
+                    setSidebarActive={setSidebarActive}
+                />
+                <SideCharts
+                    setChatBodyActive={setChatBodyActive}
+                    setSidebarActive={setSidebarActive}
+                />
+                <SideCharts
+                    setChatBodyActive={setChatBodyActive}
+                    setSidebarActive={setSidebarActive}
+                />
+                <SideCharts
+                    setChatBodyActive={setChatBodyActive}
+                    setSidebarActive={setSidebarActive}
+                />
+                <SideCharts
+                    setChatBodyActive={setChatBodyActive}
+                    setSidebarActive={setSidebarActive}
+                />
+                <SideCharts
+                    setChatBodyActive={setChatBodyActive}
+                    setSidebarActive={setSidebarActive}
+                />
+                <SideCharts
+                    setChatBodyActive={setChatBodyActive}
+                    setSidebarActive={setSidebarActive}
+                />
             </div>
         </div>
     );

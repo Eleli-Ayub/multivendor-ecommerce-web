@@ -1,13 +1,21 @@
 import { Avatar } from 'antd';
-import { AttachFile, MoreVert, SearchOutlined, InsertEmoticon } from '@mui/icons-material';
+import { AttachFile, MoreVert, SearchOutlined, InsertEmoticon, Close } from '@mui/icons-material';
 import Chart from './Chart';
 import { BiMicrophone } from 'react-icons/bi';
-import Picker from 'emoji-picker-react';
+// import Picker from 'emoji-picker-react';
 
-const ChartBody = () => {
+type Props = {
+    // id: any;
+    chatBodyActive: boolean;
+    sidebarActive: boolean;
+    setChatBodyActive: React.Dispatch<React.SetStateAction<boolean>>;
+    setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ChartBody: React.FC<Props> = ({ setChatBodyActive, setSidebarActive }) => {
     return (
-        <div className="flex flex-col bg-gray-200 w-full  ">
-            <div className="flex justify-between items-center h-[5rem] p-2">
+        <div className="flex flex-col bg-gray-200 w-full  price ">
+            <div className="flex justify-between items-center h-[10vh] p-2">
                 <Avatar className="h-12 w-12" />
                 <div className="flex">
                     <h1 className="text-gray-500 font-bold text-xl">Jane Doe</h1>
@@ -16,13 +24,21 @@ const ChartBody = () => {
                     <SearchOutlined />
                     <AttachFile />
                     <MoreVert />
+                    <Close
+                        className="bg-gray-700 rounded-full p-1 text-white font-bold hidden close"
+                        onClick={() => {
+                            console.log('btn clicked');
+                            setSidebarActive(true);
+                            setChatBodyActive(false);
+                        }}
+                    />
                 </div>
             </div>
             <div>
                 <Chart />
             </div>
-            <div>
-                <form action="" className="flex justify-between items-center p-[1.17rem]">
+            <div className="h-[10vh]  p-5">
+                <form action="" className="flex justify-between items-center ">
                     <InsertEmoticon className="font-bold text-gray-600" />
                     <input
                         type="'text'"

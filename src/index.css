@@ -274,3 +274,12 @@ padding: 2px 0;
   overflow-x: auto;
 }
 
+.close{
+  display: block;
+}
+@media (min-width: 1024px) {
+ .close {
+      
+      visibility: hidden;
+  }
+}
