@@ -210,7 +210,7 @@ const ProductInfo = () => {
                             <div className="sm:flex-1 flex-col md:justify-around  gap-4 px-5">
                                 <div className="text-center">
                                     <Avatar
-                                        src={`data:image/jpeg;base64, ${seller?.user_profile}`}
+                                        src={` ${seller?.user_profile}`}
                                         className="h-24 w-24 "
                                     />
                                 </div>

@@ -119,10 +119,7 @@ const Profile: React.FC = () => {
                     className="bg-white p-5 flex gap-3 text-gray-500 price"
                     style={{ borderRadius: '0.25rem' }}
                 >
-                    <Avatar
-                        src={`data:image/jpeg;base64, ${user?.userimage}`}
-                        className="h-24 w-24"
-                    />
+                    <Avatar src={`${user?.userimage}`} className="h-24 w-24" />
                     <div className="text-center">
                         <input type="file" accept="image/*" onChange={handleImageChange} />
                     </div>

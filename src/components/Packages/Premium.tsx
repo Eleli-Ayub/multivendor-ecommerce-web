@@ -95,10 +95,7 @@ const PremiumPackage = () => {
                             <p>Billing Detail</p>
                         </div>
                         <div className="flex gap-4 bg-white text-gray-600 p-4 rounded-b-[0.25rem]">
-                            <Avatar
-                                src={`data:image/jpeg;base64,${user?.userimage}`}
-                                className="h-24 w-24"
-                            />
+                            <Avatar src={`${user?.userimage}`} className="h-24 w-24" />
                             <div className="">
                                 <p className="uppercase font-bold">{`${user?.firstname} ${user?.middlename} ${user?.lastname}`}</p>
                                 <p>{user?.location}</p>

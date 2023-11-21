@@ -19,7 +19,7 @@ function Productcard({ image, name, price, seller, description, id }: productCar
                 />
                 <div className="px-3 py-2 ">
                     <div className="flex flex-row justify-between text-md">
-                        <p className="text-green-400 truncate text-[12px] font-bold lg:text-md capitalize">
+                        <p className="text-green-dark truncate text-[15px] font-bold lg:text-md capitalize">
                             {seller}{' '}
                         </p>
                     </div>

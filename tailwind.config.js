@@ -17,6 +17,7 @@ export default {
           DEFAULT: "#000000",
           100: "#100d25",
           200: "#090325",
+          main:"#3D362B"
         },
           green: {
          

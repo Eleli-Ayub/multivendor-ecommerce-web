@@ -140,7 +140,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                 </div>
                                 <img
                                     className=" rounded-full w-full h-full object-cover object-top"
-                                    src={`data:image/jpeg;base64, ${user?.userimage}`}
+                                    src={`${user?.userimage}`}
                                     alt=""
                                 />
                                 {userSmallnav && (
@@ -253,7 +253,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                         </div>
                                         <img
                                             className=" rounded-full w-full h-full object-cover object-top"
-                                            src={`data:image/jpeg;base64, ${user?.userimage}`}
+                                            src={` ${user?.userimage}`}
                                             alt=""
                                         />
                                         {userSmallnav && (
