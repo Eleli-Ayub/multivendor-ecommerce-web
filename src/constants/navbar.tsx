@@ -176,7 +176,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                 className="bg-primary-orange text-white p-1 rounded px-4 hover:bg-secondary-orange"
                                 onClick={() => navigate('/register')}
                             >
-                                Signin
+                                Sign in
                             </button>
                         </div>
                     )}
@@ -289,7 +289,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                         className="bg-primary-orange text-white p-1 rounded px-4 hover:bg-secondary-orange"
                                         onClick={() => navigate('/login')}
                                     >
-                                        Signin
+                                        Sign in
                                     </button>
                                 </div>
                             )}
