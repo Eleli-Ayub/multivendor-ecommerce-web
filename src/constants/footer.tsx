@@ -1,6 +1,7 @@
-import { FaFacebook, FaPhone, FaEnvelope, FaYoutube, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 
 import { IconButton } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -25,16 +26,16 @@ const Footer = () => {
                     <h1 className="text-lg font-semibold mb-2">Quick Links</h1>
                     <ul className="list-none ">
                         <li>
-                            <a href="#">Home</a>
+                            <Link to={'/'}> Home</Link>
                         </li>
                         <li>
-                            <a href="#">Products</a>
+                            <Link to={'/'}> products</Link>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <Link to={'/services'}></Link>
                         </li>
                         <li>
-                            <a href="#">About Us</a>
+                            <Link to={'/contact'}>Contact us</Link>
                         </li>
                     </ul>
                 </div>
@@ -52,17 +53,17 @@ const Footer = () => {
                     <h1 className="text-lg font-semibold mb-2">Important</h1>
                     <ul className="list-none">
                         <li>
-                            <a href="#">Support</a>
+                            <Link to={'/contact'}>Support</Link>
                         </li>
                         <li>
-                            <a href="#">FAQs</a>
+                            <Link to={'/eduka/faq'}>FAQS</Link>
                         </li>
                         <li>
-                            <a href="#">Terms and Conditions</a>
+                            <Link to={'/terms_and_conditions'}>Terms and conditions</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <a href="#">Privacy Policy</a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 
@@ -78,9 +79,13 @@ const Footer = () => {
                                     borderRadius: '0.25rem',
                                 }}
                             >
-                                <a href="#" className="text-white flex items-center">
+                                <Link
+                                    to="https://www.facebook.com/eduka.ke.9"
+                                    target="_blank"
+                                    className="text-white flex items-center"
+                                >
                                     <FaFacebook color="blue" />
-                                </a>
+                                </Link>
                             </IconButton>
                         </li>
                         <li className="mb-1">
@@ -91,9 +96,13 @@ const Footer = () => {
                                     borderRadius: '0.25rem',
                                 }}
                             >
-                                <a href="#" className="text-white flex items-center">
+                                <Link
+                                    to="tel:+254706244557"
+                                    className="text-white flex items-center"
+                                    target="_blank"
+                                >
                                     <FaPhone color="gray" />
-                                </a>
+                                </Link>
                             </IconButton>
                         </li>
                         <li className="mb-1">
@@ -104,12 +113,16 @@ const Footer = () => {
                                     borderRadius: '0.25rem',
                                 }}
                             >
-                                <a href="#" className="text-white flex items-center">
+                                <Link
+                                    to={`mailto:innovialtd@gmail.com`}
+                                    target="_blank"
+                                    className="text-white flex items-center"
+                                >
                                     <FaEnvelope color="orange" />
-                                </a>
+                                </Link>
                             </IconButton>
                         </li>
-                        <li className="mb-1">
+                        {/* <li className="mb-1">
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
@@ -121,7 +134,7 @@ const Footer = () => {
                                     <FaYoutube color="red" />
                                 </a>
                             </IconButton>
-                        </li>
+                        </li> */}
                         <li className="mb-1">
                             <IconButton
                                 style={{
@@ -130,9 +143,13 @@ const Footer = () => {
                                     borderRadius: '0.25rem',
                                 }}
                             >
-                                <a href="#" className="text-white flex items-center">
+                                <Link
+                                    to="https://wa.me/+254706244557/?"
+                                    className="text-white flex items-center"
+                                    target="_blank"
+                                >
                                     <FaWhatsapp color="green" />
-                                </a>
+                                </Link>
                             </IconButton>
                         </li>
                     </ul>
