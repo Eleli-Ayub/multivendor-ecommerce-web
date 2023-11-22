@@ -23,7 +23,7 @@ function Productcard({ image, name, price, seller, description, id }: productCar
                             {seller}{' '}
                         </p>
                     </div>
-                    <h1 className=" text-[12px] text-stone-400 lg:text-md font-bold uppercase ">
+                    <h1 className=" text-[12px] text-stone-400 lg:text-md font-bold uppercase truncate ">
                         {name}
                     </h1>
                     <div className="flex flex-row items-center justify-start">

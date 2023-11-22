@@ -59,10 +59,14 @@ const Index = () => {
     //     dispatch(GettingSellers());
     // }, []);
 
+    const token = localStorage.getItem('userToken');
+
     useEffect(() => {
-        if (localStorage.getItem('userToken')) {
-            getUser();
-        }
+        console.log(token);
+
+        // if (localStorage.getItem('userToken')) {
+        //     getUser();
+        // }
     }, []);
 
     const [showAdsForm, setShowAdsForm] = useState<boolean>(false);
@@ -100,8 +104,8 @@ const Index = () => {
                         <Route path="/eduka/faq" element={<FAQSPage />} />
                         <Route path="/ad_info/:id" element={<AdInfo />} />
                         <Route path="/seller/store/" element={<SellersAds />} />
-                        <Route path="/profile" element={loggedIn ? <Profile /> : <Login />} />
-                        <Route path="/profile/myads" element={loggedIn ? <MyAds /> : <Login />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/profile/myads" element={<MyAds />} />
                         <Route
                             path="/profile/pending"
                             element={loggedIn ? <Pending /> : <Login />}

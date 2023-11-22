@@ -58,10 +58,10 @@ const RegisterForm: React.FC = ({}) => {
             return;
         }
 
-        if (!nameRegex.test(formData.middlename)) {
-            toast.error('Middle name cannot contain numbers.');
-            return;
-        }
+        // if (!nameRegex.test(formData.middlename)) {
+        //     toast.error('Middle name cannot contain numbers.');
+        //     return;
+        // }
 
         if (!nameRegex.test(formData.lastname)) {
             toast.error('Last name cannot contain numbers.');
