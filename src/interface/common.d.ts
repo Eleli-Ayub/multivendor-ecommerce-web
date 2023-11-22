@@ -14,7 +14,7 @@ export interface userProps {
 export interface productCard {
   name: string;
   image: string;
-  seller: string;
+  // seller: string;
   price: string;
   description: string | undefined;
   id: string;

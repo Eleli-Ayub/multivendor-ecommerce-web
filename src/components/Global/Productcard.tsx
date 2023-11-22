@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { productCard } from '../../interface/common';
 
-function Productcard({ image, name, price, seller, description, id }: productCard) {
+function Productcard({ image, name, price, description, id }: productCard) {
     const navigate = useNavigate();
 
     return (
@@ -9,22 +9,30 @@ function Productcard({ image, name, price, seller, description, id }: productCar
             className="rounded-lg  bg-none radius-2xl w-full lg:w-[200px] h-[300px] lg:h-[300px] mb-2 duration-200 cursor-pointer hover:scale-95"
             onClick={() => navigate(`/ad_info/${id}`)}
         >
-            <img className="w-full h-2/3 lg:h-3/5 object-cover" src={image} alt={name} />
-            <div className="px-3 py-1 h-1/3 lg:h-2/5">
+            <img
+                className="w-full h-2/3 lg:h-3/5 object-cover"
+                src={image}
+                alt={name}
+                style={{
+                    borderTopRightRadius: '0.75rem',
+                    borderTopLeftRadius: '0.75rem',
+                }}
+            />
+            <div className="py-1 h-1/3 lg:h-2/5">
                 <div className="flex flex-row justify-between text-md">
-                    <p className="text-green-dark truncate text-[14px] lg:text-md font-bold">
+                    {/* <p className="text-green-dark truncate text-[14px] lg:text-md font-bold">
                         {seller}
-                    </p>
+                    </p> */}
                 </div>
-                <h1 className="text-[10px] text-stone-400 lg:text-md font-bold uppercase truncate">
+                <h1 className="text-[15px] text-black-main lg:text-md font-bold capitalize truncate">
                     {name}
                 </h1>
-                <p className="text-slate-400 text-[10px] line-clamp-1 lowercase">{description}</p>
-                <p className="text-stone-500 text-sm font-bold">Ksh: {price}</p>
+                <p className="text-black-main text-[14px]  line-clamp-1 lowercase">{description}</p>
+                <p className="text-black-main text-[18px] font-bold ">Ksh: {price}</p>
 
-                <button className="bg-primary-orange mt-2 w-full rounded-[15px] duration-300 hover:bg-secondary-orange hover:scale-105 text-white text-bold">
+                {/* <button className="bg-primary-orange mt-2 w-full rounded-[15px] duration-300 hover:bg-secondary-orange hover:scale-105 text-white text-bold">
                     Inquire
-                </button>
+                </button> */}
             </div>
         </div>
     );

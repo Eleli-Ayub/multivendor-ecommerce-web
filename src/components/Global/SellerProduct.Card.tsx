@@ -5,7 +5,7 @@ function Productcard({
     image,
     name,
     price,
-    seller,
+    // seller,
     // description,
     id,
 }: productCard) {
@@ -22,7 +22,7 @@ function Productcard({
                 />
                 <div className="px-3 py-2 w-2/3">
                     <div className="flex flex-row justify-between text-md">
-                        <p className="text-green-400 truncate text-[10px] lg:text-md ">{seller} </p>
+                        {/* <p className="text-green-400 truncate text-[10px] lg:text-md ">{seller} </p> */}
                     </div>
                     <h1 className="text-slate-700 text-xs lg:text-md font-bold uppercase truncate">
                         {name}

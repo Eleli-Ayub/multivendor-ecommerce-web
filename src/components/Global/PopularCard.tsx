@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { productCard } from '../../interface/common';
 
-function Productcard({ image, name, price, seller, description, id }: productCard) {
+function Productcard({ image, name, price, description, id }: productCard) {
     const navigate = useNavigate();
     return (
         <div className="w-[45vw] md:w-72  rounded-xl p-0 lg:h-[350px] mb-2 cursor-pointer ">
@@ -10,29 +10,29 @@ function Productcard({ image, name, price, seller, description, id }: productCar
                 onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
-                    className=" w-full h-2/3 lg:h-3/5 lg:w-full object-cover object-center lg:object-cover border-none md:border border-red-500  "
+                    className=" w-full h-[55%] lg:h-3/5 lg:w-full object-cover object-center lg:object-cover border-none md:border border-red-500  "
                     src={image}
                     style={{
                         borderTopRightRadius: '0.75rem',
                         borderTopLeftRadius: '0.75rem',
                     }}
                 />
-                <div className="px-3 py-2 ">
+                <div className=" py-2 ">
                     <div className="flex flex-row justify-between text-md">
-                        <p className="text-green-dark truncate text-[15px] font-bold lg:text-md capitalize">
+                        {/* <p className="text-green-dark truncate text-[15px] font-bold lg:text-md capitalize">
                             {seller}{' '}
-                        </p>
+                        </p> */}
                     </div>
-                    <h1 className=" text-[12px] text-stone-400 lg:text-md font-bold uppercase truncate ">
+                    <h1 className=" text-[15px] text-black-main lg:text-md  capitalize font-bold truncate  ">
                         {name}
                     </h1>
                     <div className="flex flex-row items-center justify-start">
-                        <p className="text-slate-400 text-[14px] line-clamp-2 lowercase ">
+                        <p className=" text-[14px] line-clamp-2 lowercase text-black-main">
                             {' '}
                             {description}{' '}
                         </p>
                     </div>
-                    <p className=" text-[18px] font-bold text-gray-500">Ksh: {price}</p>
+                    <p className=" text-[18px] font-bold text-black-main">Ksh: {price}</p>
 
                     {/* <button className="px-4 bg-orange-600 text-sm rounded-[0.25rem] text-white">
                         View
