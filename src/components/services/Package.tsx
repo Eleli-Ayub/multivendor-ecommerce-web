@@ -154,7 +154,7 @@ const Package = () => {
                                 <div className="p-6 flex-grow">
                                     {item.features.map((feature, index) => (
                                         <ul className="" key={index}>
-                                            <li>{feature}</li>
+                                            <li className="">{feature}</li>
                                         </ul>
                                     ))}
                                 </div>
