@@ -92,16 +92,16 @@ const Package = () => {
                                     </ul>
                                 ))}
                             </div>
-                            <div className="p-6 mt-auto">
+                            <div className="text-center mb-4">
                                 {' '}
                                 {/* Pushes buttons to the bottom */}
                                 <button
-                                    className="bg-primary-orange text-white py-2 px-4 rounded-md hover:bg-secondary-orange transition-colors duration-300"
+                                    className="bg-primary-orange text-white py-2 px-4 rounded-md hover:bg-secondary-orange transition-colors duration-300 w-full mx-10"
                                     onClick={() => {
                                         navigate(item.button);
                                     }}
                                 >
-                                    Get Started
+                                    Get started
                                 </button>
                             </div>
                         </div>
@@ -158,16 +158,16 @@ const Package = () => {
                                         </ul>
                                     ))}
                                 </div>
-                                <div className="p-6 mt-auto">
+                                <div className="  mx-auto mb-4 ml-[5rem]">
                                     {' '}
                                     {/* Pushes buttons to the bottom */}
                                     <button
-                                        className="bg-primary-orange text-white py-2 px-4 rounded-md hover:bg-secondary-orange transition-colors duration-300 "
+                                        className="bg-primary-orange text-white py-2 px-4 rounded-md hover:bg-secondary-orange transition-colors duration-300w-1/2"
                                         onClick={() => {
                                             navigate(item.button);
                                         }}
                                     >
-                                        Get Started
+                                        Get started
                                     </button>
                                 </div>
                             </div>
