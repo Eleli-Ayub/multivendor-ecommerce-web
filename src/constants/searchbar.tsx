@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const SearchBar: React.FC = () => {
     const [category, setCategory] = useState<string>('all');
     const [, setSubcategory] = useState<string>('all');
-    const [categories, setCategories] = useState<any[]>([]);
+    const [, setCategories] = useState<any[]>([]);
     const [, setSubcategories] = useState<any[]>([]);
     const [, setIsLoading] = useState<boolean>(false);
     const { open } = useSelector((state: any) => state.opener);
@@ -129,17 +129,17 @@ const SearchBar: React.FC = () => {
                         className="p-5 border border-r-0 rounded w-[30%]  bg-white outline-none rounded-l-[20px]"
                     >
                         <option value="all">All</option>
-                        {categories.map((category) => (
+                        {/* {categories.map((category) => (
                             <option key={category.categoryid} value={category.categoryname}>
                                 {category.categoryname}
                             </option>
-                        ))}
+                        ))} */}
                     </select>
 
                     <div className="relative  border border-l-0 py-1 h-[100%]">
                         <input
                             type="text"
-                            placeholder="search for anything"
+                            placeholder="What are you looking for?"
                             className="p-5 h-100%"
                             value={searchParam}
                             onChange={(e) => setSearchParam(e.target.value)}

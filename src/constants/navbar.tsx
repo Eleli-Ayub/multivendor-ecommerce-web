@@ -63,12 +63,12 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
     useEffect(() => {}, [userToken]);
     return (
         <nav
-            className={`w-full  flex flex-col items-center justify-center py-0 px-1 lg:px-20 fixed price top-0 z-20 ${
+            className={`w-full  flex flex-col items-center justify-center   py-0 px-1 lg:px-20 fixed price top-0 z-20 ${
                 scrolled ? 'bg-white' : 'bg-white'
             }`}
             // style={{ marginBottom: "2px" }}
         >
-            <div className="w-full flex  justify-between items-center">
+            <div className="w-full flex  justify-between items-center py-2">
                 <div className="flex gap-2 items-center ">
                     {user && (
                         <AiOutlineMenuUnfold
@@ -91,9 +91,9 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                         <img
                             src={logo}
                             alt="logo"
-                            className=" p-0 m-0 object-cover object-center rounded h-[50px] lg:h-[50px] "
+                            className=" object-contain object-center rounded  logo"
                         />
-                        <p className="text-slate-600 text-xs italic">let's help you sell</p>
+                        {/* <p className="text-slate-600 text-xs italic">let's help you sell</p> */}
                     </Link>
 
                     <div className="p-2 ml-5 block sm:hidden">
