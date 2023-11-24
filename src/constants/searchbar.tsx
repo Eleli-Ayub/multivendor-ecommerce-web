@@ -78,12 +78,12 @@ const SearchBar: React.FC = () => {
                 }}
                 className=" hidden  md:flex items-center w-screen mt-5  px-40 bg-[white] mb-2"
             >
-                <div className="flex w-full border rounded-[20px] justify-between">
+                <div className="flex w-full border-2 border-secondary-orange rounded-[20px] justify-between px-0">
                     <select
                         id="categorySelect"
                         value={category}
                         onChange={handleCategoryChange}
-                        className="px-5 rounded border-r w-[200px] bg-white outline-none rounded-l-[20px] py-1 text-sm text-stone-400"
+                        className="px-5  border-r-2 border-secondary-orange  w-[200px]  bg-white outline-none rounded-l-[20px] py:5 text-sm text-stone-400"
                     >
                         <option value="all">Search for products</option>
                         {/* {categories.map((category) => (
@@ -93,11 +93,11 @@ const SearchBar: React.FC = () => {
                         ))} */}
                     </select>
 
-                    <div className="relative w-[70%] px-10 ">
+                    <div className="relative w-[70%]  ">
                         <input
                             type="text"
-                            placeholder="Search thousands of products, users, categories, subcategories, price and brands!!"
-                            className="px-10 h-[30px] py-3 text-sm  "
+                            placeholder="What are you looking for?"
+                            className=" h-[45px] py-3 text-sm  "
                             value={searchParam}
                             onChange={(e) => setSearchParam(e.target.value)}
                         />
@@ -105,7 +105,7 @@ const SearchBar: React.FC = () => {
 
                     <button
                         type="submit"
-                        className="bg-primary-orange capitalize text-white rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom rounded-r-[20px] text-xs h-[28px]"
+                        className="bg-primary-orange capitalize text-white  hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none rounded-r-[15px] text-[20px] h-[50px]"
                     >
                         Search
                     </button>
@@ -120,38 +120,40 @@ const SearchBar: React.FC = () => {
                         e.preventDefault();
                         handleSearch();
                     }}
-                    className=" search h-[60px] flex items-center w-screen my-4 px-1"
+                    className="search flex items-center justify-center my-2 px-1"
                 >
-                    <select
-                        id="categorySelect"
-                        value={category}
-                        onChange={handleCategoryChange}
-                        className="p-5 border border-r-0 rounded w-[30%]  bg-white outline-none rounded-l-[20px]"
-                    >
-                        <option value="all">All</option>
-                        {/* {categories.map((category) => (
-                            <option key={category.categoryid} value={category.categoryname}>
-                                {category.categoryname}
-                            </option>
-                        ))} */}
-                    </select>
+                    <div className="flex w-full max-w-screen-md border-2 border-secondary-orange rounded-[20px]">
+                        <select
+                            id="categorySelect"
+                            value={category}
+                            onChange={handleCategoryChange}
+                            className="p-3 border border-r-0 rounded-l-[20px] bg-white outline-none w-[10%]"
+                        >
+                            {/* <option value="all">All</option> */}
+                            {/* {categories.map((category) => (
+                    <option key={category.categoryid} value={category.categoryname}>
+                      {category.categoryname}
+                    </option>
+                  ))} */}
+                        </select>
 
-                    <div className="relative  border border-l-0 py-1 h-[100%]">
-                        <input
-                            type="text"
-                            placeholder="What are you looking for?"
-                            className="p-5 h-100%"
-                            value={searchParam}
-                            onChange={(e) => setSearchParam(e.target.value)}
-                        />
+                        <div className="relative flex-1 border py-1">
+                            <input
+                                type="text"
+                                placeholder="What are you looking for?"
+                                className="h-full w-full px-2 py-1"
+                                value={searchParam}
+                                onChange={(e) => setSearchParam(e.target.value)}
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="bg-primary-orange text-white  hover:bg-secondary-orange transition-colors delay-300 outline-none shadow-custom rounded-r-[15px] p-3"
+                        >
+                            Search
+                        </button>
                     </div>
-
-                    <button
-                        type="submit"
-                        className="bg-primary-orange text-white rounded hover:bg-secondary-orange transition-colors delay-300 outline-none shadow-custom rounded-r-[20px] p-[1.2rem]"
-                    >
-                        Search
-                    </button>
                 </form>
             )}
         </>

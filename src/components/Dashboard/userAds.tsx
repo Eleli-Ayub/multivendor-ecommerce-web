@@ -42,7 +42,7 @@ const AdsComp = () => {
                                 price={product.productprice}
                                 // seller={`${user.firstname} ${user.lastname}`}
                                 id={product.producttid}
-                                description={product.productdescription}
+                                // description={product.productdescription}
                             />
                         ))
                     ) : (

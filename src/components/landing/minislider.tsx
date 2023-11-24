@@ -117,7 +117,7 @@ function AnotherSlider({ Ads }: any) {
                                     price={formatPriceWithCommas(item?.product_data?.productprice)}
                                     // seller={item?.user_name}
                                     id={item?.product_data?.producttid}
-                                    description={item?.product_data?.productdescription}
+                                    // description={item?.product_data?.productdescription}
                                 />
                             </div>
                         ))}

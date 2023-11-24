@@ -50,7 +50,7 @@ const Popular = ({ Ads }: any) => {
                         price={formatPriceWithCommas(product?.product_data?.productprice)}
                         // seller={product?.user_name}
                         id={product?.product_data?.producttid}
-                        description={product?.product_data?.productdescription}
+                        // description={product?.product_data?.productdescription}
                     />
                 ))}
             </div>

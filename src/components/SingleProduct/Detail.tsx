@@ -186,7 +186,7 @@ const ProductInfo = () => {
                 <div className="mt-2 rounded" style={{ height: 'auto' }}>
                     <div className="flex flex-col md:flex-row gap-3 md:flex-1">
                         <div className=" price lg-w-[50%]" style={{ borderRadius: '0.25rem' }}>
-                            <h1 className="text-center py-4 mb-2 bg-orange-700 rounded-tl rounded-tr  text-white font-bold">
+                            <h1 className="text-center py-4 mb-2 bg-primary-orange rounded-tl rounded-tr  text-white font-bold">
                                 Seller Details
                             </h1>
                             {/* <hr
@@ -269,7 +269,7 @@ const ProductInfo = () => {
                                 <li className="list-decimal">Inspect Product Before payment</li>
                                 <li className="list-decimal">Ask Questions</li>
                             </ol>
-                            <button className="bg-red-600 text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover-bg-white transition-colors delay-300">
+                            <button className="bg-primary-orange text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover-bg-white transition-colors delay-300">
                                 Report Product
                             </button>
                         </div>
