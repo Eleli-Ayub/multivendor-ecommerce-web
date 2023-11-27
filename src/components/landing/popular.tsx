@@ -12,15 +12,15 @@ const Popular = ({ Ads }: any) => {
     }
 
     return (
-        <div className="mt-10">
-            <div className="py-3  flex flex-row items-center justify-between ">
+        <div className="mt-10  ">
+            <div className="py-3  flex flex-row items-center justify-between px-[20px] ">
                 <h1 className="text-stone-500 px-2">Suggested Ads</h1>
                 <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">
                     see all
                 </button>
             </div>
 
-            <div className="flex px-2 gap-3 flex-wrap lg:gap-5">
+            <div className="flex  gap-2 flex-wrap lg:gap-5 items-center justify-center lg:justify-normal">
                 {Ads?.map((product: any) => (
                     <Productcard
                         key={product.product_data?.producttid}

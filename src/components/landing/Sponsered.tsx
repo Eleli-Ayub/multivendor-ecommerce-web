@@ -33,15 +33,15 @@ const Popular = ({ Ads }: any) => {
         );
     }
     return (
-        <div className=" bg-[whitesmoke] mt-10">
-            <div className="py-3  flex flex-row items-center justify-between ">
+        <div className="  mt-10">
+            <div className="py-3 px-[20px]  flex flex-row items-center justify-between ">
                 <h1 className="text-stone-500">Sponsored Ads</h1>
                 <button className="underline rounded-lg px-2 text-sm py-1 text-slate-500">
                     see all
                 </button>
             </div>
 
-            <div className="flex px-2 flex-wrap gap-3 lg:gap-5">
+            <div className="flex  gap-4 flex-wrap lg:gap-5 items-center justify-center lg:justify-normal">
                 {Ads?.map((product: any) => (
                     <SponsereCard
                         key={product.product_data?.producttid}

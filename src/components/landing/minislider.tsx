@@ -19,7 +19,8 @@ function AnotherSlider({ Ads }: any) {
     const [intervalId, setIntervalId] = useState<number | undefined>();
     // const userId = '8522c53e-6473-472d-bb09-49095097c1ba';
 
-    const sliderWidth = 220; // Assuming each card is 300px wide
+    const sliderWidth = window.innerWidth < 640 ? window.innerWidth / 2 : 220;
+
     const totalAds = Ads?.length;
 
     const slideLeft = () => {
@@ -96,7 +97,7 @@ function AnotherSlider({ Ads }: any) {
                 />
                 <div
                     ref={sliderRef}
-                    className="w-full h-full overflow-hidden whitespace-nowrap scroll-smooth scrollbar-hidden  bg-gray-light lg:bg-none"
+                    className="w-full h-full whitespace-nowrap scroll-smooth scrollbar-hidden  bg-gray-light lg:bg-none"
                     style={{
                         display: 'flex',
                         overflowX: 'hidden',
@@ -107,7 +108,7 @@ function AnotherSlider({ Ads }: any) {
                         {clonedAds.map((item, index) => (
                             <div
                                 key={index}
-                                className="p-4 lg:gap-3 "
+                                className=" p-[10px] lg:p-4 lg:gap-3 "
                                 style={{ width: `${sliderWidth}px` }}
                             >
                                 <Productcard
