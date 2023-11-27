@@ -14,7 +14,7 @@ import { Delete } from '@mui/icons-material';
 import Loader from '../../constants/loader';
 
 import { AppDispatch } from '../../Redux/store';
-import { FetchProduct, FetchProductImages } from '../../Redux/slices/adSlice';
+import { FetchMyProduct, FetchMyProductImages } from '../../Redux/slices/adSlice';
 
 type AdFormProps = {
     id: any;
@@ -27,17 +27,18 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [subcategories, setSubcategories] = useState<subcategoryData[]>([]);
     const [loading, setLoading] = useState(false);
-    const { ad, adImages, isLoading } = useSelector((state: any) => state.ad);
+    const { sellerad, adImages, isLoading } = useSelector((state: any) => state.ad);
+    const ad = sellerad;
 
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
-    console.log('this is the id passed', id);
+    console.log('id passed', id);
 
     useEffect(() => {
         Reset();
         const fetchData = async () => {
-            dispatch(FetchProduct(id));
-            dispatch(FetchProductImages(id));
+            dispatch(FetchMyProduct(id));
+            dispatch(FetchMyProductImages(id));
             setFormData({
                 productname: ad?.productname,
                 productdescription: ad?.productdescription,

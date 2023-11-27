@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductData } from '../../interface/common';
-import { fetchOurSingleProduct } from '../hooks/Ads.actions';
+import { fetchOurSingleProduct, fetchSingle } from '../hooks/Ads.actions';
 
 interface AdState {
     ad: ProductData | null;
     adImages: [];
     seller: [];
     isLoading: boolean;
+    sellerad: ProductData | null;
 }
 
 const initialState: AdState = {
@@ -14,6 +15,7 @@ const initialState: AdState = {
     adImages: [],
     seller: [],
     isLoading: false,
+    sellerad: null,
 };
 
 export const FetchProduct = createAsyncThunk('ad/fetchproduct', async (id: any, { dispatch }) => {
@@ -37,6 +39,35 @@ export const FetchProductImages = createAsyncThunk(
     async (id: any, { dispatch }) => {
         try {
             const response = await fetchOurSingleProduct(id);
+            const productImages = response.data.Data.product_images;
+            // Dispatch the setAdImages action to immediately update the state
+            dispatch(setAdImages(productImages));
+
+            return productImages;
+        } catch (error) {
+            console.error('Error fetching product images:', error);
+            throw error;
+        }
+    }
+);
+
+export const FetchMyProduct = createAsyncThunk('ad/fetchmyproduct', async (id: any, {}) => {
+    try {
+        const response = await fetchSingle(id);
+        console.log(response.data);
+        return response.data.Data.productdata;
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        throw error;
+    }
+});
+
+// Update for FetchProductImages thunk
+export const FetchMyProductImages = createAsyncThunk(
+    'ad/fetchmyproductimages',
+    async (id: any, { dispatch }) => {
+        try {
+            const response = await fetchSingle(id);
             const productImages = response.data.Data.product_images;
             // Dispatch the setAdImages action to immediately update the state
             dispatch(setAdImages(productImages));
@@ -118,6 +149,33 @@ const AdSlice = createSlice({
                 state.isLoading = false;
             })
             .addCase(FetchProductSeller.rejected, (state, action) => {
+                console.log(action);
+                state.isLoading = false;
+            });
+
+        builder
+            .addCase(FetchMyProduct.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(FetchMyProductImages.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(FetchMyProduct.fulfilled, (state, action) => {
+                // console.log(action);
+                state.sellerad = action.payload;
+                state.isLoading = false;
+            })
+            .addCase(FetchMyProductImages.fulfilled, (state, action) => {
+                // console.log(action);
+                state.isLoading = false;
+                state.adImages = action.payload;
+            })
+
+            .addCase(FetchMyProduct.rejected, (state, action) => {
+                console.log(action);
+                state.isLoading = false;
+            })
+            .addCase(FetchMyProductImages.rejected, (state, action) => {
                 console.log(action);
                 state.isLoading = false;
             });
