@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: any) => state.auth.user);
-    const { open, profileOpener } = useSelector((state: any) => state.opener);
+    const { profileOpener } = useSelector((state: any) => state.opener);
     const userToken = useSelector((state: any) => state.auth.userToken);
 
     useEffect(() => {
