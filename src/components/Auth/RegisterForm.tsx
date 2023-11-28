@@ -150,7 +150,7 @@ const RegisterForm: React.FC = ({}) => {
                                     value={formData.middlename}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder="Last name"
+                                    placeholder="Second name"
                                 />
                             </div>
                         </div>
