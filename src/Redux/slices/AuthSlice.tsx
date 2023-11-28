@@ -47,12 +47,28 @@ export const getLoggedInUser = createAsyncThunk('auth/getLoggedInUser', async ()
 export const RegisteringUser = createAsyncThunk('auth/registeringUser', async (formData: any) => {
     try {
         const response = await RegistrationOfUser(formData);
-        return response;
-    } catch (error) {
-        toast.error('Registration failed. Please check your credentials.');
+        // console.log('Response from server:', response);
+
+        // Check if the response status indicates an error
+        if (response.status === 400) {
+            // Check if the response contains an error message
+            if (response.data && response.data.Data && response.data.Data.Error) {
+                toast.error(response.data.Data.Error);
+                throw new Error(response.data.Data.Error);
+            } else {
+                throw new Error('An unexpected error occurred during registration.');
+            }
+        } else {
+            // Handle successful response
+            return response;
+        }
+    } catch (error: any) {
+        console.error('Error in Registering User:', error.response.data.Error);
+        toast.error(error.response.data.Error);
         throw error;
     }
 });
+
 export const LoggingUser = createAsyncThunk('auth/logginguser', async (formData: any) => {
     try {
         const response = await LogginOfUser(formData);

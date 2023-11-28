@@ -10,14 +10,15 @@ import { locations } from '../../data/Location';
 import { Link, useNavigate } from 'react-router-dom';
 
 const RegisterForm: React.FC = ({}) => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     const isLoading = useSelector((state: any) => state.auth.isLoading);
     const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         firstname: '',
-        middlename: '',
-        // lastname: '',
+        // middlename: '',
+        lastname: '',
         email: '',
         phone: '',
         userimage: '',
@@ -50,53 +51,35 @@ const RegisterForm: React.FC = ({}) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Validate first name, middle name, and last name to ensure they don't contain numbers
-        const nameRegex = /^[A-Za-z\s]+$/;
-
-        if (!nameRegex.test(formData.firstname)) {
-            toast.error('First name cannot contain numbers.');
-            return;
-        }
-
-        // if (!nameRegex.test(formData.middlename)) {
-        //     toast.error('Middle name cannot contain numbers.');
-        //     return;
-        // }
-
-        // if (!nameRegex.test(formData.lastname)) {
-        //     toast.error('Last name cannot contain numbers.');
-        //     return;
-        // }
-
-        // Password validation: at least 8 characters, one special character, and one capital letter
-        const passwordRegex = /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-])(?=.*[A-Z]).{8,}$/;
-        if (!passwordRegex.test(formData.password)) {
-            toast.error(
-                'Password must be at least 8 characters long, contain at least one special character, and have at least one capital letter.'
-            );
-            return;
-        }
-
-        // Check if password and confirm password match
         if (formData.password !== formData.confirmPassword) {
             toast.error('Passwords do not match.');
             return;
         }
 
-        dispatch(RegisteringUser(formData));
-        navigate('/login');
-
-        setFormData({
-            firstname: '',
-            middlename: '',
-            // lastname: '',
-            email: '',
-            phone: '',
-            userimage: '',
-            location: '',
-            password: '',
-            confirmPassword: '',
-        });
+        if (formData.location === 'select location') {
+            // Display an error or take appropriate action for invalid location
+            toast.error('Please select a valid location.');
+            return;
+        }
+        try {
+            await dispatch(RegisteringUser(formData));
+            // Registration successful, navigate to login and reset form data
+            navigate('/login');
+            setFormData({
+                firstname: '',
+                lastname: '',
+                email: '',
+                phone: '',
+                userimage: '',
+                location: '',
+                password: '',
+                confirmPassword: '',
+            });
+        } catch (error: any) {
+            // Registration failed, navigate to register and display error
+            navigate('/register');
+            toast.error(error.message);
+        }
     };
 
     if (isLoading) {
@@ -133,24 +116,26 @@ const RegisterForm: React.FC = ({}) => {
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                     placeholder=" First name"
+                                    required
                                 />
                             </div>
 
                             <div className="mb-5">
                                 <label
-                                    htmlFor="middlename"
+                                    htmlFor="lastname"
                                     className="block text-gray-700 text-sm font-bold mb-2"
                                 >
                                     <p className="hidden"></p>
                                 </label>
                                 <input
                                     type="text"
-                                    id="middlename"
-                                    name="middlename"
-                                    value={formData.middlename}
+                                    id="lastname"
+                                    name="lastname"
+                                    value={formData.lastname}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                     placeholder="Second name"
+                                    required
                                 />
                             </div>
                         </div>
@@ -186,6 +171,7 @@ const RegisterForm: React.FC = ({}) => {
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                 placeholder="Enter your email address"
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -203,6 +189,7 @@ const RegisterForm: React.FC = ({}) => {
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                 placeholder="Enter your phone number"
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -220,7 +207,7 @@ const RegisterForm: React.FC = ({}) => {
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange "
                                 required
                             >
-                                <option value="select location">select location</option>
+                                <option value="">select location</option>
                                 {locations.map((location) => (
                                     <option key={location.id} value={location.name}>
                                         {location.name}
@@ -309,8 +296,6 @@ const RegisterForm: React.FC = ({}) => {
                         <button
                             onClick={() => {
                                 setShowPassword(false);
-                                // handleSubmit(event); // Call the handleSubmit function
-                                console.log('Submit button clicked');
                             }}
                             type="submit"
                             className="bg-primary-orange text-white py-2 px-4 rounded-xl hover:bg-secondary-orange transition duration-300 w-full"

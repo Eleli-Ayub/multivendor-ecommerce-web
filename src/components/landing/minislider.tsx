@@ -75,7 +75,7 @@ function AnotherSlider({ Ads }: any) {
 
     return (
         <>
-            <h1 className="mt-2 lg:mt-5 px-2 text-stone-500 lg:px-7 text-md capitalize">
+            <h1 className="mt-3 lg:mt-5 px-2 text-stone-500 lg:px-7 text-md capitalize my-3 font-bold">
                 top products
             </h1>
             <div className="">

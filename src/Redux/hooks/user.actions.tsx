@@ -41,6 +41,7 @@ export const loggedInUser = async () => {
 
 export const RegistrationOfUser = async (formdata: any) => {
     const response = await axiosService.post('/user/auth/signup', formdata);
+    console.log(response);
     return response;
 };
 
