@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CloseTwoTone } from '@mui/icons-material';
 import { setProfileOpener } from '../../Redux/slices/opener';
+import Loader from '../../constants/loader';
 
 const Sidebar = () => {
     const navigate = useNavigate();
-    const user = useSelector((state: any) => state.auth.user);
+    const { user, isLoading } = useSelector((state: any) => state.auth);
     const { profileOpener } = useSelector((state: any) => state.opener);
     const dispatch = useDispatch();
 
@@ -99,14 +100,18 @@ const Sidebar = () => {
                     </ul>
 
                     {/* Sidebar Footer */}
-                    <div className="flex items-center mt-10 flex-col">
-                        <Avatar
-                            alt="Jane Doe"
-                            src={`${user?.userimage}`}
-                            className="h-24 w-24 border-4 border-primary-orange"
-                        />
-                        <span className="text mt-5 capitalize">{`${user?.firstname} ${user?.lastname}`}</span>
-                    </div>
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        <div className="flex items-center mt-10 flex-col">
+                            <Avatar
+                                alt="Jane Doe"
+                                src={`${user?.userimage}`}
+                                className="h-24 w-24 border-4 border-primary-orange"
+                            />
+                            <span className="text mt-5 capitalize">{`${user?.firstname} ${user?.lastname}`}</span>
+                        </div>
+                    )}
                 </div>
             )}
         </div>

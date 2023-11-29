@@ -20,9 +20,9 @@ type FormData = {
 const Profile: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
-    const user = useSelector((state: any) => state.auth.user);
+    const { user, isLoading } = useSelector((state: any) => state.auth);
     const userid = user?.userid;
-    const { isLoading } = useSelector((state: any) => state.loaders);
+    // const { isLoading } = useSelector((state: any) => state.loaders);
 
     const [isEditing, setIsEditing] = useState(false);
 

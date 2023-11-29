@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchLoggedUsersProducts } from '../../Redux/slices/AdsSlice';
-import { GettingUserById } from '../../Redux/slices/AuthSlice';
 import { AppDispatch } from '../../Redux/store';
 import Loader from '../../constants/loader';
 import { ProductData } from '../../interface/common';
@@ -12,13 +11,12 @@ const AdsComp = () => {
     const { isLoading, Ads } = useSelector((state: any) => state.AllAds);
     const user = useSelector((state: any) => state.auth.user);
     const id = user?.userid;
+    // console.log(id);
+    // console.log(user);
+
     useEffect(() => {
-        dispatch(GettingUserById(id)).then((action) => {
-            if (GettingUserById.fulfilled.match(action)) {
-                console.log(user);
-                dispatch(FetchLoggedUsersProducts(id));
-            }
-        });
+        dispatch(FetchLoggedUsersProducts(id));
+        // console.log(id);
     }, [dispatch, id]);
 
     const filteredAds = Ads.filter((product: ProductData) => !product.isapproved);

@@ -36,14 +36,14 @@ const AdsTable = () => {
         });
     };
 
-    useEffect(() => {
-        dispatch(GettingUserById(id)).then((action: Action<unknown>) => {
-            if (GettingUserById.fulfilled.match(action)) {
-                console.log(user);
-                dispatch(FetchLoggedUsersProducts(id));
-            }
-        });
-    }, [dispatch, id]);
+    // useEffect(() => {
+    //     dispatch(GettingUserById(id)).then((action: Action<unknown>) => {
+    //         if (GettingUserById.fulfilled.match(action)) {
+    //             console.log(user);
+    //             dispatch(FetchLoggedUsersProducts(id));
+    //         }
+    //     });
+    // }, [dispatch, id]);
 
     const deleteProduct = async (id: any) => {
         try {
