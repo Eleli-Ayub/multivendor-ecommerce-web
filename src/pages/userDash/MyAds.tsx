@@ -14,7 +14,7 @@ const MyAds = () => {
         }
     }, []);
     return (
-        <div className="flex mt-20 parent">
+        <div className="flex  parent">
             <Sidebar />
             <div className="flex-1 p-5 mx-auto my-body">
                 <Navbar />
