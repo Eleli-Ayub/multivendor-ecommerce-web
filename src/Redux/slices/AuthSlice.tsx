@@ -53,8 +53,8 @@ export const RegisteringUser = createAsyncThunk('auth/registeringUser', async (f
         if (response.status === 400) {
             // Check if the response contains an error message
             if (response.data && response.data.Data && response.data.Data.Error) {
-                toast.error(response.data.Data.Error);
-                throw new Error(response.data.Data.Error);
+                toast.error(response.data.Data.Message);
+                throw new Error(response.data.Data.Message);
             } else {
                 throw new Error('An unexpected error occurred during registration.');
             }
@@ -64,7 +64,7 @@ export const RegisteringUser = createAsyncThunk('auth/registeringUser', async (f
         }
     } catch (error: any) {
         console.error('Error in Registering User:', error.response.data.Error);
-        toast.error(error.response.data.Error);
+        toast.error(error.response.data.Message);
         throw error;
     }
 });
@@ -78,10 +78,11 @@ export const LoggingUser = createAsyncThunk('auth/logginguser', async (formData:
             toast.success(`welcome, ${response.data.Message}`);
             return response;
         } else {
-            toast.error(response.data.Error);
+            toast.error(response.data.Message);
         }
     } catch (error: any) {
-        toast.error(error.response.data.Error);
+        toast.error(error.response.data.Message);
+        console.log(error.response.data);
         throw error;
     }
 });
