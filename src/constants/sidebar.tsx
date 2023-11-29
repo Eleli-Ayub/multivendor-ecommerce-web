@@ -10,6 +10,8 @@ import { ChevronRightTwoTone } from '@mui/icons-material';
 import { SearchingProduct } from '../Redux/slices/AdsSlice';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../Redux/store';
+import { GettingSellers } from '../Redux/slices/AuthSlice';
+// import UserSidebar from '../components/Dashboard/Sidebar';
 // import { TopProducts } from '../data/topproducts';
 
 const Sidebar = () => {
@@ -22,6 +24,8 @@ const Sidebar = () => {
     const [loading, setLoading] = useState(false);
     const [submenuOpen, setSubmenuOpen] = useState(false);
     const navigate = useNavigate();
+    const sellers = useSelector((state: any) => state.auth.sellers);
+    // console.log(sellers);
 
     const { open } = useSelector((state: any) => state.opener);
 
@@ -48,17 +52,18 @@ const Sidebar = () => {
         dispatch(SearchingProduct(categoryname));
         navigate('/search/products');
         setHoveredCategory('');
-        console.log('====================================');
-        console.log(`${categoryname}`);
-        console.log('====================================');
     };
+
+    useEffect(() => {
+        dispatch(GettingSellers());
+    }, []);
 
     return (
         <div className="rounded">
             <div className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar ">
                 <ul className="py-1">
                     <h1 className="my-3 text-stone-600 text-sm font-bold">Top Categories</h1>
-                    {categories.map((Menu: categoryData, index: number) => (
+                    {categories?.map((Menu: categoryData, index: number) => (
                         <div>
                             <li
                                 key={Menu.categoryname}
@@ -72,13 +77,13 @@ const Sidebar = () => {
                                     handleSearch(Menu.categoryname);
                                 }}
                             >
-                                <img src={Menu.categoryimage} className="h-3 w-3 object-cover  " />
+                                <img src={Menu?.categoryimage} className="h-3 w-3 object-cover  " />
                                 <span
                                     className={`${
                                         !open && ''
                                     } origin-left duration-200 text-xs flex-1 text-stone-500`}
                                 >
-                                    {Menu.categoryname}
+                                    {Menu?.categoryname}
                                 </span>
 
                                 {/* <ChevronRightTwoTone className="ml-auto" /> */}
@@ -88,10 +93,10 @@ const Sidebar = () => {
                 </ul>
                 <ul className="">
                     <h1 className="mt-3 text-stone-600 text-sm font-bold">Top Sellers</h1>
-                    {categories.map((Menu: categoryData, index: number) => (
+                    {sellers?.map((seller: any, index: number) => (
                         <div>
                             <li
-                                key={Menu.categoryname}
+                                key={seller?.ID}
                                 className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
@@ -99,14 +104,14 @@ const Sidebar = () => {
                                     setSubmenuOpen(false);
                                 }}
                             >
-                                <img src={Menu.categoryimage} className="h-3 w-3 object-cover " />
+                                {/* <img src={Menu.categoryimage} className="h-3 w-3 object-cover " /> */}
                                 <span
                                     className={`${
                                         !open && ''
                                     } origin-left duration-200 text-xs flex-1 text-stone-500`}
                                 >
-                                    <h1 className="font-bold">John Doe</h1>
-                                    <h3 className="text-xs">(273 products)</h3>
+                                    <h1 className="font-bold">{`${seller?.firstname} ${seller?.lastname}`}</h1>
+                                    <h3 className="text-xs">{seller?.noofproducts} products</h3>
                                 </span>
 
                                 <ChevronRightTwoTone className="ml-auto" />

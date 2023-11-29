@@ -14,8 +14,6 @@ const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
     const dispatch = useDispatch<AppDispatch>();
     const Ads = useSelector((state: any) => state.AllAds.Ads);
-    const sellers = useSelector((state: any) => state.auth.sellers);
-    console.log(sellers);
 
     const getUser = async () => {
         dispatch(getLoggedInUser());
@@ -23,10 +21,6 @@ const Landing = () => {
     useEffect(() => {
         dispatch(FetchProductsAsync());
     }, []);
-
-    // useEffect(() => {
-    //     dispatch(GettingSellers());
-    // }, []);
 
     useEffect(() => {
         if (userToken) {

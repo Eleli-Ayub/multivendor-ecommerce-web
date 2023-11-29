@@ -12,7 +12,11 @@ const Sidebar = () => {
     const dispatch = useDispatch();
 
     return (
-        <div>
+        <div
+            onClick={() => {
+                dispatch(setProfileOpener(false));
+            }}
+        >
             <div
                 className="px-6 bg-gray-light m-3 overflow-y-auto pt-10 my-sidebar"
                 style={{
@@ -53,7 +57,7 @@ const Sidebar = () => {
             {/* on small screens */}
             {profileOpener && (
                 <div
-                    className="px-6 bg-gray-light m-3 mt-20 overflow-y-auto pt-10"
+                    className="px-6 bg-gray-light m-3 mt-20 overflow-y-auto pt-10 md:hidden"
                     style={{
                         height: '80vh',
                         borderRadius: '2px',

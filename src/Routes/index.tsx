@@ -34,6 +34,7 @@ import Freemium from '../components/Packages/Freemium';
 import BasicPackage from '../components/Packages/Basic';
 import PremiumPackage from '../components/Packages/Premium';
 import StandardPackage from '../components/Packages/standard';
+import UserSidebar from '../components/Dashboard/Sidebar';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -77,6 +78,9 @@ const Index = () => {
             <ToastContainer position="top-center" />
             <AdsForm showAdsForm={showAdsForm} setShowAdsForm={setShowAdsForm} />
             <div className=" mt-[170px] md:mt-[12rem] max-w-[100vw]" id="root">
+                <div className="md:hidden lg:hidden">
+                    <UserSidebar />
+                </div>
                 <ScrollToTop>
                     <Routes>
                         <Route path="/login" element={<Login />} />
