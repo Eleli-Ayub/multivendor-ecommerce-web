@@ -11,7 +11,7 @@ const Related = () => {
         return ''; // or any default value you prefer if price is undefined
     }
     return (
-        <div className="lg:p-5">
+        <div className="lg:p-5 ">
             <div className="pb-2  bg-gray-light">
                 <div className="py-3  flex flex-row items-center justify-between px-5 md:justify-center">
                     <h1 className="text-stone-700">You may also like</h1>

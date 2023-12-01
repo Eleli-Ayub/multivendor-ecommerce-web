@@ -20,19 +20,18 @@ const ProductInfo = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        dispatch(FetchProduct(id));
-        dispatch(FetchProductImages(id));
-        dispatch(FetchProductSeller(id));
+        const fetchData = async () => {
+            dispatch(FetchProductImages(id));
+            dispatch(FetchProduct(id));
+            dispatch(FetchProductSeller(id));
+        };
+
+        fetchData();
     }, [dispatch, id]);
 
-    console.log(adImages);
-    if (isLoading) {
-        return <Loader />;
-    }
-
     return (
-        <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 max-w-screen mb-10 h-auto">
-            {/* {isLoading && <Loader />} */}
+        <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 max-w-[100%] mb-10 h-auto">
+            {isLoading && <Loader />}
             {/* Part 1 */}
             <div className="md:flex-1">
                 <div className="flex flex-col md:flex-row md:gap-5">

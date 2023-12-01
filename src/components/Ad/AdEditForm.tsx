@@ -32,33 +32,57 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
-    console.log('id passed', id);
+
+    // define formData
+
+    const [formData, setFormData] = useState<ProductData>({
+        productname: '',
+        productdescription: '',
+        productprice: '',
+        quantity: 1,
+        category: '',
+        subcategory: '',
+        producttype: '',
+        brand: '',
+        mainimage: 'null',
+        productimages: [],
+        producttid: '',
+        isactive: true,
+        isapproved: false,
+    });
+    console.log(ad);
 
     useEffect(() => {
-        Reset();
         const fetchData = async () => {
-            dispatch(FetchMyProduct(id));
-            dispatch(FetchMyProductImages(id));
+            await dispatch(FetchMyProduct(id));
+            await dispatch(FetchMyProductImages(id));
+        };
+
+        fetchData();
+    }, [dispatch, id]);
+
+    // Use another useEffect with a dependency on sellerad to set form data
+    useEffect(() => {
+        if (sellerad) {
             setFormData({
-                productname: ad?.productname,
-                productdescription: ad?.productdescription,
-                productprice: ad?.productprice,
-                quantity: ad?.quantity,
-                category: ad?.category,
-                subcategory: ad?.subcategory,
-                producttype: ad?.producttype,
-                brand: ad?.brand,
-                mainimage: ad?.mainimage,
+                productname: sellerad.productname,
+                productdescription: sellerad.productdescription,
+                productprice: sellerad.productprice,
+                quantity: sellerad.quantity,
+                category: sellerad.category,
+                subcategory: sellerad.subcategory,
+                producttype: sellerad.producttype,
+                brand: sellerad.brand,
+                mainimage: sellerad.mainimage,
                 productimages: adImages,
                 producttid: '',
                 isactive: true,
                 isapproved: false,
             });
-        };
-        fetchData();
-    }, []);
+        }
+    }, [sellerad, adImages]);
 
-    // console.log('This aads', ad);
+    console.log(ad);
 
     const getCategory = async () => {
         setLoading(true);
@@ -112,24 +136,6 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
             }));
         }
     };
-
-    // define formData
-
-    const [formData, setFormData] = useState<ProductData>({
-        productname: '',
-        productdescription: '',
-        productprice: '',
-        quantity: 1,
-        category: '',
-        subcategory: '',
-        producttype: '',
-        brand: '',
-        mainimage: 'null',
-        productimages: [],
-        producttid: '',
-        isactive: true,
-        isapproved: false,
-    });
 
     const [mainimagePreview, setmainimagePreview] = useState<string | null>(null);
     const [selectedImages, setSelectedImages] = useState<File[]>([]);

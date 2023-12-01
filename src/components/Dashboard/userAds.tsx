@@ -23,17 +23,15 @@ const AdsComp = () => {
     // console.log(Ads);
 
     return (
-        <div className="flex flex-col ">
-            {/* seller's ads */}
-            <div>
-                <div className="flex px-2 gap-3 flex-wrap lg:gap-5">
+        <div className=" ">
+            <div className=" ">
+                <div className="flex  gap-2 flex-wrap lg:gap-5 items-center justify-center lg:justify-normal">
+                    {/* <div className="flex px-2 gap-3 flex-wrap lg:gap-5"> */}
                     {isLoading ? (
-                        // Show loading indicator or message
                         <div>
                             <Loader />
                         </div>
-                    ) : // Render products if not loading
-                    Ads.length > 0 ? (
+                    ) : Ads.length > 0 ? (
                         Ads.map((product: ProductData) => (
                             <Productcard
                                 key={product.producttid}
@@ -46,7 +44,6 @@ const AdsComp = () => {
                             />
                         ))
                     ) : (
-                        // Display a message when there are no ads
                         <p className="text-center"> You do not have any ads</p>
                     )}
                 </div>

@@ -63,17 +63,17 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
     useEffect(() => {}, [userToken]);
     return (
         <nav
-            className={`w-full  flex flex-col items-center justify-center   py-0 px-1 lg:px-20 fixed price top-0 z-20 ${
+            className={`w-full  flex flex-col items-center justify-center   py-0 px-[10px] lg:px-20 fixed price top-0 z-20 ${
                 scrolled ? 'bg-white' : 'bg-white'
             }`}
             // style={{ marginBottom: "2px" }}
         >
-            <div className="w-full flex  justify-between items-center py-2">
-                <div className="flex gap-2 items-center ">
+            <div className="w-full flex  justify-center md:justify-between items-center py-2 ">
+                <div className="flex gap-2 items-center  ">
                     {user && (
                         <AiOutlineMenuUnfold
                             size="32"
-                            className="text-black bg-gray-light p-2 rounded-full md:hidden"
+                            className="text-black bg-gray-light p-2 rounded-full md:hidden mt-[11px]"
                             onClick={() => {
                                 dispatch(setProfileOpener(!profileOpener));
                                 console.log('hello , this is my', profileOpener);
@@ -150,7 +150,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                     alt=""
                                 />
                                 {userSmallnav && (
-                                    <div className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200 right-4 w-[150px]">
+                                    <div className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200 right-4 w-[150px] "  onClick={()=>setToggle(false)}>
                                         <p
                                             className="hover:underline hover:text-green-400 cursor-pointer"
                                             onClick={() => navigate('/profile')}
@@ -204,12 +204,13 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                             color: '#991b1b',
                             backgroundColor: '#eee',
                             cursor: 'pointer',
+                            marginTop: '10px',
                         }}
                     >
                         <img
                             src={toggle ? close : menu}
                             alt="menu"
-                            className="w-[24px] h-[24px] object-contain"
+                            className="w-[20px] h-[20px] object-contain "
                             onClick={() => setToggle(!toggle)}
                         />
                     </IconButton>
@@ -266,7 +267,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                             alt=""
                                         />
                                         {userSmallnav && (
-                                            <div className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200  right-4">
+                                            <div className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200  right-4" onClick={()=>setToggle(false)}>
                                                 <p
                                                     className="hover:underline hover:text-green-400 cursor-pointer"
                                                     onClick={() => navigate('/profile')}

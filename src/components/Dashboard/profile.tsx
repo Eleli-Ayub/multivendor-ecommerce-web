@@ -1,4 +1,3 @@
-import { Avatar } from 'antd';
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser } from '../../Redux/slices/AuthSlice';
@@ -6,6 +5,7 @@ import { AppDispatch } from '../../Redux/store';
 import { UpdattingOfUser } from '../../Redux/slices/AuthSlice';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../constants/loader';
+import { Avatar } from '@mui/material';
 
 type FormData = {
     firstname: string;
@@ -113,13 +113,13 @@ const Profile: React.FC = () => {
                 </div>
             </div>
             {/* userinfo */}
-            <div className="bg-gray-100 h-auto w-auto flex-col p-5 pb-5">
+            <div className="bg-gray-100 h-auto w-auto flex-col p-5 pb-5 bg-yellow">
                 {/* userpic */}
                 <div
                     className="bg-white p-5 flex gap-3 text-gray-500 price"
                     style={{ borderRadius: '0.25rem' }}
                 >
-                    <Avatar src={`${user?.userimage}`} className="h-24 w-24" />
+                    <Avatar src={`${user?.userimage}`} className="h-[100px] w-[100px] " />
                     <div className="text-center">
                         <input type="file" accept="image/*" onChange={handleImageChange} />
                     </div>

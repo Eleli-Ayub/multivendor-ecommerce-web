@@ -27,7 +27,7 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`w-full px-5 flex items-center top-0 z-20 ${
+            className={`w-full px-[20px] flex items-center top-0 z-20 ${
                 scrolled ? 'bg-gray-light' : 'bg-gray-light'
             }`}
         >
