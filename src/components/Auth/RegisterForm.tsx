@@ -115,7 +115,7 @@ const RegisterForm: React.FC = ({}) => {
                                     value={formData.firstname}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder=" First name"
+                                    placeholder="First name"
                                     required
                                 />
                             </div>
@@ -243,24 +243,25 @@ const RegisterForm: React.FC = ({}) => {
                                 className="block text-gray-700 text-sm font-bold mb-2 relative"
                             >
                                 Password:
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    id="password"
-                                    name="password"
-                                    value={formData.password}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder={`Enter password `}
-                                    minLength={4}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute top-1/2 right-4"
-                                >
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                                </button>
                             </label>
+
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                placeholder={`Enter password `}
+                                minLength={4}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute top-1/2 right-4"
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
                             <p className="text-sm text-gray-500 px-2">
                                 The password must be at least 4 characters long{' '}
                             </p>
@@ -272,26 +273,26 @@ const RegisterForm: React.FC = ({}) => {
                         <div className="mb-4">
                             <label
                                 htmlFor="confirmPassword"
-                                className="block text-gray-700 text-sm font-bold mb-2 relative"
+                                className="block text-gray-700 text-sm  font-bold mb-2 relative"
                             >
                                 Confirm Password:
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    id="confirmPassword"
-                                    name="confirmPassword"
-                                    value={formData.confirmPassword}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                    placeholder={`Confirm your password `}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute top-1/2 right-4"
-                                >
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                                </button>
                             </label>
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                placeholder={`Confirm your password `}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute top-1/2 right-4"
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
                         </div>
                         <button
                             onClick={() => {

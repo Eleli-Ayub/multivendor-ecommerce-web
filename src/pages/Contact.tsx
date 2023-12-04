@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 import { IconButton } from '@mui/material';
-import { FaFacebook, FaPhone, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 // import { IconButton } from '@mui/material';
 
@@ -103,7 +103,7 @@ const Contact = () => {
                             </IconButton>
                         </li>
                         <li className="mb-1">
-                            <IconButton
+                            {/* <IconButton
                                 style={{
                                     backgroundColor: 'white',
                                     padding: '0.4rem',
@@ -117,7 +117,7 @@ const Contact = () => {
                                 >
                                     <FaPhone color="gray" />
                                 </Link>
-                            </IconButton>
+                            </IconButton> */}
                         </li>
                         <li className="mb-1">
                             <IconButton
@@ -150,7 +150,7 @@ const Contact = () => {
                             </IconButton>
                         </li> */}
                         <li className="mb-1">
-                            <IconButton
+                            {/* <IconButton
                                 style={{
                                     backgroundColor: 'white',
                                     padding: '0.4rem',
@@ -163,7 +163,7 @@ const Contact = () => {
                                 >
                                     <FaWhatsapp color="green" />
                                 </Link>
-                            </IconButton>
+                            </IconButton> */}
                         </li>
                     </ul>
                 </div>

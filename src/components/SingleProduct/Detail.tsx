@@ -30,7 +30,7 @@ const ProductInfo = () => {
     }, [dispatch, id]);
 
     return (
-        <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 max-w-[100%] mb-10 h-auto">
+        <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 w-[100%] mb-10 h-auto">
             {isLoading && <Loader />}
             {/* Part 1 */}
             <div className="md:flex-1">
@@ -133,9 +133,11 @@ const ProductInfo = () => {
                         </p>
                     </div>
                     <div>
-                        <button className="bg-primary-orange capitalize  text-white px-12 py-3 mt-4 rounded hover:text-black-200 hover:bg-orange-300 transition-colors delay-300">
-                            {' '}
-                            call seller
+                        {' '}
+                        <button className="p-2  bg-primary-orange text-white px-12 py-3 mt-4 rounded  hover:secondary transition-colors delay-300">
+                            <Link to={`tel:${seller?.seller_phonenumber}`} target="_blank">
+                                Call seller
+                            </Link>
                         </button>
                     </div>
                 </div>

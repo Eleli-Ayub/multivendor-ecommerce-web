@@ -54,7 +54,7 @@ function AnotherSlider({ Ads }: any) {
     };
 
     useEffect(() => {
-        const id = setInterval(autoSlide, 5000);
+        const id = setInterval(autoSlide, 7000);
         setIntervalId(id);
 
         return () => {
@@ -94,9 +94,9 @@ function AnotherSlider({ Ads }: any) {
                     }}
                 >
                     <div style={sliderStyle} className="">
-                        {clonedAds.map((item, index) => (
+                        {clonedAds.map((item, _index) => (
                             <div
-                                key={index}
+                                key={item.product_data?.productid}
                                 className=" p-[5px] lg:p-4 lg:gap-5 "
                                 style={{ width: `${sliderWidth}px` }}
                             >

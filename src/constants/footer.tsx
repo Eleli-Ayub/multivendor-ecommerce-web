@@ -29,7 +29,7 @@ const Footer = () => {
                             <Link to={'/'}> Home</Link>
                         </li>
                         <li>
-                            <Link to={'/'}> products</Link>
+                            <Link to={'/'}> Products</Link>
                         </li>
                         <li>
                             <Link to={'/services'}></Link>
@@ -135,7 +135,7 @@ const Footer = () => {
                                 </a>
                             </IconButton>
                         </li> */}
-                        <li className="mb-1">
+                        {/* <li className="mb-1">
                             <IconButton
                                 style={{
                                     backgroundColor: 'white',
@@ -150,7 +150,7 @@ const Footer = () => {
                                     <FaWhatsapp color="green" />
                                 </Link>
                             </IconButton>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 

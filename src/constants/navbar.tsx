@@ -146,11 +146,14 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                 </div>
                                 <img
                                     className=" rounded-full w-full h-full object-cover object-top"
-                                    src={`${user?.userimage}`}
+                                    src={`data:image/png;base64, ${user?.userimage}`}
                                     alt=""
                                 />
                                 {userSmallnav && (
-                                    <div className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200 right-4 w-[150px] "  onClick={()=>setToggle(false)}>
+                                    <div
+                                        className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200 right-4 w-[150px] "
+                                        onClick={() => setToggle(false)}
+                                    >
                                         <p
                                             className="hover:underline hover:text-green-400 cursor-pointer"
                                             onClick={() => navigate('/profile')}
@@ -263,11 +266,14 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                         </div>
                                         <img
                                             className=" rounded-full w-full h-full object-cover object-top"
-                                            src={` ${user?.userimage}`}
+                                            src={`data:image/png;base64, ${user?.userimage}`}
                                             alt=""
                                         />
                                         {userSmallnav && (
-                                            <div className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200  right-4" onClick={()=>setToggle(false)}>
+                                            <div
+                                                className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200  right-4"
+                                                onClick={() => setToggle(false)}
+                                            >
                                                 <p
                                                     className="hover:underline hover:text-green-400 cursor-pointer"
                                                     onClick={() => navigate('/profile')}

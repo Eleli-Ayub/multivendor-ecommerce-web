@@ -305,7 +305,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         value={formData.productname}
                                         onChange={handleInputChange}
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                        placeholder="Enter your Product Name"
+                                        placeholder="Enter your product name"
                                         // maxLength={50}
                                         required
                                     />
@@ -323,7 +323,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         value={formData.productdescription}
                                         onChange={handleInputChange}
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                        placeholder="Enter your Product description"
+                                        placeholder="Enter your product description"
                                         minLength={100}
                                         // maxLength={200}
                                         required
@@ -343,7 +343,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         value={formData.productprice}
                                         onChange={handleInputChange}
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                        placeholder="Enter your Product price"
+                                        placeholder="Enter your product price"
                                         required
                                     />
                                 </div>
@@ -361,7 +361,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         value={formData.quantity}
                                         onChange={handleInputChangeno}
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                        placeholder="Enter your Product Quantity"
+                                        placeholder="Enter your product quantity"
                                         required
                                     />
                                 </div>
@@ -431,7 +431,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         value={formData.producttype}
                                         onChange={handleSelectChange}
                                     >
-                                        <option value="select type">select type</option>
+                                        <option value="select type">Select type</option>
                                         <option value="brand new">Brand New</option>
                                         <option value="refurbished">Refurbished</option>
                                         <option value="exported">Exported</option>
@@ -467,7 +467,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         value={formData.brand}
                                         onChange={handleInputChange}
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                        placeholder="Enter your Brand"
+                                        placeholder="Enter your brand"
                                         required
                                     />
                                 </div>
@@ -497,7 +497,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         id="mainimage"
                                         name="mainimage"
                                         className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                        placeholder="Upload your Cover Image"
+                                        placeholder="Upload your cover image"
                                         onChange={handlemainimageChange}
                                     />
                                 </div>
@@ -521,7 +521,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         id="Productimages"
                                         name="Productimages"
                                         className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
-                                        placeholder="Upload your Cover Image"
+                                        placeholder="Upload your cover image"
                                         onChange={handleGalleryUpload}
                                         multiple
                                     />

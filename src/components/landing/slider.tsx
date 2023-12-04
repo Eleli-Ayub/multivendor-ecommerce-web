@@ -57,7 +57,7 @@ const ImageSlider = () => {
                                 backgroundColor: 'rgba(0,0,0,0.7)',
                             }}
                         >
-                            <p>EDUKA</p>
+                            <p>eDUKA</p>
                             <p>
                                 <i className="text-gray-500">Let's help you sell </i>
                             </p>

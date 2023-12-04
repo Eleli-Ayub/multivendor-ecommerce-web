@@ -14,7 +14,9 @@ const Popular = ({ Ads }: any) => {
     return (
         <div className=" ">
             <div className="py-1 flex flex-row items-center justify-between px-[10px] ">
-                <h1 className="text-stone-500 px-2 my-2 font-bold underline ">Suggested Ads</h1>
+                <h1 className="text-stone-500 px-2 my-2 font-bold underline capitalize ">
+                    View all ads
+                </h1>
                 <button className="rounded-lg px-2 text-sm py-1 text-slate-500 my-2 font-bold ">
                     See all
                 </button>
