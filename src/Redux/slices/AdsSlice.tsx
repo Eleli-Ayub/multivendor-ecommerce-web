@@ -49,7 +49,7 @@ export const SearchingProduct = createAsyncThunk('ad/searchproduct', async (para
 export const FetchSellerProducts = createAsyncThunk('ads/fetchsellerproducts', async (id: any) => {
     try {
         const response = await fetchSellersProduct(id);
-        console.log(response);
+        // console.log(response);
         return response.data.Data;
     } catch (error) {
         console.error('Error fetching seller products:', error);

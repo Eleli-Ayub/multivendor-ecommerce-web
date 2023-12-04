@@ -89,6 +89,7 @@ export const LoggingUser = createAsyncThunk('auth/logginguser', async (formData:
 
 export const GettingUserById = createAsyncThunk('auth/gettinguserbyid', async (id: any) => {
     const response = await GetUserById(id);
+    console.log(response.data.Data);
     return response.data.Data;
 });
 
@@ -158,8 +159,7 @@ const authSlice = createSlice({
             })
             .addCase(GettingUserById.fulfilled, (state, action) => {
                 state.isLoading = false;
-                // Update state.user with the user data received in the action payload
-                state.theSeller = action.payload; // Adjust this to match your response structure
+                state.theSeller = action.payload;
             })
             .addCase(GettingUserById.rejected, (state) => {
                 state.isLoading = false;

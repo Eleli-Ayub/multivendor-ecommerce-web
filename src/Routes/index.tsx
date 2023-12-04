@@ -124,7 +124,7 @@ const Index = () => {
                         <Route path="/services" element={<Services />} />
                         <Route path="/eduka/faq" element={<FAQSPage />} />
                         <Route path="/ad_info/:id" element={<AdInfo />} />
-                        <Route path="/seller/store/" element={<SellersAds />} />
+                        <Route path="/seller/store/:id" element={<SellersAds />} />
                         <Route
                             path="/profile"
                             element={

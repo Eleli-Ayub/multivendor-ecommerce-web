@@ -1,30 +1,29 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchSellerProducts } from '../Redux/slices/AdsSlice';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AppDispatch } from '../Redux/store';
-// import Productcard from './Global/SellerProduct.Card';
-// import Loader from '../constants/loader';
-// import { ProductData } from '../interface/common';
+import Productcard from './Global/RelatedCard';
+import Loader from '../constants/loader';
+import { ProductData } from '../interface/common';
 import { GettingUserById } from '../Redux/slices/AuthSlice';
-import { Avatar } from 'antd';
-import { WhatsApp, Facebook, YouTube, Phone } from '@mui/icons-material';
+import { WhatsApp, Phone, Email } from '@mui/icons-material';
 // import { products } from '../data/sponsered';
 import Store from '../assets/store.avif';
+import { Avatar } from '@mui/material';
 
 const SellersAdsComp = () => {
     const dispatch = useDispatch<AppDispatch>();
-    // const { isLoading } = useSelector((state: any) => state.AllAds);
-    // const Ads = products;
-    const theSeller = useSelector((state: any) => state.auth.theSeller);
-    const { id } = useParams();
-    const image =
-        'https://images.unsplash.com/photo-1603988089669-c041ac2fe196?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGdpcmwlMjBmYWNlfGVufDB8fDB8fHww';
+    const { isLoading, Ads } = useSelector((state: any) => state.AllAds);
+    // console.log(Ads);
 
+    const theSeller = useSelector((state: any) => state.auth.theSeller);
+
+    const { id } = useParams();
     useEffect(() => {
         dispatch(GettingUserById(id)).then((action) => {
             if (GettingUserById.fulfilled.match(action)) {
-                console.log(theSeller);
+                console.log('the seller is :', theSeller);
                 dispatch(FetchSellerProducts(id));
             }
         });
@@ -38,25 +37,42 @@ const SellersAdsComp = () => {
                     {/* User Image and Join Date */}
                     <div className=" mb-4 sm:mb-0 flex flex-col justify-between">
                         <Avatar
-                            // src={`data:image/jpeg;base64, ${theSeller?.userimage}`}
-                            src={image}
+                            src={` ${theSeller?.userimage}`}
+                            // src={image}
                             className="w-24 h-24 object-cover mx-auto"
                         />
                         <p className="text-stone-300 ">
                             <i>"Sellers tagline goes here"</i>
                         </p>
                         <div className="flex mt-2 space-x-2">
-                            <button className="p-2 bg-gray-200 rounded-full h-12 w-12">
-                                <WhatsApp className="text-green-500" />
+                            <button className="p-2 rounded-full bg-gray-200" onClick={() => {}}>
+                                <Link
+                                    to={`https://wa.me/+254${theSeller?.seller_phonenumber
+                                        ?.toString()
+                                        ?.substring(1)}?text=hello, ${theSeller?.seller_name}`}
+                                    target="_blank"
+
+                                    // to=""
+                                >
+                                    <WhatsApp className="text-green-500" />
+                                </Link>
                             </button>
-                            <button className="p-2 bg-gray-200 rounded-full h-12 w-12">
-                                <Facebook className="text-blue-500" />
+                            {/* <button className="p-2 rounded-full bg-gray-200">
+                                    <Facebook className="text-blue-500" />
+                                </button> */}
+                            <button className="p-2 rounded-full bg-gray-200">
+                                <Link
+                                    to={`mailto:${theSeller?.seller_email}`}
+                                    className=""
+                                    target="_blank"
+                                >
+                                    <Email className="text-red-500" />
+                                </Link>
                             </button>
-                            <button className="p-2 bg-gray-200 rounded-full h-12 w-12">
-                                <YouTube className="text-red-500" />
-                            </button>
-                            <button className="p-2 bg-gray-200 rounded-full h-12 w-12">
-                                <Phone />
+                            <button className="p-2 rounded-full bg-gray-200">
+                                <Link to={`tel:${theSeller?.seller_phonenumber}`} target="_blank">
+                                    <Phone />
+                                </Link>
                             </button>
                         </div>
                     </div>
@@ -83,9 +99,9 @@ const SellersAdsComp = () => {
                     {/* user ads info */}
                     <div className="grid grid-cols-2 gap-4 mt-2 text-gray-500">
                         <span>Total products:</span>
-                        <span>45</span>
+                        <span>{Ads.length}</span>
                         <span>Total Reviews:</span>
-                        <span>45</span>
+                        <span>{theSeller?.comment}</span>
                         <span>Total comments:</span>
                         <span>45</span>
                         <span>Date Joined:</span>
@@ -98,7 +114,7 @@ const SellersAdsComp = () => {
 
             {/* seller's ads */}
             <div>
-                {/* <div className="flex flex-wrap gap-3 mx-auto p-5 ">
+                <div className="flex flex-wrap gap-3 mx-auto p-5 ">
                     {isLoading ? (
                         // Show loading indicator or message
                         <div>
@@ -109,16 +125,15 @@ const SellersAdsComp = () => {
                         Ads.map((product: ProductData) => (
                             <Productcard
                                 key={product.productname}
-                                image={`data:image/jpeg;base64, ${product.mainimage}`}
+                                image={` ${product.mainimage}`}
                                 // image={product.image}
-                                name={product.name}
-                                price={product.price}
-                                seller="John Doe"
+                                name={product.productname}
+                                price={product.productprice}
                                 id={product.producttid}
                             />
                         ))
                     )}
-                </div> */}
+                </div>
             </div>
         </div>
     );

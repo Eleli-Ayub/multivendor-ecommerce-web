@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useParams } from 'react-router-dom';
 import { FetchProduct, FetchProductImages, FetchProductSeller } from '../../Redux/slices/adSlice';
@@ -12,7 +12,7 @@ import Loader from '../../constants/loader';
 
 const ProductInfo = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const { ad, adImages, seller, isLoading } = useSelector((state: any) => state.ad);
 
@@ -193,7 +193,7 @@ const ProductInfo = () => {
                 style={{ borderColor: "#0c2e4e", margin: "0" }}
               /> */}
 
-                            <div className="sm:flex-1 flex-col md:justify-around  gap-4 px-5">
+                            <div className="sm:flex-1 flex-col md:justify-around  gap-4 px-5 lg:w-[300px]">
                                 <div className="text-center">
                                     <Avatar
                                         src={` ${seller?.user_profile}`}
@@ -212,7 +212,7 @@ const ProductInfo = () => {
                                         </p>
                                         <p className="text-center">Email:{seller?.seller_email} </p>
                                         {/* <p className="text-center">Email:janedoe@gmail.com </p> */}
-                                        {/* <div className="text-center p-2">
+                                        <div className="text-center p-2">
                                             <button
                                                 className="bg-black-200 text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover:bg-white transition-colors delay-300"
                                                 onClick={() =>
@@ -223,7 +223,7 @@ const ProductInfo = () => {
                                             >
                                                 View Shop
                                             </button>
-                                        </div> */}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
