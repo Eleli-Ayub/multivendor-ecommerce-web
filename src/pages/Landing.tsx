@@ -15,6 +15,10 @@ const Landing = () => {
     const Ads = useSelector((state: any) => state.AllAds.Ads);
 
     useEffect(() => {
+        dispatch(getLoggedInUser());
+    }, [dispatch]);
+
+    useEffect(() => {
         document.title = 'eDuka';
     }, []);
 

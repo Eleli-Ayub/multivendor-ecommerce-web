@@ -1,16 +1,13 @@
 import { useEffect } from 'react';
 import Sidebar from '../../components/Dashboard/Sidebar';
 import Profile from '../../components/Dashboard/profile';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const profile = () => {
-    const navigate = useNavigate();
-    const token = localStorage.getItem('userToken');
     useEffect(() => {
-        if (token === null) {
-            navigate('/login');
-        }
+        document.title = 'Profile';
     }, []);
+
     return (
         <div className="flex parent">
             <Sidebar />

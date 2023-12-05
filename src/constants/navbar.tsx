@@ -58,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
     const Logout = async () => {
         localStorage.removeItem('userToken');
         await dispatch(setUser(null));
-        navigate('/login');
+        navigate('/');
     };
 
     useEffect(() => {}, [userToken, user]);

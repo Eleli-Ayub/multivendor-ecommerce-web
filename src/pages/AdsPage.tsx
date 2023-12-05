@@ -27,7 +27,7 @@ const AdsPage = () => {
             </div>
             <div className="flex-1 mx-auto  my-body p-5">
                 {isLoading && <Loader />}
-                {Ads?.length > 0 ? (
+                {!isLoading && Ads?.length > 0 ? (
                     <Popular Ads={Ads} />
                 ) : (
                     <div className="flex items-center flex-col">

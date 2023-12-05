@@ -22,7 +22,7 @@ interface AuthState {
 const initialState: AuthState = {
     user: null,
     isLoading: false,
-    userToken: localStorage.getItem('userToken') || null,
+    userToken: localStorage.getItem('userToken') || '',
     theSeller: null,
     sellers: [],
 };
