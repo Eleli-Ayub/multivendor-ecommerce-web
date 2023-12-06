@@ -583,7 +583,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                                 <img
                                                     src={
                                                         image
-                                                            ? URL.createObjectURL(image)
+                                                            ? URL?.createObjectURL(image)
                                                             : undefined
                                                     }
                                                     alt={`Image ${index + 1}`}

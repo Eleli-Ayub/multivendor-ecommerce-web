@@ -1,124 +1,226 @@
-import { useRef, useEffect, useState } from 'react';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import Productcard from '../Global/Productcard';
-// import { products } from '../../data/sponsered';
+import React, { useEffect, useRef } from 'react';
+import './slider.css'; // Import your stylesheet here
 
-function AnotherSlider({ Ads }: any) {
-    // console.log(Ads);
-    // const isLoading = useSelector((state: any) => state.AllAds.isLoading);
+type AdFormProps = {
+    Ads: any[];
+};
 
-    function formatPriceWithCommas(price: any) {
-        if (price) {
-            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        }
-        return ''; // or any default value you prefer if price is undefined
+function formatPriceWithCommas(price: any) {
+    if (price) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
-
-    const sliderRef = useRef<HTMLDivElement | null>(null);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [intervalId, setIntervalId] = useState<number | undefined>();
-    // const userId = '8522c53e-6473-472d-bb09-49095097c1ba';
-
-    const sliderWidth = window.innerWidth < 640 ? window.innerWidth / 2 : 220;
-
-    const totalAds = Ads?.length;
-
-    const slideLeft = () => {
-        // Add a delay in milliseconds
-        const delay = 0; // Adjust this value as needed
-
-        // Set a timeout to delay the sliding action
-        setTimeout(() => {
-            setCurrentIndex((prevIndex) => (prevIndex - 1 + totalAds) % totalAds);
-        }, delay);
-    };
-
-    // const slideRight = () => {
-    //     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalAds);
-    // };
-
-    const slideRight = () => {
-        setCurrentIndex((prevIndex) => {
-            let nextIndex = prevIndex + 1;
-
-            // If the next index exceeds the total number of ads, reset it to 0
-            if (nextIndex === clonedAds.length) {
-                nextIndex = 0;
-            }
-            return nextIndex;
-        });
-    };
-
-    const autoSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % clonedAds.length);
-    };
-
-    useEffect(() => {
-        const id = setInterval(autoSlide, 7000);
-        setIntervalId(id);
-
-        return () => {
-            if (intervalId) {
-                clearInterval(intervalId);
-            }
-        };
-    }, [currentIndex]); // Update based on currentIndex
-
-    const clonedAds = Ads?.length ? Array(200).fill(Ads).flat() : [];
-
-    const sliderStyle: React.CSSProperties = {
-        display: 'flex',
-        transition: 'transform 0.7s ease',
-        transform: `translateX(-${currentIndex * sliderWidth}px)`,
-        width: `${clonedAds.length * sliderWidth}px`,
-    };
-
-    return (
-        <>
-            <h1 className="mt-3 lg:mt-5 px-2 text-stone-500 lg:px-7 text-md capitalize my-3 font-bold">
-                top products
-            </h1>
-            <div className="">
-                <MdChevronLeft
-                    className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"
-                    onClick={slideLeft}
-                    size={20}
-                />
-                <div
-                    ref={sliderRef}
-                    className="w-full h-full overflow-hidden scroll-smooth scrollbar-hidden  bg-gray-light lg:bg-none"
-                    style={{
-                        display: 'flex',
-                        overflowX: 'hidden',
-                        position: 'relative',
-                    }}
-                >
-                    <div style={sliderStyle} className="">
-                        {clonedAds.map((item, _index) => (
-                            <div
-                                key={item.product_data?.productid}
-                                className=" p-[5px] lg:p-4 lg:gap-5 "
-                                style={{ width: `${sliderWidth}px` }}
-                            >
-                                <Productcard
-                                    key={item.product_data?.productid}
-                                    image={` ${item?.product_data?.mainimage}`}
-                                    name={item?.product_data?.productname}
-                                    price={formatPriceWithCommas(item?.product_data?.productprice)}
-                                    id={item?.product_data?.producttid}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <MdChevronRight
-                    className="opacity-50 top-0 cursor-pointer hover:opacity-100 absolute"
-                    onClick={slideRight}
-                    size={20}
-                />
-            </div>
-        </>
-    );
+    return ''; // or any default value you prefer if price is undefined
 }
 
-export default AnotherSlider;
+const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const carouselRef = useRef<HTMLUListElement>(null);
+    const timeoutIdRef = useRef<number | null>(null);
+    const startXRef = useRef<number | null>(null);
+    const startScrollLeftRef = useRef<number | null>(null);
+
+    let isMounted = true;
+
+    useEffect(() => {
+        const wrapper = wrapperRef.current;
+        const carousel = carouselRef.current;
+
+        if (!wrapper || !carousel) {
+            return;
+        }
+
+        const firstCardElement = carousel.querySelector('.card') as HTMLElement | null;
+        const firstCardWidth = firstCardElement?.offsetWidth || 0;
+
+        const arrowBtns = document.querySelectorAll('.wrapper i');
+
+        let isDragging = false;
+
+        // Get the number of cards that can fit in the carousel at once
+        const cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+
+        // Insert copies of the last few cards to the beginning of the carousel for infinite scrolling
+        const carouselChildrens = Array.from(carousel.children);
+        carouselChildrens
+            .slice(-cardPerView)
+            .reverse()
+            .forEach((card) => {
+                carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
+            });
+
+        // Insert copies of the first few cards to the end of the carousel for infinite scrolling
+        carouselChildrens.slice(0, cardPerView).forEach((card) => {
+            carousel.insertAdjacentHTML('beforeend', card.outerHTML);
+        });
+
+        // Scroll the carousel at the appropriate position to hide the first few duplicate cards on Firefox
+        carousel.classList.add('no-transition');
+        carousel.scrollLeft = carousel.offsetWidth;
+        carousel.classList.remove('no-transition');
+
+        // Add event listeners for the arrow buttons to scroll the carousel left and right
+        arrowBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                if (carousel) {
+                    carousel.scrollLeft += btn.id === 'left' ? -firstCardWidth : firstCardWidth;
+                }
+            });
+        });
+
+        const dragStart = (e: React.MouseEvent<HTMLUListElement>) => {
+            isDragging = true;
+            if (carousel) {
+                carousel.classList.add('dragging');
+                // Records the initial cursor and scroll position of the carousel
+                startXRef.current = e.pageX;
+                startScrollLeftRef.current = carousel.scrollLeft;
+            }
+        };
+
+        const dragging = (e: React.MouseEvent<HTMLUListElement>) => {
+            if (!isDragging || !carousel) return;
+            // Updates the scroll position of the carousel based on the cursor movement
+            carousel.scrollLeft = startScrollLeftRef.current! - (e.pageX - startXRef.current!);
+        };
+
+        const dragStop = () => {
+            isDragging = false;
+            if (carousel) {
+                carousel.classList.remove('dragging');
+            }
+        };
+
+        const infiniteScroll = () => {
+            if (!carousel) return;
+
+            const cardElement = carousel.getElementsByClassName('card')[0] as
+                | HTMLElement
+                | undefined;
+            const cardWidth = cardElement?.offsetWidth || 0;
+
+            // If the carousel is at the beginning, scroll to the end
+            if (carousel.scrollLeft === 0) {
+                carousel.classList.add('no-transition');
+                carousel.scrollLeft = carousel.scrollWidth - 2 * cardWidth;
+                carousel.classList.remove('no-transition');
+            }
+            // If the carousel is at the end, scroll to the beginning
+            else if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth) {
+                carousel.classList.add('no-transition');
+                carousel.scrollLeft = carousel.offsetWidth;
+                carousel.classList.remove('no-transition');
+            }
+
+            // Clear existing timeout & start autoplay if the mouse is not hovering over the carousel
+            if (timeoutIdRef.current !== null) {
+                clearTimeout(timeoutIdRef.current);
+            }
+
+            if (wrapper && !wrapper.matches(':hover')) autoPlay();
+        };
+
+        const autoPlay = () => {
+            timeoutIdRef.current = window.setTimeout(() => {
+                if (carousel) {
+                    const cardWidth = firstCardElement?.offsetWidth || 0;
+                    const newPosition = carousel.scrollLeft + cardWidth;
+
+                    // If at the end, smoothly transition to the beginning
+                    if (newPosition >= carousel.scrollWidth - cardWidth) {
+                        carousel.classList.add('no-transition');
+                        carousel.scrollLeft = 0;
+                        carousel.classList.remove('no-transition');
+                    } else {
+                        carousel.scrollLeft = newPosition;
+                    }
+                }
+
+                // Continue autoplay regardless of screen size
+                autoPlay();
+            }, 5000);
+        };
+
+        autoPlay();
+
+        if (carousel) {
+            carousel.addEventListener('mousedown', dragStart as any);
+            carousel.addEventListener('mousemove', dragging as any);
+            document.addEventListener('mouseup', dragStop);
+            carousel.addEventListener('scroll', infiniteScroll);
+        }
+
+        if (wrapper) {
+            wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutIdRef.current!));
+            wrapper.addEventListener('mouseleave', autoPlay);
+        }
+
+        // Cleanup: Remove event listeners
+        return () => {
+            arrowBtns.forEach((btn) => {
+                btn.removeEventListener('click', () => {
+                    if (carousel) {
+                        carousel.scrollLeft += btn.id === 'left' ? -firstCardWidth : firstCardWidth;
+                    }
+                });
+            });
+
+            if (carousel) {
+                carousel.removeEventListener('mousedown', dragStart as any);
+                carousel.removeEventListener('mousemove', dragging as any);
+                document.removeEventListener('mouseup', dragStop);
+                carousel.removeEventListener('scroll', infiniteScroll);
+            }
+            if (wrapper) {
+                wrapper.removeEventListener('mouseenter', () => {
+                    if (timeoutIdRef.current !== null) {
+                        clearTimeout(timeoutIdRef.current);
+                    }
+                });
+                wrapper.removeEventListener('mouseleave', autoPlay);
+            }
+        };
+    }, []);
+
+    // ... (rest of the component code)
+
+    return (
+        <div className="wrapper mt-5 overflow-hidden " ref={wrapperRef}>
+            <div className="bg-gray-light px-[7px] ">
+                <i id="left" className="fa-solid fa-angle-left"></i>
+                <ul className="carousel   py-4 " ref={carouselRef}>
+                    {Ads.map((item: any) => (
+                        <li
+                            className="card rounded-lg bg-none  w-full lg:w-[47vw] lg:max-w-[220px] h-[250px] lg:h-[240px]  duration-200 cursor-pointer hover:scale-95 "
+                            key={item.id}
+                        >
+                            <div className="img">
+                                <img
+                                    className="w-full h-2/3 lg:h-3/5 object-cover"
+                                    src={` ${item?.product_data?.mainimage}`}
+                                    style={{
+                                        borderTopRightRadius: '0.75rem',
+                                        borderTopLeftRadius: '0.75rem',
+                                    }}
+                                    alt="img"
+                                    draggable="false"
+                                />
+                            </div>
+
+                            <h1 className="text-[15px] text-black-main lg:text-md capitalize h-[40px] line-clamp-2 leading-tight overflow-y-hidden px-[6px]">
+                                {item?.product_data?.productname}
+                            </h1>
+                            <p className='className="text-black-main text-[18px] font-bold mt-2 px-[6px]'>
+                                Ksh {formatPriceWithCommas(item?.product_data?.productprice)}
+                            </p>
+                        </li>
+                    ))}
+
+                    {/* Add more card items as needed */}
+                </ul>
+                <i id="right" className="fa-solid fa-angle-right"></i>
+            </div>
+        </div>
+    );
+};
+
+export default CardSlider;
