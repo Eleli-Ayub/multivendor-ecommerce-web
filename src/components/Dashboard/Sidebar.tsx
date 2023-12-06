@@ -8,7 +8,7 @@ import Loader from '../../constants/loader';
 import { useState, useEffect } from 'react';
 
 const Sidebar = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
     const { user, isLoading } = useSelector((state: any) => state.auth);
