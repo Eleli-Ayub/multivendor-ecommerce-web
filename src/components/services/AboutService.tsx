@@ -1,6 +1,5 @@
 import Photo from '../../assets/gallery.png';
-// import Bis from '../../assets/new.avif';
-// import New from "../../assets/Bis.avif";
+
 import Robot from '../../assets/robot.avif';
 
 const AboutPage = () => {
