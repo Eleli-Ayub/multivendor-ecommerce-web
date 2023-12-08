@@ -1,5 +1,5 @@
 import Photo from '../../assets/gallery.png';
-import Bis from '../../assets/new.avif';
+// import Bis from '../../assets/new.avif';
 // import New from "../../assets/Bis.avif";
 import Robot from '../../assets/robot.avif';
 
@@ -7,8 +7,8 @@ const AboutPage = () => {
     return (
         <>
             <section
-                className="p-8 bg-black text-white bg-cover"
-                style={{ backgroundImage: `url(${Bis})` }}
+                className="p-8 bg-black  text-white bg-cover"
+                // style={{ backgroundImage: `url(${Bis})` }}
             >
                 <div className="max-w-8xl mx-auto">
                     <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-6 text-center ">
