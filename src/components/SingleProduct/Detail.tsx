@@ -14,6 +14,7 @@ const ProductInfo = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const navigate = useNavigate();
 
+    const [toggle, settoggle] = useState(false);
     const { ad, adImages, seller, isLoading } = useSelector((state: any) => state.ad);
 
     const dispatch = useDispatch<AppDispatch>();
@@ -124,7 +125,6 @@ const ProductInfo = () => {
                         <p className="text-gray-700 capitalize">{seller?.seller_location} </p>
                     </div>
                     <div className="mt-2">
-                        <p className="capitalize text-sm text-gray-700">stock: 5</p>
                         <p className="capitalize text-sm text-gray-700">
                             {' '}
                             ratings: <Rating className="text-secondary-orange font-bold  " />
@@ -132,9 +132,9 @@ const ProductInfo = () => {
                     </div>
                     <div>
                         {' '}
-                        <button className="p-2  bg-primary-orange text-white px-12 py-3 mt-4 rounded  hover:secondary transition-colors delay-300">
+                        <button className="p-2  bg-primary-orange text-white px-12 py-3 mt-4 rounded  hover:secondary transition-colors delay-300" onClick={()=>settoggle(!toggle)}>
                             <Link to={`tel:${seller?.seller_phonenumber}`} target="_blank">
-                                Call seller
+                                {!toggle ? 'Call seller' : `${seller?.seller_phonenumber}`}
                             </Link>
                         </button>
                     </div>
@@ -163,12 +163,16 @@ const ProductInfo = () => {
                             <input
                                 type="text"
                                 className="h-10 rounded px-4 mb-2 shadow-custom w-full"
-                                placeholder="Please Enter your Name"
+                                placeholder="Please enter your name"
                             />
                             <input
                                 type="text"
                                 className="h-10 rounded px-4 mb-2 shadow-custom w-full"
-                                placeholder="Please Enter your Email"
+                                placeholder="Please enter your email"
+                            />
+                            <textarea
+                                className="h-12  rounded px-4 mb-1 shadow-custom w-full"
+                                placeholder="Please enter your inquiry"
                             />
                             <input
                                 type="text"
@@ -184,7 +188,11 @@ const ProductInfo = () => {
 
                 <div className="mt-2 rounded" style={{ height: 'auto' }}>
                     <div className="flex flex-col md:flex-row gap-3 md:flex-1">
-                        <div className=" price lg-w-[50%]" style={{ borderRadius: '0.25rem' }}>
+                        <div
+                            className=" price lg-w-[50%]"
+                            style={{ borderRadius: '0.25rem' }}
+                            hidden
+                        >
                             <h1 className="text-center py-4 mb-2 bg-primary-orange rounded-tl rounded-tr  text-white font-bold">
                                 Seller Details
                             </h1>

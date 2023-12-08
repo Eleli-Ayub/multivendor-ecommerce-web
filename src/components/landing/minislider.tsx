@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './slider.css'; // Import your stylesheet here
+import { useNavigate } from 'react-router-dom';
 
 type AdFormProps = {
     Ads: any[];
@@ -18,6 +19,7 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
     const timeoutIdRef = useRef<number | null>(null);
     const startXRef = useRef<number | null>(null);
     const startScrollLeftRef = useRef<number | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const wrapper = wrapperRef.current;
@@ -189,7 +191,8 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
                     {Ads.map((item: any) => (
                         <li
                             className="card rounded-lg bg-none  w-full lg:w-[47vw] lg:max-w-[220px] h-[250px] lg:h-[240px]  duration-200 cursor-pointer hover:scale-95 "
-                            key={item.id}
+                            key={item.product_data.producttid}
+                            onClick={() => navigate(`ad_info/${item.product_data.producttid}`)}
                         >
                             <div className="img">
                                 <img
