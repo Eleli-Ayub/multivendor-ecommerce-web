@@ -32,8 +32,17 @@ export const getSingleProduct = async (id: any): Promise<any> => {
 };
 
 export const fetchOurProducts = async () => {
-    // Your API call using Axios
     const response = await axiosService.get('/products/getproductsdata');
+    return response;
+};
+
+export const fetchOurTopsProducts = async () => {
+    const response = await axiosService.get(`/products/getproductsdata?top='top'`);
+    return response;
+};
+
+export const fetchOurSponseredProducts = async () => {
+    const response = await axiosService.get(`/products/getproductsdata?sponsered='sponsered'`);
     return response;
 };
 
@@ -67,15 +76,15 @@ export const fetchLoggedUsersProducts = async (id: any) => {
     return response;
 };
 
-export const ApproveProduct = async (id: string): Promise<any> => {
-    try {
-        const response = await axiosService.post(`admin/approveproduct?id=${id}`);
-        return response;
-    } catch (error: any) {
-        console.error(error);
-        throw new Error();
-    }
-};
+// export const ApproveProduct = async (id: string): Promise<any> => {
+//     try {
+//         const response = await axiosService.post(`admin/approveproduct?id=${id}`);
+//         return response;
+//     } catch (error: any) {
+//         console.error(error);
+//         throw new Error();
+//     }
+// };
 export const RejectProduct = async (id: string): Promise<any> => {
     try {
         const response = await axiosService.post(`/products/deactivate?id=${id}`);

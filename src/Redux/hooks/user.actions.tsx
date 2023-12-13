@@ -61,6 +61,6 @@ export const UpdateOfUser = async (userid: any, formdata: any) => {
 };
 
 export const GetSellers = async () => {
-    const response = await axiosService.get(`/user/auth/fetchsellers`);
+    const response = await axiosService.get(`/user/auth/fetchsellers?top="top"`);
     return response;
 };

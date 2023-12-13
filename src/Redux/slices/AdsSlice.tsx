@@ -4,6 +4,8 @@ import { ProductData } from '../../interface/common';
 import {
     fetchLoggedUsersProducts,
     fetchOurProducts,
+    fetchOurSponseredProducts,
+    fetchOurTopsProducts,
     fetchSellersProduct,
     searchOurProducts,
 } from '../hooks/Ads.actions';
@@ -11,6 +13,8 @@ import { toast } from 'react-toastify';
 
 interface ProductsState {
     Ads: ProductData[];
+    TopAds: ProductData[];
+    SponseredAds: ProductData[];
     isLoading: boolean;
     SearchResults: ProductData[];
     searchStatus: 'idle' | 'pending' | 'fulfilled' | 'rejected';
@@ -18,6 +22,8 @@ interface ProductsState {
 
 const initialState: ProductsState = {
     Ads: [],
+    TopAds: [],
+    SponseredAds: [],
     isLoading: false,
     SearchResults: [],
     searchStatus: 'idle',
@@ -32,6 +38,29 @@ export const FetchProductsAsync = createAsyncThunk('ads/fetchproductsasync', asy
         throw error; // Re-throw the error to be caught by the rejection handler
     }
 });
+
+export const FetchTopProductsAsync = createAsyncThunk('ads/fetchtopproductsasync', async () => {
+    try {
+        const response = await fetchOurTopsProducts();
+        return response.data.Data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error; // Re-throw the error to be caught by the rejection handler
+    }
+});
+
+export const FetchSponsoredProductsAsync = createAsyncThunk(
+    'ads/fetchsponseredproductsasync',
+    async () => {
+        try {
+            const response = await fetchOurSponseredProducts();
+            return response.data.Data;
+        } catch (error) {
+            console.error('Error fetching products:', error);
+            throw error; // Re-throw the error to be caught by the rejection handler
+        }
+    }
+);
 
 export const SearchingProduct = createAsyncThunk('ad/searchproduct', async (param: any) => {
     try {
@@ -92,6 +121,32 @@ const productsSlice = createSlice({
                 state.Ads = action.payload;
             })
             .addCase(FetchProductsAsync.rejected, (state, action) => {
+                state.isLoading = false;
+                console.error('Error fetching products:', action.error);
+            });
+
+        builder
+            .addCase(FetchTopProductsAsync.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(FetchTopProductsAsync.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.TopAds = action.payload;
+            })
+            .addCase(FetchTopProductsAsync.rejected, (state, action) => {
+                state.isLoading = false;
+                console.error('Error fetching products:', action.error);
+            });
+
+        builder
+            .addCase(FetchSponsoredProductsAsync.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(FetchSponsoredProductsAsync.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.SponseredAds = action.payload;
+            })
+            .addCase(FetchSponsoredProductsAsync.rejected, (state, action) => {
                 state.isLoading = false;
                 console.error('Error fetching products:', action.error);
             });

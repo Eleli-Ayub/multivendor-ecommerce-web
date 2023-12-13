@@ -6,27 +6,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
 import Minslider from '../components/landing/minislider';
 import Sponsered from '../components/landing/Sponsered';
-import { FetchProductsAsync } from '../Redux/slices/AdsSlice';
+import {
+    FetchProductsAsync,
+    FetchSponsoredProductsAsync,
+    FetchTopProductsAsync,
+} from '../Redux/slices/AdsSlice';
 import { AppDispatch } from '../Redux/store';
+import { fetchOurSponseredProducts, fetchOurTopsProducts } from '../Redux/hooks/Ads.actions';
 
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
     const dispatch = useDispatch<AppDispatch>();
-    const Ads = useSelector((state: any) => state.AllAds.Ads);
-
-    useEffect(() => {
-        dispatch(getLoggedInUser());
-    }, [dispatch]);
+    const { Ads, SponseredAds, TopAds } = useSelector((state: any) => state.AllAds);
 
     useEffect(() => {
         document.title = 'eDuka';
     }, []);
+    useEffect(() => {
+        dispatch(getLoggedInUser());
+    }, [dispatch]);
 
     const getUser = async () => {
         dispatch(getLoggedInUser());
     };
+
+    // fetch products
     useEffect(() => {
         dispatch(FetchProductsAsync());
+    }, []);
+
+    useEffect(() => {
+        dispatch(FetchTopProductsAsync());
+    }, []);
+
+    useEffect(() => {
+        dispatch(FetchSponsoredProductsAsync());
     }, []);
 
     useEffect(() => {
@@ -46,8 +60,8 @@ const Landing = () => {
 
                 <div className="parent px-0 lg:px-5">
                     <div className="mx-0 lg:mx:auto">
-                        <Minslider Ads={Ads} />
-                        <Sponsered Ads={Ads} />
+                        <Minslider Ads={TopAds} />
+                        <Sponsered Ads={SponseredAds} />
                         <Popular Ads={Ads} />
                     </div>
                 </div>
