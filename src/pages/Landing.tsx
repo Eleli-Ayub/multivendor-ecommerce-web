@@ -12,7 +12,6 @@ import {
     FetchTopProductsAsync,
 } from '../Redux/slices/AdsSlice';
 import { AppDispatch } from '../Redux/store';
-import { fetchOurSponseredProducts, fetchOurTopsProducts } from '../Redux/hooks/Ads.actions';
 
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);

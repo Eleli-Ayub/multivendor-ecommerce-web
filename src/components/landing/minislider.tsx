@@ -186,6 +186,7 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
     return (
         <div className="wrapper mt-5 overflow-hidden " ref={wrapperRef}>
             <div className="bg-gray-light px-[7px] ">
+                <h1 className="text-stone-500 my-2 font-bold mt-2">Top Ads</h1>
                 <i id="left" className="fa-solid fa-angle-left"></i>
                 <ul className="carousel   py-4 " ref={carouselRef}>
                     {Ads.map((item: any) => (
