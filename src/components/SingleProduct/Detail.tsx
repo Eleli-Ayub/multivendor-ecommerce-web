@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useParams } from 'react-router-dom';
 import { FetchProduct } from '../../Redux/slices/adSlice';
-import { Email, Favorite, LocationOn, Phone, Reviews, WhatsApp } from '@mui/icons-material';
+import { Email, LocationOn, Phone, WhatsApp } from '@mui/icons-material';
 import { Avatar } from 'antd';
-import { Rating } from '@mui/material';
+// import { Rating } from '@mui/material';
 import { AppDispatch } from '../../Redux/store';
 import Loader from '../../constants/loader';
 
@@ -82,15 +82,15 @@ const ProductInfo = () => {
                 </div>
 
                 <div className="flex gap-5 items-center p-4">
-                    <div>
+                    {/* <div>
                         <Favorite className="text-secondary-orange font-bold  animate-pulse" />
                         <span className="text-gray-500">20</span>
-                    </div>
+                    </div> */}
 
-                    <div>
+                    {/* <div>
                         <Reviews className="text-primary-orange font-bold " />
                         <span className="text-gray-500">20</span>
-                    </div>
+                    </div> */}
                     {/* <div>
                         <Rating className="text-secondary-orange font-bold  " />
                         <span></span>
@@ -127,12 +127,15 @@ const ProductInfo = () => {
                     <div className="mt-2">
                         <p className="capitalize text-sm text-gray-700">
                             {' '}
-                            ratings: <Rating className="text-secondary-orange font-bold  " />
+                            {/* ratings: <Rating className="text-secondary-orange font-bold  " /> */}
                         </p>
                     </div>
                     <div>
                         {' '}
-                        <button className="p-2  bg-primary-orange text-white px-12 py-3 mt-4 rounded  hover:secondary transition-colors delay-300" onClick={()=>settoggle(!toggle)}>
+                        <button
+                            className="p-2  bg-primary-orange text-white px-12 py-3 mt-4 rounded  hover:secondary transition-colors delay-300"
+                            onClick={() => settoggle(!toggle)}
+                        >
                             <Link to={`tel:${seller?.seller_phonenumber}`} target="_blank">
                                 {!toggle ? 'Call seller' : `${seller?.seller_phonenumber}`}
                             </Link>
