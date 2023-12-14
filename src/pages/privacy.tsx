@@ -2,7 +2,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 
 const PrivacyPolicy = () => {
     return (
-        <div className="container mx-auto text-xm px-8">
+        <div className="container mx-auto text-xm px-8 shadow-custom">
             <h1 className="text-3xl font-bold mb-6 border-b text-black-main ">PRIVACY POLICY</h1>
             <p className="mb-6">Last updated December 14, 2023</p>
             <div
@@ -75,26 +75,26 @@ const PrivacyPolicy = () => {
                     looking for.
                 </p>
                 <ul>
-                    <li>
+                    <li className="list-disc ">
                         <strong>What personal information do we process?</strong> When you visit,
                         use, or navigate our Services, we may process personal information depending
                         on how you interact with us and the Services, the choices you make, and the
                         products and features you use.
                     </li>
-                    <li>
+                    <li className="list-disc ">
                         <strong>Do we process any sensitive personal information?</strong> We do not
                         process sensitive personal information.
                     </li>
-                    <li>
+                    <li className="list-disc ">
                         <strong>Do we receive any information from third parties?</strong> We do not
                         receive any information from third parties.
                     </li>
-                    <li>
+                    <li className="list-disc ">
                         <strong>How do we process your information?</strong> We process your
                         information to provide, improve, and administer our Services, communicate
                         with you, for security and fraud prevention, and to comply with law.{' '}
                     </li>
-                    <li>
+                    <li className="list-disc ">
                         <strong>
                             In what situations and with which parties do we share personal
                             information?
@@ -102,25 +102,25 @@ const PrivacyPolicy = () => {
                         We may share information in specific situations and with specific third
                         parties.
                     </li>
-                    <li>
+                    <li className="list-disc ">
                         <strong>How do we keep your information safe?</strong> We have
                         organizational and technical processes and procedures in place to protect
                         your personal information. However, no electronic transmission over the
                         internet or information storage technology can be guaranteed to be 100%
                         secure.
                     </li>
-                    <li>
+                    <li className="list-disc ">
                         <strong>What are your rights?</strong> Depending on where you are located
                         geographically, the applicable privacy law may mean you have certain rights
                         regarding your personal information.
                     </li>
-                    <li>
+                    <li className="list-disc ">
                         <strong>How do you exercise your rights?</strong> The easiest way to
                         exercise your rights is by submitting a data subject access request, or by
                         contacting us. We will consider and act upon any request in accordance with
                         applicable data protection laws.
                     </li>
-                    <li>
+                    <li className="list-disc ">
                         <strong>
                             Want to learn more about what we do with any information we collect?
                         </strong>{' '}
@@ -504,8 +504,12 @@ const PrivacyPolicy = () => {
                     change the information in your account or terminate your account, you can:
                 </p>
                 <ul className="list-disc ml-4">
-                    <li>Log in to your account settings and update your user account.</li>
-                    <li>Contact us using the contact information provided.</li>
+                    <li className="list-disc ">
+                        Log in to your account settings and update your user account.
+                    </li>
+                    <li className="list-disc ">
+                        Contact us using the contact information provided.
+                    </li>
                 </ul>
                 <p>
                     Upon your request to terminate your account, we will deactivate or delete your
