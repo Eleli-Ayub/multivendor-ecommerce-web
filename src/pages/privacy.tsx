@@ -1,5 +1,4 @@
 import { HashLink as Link } from 'react-router-hash-link';
-import 'tailwindcss/tailwind.css';
 
 const PrivacyPolicy = () => {
     return (
