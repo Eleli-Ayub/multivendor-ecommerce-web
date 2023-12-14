@@ -35,6 +35,7 @@ import PremiumPackage from '../components/Packages/Premium';
 import StandardPackage from '../components/Packages/standard';
 import UserSidebar from '../components/Dashboard/Sidebar';
 import PrivateRoute from '../components/PrivateRoute';
+import PrivacyPolicy from '../pages/privacy';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -192,6 +193,8 @@ const Index = () => {
                                 </PrivateRoute>
                             }
                         />
+
+                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     </Routes>
                 </ScrollToTop>
             </div>
