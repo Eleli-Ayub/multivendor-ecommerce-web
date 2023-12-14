@@ -236,8 +236,8 @@ const AdsTable = () => {
                         onClick={() => {
                             setAdID(record.producttid);
                             setIsEditing(true);
-                            console.log('this is record id', record.producttid);
-                            console.log('this is ad id', AdID);
+                            // console.log('this is record id', record.producttid);
+                            // console.log('this is ad id', AdID);
                         }}
                     />
                 </div>

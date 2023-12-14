@@ -82,7 +82,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
         }
     }, [sellerad, adImages]);
 
-    console.log(adImages);
+    // console.log(adImages);
 
     const getCategory = async () => {
         setLoading(true);
@@ -582,9 +582,9 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                             >
                                                 <img
                                                     src={
-                                                        image
-                                                            ? URL?.createObjectURL(image)
-                                                            : undefined
+                                                        typeof image === 'string'
+                                                            ? image
+                                                            : URL.createObjectURL(image)
                                                     }
                                                     alt={`Image ${index + 1}`}
                                                     className="object-cover rounded h-full w-full"

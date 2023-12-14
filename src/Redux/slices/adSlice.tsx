@@ -37,7 +37,7 @@ export const FetchProduct = createAsyncThunk('ad/fetchproduct', async (id: any) 
 export const FetchMyProduct = createAsyncThunk('ad/fetchmyproduct', async (id: any, {}) => {
     try {
         const response = await fetchSingle(id);
-        console.log(response.data);
+        // console.log(response.data);
         return response.data.Data;
     } catch (error) {
         console.error('Error fetching product:', error);
