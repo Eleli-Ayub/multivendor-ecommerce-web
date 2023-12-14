@@ -223,7 +223,11 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                     <div
                         className={`${
                             !toggle ? 'hidden' : 'flex'
-                        } p-6 black-gradient absolute top-10 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
+                        } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
+                        onMouseLeave={() => {
+                            setUserSmallNav(false);
+                            setToggle(false);
+                        }}
                     >
                         <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
                             {/* <div>
@@ -275,7 +279,10 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
                                             <div
                                                 className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200  right-4"
                                                 onClick={() => setToggle(false)}
-                                                onMouseLeave={() => setUserSmallNav(false)}
+                                                onMouseLeave={() => {
+                                                    setUserSmallNav(false);
+                                                    setToggle(false);
+                                                }}
                                             >
                                                 <p
                                                     className="hover:underline hover:text-green-400 cursor-pointer"

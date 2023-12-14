@@ -128,7 +128,7 @@ const ProductInfo = () => {
             </div>
 
             {/* part3 */}
-            <div className="md:flex-1  h-full w-screen p-4">
+            <div className="md:flex-1  h-full p-4">
                 <div>
                     <div>
                         <h2 className=" text-2xl capitalize font-bold">{ad?.productname}</h2>

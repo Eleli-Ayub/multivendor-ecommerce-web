@@ -248,14 +248,14 @@ const AdsTable = () => {
 
     return (
         <div className="mt-4">
-            <div className="text-gray-500 flex flex-col gap-3">
+            <div className="text-gray-500 flex flex-col gap-3 px-[10px] lg:px-0">
                 <h2 className="underline font-bold">GuideLines</h2>
                 <p> * You cannot delete An Active Ad</p>
                 <p> * To delete an Ad, Deactivate it first</p>
                 <p> * Only the Admin can Approve and Suspend Your Ads</p>
             </div>
 
-            <div className=" mt-4 table-responsive">
+            <div className=" mt-4 table-responsive px-[10px] lg:px-0">
                 <Table columns={TableData} dataSource={Ads} className="border rounded-sm" />
             </div>
             {isEditing && <AdForm isEditing={isEditing} id={AdID} setIsEditing={setIsEditing} />}
