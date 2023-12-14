@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useParams } from 'react-router-dom';
 import { FetchProduct } from '../../Redux/slices/adSlice';
-import { Email, LocationOn, Phone, WhatsApp } from '@mui/icons-material';
+import { ChevronLeft, ChevronRight, Email, LocationOn, Phone, WhatsApp } from '@mui/icons-material';
 import { Avatar } from 'antd';
 // import { Rating } from '@mui/material';
 import { AppDispatch } from '../../Redux/store';
 import Loader from '../../constants/loader';
+import { IconButton } from '@mui/material';
 
 const ProductInfo = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -28,6 +29,15 @@ const ProductInfo = () => {
         fetchData();
     }, [dispatch, id]);
 
+    const prevSlide = () => {
+        const newIndex = (selectedImageIndex - 1 + adImages.length) % adImages.length;
+        setSelectedImageIndex(newIndex);
+    };
+    const nextSlide = () => {
+        const newIndex = (selectedImageIndex + 1) % adImages.length;
+        setSelectedImageIndex(newIndex);
+    };
+
     return (
         <div className="flex flex-col md:flex-row lg:gap-5 p-3 lg:p-5 w-[100%] mb-10 h-auto">
             {isLoading && <Loader />}
@@ -37,15 +47,34 @@ const ProductInfo = () => {
                     {/* Images */}
                     {/* <p>{ad.userid}</p> */}
                     <div className="md:flex-1">
-                        <div className="flex flex-col gap-4">
-                            <div>
+                        <div className="flex flex-col gap-4 ">
+                            <div className="relative">
                                 <img
                                     src={` ${adImages && adImages[selectedImageIndex]}`}
-                                    // src={pictures[selectedImageIndex]}
                                     className="h-auto w-full max-h-[30rem] rounded-md"
                                     alt=""
                                 />
+
+                                <div className="flex items-center justify-between absolute inset-0 px-1">
+                                    <IconButton
+                                        className="bg-[#eee] text-primary-orange"
+                                        style={{ color: '#f75a0d', backgroundColor: '#eee' }}
+                                        onClick={prevSlide}
+                                    >
+                                        <ChevronLeft />
+                                    </IconButton>
+
+                                    {/* Next button */}
+                                    <IconButton
+                                        className="bg-[#eee] text-primary-orange"
+                                        onClick={nextSlide}
+                                        style={{ color: '#f75a0d', backgroundColor: '#eee' }}
+                                    >
+                                        <ChevronRight />
+                                    </IconButton>
+                                </div>
                             </div>
+
                             <div className="flex gap-4 p-4">
                                 {/* {adImages.map((image: any, index: number) => ( */}
                                 {adImages?.map((image: any, index: number) => (
