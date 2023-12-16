@@ -23,39 +23,28 @@ const AdsComp = () => {
     console.log(filteredAds);
 
     return (
-        <div className="flex flex-col">
-            {/* seller's ads */}
-            <div>
-                <div className="flex px-2 gap-3 flex-wrap lg:gap-5">
+        <div className=" ">
+            <div className=" ">
+                <div className="flex  gap-2 flex-wrap lg:gap-5 items-center justify-center lg:justify-normal">
+                    {/* <div className="flex px-2 gap-3 flex-wrap lg:gap-5"> */}
                     {isLoading ? (
-                        // Show loading indicator or message
                         <div>
                             <Loader />
                         </div>
-                    ) : filteredAds.length === 0 ? (
-                        // Render a message when filteredAds is empty
-                        <div className="text-center text-gray-600">
-                            You do not have any pending ads
-                        </div>
+                    ) : filteredAds.length > 0 ? (
+                        filteredAds.map((product: ProductData) => (
+                            <Productcard
+                                key={product.producttid}
+                                image={`${product.mainimage}`}
+                                name={product.productname}
+                                price={product.productprice}
+                                // seller={`${user.firstname} ${user.lastname}`}
+                                id={product.producttid}
+                                // description={product.productdescription}
+                            />
+                        ))
                     ) : (
-                        // Render products if not loading and filteredAds is not empty
-                        <div>
-                            <p className="pb-2 text-center text-gray-500">
-                                Your Pending Ads will appear here, Check back the main feed for
-                                approved Ads, and Active Ads
-                            </p>
-                            {filteredAds.map((product: ProductData) => (
-                                <Productcard
-                                    key={product.producttid}
-                                    image={`${product.mainimage}`}
-                                    name={product.productname}
-                                    price={product.productprice}
-                                    // seller={`${user?.firstname} ${user?.lastname}`}
-                                    id={product.producttid}
-                                    // description={product.productdescription}
-                                />
-                            ))}
-                        </div>
+                        <p className="text-center"> You do not have any pending ads</p>
                     )}
                 </div>
             </div>

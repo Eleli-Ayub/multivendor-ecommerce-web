@@ -42,7 +42,7 @@ const Sidebar = () => {
                     {DashboardLinks.map((Menu, index) => (
                         <li
                             key={index}
-                            className={`flex rounded-md p-2 cursor-pointer  hover:text-white text-sm items-center gap-4 ${'mt-2'}`}
+                            className={`flex rounded-md p-2 cursor-pointer  hover:text-white text-sm items-center gap-4 ${''}`}
                         >
                             <NavLink
                                 to={`/${Menu.url}`}
