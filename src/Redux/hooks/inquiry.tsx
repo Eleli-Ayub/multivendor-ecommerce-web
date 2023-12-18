@@ -10,3 +10,13 @@ export const createInquiry = async (payload: any): Promise<any> => {
         throw new Error();
     }
 };
+
+export const GetInquiries = async (): Promise<any> => {
+    try {
+        const response = await axios.get(`${url}/all`);
+        return response.data;
+    } catch (error: any) {
+        console.error(error);
+        throw new Error();
+    }
+};

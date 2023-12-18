@@ -239,29 +239,29 @@ const ProductInfo = () => {
                         </div>
                         <div className="right md:flex-1">
                             <form onSubmit={handleInquirySubmit}>
-                                <input
+                                {/* <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Please enter your name"
                                     onChange={(e) => updateFormData('name', e.target.value)}
-                                />
-                                <input
+                                /> */}
+                                {/* <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Please enter your email"
                                     onChange={(e) => updateFormData('email', e.target.value)}
-                                />
+                                /> */}
                                 <textarea
                                     className="h-12  rounded px-4 mb-1 shadow-custom w-full"
                                     placeholder="Please enter your inquiry"
                                     onChange={(e) => updateFormData('message', e.target.value)}
                                 />
-                                <input
+                                {/* <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Enter your phone"
                                     onChange={(e) => updateFormData('phone', e.target.value)}
-                                />
+                                /> */}
                                 <button className="bg-black-200 text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover:bg-white transition-colors delay-300">
                                     Inquire
                                 </button>
