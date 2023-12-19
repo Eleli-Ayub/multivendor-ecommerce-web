@@ -30,18 +30,22 @@ const AdsPage = () => {
                 {!isLoading && Ads?.length > 0 ? (
                     <Popular Ads={Ads} />
                 ) : (
-                    <div className="flex items-center flex-col">
-                        <img src={Search} alt="" className="h-[200px] w-[200px]" />
-                        <p className="text-center text-[14px] text-black-main font-bold">
-                            Sorry 0 results found
-                        </p>
+                    <div>
+                        {!isLoading && (
+                            <div className="flex items-center flex-col">
+                                <img src={Search} alt="" className="h-[200px] w-[200px]" />
+                                <p className="text-center text-[14px] text-black-main font-bold">
+                                    Sorry 0 results found
+                                </p>
 
-                        <button
-                            className="px-[10px] py-4 mt-3 bg-primary-orange hover:bg-secondary-orange text-white rounded"
-                            onClick={() => navigate('/')}
-                        >
-                            Back to homepage
-                        </button>
+                                <button
+                                    className="px-[10px] py-4 mt-3 bg-primary-orange hover:bg-secondary-orange text-white rounded"
+                                    onClick={() => navigate('/')}
+                                >
+                                    Back to homepage
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
