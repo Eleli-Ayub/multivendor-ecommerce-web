@@ -291,10 +291,9 @@ const PrivacyPolicy = () => {
                 <h2 className="text-xl font-bold mb-4">2. HOW DO WE PROCESS YOUR INFORMATION?</h2>
                 {/* Add content for #section 2 */}
                 <p>
-                    In Short: We process your information to provide, improve, and administer our
-                    Services, communicate with you, for security and fraud prevention, and to comply
-                    with law. We may also process your information for other purposes with your
-                    consent.
+                    We process your information to provide, improve, and administer our Services,
+                    communicate with you, for security and fraud prevention, and to comply with law.
+                    We may also process your information for other purposes with your consent.
                 </p>
                 <p>
                     We process your personal information for a variety of reasons, depending on how
@@ -338,9 +337,9 @@ const PrivacyPolicy = () => {
                 </h2>
                 {/* Add content for #section 3 */}
                 <p>
-                    In Short: We may share information in specific situations described in this
-                    section and/or with the following third parties. We may need to share your
-                    personal information in the following situations:
+                    We may share information in specific situations described in this section and/or
+                    with the following third parties. We may need to share your personal information
+                    in the following situations:
                 </p>
                 <ul className="list-disc ml-4">
                     <li>
@@ -375,11 +374,11 @@ const PrivacyPolicy = () => {
                 </h2>
                 {/* Add content for #section 4 */}
                 <p>
-                    In Short: We may use cookies and other tracking technologies to collect and
-                    store your information. We may use cookies and similar tracking technologies
-                    (like web beacons and pixels) to access or store information. Specific
-                    information about how we use such technologies and how you can refuse certain
-                    cookies is set out in our Cookie Notice.
+                    We may use cookies and other tracking technologies to collect and store your
+                    information. We may use cookies and similar tracking technologies (like web
+                    beacons and pixels) to access or store information. Specific information about
+                    how we use such technologies and how you can refuse certain cookies is set out
+                    in our Cookie Notice.
                 </p>
             </div>
 
@@ -388,8 +387,8 @@ const PrivacyPolicy = () => {
                 <h2 className="text-xl font-bold mb-4">5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</h2>
                 {/* Add content for #section 5 */}
                 <p>
-                    In Short: If you choose to register or log in to our Services using a social
-                    media account, we may have access to certain information about you.
+                    If you choose to register or log in to our Services using a social media
+                    account, we may have access to certain information about you.
                 </p>
                 <p>
                     Our Services offer you the ability to register and log in using your third-party
@@ -416,8 +415,8 @@ const PrivacyPolicy = () => {
                 <h2 className="text-xl font-bold mb-4">6. HOW LONG DO WE KEEP YOUR INFORMATION?</h2>
                 {/* Add content for #section 6 */}
                 <p>
-                    In Short: We keep your information for as long as necessary to fulfill the
-                    purposes outlined in this privacy notice unless otherwise required by law.
+                    We keep your information for as long as necessary to fulfill the purposes
+                    outlined in this privacy notice unless otherwise required by law.
                 </p>
                 <p>
                     We will only keep your personal information for as long as it is necessary for
@@ -441,8 +440,8 @@ const PrivacyPolicy = () => {
                 <h2 className="text-xl font-bold mb-4">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</h2>
                 {/* Add content for #section 7 */}
                 <p>
-                    In Short: We aim to protect your personal information through a system of
-                    organizational and technical security measures.
+                    We aim to protect your personal information through a system of organizational
+                    and technical security measures.
                 </p>
                 <p>
                     We have implemented appropriate and reasonable technical and organizational
@@ -468,8 +467,8 @@ const PrivacyPolicy = () => {
                 </h2>
                 {/* Add content for #section 8 */}
                 <p>
-                    In Short: We do not knowingly collect data from or market to children under 18
-                    years of age.
+                    We do not knowingly collect data from or market to children under 18 years of
+                    age.
                 </p>
                 <p>
                     We do not knowingly solicit data from or market to children under 18 years of
@@ -487,7 +486,7 @@ const PrivacyPolicy = () => {
             <div id="section9" className="mb-6">
                 <h2 className="text-xl font-bold mb-4">9. WHAT ARE YOUR PRIVACY RIGHTS?</h2>
                 {/* Add content for #section 9 */}
-                <p>In Short: You may review, change, or terminate your account at any time.</p>
+                <p> You may review, change, or terminate your account at any time.</p>
                 <p>
                     <strong>Withdrawing your consent:</strong> If we are relying on your consent to
                     process your personal information, which may be express and/or implied consent
@@ -553,8 +552,8 @@ const PrivacyPolicy = () => {
                 <h2 className="text-xl font-bold mb-4">11. DO WE MAKE UPDATES TO THIS NOTICE?</h2>
                 {/* Add content for #section 11 */}
                 <p>
-                    In Short: Yes, we will update this notice as necessary to stay compliant with
-                    relevant laws.
+                    Yes, we will update this notice as necessary to stay compliant with relevant
+                    laws.
                 </p>
                 <p>
                     We may update this privacy notice from time to time. The updated version will be
