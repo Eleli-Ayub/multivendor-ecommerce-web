@@ -10,7 +10,6 @@ const AllAds = () => {
     const Ads = useSelector((state: any) => state.AllAds.SponseredAds);
     const isLoading = useSelector((state: any) => state.AllAds.isLoading);
     const dispatch = useDispatch<AppDispatch>();
-    console.log(Ads);
 
     useEffect(() => {
         if (Ads && Ads.length > 0) {

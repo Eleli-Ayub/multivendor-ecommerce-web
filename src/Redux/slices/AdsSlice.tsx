@@ -107,6 +107,13 @@ const productsSlice = createSlice({
         setAds: (state, action) => {
             state.Ads = action.payload;
         },
+        setTopAds: (state, action) => {
+            state.TopAds = action.payload;
+        },
+
+        setSponsoredAds: (state, action) => {
+            state.SponseredAds = action.payload;
+        },
         setSearchResults: (state, action) => {
             state.SearchResults = action.payload;
         },
@@ -192,6 +199,6 @@ const productsSlice = createSlice({
     },
 });
 
-export const { setAds, setSearchResults } = productsSlice.actions;
+export const { setAds, setSearchResults, setTopAds, setSponsoredAds } = productsSlice.actions;
 
 export default productsSlice.reducer;
