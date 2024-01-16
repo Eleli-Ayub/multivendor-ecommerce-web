@@ -14,10 +14,10 @@ const CardHeader: React.FC<PageTitleProps> = ({
 }) => {
   const navigate = useNavigate();
   return (
-    <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-white my-3 ">
-      <h1 className="text-stone-500 my-2 font-bold">{cardName}</h1>
+    <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-green-light my-3 rounded-t-[8px] ">
+      <h1 className="text-white my-2 font-bold">{cardName}</h1>
       <button
-        className="underline rounded-lg px-2 text-sm py-1 text-slate-500 my-2 font-bold"
+        className="underline rounded-lg px-2 text-sm py-1 text-white my-2 font-bold"
         onClick={() => navigate(link)}
       >
         {linkTitle}
