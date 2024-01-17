@@ -32,8 +32,6 @@ const Inquiries = () => {
             await MarkAsRead(inquiryId);
             setIsLoading(false);
             fetch();
-
-            console.log(`Inquiry ${inquiryId} marked as read successfully.`);
         } catch (error) {
             console.error('Error marking inquiry as read:', error);
         }
