@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url = 'http://localhost:5000/inquiries';
+const url = 'https://inquiries.vercel.app/inquiries';
 
 export const createInquiry = async (payload: any): Promise<any> => {
     try {
