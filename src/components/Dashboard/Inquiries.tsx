@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { GetInquiries } from '../../Redux/hooks/inquiry';
+import { GetInquiries, MarkAsRead } from '../../Redux/hooks/inquiry';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Delete, FiberManualRecord, Visibility } from '@mui/icons-material';
@@ -13,18 +13,33 @@ const Inquiries = () => {
     const [selectedId, SetSelectedId] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        const fetch = async () => {
-            setIsLoading(true);
-            const response = await GetInquiries();
-            setIsLoading(false);
-            const data = response.data;
-            const usersInquiries = data.filter((item: any) => item.user === user?.userid);
-            setInquiry(usersInquiries);
-        };
+    const fetch = async () => {
+        setIsLoading(true);
+        const response = await GetInquiries();
+        const data = response.data;
+        const usersInquiries = await data.filter((item: any) => item.user === user?.userid);
+        setIsLoading(false);
+        setInquiry(usersInquiries);
+    };
 
+    useEffect(() => {
         fetch();
     }, []);
+
+    const markInquiryAsRead = async (inquiryId: any): Promise<void> => {
+        try {
+            setIsLoading(true);
+            await MarkAsRead(inquiryId);
+            setIsLoading(false);
+            fetch();
+
+            console.log(`Inquiry ${inquiryId} marked as read successfully.`);
+        } catch (error) {
+            console.error('Error marking inquiry as read:', error);
+        }
+    };
+
+    // Call the function to mark the inquiry as read
 
     return (
         <div className=" px-[10px] py-[20px] md:px-8 md:py-20 max-w-6xl mx-auto bg-white h-[100vh] shadow-lg">
@@ -33,7 +48,7 @@ const Inquiries = () => {
                 <ul
                     key={item?._id}
                     className={`max-w-2xl mb-2 bg-white text-black-main text-[16px] rounded-md shadow-lg  border-t border-t-gray-100  ${
-                        item.read
+                        item?.read
                             ? 'border-l-3  border-green-light '
                             : 'border-l-4 border-green-dark'
                     }`}
@@ -45,12 +60,14 @@ const Inquiries = () => {
                             onClick={() => {
                                 setShowModal(true);
                                 SetSelectedId(item?._id);
+                                markInquiryAsRead(item?._id);
                             }}
                         >
                             <p className="font-bold line-clamp-1">{item?.message}</p>
                             <p className="text-gray-500">
                                 {new Date(item?.createdAt).toLocaleDateString()}
                             </p>
+                            <p>status: {item?.read ? 'has been read' : 'has not been read'}</p>
                         </Link>
                         <div className="flex items-center space-x-2">
                             {item?.read ? (
@@ -59,6 +76,7 @@ const Inquiries = () => {
                                     onClick={() => {
                                         setShowModal(true);
                                         SetSelectedId(item?._id);
+                                        markInquiryAsRead(item?._id);
                                     }}
                                 />
                             ) : (
@@ -67,6 +85,7 @@ const Inquiries = () => {
                                     onClick={() => {
                                         setShowModal(true);
                                         SetSelectedId(item?._id);
+                                        markInquiryAsRead(item?._id);
                                     }}
                                 />
                             )}
