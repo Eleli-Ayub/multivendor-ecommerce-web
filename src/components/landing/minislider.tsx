@@ -203,7 +203,7 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
         >
           {Ads.map((item: any) => (
             <li
-              className="card rounded-lg bg-none lg:w-[47vw] lg:max-w-[220px]  duration-200 cursor-pointer hover:scale-95 h-[250px] lg:h-[300px] w-[42vw] md:w-[200px] xl:w-[200px] mb-4 hover:shadow-lg  "
+              className="card rounded-lg bg-none  lg:max-w-[220px]  duration-200 cursor-pointer hover:scale-95 h-[250px] lg:h-[300px] w-[42vw] md:w-[200px] xl:w-[200px] mb-4 hover:shadow-lg  "
               key={item.product_data.producttid}
               onClick={() =>
                 navigate(`ad_info/${item.product_data.producttid}`)
