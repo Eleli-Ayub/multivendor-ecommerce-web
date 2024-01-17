@@ -195,7 +195,7 @@ const CardSlider: React.FC<AdFormProps> = ({ Ads }) => {
 
   return (
     <div className="wrapper mt-5 overflow-hidden " ref={wrapperRef}>
-      <div className="px-4  w-full overflow-hidden bg-white shadow-lg ">
+      <div className="px-4  w-full overflow-hidden bg-hidden shadow-lg">
         <i id="left" className="fa-solid fa-angle-left"></i>
         <ul
           className="carousel  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 w-full  py-4 "
