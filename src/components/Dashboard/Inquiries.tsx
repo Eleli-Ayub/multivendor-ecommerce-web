@@ -20,17 +20,19 @@ const Inquiries = () => {
     }, []);
 
     return (
-        <div className="px-8 py-20 max-w-6xl mx-auto bg-white h-[100vh] shadow-lg">
+        <div className=" px-[10px] py-[20px] md:px-8 md:py-20 max-w-6xl mx-auto bg-white h-[100vh] shadow-lg">
             {inquiry.map((item: any) => (
                 <ul
                     key={item.id}
                     className={`max-w-2xl mb-2 bg-white text-black-main text-[16px] rounded-md shadow-lg  border-t border-t-gray-100  ${
-                        item.read ? 'border-l-3  border-green-500' : 'border-l-4 border-blue-500'
+                        item.read
+                            ? 'border-l-3  border-green-light '
+                            : 'border-l-4 border-green-dark'
                     }`}
                 >
                     <li className="flex justify-between items-center py-3 px-[10px] rounded-[8px]">
                         <Link to={'/'} className="flex-1 pr-4">
-                            <p className="font-bold">{item.message}</p>
+                            <p className="font-bold line-clamp-1">{item.message}</p>
                             <p className="text-gray-500">
                                 {new Date(item.createdAt).toLocaleDateString()}
                             </p>
@@ -39,7 +41,7 @@ const Inquiries = () => {
                             {item.read ? (
                                 <Visibility className="text-green-500" />
                             ) : (
-                                <FiberManualRecord className="text-blue-500" />
+                                <FiberManualRecord className="text-green-dark" />
                             )}
                             <Delete className="text-red-600" />
                         </div>
