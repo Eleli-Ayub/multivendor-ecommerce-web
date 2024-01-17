@@ -13,7 +13,7 @@ const Popular = ({ Ads }: any) => {
 
   return (
     <div className="px-4  w-full overflow-hidden bg-white shadow-lg ">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 w-full py-4">
+      <div className="flex flex-wrap justify-center lg:justify-start -mx-2">
         {Ads?.map((product: any) => (
           <Productcard
             key={product.product_data?.producttid}

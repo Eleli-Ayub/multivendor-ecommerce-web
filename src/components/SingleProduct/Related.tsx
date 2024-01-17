@@ -17,7 +17,7 @@ const Related = () => {
         <h1 className="text-black-main my-2 font-bold">You May also Like</h1>
       </div>
       <div className="pb-2  bg-white px-[5px] shadow-lg">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 w-full py-4">
+        <div className="flex flex-wrap justify-center lg:justify-start -mx-2">
           {Ads?.map((product: any) => (
             <>
               <Productcard
