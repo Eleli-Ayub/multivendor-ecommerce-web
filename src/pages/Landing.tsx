@@ -70,7 +70,7 @@ const Landing = () => {
   return (
     <div>
       <div className="">
-        <div className="flex parent ">
+        <div className="flex parent bg-gray-light ">
           <Sidebar />
           <div className="flex-1 mx-auto  my-body ">
             <ImageSlider />

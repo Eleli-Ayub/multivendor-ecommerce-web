@@ -72,7 +72,7 @@ const Index = () => {
 
       <ToastContainer position="top-center" />
       <AdsForm showAdsForm={showAdsForm} setShowAdsForm={setShowAdsForm} />
-      <div className=" mt-[170px] md:mt-[10rem] max-w-[100vw]" id="root">
+      <div className=" mt-[170px] md:mt-[10rem] max-w-[100vw] " id="root">
         <div className="md:hidden lg:hidden">
           <UserSidebar />
         </div>
