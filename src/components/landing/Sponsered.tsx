@@ -21,8 +21,8 @@ const Popular = ({ Ads }: any) => {
   }
 
   return (
-    <div className="px-4  w-full overflow-hidden bg-white shadow-lg">
-      <div className="flex flex-wrap justify-center lg:justify-start md:-mx-2  -mx-[4px]">
+    <div className="px-4  w-full overflow-hidden bg-white shadow-lg py-2">
+      <div className="flex flex-wrap justify-center lg:justify-start md:-mx-2  -mx-[5px] ">
         {Ads?.slice(0, 6).map((product: any) => (
           <SponsereCard
             key={product.product_data?.producttid}

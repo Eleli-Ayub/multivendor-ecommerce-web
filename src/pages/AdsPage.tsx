@@ -20,12 +20,12 @@ const AdsPage = () => {
   }, [Ads]);
 
   return (
-    <div className="flex parent ">
+    <div className="flex parent  max-w-[90rem] mx-auto ">
       <div className="">
         {" "}
         <Filters Ads={Ads} />
       </div>
-      <div className="flex-1 mx-auto  my-body ">
+      <div className="flex-1 mx-auto  my-body px:0 md:px-3  ">
         {isLoading && <Loader />}
         {!isLoading && Ads?.length > 0 ? (
           <Popular Ads={Ads} />
