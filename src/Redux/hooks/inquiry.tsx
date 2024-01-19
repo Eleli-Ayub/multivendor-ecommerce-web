@@ -1,11 +1,14 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const url = 'https://inquiries.vercel.app/inquiries';
 
 export const createInquiry = async (payload: any): Promise<any> => {
     try {
         const response = await axios.post(`${url}/inquire`, payload);
+        toast.success('Your inquiry has been sent...');
         return response;
     } catch (error: any) {
+        toast.error('Please fill in all the fields');
         console.error(error);
         throw new Error();
     }

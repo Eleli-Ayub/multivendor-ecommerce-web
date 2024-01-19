@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,6 +16,7 @@ const ProductInfo = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const navigate = useNavigate();
 
+    const formRef = useRef<HTMLFormElement>(null);
     const [toggle, settoggle] = useState(false);
     const { ad, adImages, seller, isLoading } = useSelector((state: any) => state.ad);
 
@@ -70,7 +71,11 @@ const ProductInfo = () => {
         event.preventDefault();
         const response = await createInquiry(formData);
         console.log(response);
+        formRef?.current?.reset();
+        reset();
+    };
 
+    const reset = () => {
         setFormData({
             name: '',
             email: '',
@@ -235,29 +240,33 @@ const ProductInfo = () => {
                             </p>
                         </div>
                         <div className="right md:flex-1">
-                            <form onSubmit={handleInquirySubmit}>
+                            <form onSubmit={handleInquirySubmit} ref={formRef}>
                                 <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Please enter your name"
                                     onChange={(e) => updateFormData('name', e.target.value)}
+                                    required
                                 />
                                 <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Please enter your email"
                                     onChange={(e) => updateFormData('email', e.target.value)}
+                                    required
                                 />
                                 <textarea
                                     className="h-12  rounded px-4 mb-1 shadow-custom w-full"
                                     placeholder="Please enter your inquiry"
                                     onChange={(e) => updateFormData('message', e.target.value)}
+                                    required
                                 />
                                 <input
                                     type="text"
                                     className="h-10 rounded px-4 mb-2 shadow-custom w-full"
                                     placeholder="Enter your phone"
                                     onChange={(e) => updateFormData('phone', e.target.value)}
+                                    required
                                 />
                                 <button className="bg-black-200 text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover:bg-white transition-colors delay-300">
                                     Inquire
