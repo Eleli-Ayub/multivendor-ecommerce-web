@@ -35,8 +35,8 @@ const Contact: React.FC = () => {
             phone: formData.phone,
             email: formData.email,
             message: formData.message,
-            product: formData.product,
-            user: formData.user,
+            product: 'nil',
+            user: 'admin',
         });
 
         setFormData({
@@ -44,8 +44,8 @@ const Contact: React.FC = () => {
             email: '',
             message: '',
             phone: '',
-            user: '',
-            product: '',
+            user: 'admin',
+            product: 'nil',
         });
     };
 
