@@ -19,7 +19,7 @@ const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
     const dispatch = useDispatch<AppDispatch>();
     const { Ads, SponseredAds, TopAds } = useSelector((state: any) => state.AllAds);
-    const [inquiry, setInquiry] = useState([]);
+    const [, setInquiry] = useState([]);
     const user = useSelector((state: any) => state.auth.user);
 
     useEffect(() => {
@@ -56,9 +56,9 @@ const Landing = () => {
         const fetch = async () => {
             const response = await GetInquiries();
             const data = response.data;
-            const usersInquiries = data.filter((item: any) => item.user === user.userid);
+            const usersInquiries = data.filter((item: any) => item.user === user?.userid);
             setInquiry(usersInquiries);
-            console.log(inquiry);
+            // console.log(inquiry);
         };
 
         fetch();
