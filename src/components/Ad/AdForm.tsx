@@ -159,6 +159,15 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
         if (files) {
             const imageFiles = Array.from(files).filter((file) => file.type.startsWith('image/'));
 
+            const maxFiles = 3; // Maximum number of files allowed
+            const totalSelectedFiles = selectedImages.length + imageFiles.length;
+
+            // Check if the total number of selected files exceeds the maximum allowed
+            if (totalSelectedFiles > maxFiles) {
+                toast.error(`You can only upload a maximum of ${maxFiles} files.`);
+                return;
+            }
+
             const base64Images = await Promise.all(
                 imageFiles.map(async (file) => {
                     // Convert image file to base64
@@ -431,7 +440,8 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         value={formData.producttype}
                                         onChange={handleSelectChange}
                                     >
-                                        <option value="select type">Select type</option>
+                                        <option value="">Select type</option>{' '}
+                                        {/* Empty value for the default option */}
                                         <option value="brand new">Brand New</option>
                                         <option value="refurbished">Refurbished</option>
                                         <option value="exported">Exported</option>
@@ -524,6 +534,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         placeholder="Upload your cover image"
                                         onChange={handleGalleryUpload}
                                         multiple
+                                        max={3}
                                     />
                                     <div className="flex gap-2">
                                         {selectedImages.map((image, index) => (
