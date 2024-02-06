@@ -305,7 +305,7 @@ const ProductInfo = () => {
                                         </p>
                                         <p className="text-center">Email:{seller?.seller_email} </p>
                                         {/* <p className="text-center">Email:janedoe@gmail.com </p> */}
-                                        <div className="text-center p-2">
+                                        {/* <div className="text-center p-2">
                                             <button
                                                 className="bg-black-200 text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover:bg-white transition-colors delay-300"
                                                 onClick={() =>
@@ -316,7 +316,7 @@ const ProductInfo = () => {
                                             >
                                                 View Shop
                                             </button>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>

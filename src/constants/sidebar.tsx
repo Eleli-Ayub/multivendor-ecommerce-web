@@ -67,7 +67,7 @@ const Sidebar = () => {
                         <div>
                             <li
                                 key={Menu.categoryname}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4
+                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
                                     // handleCategoryMouseOver(Menu.categoryname);
@@ -97,7 +97,7 @@ const Sidebar = () => {
                         <div>
                             <li
                                 key={seller?.ID}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4
+                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize
               ${'mt-2'} ${index === 0 && 'bg-light-white'} `}
                                 onMouseOver={() => {
                                     // handleCategoryMouseOver(Menu.categoryname);
