@@ -9,7 +9,7 @@ import { CgMenuGridR } from 'react-icons/cg';
 const Closed = () => {
     const [showTable, setShowTable] = useState(false);
     return (
-        <div className="flex  parent">
+        <div className="flex  parent max-w-[90rem] mx-auto">
             <Sidebar />
             <div className="flex-1  mx-auto my-body">
                 <Navbar />

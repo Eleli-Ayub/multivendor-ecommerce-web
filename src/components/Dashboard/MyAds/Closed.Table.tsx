@@ -1,5 +1,5 @@
 import { Table } from 'antd';
-import { Delete, Edit, Visibility } from '@mui/icons-material';
+import { Visibility } from '@mui/icons-material';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchLoggedUsersProducts } from '../../../Redux/slices/AdsSlice';
@@ -7,12 +7,14 @@ import { FetchLoggedUsersProducts } from '../../../Redux/slices/AdsSlice';
 import { AppDispatch } from '../../../Redux/store';
 import { ProductData } from '../../../interface/common';
 import Loader from '../../../constants/loader';
+import { useNavigate } from 'react-router-dom';
 
 const AdsTable = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { isLoading, Ads } = useSelector((state: any) => state.AllAds);
     const user = useSelector((state: any) => state.auth.user);
     const id = user?.userid;
+    const navigate = useNavigate();
     // console.log(id);
     // console.log(user);
 
@@ -46,9 +48,14 @@ const AdsTable = () => {
                 console.log(record, text);
                 return (
                     <div className="flex mr-2 gap-3">
-                        <Visibility className="text-primary-orange" />
-                        <Edit className="text-green-500 " />
-                        <Delete className="text-red-600" />
+                        <Visibility
+                            className="text-primary-orange"
+                            onClick={() => {
+                                navigate(`/product_info/${record.producttid}`), console.log(text);
+                            }}
+                        />
+                        {/* <Edit className="text-green-500 " />
+                        <Delete className="text-red-600" /> */}
                     </div>
                 );
             },

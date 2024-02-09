@@ -50,7 +50,7 @@ const AdsTable = () => {
             dispatch(setLoader(true));
             const response = await DeleteProduct(id);
             console.log(response);
-            toast.success('product deletedsuccessfully...');
+            toast.success('product deleted successfully...');
             dispatch(setLoader(false));
         } catch (error) {
             toast.error('failed to delete, try again later');
@@ -236,8 +236,6 @@ const AdsTable = () => {
                         onClick={() => {
                             setAdID(record.producttid);
                             setIsEditing(true);
-                            // console.log('this is record id', record.producttid);
-                            // console.log('this is ad id', AdID);
                         }}
                     />
                 </div>

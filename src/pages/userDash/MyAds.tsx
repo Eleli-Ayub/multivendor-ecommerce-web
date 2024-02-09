@@ -17,11 +17,11 @@ const MyAds = () => {
         }
     }, []);
     return (
-        <div className="flex parent">
+        <div className="flex parent max-w-[90rem] mx-auto">
             <Sidebar />
             <div className="flex-1 my-body">
                 <Navbar />
-                <div className="flex justify-end mr-2">
+                <div className="flex justify-end mr-2 ">
                     <button
                         className="mt-2 mb-2 flex bg-primary-orange rounded p-[2px] text-white capitalize hover:bg-secondary-orange transition duration-300 ease-in-out transform hover:scale-105"
                         onClick={() => {

@@ -8,7 +8,7 @@ function Productcard({ image, name, price, id }: productCard) {
         <div className="w-[47vw] md:w-[250px] rounded-xl p-0  h-[250px] lg:h-[280px] mb-2 cursor-pointer px-2 ">
             <div
                 className="flex h-full flex-col max-w-sm rounded-xl bg-none md:bg-stone-50 radius-2xl border-gray-300 mb-2 relative hover:scale-105 duration-300"
-                onClick={() => navigate(`/ad_info/${id}`)}
+                onClick={() => navigate(`/product_info/${id}`)}
             >
                 <img
                     className="w-full h-[55%] lg:h-3/5 lg:w-full object-cover object-center lg:object-cover border-none md:border border-red-500"
