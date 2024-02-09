@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
 // import Minslider from '../components/landing/minislider';
 // import Sponsered from '../components/landing/Sponsered';
+
 import {
     FetchProductsAsync,
     FetchSponsoredProductsAsync,
@@ -14,12 +15,13 @@ import {
 import { AppDispatch } from '../Redux/store';
 import { GetInquiries } from '../Redux/hooks/inquiry';
 import CardHeader from '../components/Global/CardHeader';
+import ProductLoader from '../components/Global/ProductLoader';
 
 const Landing = () => {
     const userToken = useSelector((state: any) => state.auth.userToken);
     const dispatch = useDispatch<AppDispatch>();
     // const { Ads, SponseredAds, TopAds } = useSelector((state: any) => state.AllAds);
-    const { Ads } = useSelector((state: any) => state.AllAds);
+    const { Ads, isLoading } = useSelector((state: any) => state.AllAds);
     const [, setInquiry] = useState([]);
     const user = useSelector((state: any) => state.auth.user);
 
@@ -89,7 +91,14 @@ const Landing = () => {
                             linkTitle={'See All'}
                             link={'/all_ads'}
                         />
-                        <Popular Ads={Ads} />
+                        {isLoading ? (
+                            <div className="flex flex-wrap">
+                                {' '}
+                                <ProductLoader count={6} />
+                            </div>
+                        ) : (
+                            <Popular Ads={Ads} />
+                        )}
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import Loader from '../constants/loader';
 import Search from '../assets/seatch.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import ProductLoader from '../components/Global/ProductLoader';
 
 const AdsPage = () => {
     const Ads = useSelector((state: any) => state.AllAds.SearchResults);
@@ -31,7 +32,11 @@ const AdsPage = () => {
                         <h1 className="text-black-main my-2 font-bold">Search Results</h1>
                     </div>
                 </div>
-                {isLoading && <Loader />}
+                {isLoading && (
+                    <div className="flex flex-wrap">
+                        <ProductLoader count={5} />
+                    </div>
+                )}
                 {!isLoading && Ads?.length > 0 ? (
                     <Popular Ads={Ads} />
                 ) : (

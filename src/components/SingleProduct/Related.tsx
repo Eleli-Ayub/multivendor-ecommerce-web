@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux';
 import Productcard from '../Global/PopularCard';
+import ProductLoader from '../Global/ProductLoader';
 
 const Related = () => {
     const Ads = useSelector((state: any) => state.ad.similarAds);
+    const { isLoading } = useSelector((state: any) => state.ad);
     // console.log(Ads);
 
     function formatPriceWithCommas(price: any) {
@@ -17,21 +19,27 @@ const Related = () => {
                 <h1 className="text-black-main my-2 font-bold">You May also Like</h1>
             </div>
             <div className="pb-2  bg-white px-[5px] shadow-lg">
-                <div className="flex flex-wrap justify-center lg:justify-start -mx-2">
-                    {Ads?.map((product: any) => (
-                        <>
-                            <Productcard
-                                key={product.producttid}
-                                image={`${product?.mainimage}`}
-                                name={product?.productname}
-                                price={formatPriceWithCommas(product?.productprice)}
-                                // seller={product?.user_name}
-                                id={product?.producttid}
-                                // description={product?.product_data?.productdescription}
-                            />
-                        </>
-                    ))}
-                </div>
+                {isLoading ? (
+                    <div className="flex flex-wrap">
+                        <ProductLoader count={6} />
+                    </div>
+                ) : (
+                    <div className="flex flex-wrap justify-center lg:justify-start -mx-2">
+                        {Ads?.map((product: any) => (
+                            <>
+                                <Productcard
+                                    key={product.producttid}
+                                    image={`${product?.mainimage}`}
+                                    name={product?.productname}
+                                    price={formatPriceWithCommas(product?.productprice)}
+                                    // seller={product?.user_name}
+                                    id={product?.producttid}
+                                    // description={product?.product_data?.productdescription}
+                                />
+                            </>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
