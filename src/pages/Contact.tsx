@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <div className="xl:mt-12 flex xl:flex-row flex-col gap-10 p-[5px] lg:p-20  pb-10 ">
+        <div className=" flex xl:flex-row flex-col gap-10 p-[5px] lg:p-5  pb-10 ">
             <div className="w-full lg:w-1/2 mb-4 lg:mb-0 border-r-2 px-[10px] price rounded-[0.25rem]">
                 <form className="bg-white rounded px-8 pt-6 pb-8" onSubmit={handleInquirySubmit}>
                     <div className=" mt-8 py-2 ">
