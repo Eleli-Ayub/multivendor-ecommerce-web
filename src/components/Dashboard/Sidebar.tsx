@@ -67,7 +67,7 @@ const Sidebar = () => {
                 <div className="flex items-center mt-10 flex-col ">
                     <Avatar
                         alt="Jane Doe"
-                        src={`data:image/jpeg;base64, ${user?.userimage}`}
+                        src={`${user?.userimage}`}
                         className="h-24 w-24 border-4 border-primary-orange"
                     />
                     <span className="text mt-5 capitalize">{`${user?.firstname} ${user?.lastname}`}</span>
