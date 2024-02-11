@@ -24,7 +24,7 @@ const Related = () => {
                         <ProductLoader count={6} />
                     </div>
                 ) : (
-                    <div className="flex flex-wrap justify-center lg:justify-start -mx-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
                         {Ads?.map((product: any) => (
                             <>
                                 <Productcard
