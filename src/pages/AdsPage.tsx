@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Popular from '../components/landing/popular';
+import Popular from '../components/landing/PopularSearch';
 import Filters from '../constants/Filters';
 // import Loader from '../constants/loader';
 import Search from '../assets/seatch.jpg';
@@ -33,7 +33,7 @@ const AdsPage = () => {
                     </div>
                 </div>
                 {isLoading && (
-                    <div className="flex flex-wrap">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-2">
                         <ProductLoader count={5} />
                     </div>
                 )}

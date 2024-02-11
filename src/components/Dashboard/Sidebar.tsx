@@ -29,9 +29,9 @@ const Sidebar = () => {
         <div onClick={handleProfileOpenerClose}>
             {/* Main Sidebar */}
             <div
-                className="px-6 bg-gray-light m-3 overflow-y-auto pt-10 my-sidebar price"
+                className="px-4 bg-gray-light m-3 overflow-y-auto pt-10 my-sidebar price"
                 style={{
-                    width: '22vw',
+                    width: '18vw',
                     height: '100vh',
                     borderRadius: '2px',
                     position: 'sticky',
@@ -55,7 +55,11 @@ const Sidebar = () => {
                                 }`}
                             >
                                 <img src={Menu.icon} className="h-8 object-cover" alt={Menu.name} />
-                                <span className={`${!open && 'hidden'} origin-left duration-200`}>
+                                <span
+                                    className={`${
+                                        !open && 'hidden'
+                                    } origin-left duration-200 line-clamp-1 overflow-hidden`}
+                                >
                                     {Menu.name}
                                 </span>
                             </NavLink>
