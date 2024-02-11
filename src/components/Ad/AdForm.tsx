@@ -558,24 +558,9 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
 
                                 {/* end of image gallery */}
 
-                                <div className="mb-2">
-                                    <label
-                                        htmlFor="Negotiable"
-                                        className="block text-gray-700 text-sm font-bold mb-2"
-                                    >
-                                        Negotiable:
-                                    </label>
-                                    <input
-                                        type="checkbox"
-                                        id="Negotiable"
-                                        name="Negotiable"
-                                        className="rounded"
-                                        style={{ width: '24px' }}
-                                    />
-                                </div>
                                 <button
                                     type="submit"
-                                    className="bg-primary-orange p-2 w-full rounded-xl text-white hover:bg-secondary-orange"
+                                    className="bg-primary-orange p-2 w-full rounded-xl text-white hover:bg-secondary-orange mt-3"
                                 >
                                     Add Product
                                 </button>
