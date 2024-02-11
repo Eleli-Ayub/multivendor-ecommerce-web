@@ -184,10 +184,10 @@ const ProductInfo = () => {
                     <div className="text-2xl font-bold text-secondary-orange">
                         {' '}
                         <h2> KSh {ad?.productprice}</h2>
-                        <span className="text-sm text-gray-500">
+                        {/* <span className="text-sm text-gray-500">
                             {' '}
                             {'{'}Fixed price{'}'}
-                        </span>
+                        </span> */}
                     </div>
 
                     <div className="">
