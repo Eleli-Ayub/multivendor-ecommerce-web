@@ -331,10 +331,11 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         name="productdescription"
                                         value={formData.productdescription}
                                         onChange={handleInputChange}
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange h-auto"
                                         placeholder="Enter your product description"
                                         minLength={100}
-                                        // maxLength={200}
+                                        style={{ minHeight: '100px' }}
+                                        // maxLength={600}
                                         required
                                     />
                                 </div>
