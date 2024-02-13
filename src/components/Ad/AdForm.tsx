@@ -129,7 +129,17 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
 
     const handlemainimageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
+
+        // Check if a file was selected
         if (file) {
+            // Check if the selected file is an image
+            if (!file.type.startsWith('image/')) {
+                // If the file is not an image, display an error message
+                alert('Please select a cover image');
+                e.target.value = ''; // Clear the file input to allow re-selection
+                return;
+            }
+
             // Create a URL for the selected file to set as a preview
             const previewURL = URL.createObjectURL(file);
 
@@ -158,6 +168,14 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
         const files = e.target.files;
         if (files) {
             const imageFiles = Array.from(files).filter((file) => file.type.startsWith('image/'));
+
+            const minFiles = 1; // Minimum number of files required
+
+            // Check if at least one image file is selected
+            if (imageFiles.length < minFiles) {
+                toast.error('Please select at least one image.');
+                return;
+            }
 
             const maxFiles = 3; // Maximum number of files allowed
             const totalSelectedFiles = selectedImages.length + imageFiles.length;
@@ -241,6 +259,19 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
             toast.error('Product description must be at least 100 characters.');
             return;
         }
+
+        // Check if cover image is uploaded
+        if (!formData.mainimage || formData.mainimage === 'null') {
+            toast.error('Please upload a cover image.');
+            return;
+        }
+
+        // Check if at least one gallery image is uploaded
+        if (formData.productimages.length === 0) {
+            toast.error('Please upload at least one gallery image.');
+            return;
+        }
+
         try {
             setLoading(true);
             const response = await createProduct(formData);
@@ -510,7 +541,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                         placeholder="Upload your cover image"
                                         onChange={handlemainimageChange}
-                                        required
+                                        accept=".jpg, .jpeg, .png"
                                     />
                                 </div>
 
@@ -535,10 +566,10 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                         placeholder="Upload your cover image"
                                         onChange={handleGalleryUpload}
+                                        accept=".jpg, .jpeg, .png"
                                         multiple
                                         max={3}
                                         min={1}
-                                        required
                                     />
                                     <div className="flex gap-2">
                                         {selectedImages.map((image, index) => (

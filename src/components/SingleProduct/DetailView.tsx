@@ -41,11 +41,11 @@ const ProductInfo = () => {
     }, [dispatch, id]);
 
     const prevSlide = () => {
-        const newIndex = (selectedImageIndex - 1 + adImages.length) % adImages.length;
+        const newIndex = (selectedImageIndex - 1 + adImages?.length) % adImages?.length;
         setSelectedImageIndex(newIndex);
     };
     const nextSlide = () => {
-        const newIndex = (selectedImageIndex + 1) % adImages.length;
+        const newIndex = (selectedImageIndex + 1) % adImages?.length;
         setSelectedImageIndex(newIndex);
     };
 

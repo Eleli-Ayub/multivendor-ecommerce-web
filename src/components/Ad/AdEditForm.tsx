@@ -575,7 +575,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                         multiple
                                     />
                                     <div className="flex gap-2">
-                                        {selectedImages.map((image, index) => (
+                                        {selectedImages?.map((image, index) => (
                                             <div
                                                 key={index}
                                                 className="flex  flex-row h-20 w-20 relative"
