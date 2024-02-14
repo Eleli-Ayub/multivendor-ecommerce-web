@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/logo.png';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,6 +31,20 @@ const RegisterForm: React.FC = () => {
         password: '',
         confirmPassword: '',
     });
+
+    const [sortedLocations, setSortedLocations] = useState<Location[]>([]);
+
+    useEffect(() => {
+        const sortedCounties = [...locations].sort((a, b) => a.name.localeCompare(b.name));
+        const sortedLocationsArray: Location[] = [];
+        sortedCounties.forEach((county) => {
+            const sortedSubLocations = [...county.subLocations].sort((a, b) =>
+                a.name.localeCompare(b.name)
+            );
+            sortedLocationsArray.push({ ...county, subLocations: sortedSubLocations });
+        });
+        setSortedLocations(sortedLocationsArray);
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -111,6 +125,7 @@ const RegisterForm: React.FC = () => {
                                         onChange={handleChange}
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                         placeholder="First name"
+                                        minLength={4}
                                         required
                                     />
                                 </div>
@@ -124,6 +139,7 @@ const RegisterForm: React.FC = () => {
                                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
                                         placeholder="Last name"
                                         required
+                                        minLength={4}
                                     />
                                 </div>
                             </div>
@@ -180,7 +196,7 @@ const RegisterForm: React.FC = () => {
                                 required
                             >
                                 <option value="">Select County</option>
-                                {locations.map((location: Location) => (
+                                {sortedLocations.map((location: Location) => (
                                     <option key={location.id} value={location.name}>
                                         {location.name}
                                     </option>
@@ -203,7 +219,7 @@ const RegisterForm: React.FC = () => {
                                 required
                             >
                                 <option value="">Select Location</option>
-                                {locations
+                                {sortedLocations
                                     .find((location: Location) => location.name === formData.county)
                                     ?.subLocations.map((subLocation) => (
                                         <option key={subLocation.id} value={subLocation.name}>
@@ -262,9 +278,6 @@ const RegisterForm: React.FC = () => {
                             <p className="text-sm text-gray-500 px-2">
                                 The password must be at least 4 characters long{' '}
                             </p>
-                            {/* <p className="text-sm text-gray-500 px-2">
-                                Must contain a symbol, a number, and an Uppercase Letter
-                            </p> */}
                         </div>
 
                         <div className="mb-4 relative">
