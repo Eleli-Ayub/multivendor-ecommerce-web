@@ -164,7 +164,18 @@ export const locations = [
     {
         id: 32,
         name: 'Nakuru',
-        subLocations: [{ id: 1, name: 'Nakuru' }],
+        subLocations: [
+            { id: 1, name: 'Molo' },
+            { id: 2, name: 'Njoro' },
+            { id: 3, name: 'Naivasha' },
+            { id: 2, name: 'Barut' },
+            { id: 2, name: 'Gilgil' },
+            { id: 2, name: 'Subukia ' },
+            { id: 2, name: 'Rongai' },
+            { id: 2, name: 'Bahati' },
+            { id: 2, name: 'Menengai' },
+            { id: 2, name: 'Keringet' },
+        ],
     },
     {
         id: 33,
