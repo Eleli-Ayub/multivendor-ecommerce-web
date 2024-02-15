@@ -25,7 +25,7 @@ type NavbarProps = {
 const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
     const [active, setActive] = useState('');
     const [toggle, setToggle] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [scrolled] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: any) => state.auth.user);
@@ -36,24 +36,8 @@ const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
         dispatch(getLoggedInUser());
     }, [userToken]);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollTop = window.scrollY;
-            if (scrollTop > 100) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
     useEffect(() => {}, [user]);
     const [userSmallnav, setUserSmallNav] = React.useState(false);
-    // console.log(user);
 
     const Logout = async () => {
         localStorage.removeItem('userToken');
