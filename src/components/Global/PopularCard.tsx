@@ -5,9 +5,9 @@ function Productcard({ image, name, price, id }: productCard) {
     const navigate = useNavigate();
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mt-4">
             <div
-                className="flex flex-col rounded-[8px] sm:bg-white border-gray-300 relative hover:scale-105 duration-300 w-full h-full cursor-pointer "
+                className="flex flex-col rounded-[8px] sm:bg-white border-gray-300 relative hover:scale-105 duration-300 w-full h-full cursor-pointer border"
                 onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
@@ -19,7 +19,7 @@ function Productcard({ image, name, price, id }: productCard) {
                     <h1 className="text-[15px] text-black-main lg:text-md capitalize h-[40px] line-clamp-2 leading-tight overflow-y-hidden">
                         {name}
                     </h1>
-                    <p className="text-[18px] font-bold text-black-main mt-2">Ksh: {price}</p>
+                    <p className="text-[15px] font-semibold text-black-main mt-2">Ksh: {price}</p>
                 </div>
             </div>
         </div>
