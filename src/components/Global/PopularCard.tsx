@@ -7,7 +7,7 @@ function Productcard({ image, name, price, id }: productCard) {
     return (
         <div className="flex flex-col items-center mt-4">
             <div
-                className="flex flex-col rounded-[8px] sm:bg-white border-gray-300 relative hover:scale-105 duration-300 w-full h-full cursor-pointer border"
+                className="flex flex-col rounded-[8px] sm:bg-gray-light border-gray-300 relative hover:scale-105 duration-300 w-full h-full cursor-pointer "
                 onClick={() => navigate(`/ad_info/${id}`)}
             >
                 <img
