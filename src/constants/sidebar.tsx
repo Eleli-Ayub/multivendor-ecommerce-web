@@ -132,7 +132,7 @@ const Sidebar = () => {
                                     (subcategory: subcategoryData, index: number) => (
                                         <li
                                             key={index}
-                                            className={`cursor-pointer text-sm text-gray-500  mt-2 px-3 py-3 hover:bg-white 
+                                            className={`cursor-pointer text-sm text-gray-500  px-3 py-3 hover:bg-white 
                   ${''} ${index === 0 && 'bg-light-white'} `}
                                         >
                                             {subcategory.subcategoryname}
