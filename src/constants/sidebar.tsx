@@ -122,7 +122,7 @@ const Sidebar = () => {
             <div>
                 {submenuOpen && (
                     <div
-                        className=" absolute bg-gray-light  z-10 h-[55vh] w-[18vw] border-l-2 border-primary-orange px-5 shadow-custom overflow-y-auto no-scrollbar text-sm"
+                        className=" absolute bg-gray-light  z-10 h-[55vh] w-[18vw] border-l-2 border-primary-orange px-5 shadow-custom overflow-y-auto no-scrollbar text-sm pt-5"
                         style={{
                             left: '18vw',
                         }}
