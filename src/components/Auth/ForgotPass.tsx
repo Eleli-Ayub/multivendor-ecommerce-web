@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/logo.png';
 import { ResetPasswordrequest } from '../../Redux/hooks/user.actions';
 import Loader from '../../constants/loader';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 // interface PasswordResetInput {
 //     email: string;
@@ -12,11 +12,19 @@ import Loader from '../../constants/loader';
 const ForgotPass: React.FC = () => {
     const [email, setEmail] = useState('');
     const [loading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         const response = await ResetPasswordrequest(email);
+        if (response.status === 200) {
+            toast.success('Your request has been received');
+            navigate('/confirm_code');
+        } else {
+            toast.error(response.Error);
+        }
+
         setIsLoading(false);
         console.log(response);
     };
