@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { ConfirmCode } from '../../Redux/hooks/user.actions';
 import Loader from '../../constants/loader';
 import Logo from '../../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const ConfirmCodeForm: React.FC = () => {
     const [code, setCode] = useState('');
     const [loading, setLoading] = useState(false);
     const [resetToken, setResetToken] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         setResetToken(localStorage.getItem('passToken') || ''); // Initialize resetToken with an empty string if not found in localStorage
@@ -14,13 +16,18 @@ const ConfirmCodeForm: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
 
         try {
             // Call the function to confirm the code
+            setLoading(true);
             const response = await ConfirmCode({ requestCode: code, requestToken: resetToken });
             setLoading(false);
-            console.log(response);
+            if (response.Success) {
+                setTimeout(() => {
+                    navigate('/reset_password');
+                }, 200);
+            } else {
+            }
         } catch (error) {
             console.error(error);
             setLoading(false);

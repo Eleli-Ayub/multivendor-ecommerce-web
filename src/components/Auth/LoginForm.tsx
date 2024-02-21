@@ -100,7 +100,7 @@ const LoginForm: React.FC = ({}) => {
 
                         <p className="text-gray-500 text-center mt-3">
                             Forgot password?
-                            <Link to="/reset_password" className="ml-2 text-blue-500">
+                            <Link to="/reset_password_request" className="ml-2 text-blue-500">
                                 Reset password
                             </Link>{' '}
                         </p>

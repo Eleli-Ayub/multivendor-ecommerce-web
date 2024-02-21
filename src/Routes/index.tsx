@@ -42,6 +42,7 @@ import InquiriesPAge from '../pages/userDash/Inquiries';
 import SellerAd from '../pages/SellerAd';
 import PassResetPage from '../pages/userDash/ForgotPassword';
 import ConfirmCodePage from '../pages/ConfirmCodePage';
+import ResetPasswordPage from '../pages/ResetPasswordPage';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -82,7 +83,8 @@ const Index = () => {
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/reset_password" element={<PassResetPage />} />
+                    <Route path="/reset_password_request" element={<PassResetPage />} />
+                    <Route path="/reset_password" element={<ResetPasswordPage />} />
                     <Route path="/confirm_code" element={<ConfirmCodePage />} />
                     <Route path="/" element={<Landing />} />
                     <Route

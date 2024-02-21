@@ -111,13 +111,13 @@ const PasswordResetForm: React.FC = () => {
                     </div>
                     <div className="flex items-center justify-between">
                         <button
-                            className="bg-primary-orange hover:bg-secondary-orange text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline items-center"
+                            className="bg-primary-orange hover:bg-secondary-orange text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline items-center w-full"
                             type="submit"
                         >
                             Reset Password
                         </button>
                     </div>
-                    <p className="items-center mt-4 text-gray-700">
+                    <p className="items-center mt-4 text-gray-700 text-center">
                         {' '}
                         Back to{' '}
                         <Link to="/login" className="text-blue-400">
