@@ -5,11 +5,13 @@ import ScrollToTop from './components/ScrollToTop';
 
 function App() {
     return (
-        <BrowserRouter>
-            {' '}
-            <ScrollToTop />
-            <Routes />
-        </BrowserRouter>
+        <div className=" app">
+            <BrowserRouter>
+                {' '}
+                <ScrollToTop />
+                <Routes />
+            </BrowserRouter>
+        </div>
     );
 }
 export default App;
