@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { fetchCategories } from '../Redux/hooks/categories.actions';
 import { setCategories } from '../Redux/slices/categoriesSlice';
 import { categoryData, subcategoryData } from '../interface/common';
-import { axiosService } from '../Redux/helpers/axios';
+// import { axiosService } from '../Redux/helpers/axios';
 import { ChevronRightTwoTone } from '@mui/icons-material';
 import { SearchingProduct } from '../Redux/slices/AdsSlice';
 import { useNavigate } from 'react-router-dom';
@@ -29,25 +29,17 @@ const Sidebar = () => {
 
     const { open } = useSelector((state: any) => state.opener);
 
-    const tryfetchingSubcategories = async (categoryName: string) => {
-        try {
-            const response = await axiosService.get(
-                `/subcategories/getsubcategories/${categoryName}`
-            );
-            return response.data.Data;
-        } catch (error) {
-            // console.error("Error fetching subcategories:", error);
-            return [];
-        }
-    };
-
     const handleCategoryMouseOver = async (categoryName: string) => {
         if (categoryName === hoveredCategory || loading) return;
         setLoading(true);
         setHoveredCategory(categoryName);
+        const hoveredCategoryData = categories?.find(
+            (category: any) => category.categoryname === categoryName
+        );
+        if (hoveredCategoryData) {
+            setSubcategories(hoveredCategoryData.subCategories);
+        }
         setLoading(false);
-        const subcategoriesData = await tryfetchingSubcategories(categoryName);
-        setSubcategories(subcategoriesData);
     };
 
     const getCategory = async () => {
@@ -72,8 +64,6 @@ const Sidebar = () => {
         dispatch(GettingSellers());
     }, []);
 
-    console.log(subcategories);
-
     return (
         <div
             className="rounded flex relative"
@@ -91,7 +81,7 @@ const Sidebar = () => {
                         <div>
                             <li
                                 key={Menu.categoryname}
-                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 capitalize px-2 py-1
+                                className={`flex  rounded-md cursor-pointer hover:bg-white  text-sm items-center gap-x-4 px-2 py-1
                               ${hoveredCategory === Menu.categoryname ? 'bg-white' : ''} ${
                                     index === 0 && 'bg-light-white'
                                 } `}
@@ -103,7 +93,7 @@ const Sidebar = () => {
                                     handleSearch(Menu.categoryname);
                                 }}
                             >
-                                <img src={Menu?.categoryimage} className="h-3 w-3 object-cover  " />
+                                {/* <img src={Menu?.categoryimage} className="h-3 w-3 object-cover  " /> */}
                                 <span
                                     className={`${
                                         !open && ''
@@ -132,14 +122,17 @@ const Sidebar = () => {
                             <div className="w-8 h-8 flex items-center justify-center animate-spin rounded-full border-t-2 border-primary-orange border-solid "></div>
                         ) : (
                             <ul>
-                                {subcategories.map(
+                                {subcategories?.map(
                                     (subcategory: subcategoryData, index: number) => (
                                         <li
                                             key={index}
                                             className={`cursor-pointer text-sm text-gray-500  px-3 py-3 hover:bg-white 
                   ${''} ${index === 0 && 'bg-light-white'} `}
+                                            onClick={() => {
+                                                handleSearch(subcategory?.subcategoryname);
+                                            }}
                                         >
-                                            {subcategory.subcategoryname}
+                                            {subcategory?.subcategoryname}
                                         </li>
                                     )
                                 )}
