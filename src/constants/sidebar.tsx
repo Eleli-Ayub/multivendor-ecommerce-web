@@ -43,9 +43,11 @@ const Sidebar = () => {
     };
 
     const getCategory = async () => {
-        dispatch(setLoader(true));
+        // dispatch(setLoader(true));
+        setLoading(true);
         const response = await fetchCategories();
         dispatch(setCategories(response.data.Data));
+        setLoading(false);
         // console.log(response);
         dispatch(setLoader(false));
     };
@@ -75,6 +77,11 @@ const Sidebar = () => {
                 className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar no-scrollbar py-2"
                 // onMouseLeave={() =>}
             >
+                {loading && (
+                    <div className="flex justify-center items-center h-full">
+                        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary-orange transition-all duration-300"></div>
+                    </div>
+                )}
                 <ul className="py-1">
                     {/* <h1 className="my-3 text-stone-600 text-sm font-bold"> Categories</h1> */}
                     {categories?.map((Menu: categoryData, index: number) => (
