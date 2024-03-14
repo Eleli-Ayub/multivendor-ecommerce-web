@@ -30,7 +30,6 @@ form {
 
 @layer utilities {
   @variants responsive {
-
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
@@ -38,10 +37,22 @@ form {
 
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-      -ms-overflow-style: none;
-      /* IE and Edge */
-      scrollbar-width: none;
-      /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    /* Custom scrollbar style */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px; /* Width of the scrollbar */
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: pink; /* Color of the scrollbar track */
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: hotpink; /* Color of the scrollbar thumb */
+      border-radius: 0px; /* Rounded corners */
     }
   }
 }

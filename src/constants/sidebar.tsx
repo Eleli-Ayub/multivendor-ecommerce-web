@@ -74,7 +74,7 @@ const Sidebar = () => {
             }}
         >
             <div
-                className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar  py-2"
+                className="px-4  h-[55vh] max-h-[55vh]  sticky top-0 bg-gray-light shadow-custom rounded overflow-y-auto my-sidebar  py-2 "
                 // onMouseLeave={() =>}
             >
                 {loading ? (
