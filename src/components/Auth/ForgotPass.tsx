@@ -48,17 +48,11 @@ const ForgotPass: React.FC = () => {
             </p>
           </div>
           <div className="mb-6">
-            <label
-              htmlFor="email"
-              className="block text-gray-700 text-sm font-bold mb-2"
-            >
-              Email Address
-            </label>
             <input
               type="email"
               id="email"
               name="email"
-              className="border rounded-lg focus:outline-none focus:border-primary-orange rounded w-full py-2 px-3 text-gray-700 leading-tight "
+              className="border font-semibold rounded-lg focus:outline-none focus:border-primary-orange rounded w-full py-2 px-3 text-gray-700 leading-tight "
               placeholder="Enter your email address"
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -67,7 +61,7 @@ const ForgotPass: React.FC = () => {
 
           <div className="flex items-center justify-between">
             <button
-              className="bg-primary-orange hover:bg-secondary-orange text-white font-bold py-2 px-4   items-center w-full"
+              className="bg-primary-orange hover:bg-secondary-orange text-white font-bold py-2 px-4 rounded-lg   items-center w-full"
               type="submit"
             >
               Get Link
