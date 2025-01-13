@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../../assets/logo.png";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
@@ -10,6 +9,11 @@ import { locations } from "../../data/Location";
 import { Link, useNavigate } from "react-router-dom";
 import Icon from "../Global/Icon";
 import { FaCartPlus } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { MdPassword } from "react-icons/md";
+import { HiMiniUser } from "react-icons/hi2";
 
 interface Location {
   id: number;
@@ -115,34 +119,40 @@ const RegisterForm: React.FC = () => {
           <div className="flex items-center justify-center gap-3">
             <Icon icon={FaCartPlus} />
           </div>
-
+          <h1 className="text-3xl font-semibold text-center text-gray-900 mb-6 mt-6">
+            <FaUserAlt className="inline-block mr-2 text-blue-600" />
+            Sign Up
+          </h1>
+          <p className="text-center">Please create an account</p>
           <form
             onSubmit={handleSubmit}
             className="mx-auto p-4  rounded-lg  mt-4"
           >
             <div className="mb-4">
               <div className="flex gap-2">
-                <div className="mb-4">
+                <div className="mb-4 relative">
+                  <HiMiniUser className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
                   <input
                     type="text"
                     id="firstname"
                     name="firstname"
                     value={formData.firstname}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
+                    className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
                     placeholder="First name"
                     minLength={4}
                     required
                   />
                 </div>
-                <div className="mb-5">
+                <div className="mb-5 relative">
+                  <HiMiniUser className="absolute cursor-pointer text-2xl inset-y-0 mt-3 ml-2" />
                   <input
                     type="text"
                     id="lastname"
                     name="lastname"
                     value={formData.lastname}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
+                    className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
                     placeholder="Last name"
                     required
                     minLength={4}
@@ -150,26 +160,28 @@ const RegisterForm: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="mb-4">
+            <div className="mb-4 relative">
+              <MdEmail className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border rounded-lg font-semibold focus:outline-none focus:border-primary-orange"
+                className="w-full px-3 py-2 pl-10 border rounded-lg font-semibold focus:outline-none focus:border-primary-orange"
                 placeholder="Enter your email address"
                 required
               />
             </div>
-            <div className="mb-4">
+            <div className="mb-4 relative">
+              <FaPhoneAlt className="absolute cursor-pointer text-2xl inset-y-0 mt-3 ml-2" />
               <input
                 type="number"
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
+                className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
                 placeholder="Enter your phone number"
                 required
               />
@@ -197,7 +209,7 @@ const RegisterForm: React.FC = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border font-semibold  rounded-lg focus:outline-none focus:border-primary-orange"
+                className="w-full px-3 py-2  border font-semibold  rounded-lg focus:outline-none focus:border-primary-orange"
                 required
               >
                 <option value="">Select Location</option>
@@ -218,53 +230,56 @@ const RegisterForm: React.FC = () => {
                 id="userimage"
                 name="userimage"
                 onChange={handleImageChange}
+                className="rounded:lg"
                 accept="image/*"
               />
               {formData.userimage && (
                 <img
                   src={`data:image/jpeg;base64,${formData.userimage}`}
                   alt="User Preview"
-                  className="h-16 w-16 mt-2"
+                  className="h-16 w-16 mt-2 ml-2"
                 />
               )}
             </div>
             <div className="mb-4 relative">
+              <MdPassword className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
+                className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
                 placeholder={`Enter password `}
                 minLength={4}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                className="absolute pb-8 right-2 top-1/2 transform -translate-y-1/2"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
-              <p className="text-sm text-gray-500 px-2">
+              <p className="text-sm text-gray-500 px-2 py-2">
                 The password must be at least 4 characters long{" "}
               </p>
             </div>
 
             <div className="mb-4 relative">
+              <MdPassword className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
               <input
                 type={showPassword ? "text" : "password"}
                 id="confirmPassword"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
+                className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
                 placeholder={`Confirm your password `}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2 top-1/2 transform -translate-y-1/6"
+                className="absolute  right-2 top-1/2 transform -translate-y-1/2"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -276,7 +291,7 @@ const RegisterForm: React.FC = () => {
               type="submit"
               className="bg-primary-orange text-white py-2 px-4 rounded-xl hover:bg-secondary-orange transition duration-300 w-full"
             >
-              Submit
+              Register
             </button>
             <p className="text-gray-500 text-center mt-3">
               Already have an account?

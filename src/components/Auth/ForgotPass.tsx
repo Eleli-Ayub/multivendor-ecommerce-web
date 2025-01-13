@@ -4,6 +4,7 @@ import { ResetPasswordrequest } from "../../Redux/hooks/user.actions";
 import Loader from "../../constants/loader";
 import { FaCartPlus } from "react-icons/fa";
 import Icon from "../Global/Icon";
+import { MdEmail } from "react-icons/md";
 
 const ForgotPass: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -31,10 +32,16 @@ const ForgotPass: React.FC = () => {
       <div className="w-full max-w-xl mx-auto bg-white rounded-lg ">
         {loading && <Loader />}
         <div className="flex items-center justify-center gap-3">
-          <div className="pt-10">
+          <div className="mt-6">
             <Icon icon={FaCartPlus} />
           </div>
         </div>
+        <div>
+          <h1 className="font-bold text-center text-3xl pt-4">
+            Reset Password
+          </h1>
+        </div>
+
         <form
           className="  rounded px-4 lg:px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
@@ -47,12 +54,13 @@ const ForgotPass: React.FC = () => {
               password.
             </p>
           </div>
-          <div className="mb-6">
+          <div className="mb-6 relative">
+            <MdEmail className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
             <input
               type="email"
               id="email"
               name="email"
-              className="border font-semibold rounded-lg focus:outline-none focus:border-primary-orange rounded w-full py-2 px-3 text-gray-700 leading-tight "
+              className="border pl-10 font-semibold rounded-lg focus:outline-none focus:border-primary-orange rounded w-full py-2 px-3 text-gray-700 leading-tight "
               placeholder="Enter your email address"
               onChange={(e) => setEmail(e.target.value)}
               required

@@ -7,6 +7,9 @@ import { AppDispatch } from "../../Redux/store";
 import Loader from "../../constants/loader";
 import { Link, useNavigate } from "react-router-dom";
 import Icon from "../Global/Icon";
+import { FaSignInAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { MdPassword } from "react-icons/md";
 
 const LoginForm: React.FC = ({}) => {
   const navigate = useNavigate();
@@ -45,38 +48,44 @@ const LoginForm: React.FC = ({}) => {
           <div className="flex items-center justify-center gap-3">
             <Icon icon={FaCartPlus} />
           </div>
-
+          <h1 className="text-3xl font-semibold text-center text-gray-900 mt-4 mb-6">
+            <FaSignInAlt className="inline-block mr-2 text-blue-600" />
+            Sign In
+          </h1>
+          <p className="text-center">Please login in to your account</p>
           <form
             onSubmit={handleSubmit}
             className="mx-auto p-4  rounded-lg mt-4 "
           >
-            <div className="mb-4">
+            <div className="mb-4 relative">
+              <MdEmail className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange h-12"
+                className="w-full px-3 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange h-12"
                 placeholder="Enter your email address"
                 required
               />
             </div>
             <div className="mb-4 relative">
+              <MdPassword className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange h-12"
+                className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange h-12"
                 placeholder={`Enter password `}
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2 top-1/2 transform -translate-y-1/6"
+                className="absolute  right-2 top-1/2 transform -translate-y-1/2"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -86,7 +95,7 @@ const LoginForm: React.FC = ({}) => {
               type="submit"
               className="bg-primary-orange text-white py-2 px-4 rounded-xl hover:bg-secondary-orange transition duration-300 w-full"
             >
-              Submit
+              Login
             </button>
 
             <p className="text-gray-500 text-center mt-3">
