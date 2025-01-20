@@ -18,7 +18,7 @@ const LoginForm: React.FC = ({}) => {
   const isLoading = useSelector((state: any) => state.auth.isLoading);
   // const userToken = useSelector((state: any) => state.auth.userToken);
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -32,7 +32,7 @@ const LoginForm: React.FC = ({}) => {
 
     await dispatch(LoggingUser({ formData, navigate }));
     setFormData({
-      email: "",
+      username: "",
       password: "",
     });
   };
@@ -62,8 +62,8 @@ const LoginForm: React.FC = ({}) => {
               <input
                 type="email"
                 id="email"
-                name="email"
-                value={formData.email}
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
                 className="w-full px-3 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange h-12"
                 placeholder="Enter your email address"
