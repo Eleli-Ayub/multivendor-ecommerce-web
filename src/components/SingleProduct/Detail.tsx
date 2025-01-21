@@ -147,7 +147,7 @@ const ProductInfo = () => {
               </div>
 
               <div className="flex gap-4 p-4">
-                {/* {adImages &&
+                {adImages &&
                   adImages?.map((image: any, index: number) => (
                     <img
                       key={index}
@@ -162,7 +162,7 @@ const ProductInfo = () => {
                       alt=""
                       onClick={() => setSelectedImageIndex(index)}
                     />
-                  ))} */}
+                  ))}
               </div>
             </div>
           </div>
