@@ -4,8 +4,7 @@ import Popular from '../components/landing/popular';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser } from '../Redux/slices/AuthSlice';
-// import Minslider from '../components/landing/minislider';
-// import Sponsered from '../components/landing/Sponsered';
+import Searchbar from '../constants/searchbar';
 
 import {
     FetchProductsAsync,
@@ -71,6 +70,7 @@ const Landing = () => {
     console.log(Ads);
     return (
         <div>
+             <Searchbar />
             <div className="bg-gray-light">
                 <div className="flex parent ">
                     <Sidebar />
@@ -81,14 +81,7 @@ const Landing = () => {
 
                 <div className="py-2 mt-2  max-w-7xl mx-auto ">
                     <div className="mx-0 lg:mx:auto">
-                        {/* <CardHeader cardName="Top Ads" linkTitle={'See All'} link={'/top_ads'} />
-                        <Minslider Ads={TopAds} />
-                        <CardHeader
-                            cardName="Sponsored Ads"
-                            linkTitle={'See All'}
-                            link={'/sponsored_ads'}
-                        />
-                        <Sponsered Ads={SponseredAds} /> */}
+                        
                         <CardHeader
                             cardName="All Ads Listing"
                             linkTitle={'See All'}
