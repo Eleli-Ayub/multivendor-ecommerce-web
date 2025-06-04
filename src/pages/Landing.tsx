@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLoggedInUser } from "../Redux/slices/AuthSlice";
 import Minslider from "../components/landing/minislider";
 import Sponsered from "../components/landing/Sponsered";
-import Searchbar from '../constants/searchbar';
+import Searchbar from "../constants/searchbar";
 
 import {
   FetchProductsAsync,
@@ -76,9 +76,9 @@ const Landing = () => {
   console.log(Ads);
   return (
     <div>
-         <Searchbar />
+      <Searchbar />
       <div className="bg-gray-light">
-        <div className="flex parent ">
+        <div className="flex parent max-w-7xl mx-auto ">
           <Sidebar />
           <div className="flex-1 mx-auto  my-body ">
             <ImageSlider />
