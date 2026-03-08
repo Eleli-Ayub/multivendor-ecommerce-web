@@ -1,24 +1,22 @@
 /* eslint-disable no-empty-pattern */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
-import { FaCartPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { FaEyeSlash, FaEye, FaSignInAlt, FaCartPlus } from "react-icons/fa";
+import { MdEmail, MdPassword } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+
 import { LoggingUser } from "../../Redux/slices/AuthSlice";
 import { AppDispatch } from "../../Redux/store";
 import Loader from "../../constants/loader";
-import { Link, useNavigate } from "react-router-dom";
 import Icon from "../Global/Icon";
-import { FaSignInAlt } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { MdPassword } from "react-icons/md";
 
-const LoginForm: React.FC = ({ }) => {
+const LoginForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [showPassword, setShowPassword] = useState(false);
   const isLoading = useSelector((state: any) => state.auth.isLoading);
-  // const userToken = useSelector((state: any) => state.auth.userToken);
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -26,96 +24,120 @@ const LoginForm: React.FC = ({ }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await dispatch(LoggingUser({ formData, navigate }));
-    setFormData({
-      username: "",
-      password: "",
-    });
+    try {
+      await dispatch(LoggingUser({ formData, navigate })).unwrap();
+      setFormData({
+        username: "",
+        password: "",
+      });
+    } catch (error) {
+      console.log("Login failed:", error);
+    }
   };
 
   return (
-    <>
-      <div className="h-screen mx-auto p-4 bg-gray-light w-screen ">
-        {isLoading && <Loader />}
-        <div
-          className="min-w-[300px] max-w-[600px] h-auto  w-full bg-white rounded-2xl p-2 py-8 md:p-10  pb-20"
-          style={{ margin: "auto" }}
-        >
-          <div className="flex items-center justify-center gap-3">
-            <Icon icon={FaCartPlus} />
+    <div className="min-h-screen px-4 py-6 md:px-6">
+      {isLoading && <Loader />}
+
+      <div className="mx-auto flex min-h-[85vh] w-full max-w-6xl overflow-hidden rounded-3xl bg-white shadow-xl">
+        {/* Left side */}
+        <div className="hidden w-1/2 md:flex bg-gradient-to-br from-primary-orange to-secondary-orange text-white">
+          <div className="flex w-full flex-col items-center justify-center px-10 text-center">
+            <div className="mb-8 flex h-28 w-28 items-center justify-center rounded-full bg-white p-4 shadow-lg">
+              <Icon icon={FaCartPlus} />
+            </div>
+
+            <h2 className="mb-4 text-4xl font-bold leading-tight">
+              Welcome Back
+            </h2>
+
+            <p className="max-w-md text-sm leading-7 text-white/90">
+              Sign in to access your account, manage your activity, and continue
+              where you left off.
+            </p>
           </div>
-          <h1 className="text-3xl font-semibold text-center text-gray-900 mt-4 mb-6">
-            <FaSignInAlt className="inline-block mr-2 text-blue-600" />
-            Sign In
-          </h1>
-          <p className="text-center">Please login in to your account</p>
-          <form
-            onSubmit={handleSubmit}
-            className="mx-auto p-4  rounded-lg mt-4 "
-          >
-            <div className="mb-4 relative">
-              <MdEmail className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
-              <input
-                type="email"
-                id="email"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                className="w-full px-3 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange h-12"
-                placeholder="Enter your email address"
-                required
-              />
+        </div>
+
+        {/* Right side */}
+        <div className="flex w-full items-center justify-center px-5 py-10 sm:px-8 md:px-10 md:w-1/2">
+          <div className="w-full max-w-md">
+            <div className="mb-8 text-center md:text-left">
+              <h1 className="text-3xl font-semibold text-gray-900">
+                <FaSignInAlt className="mr-2 inline-block text-blue-600" />
+                Sign In
+              </h1>
+
             </div>
-            <div className="mb-4 relative">
-              <MdPassword className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange h-12"
-                placeholder={`Enter password `}
-                required
-              />
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="relative">
+                <MdEmail className="absolute left-3 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+                <input
+                  type="email"
+                  id="email"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  className="h-12 w-full rounded-xl border border-gray-300 pl-11 pr-4 font-medium outline-none transition focus:border-primary-orange"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+
+              <div className="relative">
+                <MdPassword className="absolute left-3 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="h-12 w-full rounded-xl border border-gray-300 pl-11 pr-12 font-medium outline-none transition focus:border-primary-orange"
+                  placeholder="Enter password"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+
+              <div className="flex items-center justify-end">
+                <Link
+                  to="/reset_password_request"
+                  className="text-sm font-medium text-blue-600 hover:underline"
+                >
+                  Forgot password?
+                </Link>
+              </div>
+
               <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute  right-2 top-1/2 transform -translate-y-1/2"
+                type="submit"
+                className="w-full rounded-xl bg-primary-orange px-4 py-3 font-semibold text-white transition duration-300 hover:bg-secondary-orange"
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                Login
               </button>
-            </div>
 
-            <button
-              type="submit"
-              className="bg-primary-orange text-white py-2 px-4 rounded-xl hover:bg-secondary-orange transition duration-300 w-full"
-            >
-              Login
-            </button>
-
-            <p className="text-gray-500 text-center mt-3">
-              Forgot password?
-              <Link to="/reset_password_request" className="ml-2 text-blue-500">
-                Reset password
-              </Link>{" "}
-            </p>
-            <p className="text-gray-500 text-center mt-3">
-              You do not have an account?
-              <Link to="/register" className="ml-2 text-blue-500">
-                Sign up
-              </Link>{" "}
-            </p>
-          </form>
+              <p className="text-center text-gray-500">
+                You do not have an account?
+                <Link to="/register" className="ml-2 text-blue-600 hover:underline">
+                  Sign up
+                </Link>
+              </p>
+            </form>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -2,7 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { FaEyeSlash, FaEye, FaCartPlus, FaUserAlt, FaPhoneAlt } from "react-icons/fa";
+import {
+  FaEyeSlash,
+  FaEye,
+  FaCartPlus,
+  FaUserAlt,
+  FaPhoneAlt,
+} from "react-icons/fa";
 import { MdEmail, MdPassword } from "react-icons/md";
 import { HiMiniUser } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
@@ -62,8 +68,6 @@ const RegisterForm: React.FC = () => {
       return;
     }
 
-    console.log("Submitting formData:", formData);
-
     try {
       await dispatch(RegisteringUser({ formData, navigate })).unwrap();
 
@@ -82,155 +86,176 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto p-4 bg-gray-light w-screen overflow-auto">
+    <div className="min-h-screen px-4 py-6 md:px-6">
       {isLoading && <Loader />}
 
-      <div
-        className="min-w-[300px] max-w-[600px] h-auto w-full bg-white rounded-2xl p-2 py-8 md:p-10 price"
-        style={{ margin: "auto" }}
-      >
-        <div className="flex items-center justify-center gap-3">
-          <Icon icon={FaCartPlus} />
-        </div>
+      <div className="mx-auto flex min-h-[85vh] w-full max-w-6xl overflow-hidden rounded-3xl bg-white shadow-xl">
+        {/* Left side */}
+        <div className="hidden w-1/2 md:flex bg-gradient-to-br from-primary-orange to-secondary-orange text-white">
+          <div className="flex w-full flex-col items-center justify-center px-10 text-center">
+            <div className="mb-8 flex h-28 w-28 items-center justify-center rounded-full bg-white p-4 shadow-lg">
+              <Icon icon={FaCartPlus} />
+            </div>
 
-        <h1 className="text-3xl font-semibold text-center text-gray-900 mb-6 mt-6">
-          <FaUserAlt className="inline-block mr-2 text-blue-600" />
-          Sign Up
-        </h1>
+            <h2 className="mb-4 text-4xl font-bold leading-tight">
+              Create Your Account
+            </h2>
 
-        <p className="text-center">Please create an account</p>
-
-        <form onSubmit={handleSubmit} className="mx-auto p-4 rounded-lg mt-4">
-          <div className="mb-4 relative">
-            <HiMiniUser className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
-            <input
-              type="text"
-              id="firstname"
-              name="firstname"
-              value={formData.firstname}
-              onChange={handleChange}
-              className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
-              placeholder="First name"
-              minLength={2}
-              required
-            />
-          </div>
-
-          <div className="mb-4 relative">
-            <HiMiniUser className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
-            <input
-              type="text"
-              id="middlename"
-              name="middlename"
-              value={formData.middlename}
-              onChange={handleChange}
-              className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
-              placeholder="Middle name"
-              minLength={2}
-              required
-            />
-          </div>
-
-          <div className="mb-4 relative">
-            <HiMiniUser className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
-            <input
-              type="text"
-              id="lastname"
-              name="lastname"
-              value={formData.lastname}
-              onChange={handleChange}
-              className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
-              placeholder="Last name"
-              minLength={2}
-              required
-            />
-          </div>
-
-          <div className="mb-4 relative">
-            <MdEmail className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-3 py-2 pl-10 border rounded-lg font-semibold focus:outline-none focus:border-primary-orange"
-              placeholder="Enter your email address"
-              required
-            />
-          </div>
-
-          <div className="mb-4 relative">
-            <FaPhoneAlt className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
-              placeholder="Enter your phone number"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <select
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
-              required
-            >
-              <option value="">Select County</option>
-              {sortedLocations.map((county: Location) => (
-                <option key={county.id} value={county.name}>
-                  {county.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="mb-4 relative">
-            <MdPassword className="absolute text-2xl inset-y-0 mt-3 ml-2 cursor-pointer" />
-            <input
-              type={showPassword ? "text" : "password"}
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full px-3 py-2 pl-10 border font-semibold rounded-lg focus:outline-none focus:border-primary-orange"
-              placeholder="Enter password"
-              minLength={6}
-              required
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2"
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </button>
-            <p className="text-sm text-gray-500 px-2 py-2">
-              Enter a secure password
+            <p className="max-w-md text-sm leading-7 text-white/90">
+              Join us today to start exploring, managing your account, and
+              enjoying a seamless experience.
             </p>
           </div>
+        </div>
 
-          <button
-            type="submit"
-            className="bg-primary-orange text-white py-2 px-4 rounded-xl hover:bg-secondary-orange transition duration-300 w-full"
-          >
-            Register
-          </button>
+        {/* Right side */}
+        <div className="flex w-full items-center justify-center px-5 py-10 sm:px-8 md:w-1/2 md:px-10">
+          <div className="w-full max-w-md">
+            <div className="mb-8 text-center md:text-left">
+              <h1 className="text-3xl font-semibold text-gray-900">
+                <FaUserAlt className="mr-2 inline-block text-blue-600" />
+                Sign Up
+              </h1>
+            </div>
 
-          <p className="text-gray-500 text-center mt-3">
-            Already have an account?
-            <Link to="/login" className="ml-2 text-blue-500">
-              Sign in
-            </Link>
-          </p>
-        </form>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="relative">
+                  <HiMiniUser className="absolute left-3 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+                  <input
+                    type="text"
+                    id="firstname"
+                    name="firstname"
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    className="h-12 w-full rounded-xl border border-gray-300 pl-11 pr-4 font-medium outline-none transition focus:border-primary-orange"
+                    placeholder="First name"
+                    minLength={2}
+                    required
+                  />
+                </div>
+
+                <div className="relative">
+                  <HiMiniUser className="absolute left-3 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+                  <input
+                    type="text"
+                    id="middlename"
+                    name="middlename"
+                    value={formData.middlename}
+                    onChange={handleChange}
+                    className="h-12 w-full rounded-xl border border-gray-300 pl-11 pr-4 font-medium outline-none transition focus:border-primary-orange"
+                    placeholder="Middle name"
+                    minLength={2}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="relative">
+                <HiMiniUser className="absolute left-3 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+                <input
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  value={formData.lastname}
+                  onChange={handleChange}
+                  className="h-12 w-full rounded-xl border border-gray-300 pl-11 pr-4 font-medium outline-none transition focus:border-primary-orange"
+                  placeholder="Last name"
+                  minLength={2}
+                  required
+                />
+              </div>
+
+              <div className="relative">
+                <MdEmail className="absolute left-3 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="h-12 w-full rounded-xl border border-gray-300 pl-11 pr-4 font-medium outline-none transition focus:border-primary-orange"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+
+              <div className="relative">
+                <FaPhoneAlt className="absolute left-3 top-1/2 -translate-y-1/2 text-xl text-gray-400" />
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="h-12 w-full rounded-xl border border-gray-300 pl-11 pr-4 font-medium outline-none transition focus:border-primary-orange"
+                  placeholder="Enter your phone number"
+                  required
+                />
+              </div>
+
+              <div>
+                <select
+                  id="location"
+                  name="location"
+                  value={formData.location}
+                  onChange={handleChange}
+                  className="h-12 w-full rounded-xl border border-gray-300 px-4 font-medium outline-none transition focus:border-primary-orange"
+                  required
+                >
+                  <option value="">Select County</option>
+                  {sortedLocations.map((county: Location) => (
+                    <option key={county.id} value={county.name}>
+                      {county.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <div className="relative">
+                  <MdPassword className="absolute left-3 top-1/2 -translate-y-1/2 text-2xl text-gray-400" />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="h-12 w-full rounded-xl border border-gray-300 pl-11 pr-12 font-medium outline-none transition focus:border-primary-orange"
+                    placeholder="Enter password"
+                    minLength={6}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 flex -translate-y-1/2 items-center justify-center text-gray-500"
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </button>
+                </div>
+
+                <p className="px-2 pt-2 text-sm text-gray-500">
+                  Enter a secure password
+                </p>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-primary-orange px-4 py-3 font-semibold text-white transition duration-300 hover:bg-secondary-orange"
+              >
+                Register
+              </button>
+
+              <p className="text-center text-gray-500">
+                Already have an account?
+                <Link to="/login" className="ml-2 text-blue-600 hover:underline">
+                  Sign in
+                </Link>
+              </p>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
