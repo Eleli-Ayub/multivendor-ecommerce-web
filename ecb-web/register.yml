@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: https://ecbe.eleliafrika.cloud/user/auth/signup
+  url: http://localhost:8000/user/auth/signup
   headers:
     - name: Content-Type
       value: application/json
