@@ -5,12 +5,12 @@ info:
 
 http:
   method: POST
-  url: http://localhost:8000/user/auth/signin
+  url: http://localhost:8000/users/signin
   body:
     type: json
     data: |-
       {
-        "username":"lesosioayub@gmail.com",
+        "username":"kamah@gmail.com",
         "password":"passwordsecure"
       }
   auth: inherit
