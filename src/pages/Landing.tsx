@@ -19,6 +19,7 @@ import { AppDispatch } from "../Redux/store";
 import { GetInquiries } from "../Redux/hooks/inquiry";
 import CardHeader from "../components/Global/CardHeader";
 import ProductLoader from "../components/Global/ProductLoader";
+import { formatTitle } from '../hooks/usePageTitle';
 
 const Landing = () => {
   const userToken = useSelector((state: any) => state.auth.userToken);
@@ -32,7 +33,7 @@ const Landing = () => {
   const user = useSelector((state: any) => state.auth.user);
 
   useEffect(() => {
-    document.title = "eCommerce";
+    document.title = formatTitle('Home');
   }, []);
   useEffect(() => {
     dispatch(getLoggedInUser());

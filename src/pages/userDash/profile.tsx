@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import Sidebar from '../../components/Dashboard/Sidebar';
 import Profile from '../../components/Dashboard/profile';
+import { formatTitle } from '../../hooks/usePageTitle';
 // import { useNavigate } from 'react-router-dom';
 
 const profile = () => {
     useEffect(() => {
-        document.title = 'Profile';
+        document.title = formatTitle('Profile');
     }, []);
 
     return (

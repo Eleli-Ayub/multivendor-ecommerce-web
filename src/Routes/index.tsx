@@ -52,6 +52,7 @@ import SellerAd from '../pages/SellerAd';
 import PassResetPage from '../pages/userDash/ForgotPassword';
 import ConfirmCodePage from '../pages/ConfirmCodePage';
 import ResetPasswordPage from '../pages/ResetPasswordPage';
+import RouteTitle from '../components/RouteTitle';
 
 const Index = () => {
     const [, setShowLogin] = useState<boolean>(false);
@@ -89,6 +90,7 @@ const Index = () => {
                     <UserSidebar />
                 </div>
                 {/* <ScrollToTop> */}
+                <RouteTitle />
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
