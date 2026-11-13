@@ -6,6 +6,7 @@ import Search from '../assets/seatch.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import ProductLoader from '../components/Global/ProductLoader';
+import { formatTitle } from '../hooks/usePageTitle';
 
 const AdsPage = () => {
     const Ads = useSelector((state: any) => state.AllAds.SearchResults);
@@ -14,9 +15,9 @@ const AdsPage = () => {
 
     useEffect(() => {
         if (Ads && Ads.length > 0) {
-            document.title = 'Search';
+            document.title = formatTitle('Search');
         } else {
-            document.title = 'No results found!';
+            document.title = formatTitle('No results found');
         }
     }, [Ads]);
 

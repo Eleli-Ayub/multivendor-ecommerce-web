@@ -5,6 +5,7 @@ import { fetchSingleProduct } from '../Redux/slices/productsSlice';
 import { AppDispatch, RootState } from '../Redux/store';
 import { wishlistAPI, reviewsAPI } from '../api/api';
 import { toast } from 'react-toastify';
+import usePageTitle from '../hooks/usePageTitle';
 
 const ProductDetailPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -18,6 +19,8 @@ const ProductDetailPage: React.FC = () => {
     useEffect(() => {
         if (id) dispatch(fetchSingleProduct(id));
     }, [id, dispatch]);
+
+    usePageTitle((currentProduct?.product as Record<string, unknown> | undefined)?.name as string | undefined);
 
     if (isLoading) {
         return <div className="flex justify-center py-20"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>;

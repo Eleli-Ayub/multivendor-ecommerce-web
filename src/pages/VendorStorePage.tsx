@@ -5,11 +5,14 @@ import { sellerAPI } from '../api/api';
 import { wishlistAPI } from '../api/api';
 import { toast } from 'react-toastify';
 import { RootState } from '../Redux/store';
+import usePageTitle from '../hooks/usePageTitle';
 
 const VendorStorePage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [storeData, setStoreData] = useState<Record<string, unknown> | null>(null);
     const [loading, setLoading] = useState(true);
+
+    usePageTitle(((storeData?.vendor as Record<string, unknown> | undefined)?.shop_name as string | undefined) ?? undefined);
     const { userToken } = useSelector((state: RootState) => (state.auth as unknown as Record<string, unknown>)) as { userToken: string | null };
 
     useEffect(() => {

@@ -5,6 +5,7 @@ import Loader from '../constants/loader';
 import { useEffect } from 'react';
 import { AppDispatch } from '../Redux/store';
 import { FetchTopProductsAsync, setSearchResults } from '../Redux/slices/AdsSlice';
+import { formatTitle } from '../hooks/usePageTitle';
 
 const AllTopAds = () => {
     const Ads = useSelector((state: any) => state.AllAds.TopAds);
@@ -15,12 +16,12 @@ const AllTopAds = () => {
     useEffect(() => {
         // Fetch top products
         dispatch(FetchTopProductsAsync());
-        document.title = 'View Top Ads';
+        document.title = formatTitle('Top ads');
     }, [dispatch]);
 
     useEffect(() => {
         dispatch(setSearchResults(Ads));
-        document.title = Ads && Ads.length > 0 ? 'View Top Ads' : 'No results found!';
+        document.title = formatTitle(Ads && Ads.length > 0 ? 'Top ads' : 'No results found');
     }, [Ads, dispatch]);
 
     return (

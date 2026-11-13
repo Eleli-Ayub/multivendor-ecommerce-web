@@ -13,6 +13,7 @@ import { createInquiry } from "../../Redux/hooks/inquiry";
 import ImageLoader from "../Global/ImageLoader";
 import DetailLoader from "../Global/DetailLoader";
 import ListLoader from "../Global/ListLoader";
+import usePageTitle from '../../hooks/usePageTitle';
 
 const ProductInfo = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -31,6 +32,7 @@ const ProductInfo = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   const { id } = useParams();
+  usePageTitle(ad?.productname);
 
   useEffect(() => {
     if (ad?.userid) {

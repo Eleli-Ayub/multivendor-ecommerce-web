@@ -5,6 +5,7 @@ import Loader from '../constants/loader';
 import { useEffect } from 'react';
 import { FetchSponsoredProductsAsync, setSearchResults } from '../Redux/slices/AdsSlice';
 import { AppDispatch } from '../Redux/store';
+import { formatTitle } from '../hooks/usePageTitle';
 
 const AllSponsoredAds = () => {
     const Ads = useSelector((state: any) => state.AllAds.SponseredAds);
@@ -16,9 +17,9 @@ const AllSponsoredAds = () => {
     useEffect(() => {
         dispatch(setSearchResults(Ads));
         if (Ads && Ads.length > 0) {
-            document.title = 'View Sponsered Ads';
+            document.title = formatTitle('Sponsored ads');
         } else {
-            document.title = 'No results found!';
+            document.title = formatTitle('No results found');
         }
     }, [Ads, dispatch]);
 
