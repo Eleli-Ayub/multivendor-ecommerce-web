@@ -4,8 +4,7 @@ import { toast } from 'react-toastify';
 
 export const RegisterUser = async (payload: any): Promise<any> => {
     try {
-        const response = await axiosService.post('/user/auth/signup', payload);
-        localStorage.setItem('userToken', response.data.Data);
+        const response = await axiosService.post('/users/signup', payload);
         return response;
     } catch (error: any) {
         console.log(error);
@@ -16,8 +15,8 @@ export const RegisterUser = async (payload: any): Promise<any> => {
 
 export const LoginUser = async (payload: any): Promise<any> => {
     try {
-        const response = await axiosService.post('/user/auth/signin', payload);
-        localStorage.setItem('userToken', response.data.Data);
+        const response = await axiosService.post('/users/signin', payload);
+        localStorage.setItem('userToken', response.data.token);
         return response;
     } catch (error: any) {
         console.log(error, 'a terrible error occurred');
@@ -28,7 +27,7 @@ export const LoginUser = async (payload: any): Promise<any> => {
 export const currentUser = async () => {
     try {
         // const response = await axiosService.get('/user/auth/getuser');
-        const response = await axiosService.get('/user/auth/profile');
+        const response = await axiosService.get('/users/profile');
         return response;
     } catch (error: any) {
         console.log(error, 'someError');
@@ -38,7 +37,7 @@ export const currentUser = async () => {
 
 export const loggedInUser = async () => {
     // const response = await axiosService.get('/user/auth/getuser');
-    const response = await axiosService.get('/user/auth/profile');
+    const response = await axiosService.get('/users/profile');
     return response;
 };
 
@@ -62,7 +61,7 @@ export const RegistrationOfUser = async (formdata: any) => {
 
     console.log("signup payload:", payload);
 
-    const response = await axiosService.post('/user/auth/signup', payload);
+    const response = await axiosService.post('/users/signup', payload);
 
     console.log("signup response:", response);
     return response;
@@ -70,34 +69,34 @@ export const RegistrationOfUser = async (formdata: any) => {
 
 export const LogginOfUser = async (formdata: any) => {
     // console.log("login payload:", formdata);
-    const response = await axiosService.post('/user/auth/signin', formdata);
+    const response = await axiosService.post('/users/signin', formdata);
     // console.log("login response:", response.data);
     return response;
 };
 
 export const GetUserById = async (id: any) => {
-    const response = await axiosService.get(`/user/auth/fetchuser?id=${id}`);
+    const response = await axiosService.get(`/users/fetchuser?id=${id}`);
     return response;
 };
 
 export const UpdateOfUser = async (userid: any, formdata: any) => {
-    const response = await axiosService.post(`/user/auth/updateuser?userid=${userid}`, formdata);
+    const response = await axiosService.post(`/users/updateuser?userid=${userid}`, formdata);
     return response;
 };
 
 export const GetSellers = async () => {
-    const response = await axiosService.get('/user/auth/fetchsellers');
+    const response = await axiosService.get('/users/fetchsellers');
     return response;
 };
 
 export const ResetPassword = async (formdata: any) => {
-    const response = await axiosService.post(`/user/auth/updatepassword`, formdata);
+    const response = await axiosService.post(`/users/updatepassword`, formdata);
     return response;
 };
 
 export const ResetPasswordrequest = async (email: string) => {
     try {
-        const response = await axiosService.post(`/user/auth/requestresetpassword/${email}`);
+        const response = await axiosService.post(`/users/requestresetpassword/${encodeURIComponent(email)}`);
         if (response.data.Success) {
             toast.success(response.data.Message);
             localStorage.setItem('passToken', response.data.Data);
@@ -116,7 +115,7 @@ export const ResetPasswordrequest = async (email: string) => {
 
 export const ConfirmCode = async (formdata: any) => {
     try {
-        const response = await axiosService.post(`/user/auth/confirmcode`, formdata);
+        const response = await axiosService.post(`/users/confirmcode`, formdata);
         if (response.data.Success) {
             toast.success(response.data.Message);
             // localStorage.setItem('passCode', response.data.Data);
@@ -134,7 +133,7 @@ export const ConfirmCode = async (formdata: any) => {
 
 export const NewPassword = async (formdata: any) => {
     try {
-        const response = await axiosService.post(`/user/auth/updatepassword`, formdata);
+        const response = await axiosService.post(`/users/updatepassword`, formdata);
         if (response.data.Success) {
             toast.success(response.data.Message);
             // localStorage.setItem('passToken', response.data.Data);

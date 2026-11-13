@@ -23,20 +23,20 @@ apiClient.interceptors.request.use(
 // ===================== AUTH =====================
 export const authAPI = {
     register: (data: {
-        first_name: string;
-        last_name: string;
-        username: string;
+        firstname: string;
+        middlename: string;
+        lastname: string;
+        location: string;
         email: string;
+        phone: string;
         password: string;
-        phone?: string;
-        location_id?: string;
-    }) => apiClient.post('/auth/register', data),
+    }) => apiClient.post('/users/signup', data),
 
-    login: (data: { email: string; password: string }) =>
-        apiClient.post('/auth/login', data),
+    login: (data: { username: string; password: string }) =>
+        apiClient.post('/users/signin', data),
 
     forgotPassword: (email: string) =>
-        apiClient.post('/auth/forgot-password', { email }),
+        apiClient.post(`/users/requestresetpassword/${encodeURIComponent(email)}`),
 };
 
 // ===================== USER PROFILE =====================
@@ -149,13 +149,13 @@ export const notificationsAPI = {
 
 // ===================== CATEGORIES & BRANDS =====================
 export const categoriesAPI = {
-    getAll: () => apiClient.get('/categories'),
+    getAll: () => apiClient.get('/categories/getcategories'),
     getSubcategories: (categoryId: string) =>
-        apiClient.get(`/categories/${categoryId}/subcategories`),
+        apiClient.get(`/subcategories/getsubcategories/${categoryId}`),
 };
 
 export const brandsAPI = {
-    getAll: () => apiClient.get('/brands'),
+    getAll: () => apiClient.get('/brands/getbrands'),
 };
 
 export const locationsAPI = {
