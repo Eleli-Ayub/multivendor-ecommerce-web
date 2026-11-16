@@ -89,19 +89,19 @@ const Landing = () => {
         <div className="py-2 mt-2  max-w-7xl mx-auto ">
           <div className="mx-0 lg:mx:auto">
             <CardHeader
-              cardName="Top Ads"
+              cardName="Top Products"
               linkTitle={"See All"}
               link={"/top_ads"}
             />
             <Minslider Ads={TopAds} />
             <CardHeader
-              cardName="Sponsored Ads"
+              cardName="Promoted Products"
               linkTitle={"See All"}
               link={"/sponsored_ads"}
             />
             <Sponsered Ads={SponseredAds} />
             <CardHeader
-              cardName="All Ads Listing"
+              cardName="All Products Listing"
               linkTitle={"See All"}
               link={"/all_ads"}
             />

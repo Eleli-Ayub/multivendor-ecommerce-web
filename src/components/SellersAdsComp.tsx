@@ -115,7 +115,7 @@ const SellersAdsComp = () => {
                                 {/* 0791076354 */}
                             </button>
                         </div>
-                        {/* user ads info */}
+                        {/* seller products info */}
                         <div className=" text-white flex flex-col items-center">
                             <div className="flex gap-2">
                                 <span>Total products:</span>
@@ -133,7 +133,7 @@ const SellersAdsComp = () => {
                 </div>
             </div>
 
-            {/* seller's ads */}
+            {/* seller's products */}
 
             <div className="flex max-w-[90rem] mx-auto my-5 ">
                 <Filters Ads={SearchResults} />
@@ -141,7 +141,7 @@ const SellersAdsComp = () => {
                     <div className="px-[6px] md:px-0">
                         <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-gray-light my-3 rounded-t-[8px] ">
                             <h1 className="text-black-main my-2 font-bold capitalize">
-                                Browse {theSeller?.firstname} Ads
+                                Browse {theSeller?.firstname}'s Products
                             </h1>
                         </div>
                     </div>

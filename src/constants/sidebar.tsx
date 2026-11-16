@@ -111,7 +111,7 @@ const Sidebar = () => {
                   >
                     <div className="flex flex-col gap-1">
                       <p> {Menu?.categoryname}</p>
-                      <p> {Menu?.totalproducts} ads</p>
+                      <p> {Menu?.totalproducts} products</p>
                     </div>
                   </span>
 
@@ -150,7 +150,7 @@ const Sidebar = () => {
                     >
                       <div className="flex flex-col">
                         <p> {subcategory?.subcategoryname}</p>
-                        <p> {subcategory?.totalproducts} ads</p>
+                        <p> {subcategory?.totalproducts} products</p>
                       </div>
                     </li>
                   )

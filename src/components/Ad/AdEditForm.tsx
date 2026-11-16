@@ -619,7 +619,7 @@ const AdForm: React.FC<AdFormProps> = ({ id, isEditing, setIsEditing }) => {
                                     type="submit"
                                     className="bg-primary-orange p-2 w-full rounded-xl text-white hover:bg-secondary-orange"
                                 >
-                                    Update Ad
+                                    Update Product
                                 </button>
                             </div>
                             {/* Right div ends here */}

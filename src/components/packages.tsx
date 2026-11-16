@@ -30,9 +30,9 @@ const TwoColorDiv = () => {
                         <h2 className="text-center text-2xl mt-2">Kshs 0</h2>
                         <p className="text-center">Per month</p>
                         <p className="mt-4">
-                            Start with our Freemium plan today and enjoy up to 20 Ads per month.
+                            Start with our Freemium plan today and enjoy up to 20 Products per month.
                         </p>
-                        <p className="mt-4">Get up to 4 ads a week</p>
+                        <p className="mt-4">Get up to 4 products a week</p>
                         <p className="mt-4">Start with our Freemium plan.</p>
                         <button className="bg-black text-white p-2 rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
                             start
@@ -45,8 +45,8 @@ const TwoColorDiv = () => {
                         </div>
                         <h2 className="text-center text-2xl mt-2">Kshs 1500</h2>
                         <p className="text-center">Per month</p>
-                        <p className="mt-4">Get upto 50 ads per month</p>
-                        <p className="mt-4">Get 2 priority ads per month</p>
+                        <p className="mt-4">Get upto 50 products per month</p>
+                        <p className="mt-4">Get 2 priority products per month</p>
                         <p className="mt-4">Start with us today.</p>
                         <button className="bg-black text-white p-2 rounded hover-bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
                             start
@@ -61,9 +61,9 @@ const TwoColorDiv = () => {
                         </div>
                         <h2 className="text-center text-2xl mt-2">Kshs 3500</h2>
                         <p className="text-center">Per month</p>
-                        <p className="mt-4">Get unlimited ads per month</p>
-                        <p className="mt-4">Get up to upto 10 priority ads per month</p>
-                        <p className="mt-4">Get sponsorship for your ads</p>
+                        <p className="mt-4">Get unlimited products per month</p>
+                        <p className="mt-4">Get up to upto 10 priority products per month</p>
+                        <p className="mt-4">Get sponsorship for your products</p>
                         <button className="bg-black text-white p-2 rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
                             start
                         </button>
@@ -77,9 +77,9 @@ const TwoColorDiv = () => {
                         </div>
                         <h2 className="text-center text-2xl mt-2">Kshs 5000</h2>
                         <p className="text-center">Per month</p>
-                        <p className="mt-4">Get Unlimited adds per month</p>
-                        <p className="mt-4">Get priority for your Ads</p>
-                        <p className="mt-4">Get sponsorship for your Ads</p>
+                        <p className="mt-4">Get unlimited products per month</p>
+                        <p className="mt-4">Get priority for your products</p>
+                        <p className="mt-4">Get promotion for your products</p>
                         <button className="bg-black text-white p-2 rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5 ml-[20px]">
                             start
                         </button>

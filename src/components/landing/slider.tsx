@@ -114,7 +114,7 @@ const ImageSlider = () => {
           </button>
           <div>
             <p className="uppercase">Our Services</p>
-            <p className="text-sm">Best Advertisement platform</p>
+            <p className="text-sm">Best Products marketplace</p>
           </div>
         </div>
         <div className="flex p-2 text-gray-500 gap-1 border-b-2 border-blue-950 shadow-custom">

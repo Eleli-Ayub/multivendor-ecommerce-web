@@ -44,7 +44,7 @@ const AdsComp = () => {
                             />
                         ))
                     ) : (
-                        <p className="text-center"> You do not have any ads</p>
+                        <p className="text-center"> You do not have any products</p>
                     )}
                 </div>
             </div>

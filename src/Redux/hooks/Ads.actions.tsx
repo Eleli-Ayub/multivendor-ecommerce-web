@@ -32,29 +32,29 @@ export const getSingleProduct = async (id: any): Promise<any> => {
 };
 
 export const fetchOurProducts = async () => {
-    const response = await axiosService.get('/products/getproductsdata');
+    const response = await axiosService.get('/products/getmarketplaceproducts');
     return response;
 };
 
 export const fetchOurTopsProducts = async () => {
-    const response = await axiosService.get('/products/getproductsdata?top=top');
+    const response = await axiosService.get('/products/getmarketplaceproducts?top=top');
     return response;
 };
 
 export const fetchOurSponseredProducts = async () => {
-    const response = await axiosService.get('/products/getproductsdata?sponsered=sponsered');
+    const response = await axiosService.get('/products/getmarketplaceproducts?sponsered=sponsered');
     return response;
 };
 
 export const searchOurProducts = async (param: any) => {
     console.log(param);
-    const response = await axiosService.get(`/products/getproductsdata?search=${param}`);
+    const response = await axiosService.get(`/products/getmarketplaceproducts?search=${param}`);
     return response;
 };
 
 export const fetchOurSingleProduct = async (id: any) => {
     // Your API call using Axios
-    const response = await axiosService.get(`/products/getads/single/${id}`);
+    const response = await axiosService.get(`/products/getproducts/single/${id}`);
     return response;
 };
 
@@ -66,13 +66,13 @@ export const fetchSingle = async (id: any) => {
 
 export const fetchSellersProduct = async (id: any) => {
     // Your API call using Axios
-    const response = await axiosService.get(`/products/getads/singleuserads?id=${id}`);
+    const response = await axiosService.get(`/products/getproducts/singleuserproducts?id=${id}`);
     return response;
 };
 
 export const fetchLoggedUsersProducts = async (id: any) => {
     // Your API call using Axios
-    const response = await axiosService.get(`/products/getproducts/singleuserproduct?id=${id}`);
+    const response = await axiosService.get(`/products/getproducts/singleuserproducts?id=${id}`);
     return response;
 };
 

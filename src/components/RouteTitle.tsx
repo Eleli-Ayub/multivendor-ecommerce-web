@@ -3,7 +3,7 @@ import { matchPath, useLocation } from 'react-router-dom';
 import { formatTitle } from '../hooks/usePageTitle';
 
 /**
- * Default tab title for each route. Pages with their own data (product, ad,
+ * Default tab title for each route. Pages with their own data (product, promotion,
  * shop) refine it with usePageTitle() once the name has loaded.
  * Order matters: the first matching pattern wins.
  */
@@ -14,7 +14,7 @@ const ROUTE_TITLES: Array<[pattern: string, title: string]> = [
     ['/search/products', 'Search'],
     ['/product/:id', 'Product'],
     ['/product_info/:id', 'Product'],
-    ['/ad_info/:id', 'Ad'],
+    ['/ad_info/:id', 'Product'],
     ['/seller/store/:id', 'Seller store'],
     ['/shop/:id', 'Shop'],
     ['/checkout', 'Checkout'],
@@ -36,16 +36,16 @@ const ROUTE_TITLES: Array<[pattern: string, title: string]> = [
     ['/Dashboard', 'Dashboard'],
     ['/dashboard-new', 'Dashboard'],
     ['/profile', 'Profile'],
-    ['/profile/myads', 'My ads'],
-    ['/profile/pending', 'Pending ads'],
+    ['/profile/myads', 'My products'],
+    ['/profile/pending', 'Pending products'],
     ['/profile/inquiries', 'Inquiries'],
-    ['/profile/declined', 'Declined ads'],
-    ['/profile/closed', 'Closed ads'],
+    ['/profile/declined', 'Declined products'],
+    ['/profile/closed', 'Closed products'],
     ['/profile/drafts', 'Drafts'],
-    ['/new-ad', 'Post an ad'],
-    ['/top_ads', 'Top ads'],
-    ['/sponsored_ads', 'Sponsored ads'],
-    ['/all_ads', 'All ads'],
+    ['/new-ad', 'Post a product'],
+    ['/top_ads', 'Top products'],
+    ['/sponsored_ads', 'Promoted products'],
+    ['/all_ads', 'All products'],
     ['/contact', 'Contact'],
     ['/services', 'Services'],
     ['/eleli/faq', 'FAQ'],

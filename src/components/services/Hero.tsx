@@ -8,7 +8,7 @@ const Hero = () => {
           <h1 className="text-2xl md:text-4xl lg:text-3xl font-bold mb-4">
             Welcome to eCOMMERCE
           </h1>
-          <p className=" mb-6">We are the number one Advertisement platform</p>
+          <p className=" mb-6">We are the number one Products marketplace</p>
           <p className="text-base md:text-lg">
             Join us in the world of online retail advertising and unlock the
             potential to showcase your products to a broader audience or

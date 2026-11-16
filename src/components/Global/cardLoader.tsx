@@ -6,8 +6,8 @@ const AdCardSkeleton = () => {
             {/* Image */}
             <Card.Meta
                 avatar={<Skeleton.Avatar active size="large" />}
-                title="Ad Title"
-                description="Ad Description"
+                title="Product Title"
+                description="Product Description"
             />
         </Skeleton>
     );

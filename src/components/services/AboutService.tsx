@@ -26,7 +26,7 @@ const AboutPage: React.FC = () => {
             </p>
             <p className="my-6 text-base leading-relaxed text-gray-300">
               Embarking on a new business venture can be both exhilarating and
-              challenging. E-commerce, a modern online advertisement platform,
+              challenging. E-commerce, a modern online products marketplace,
               serves as a valuable ally for newcomers, reducing the cost of
               physical stores through smart digital marketing solutions. With
               E-commerce, new entrepreneurs access a wider audience and focus on
@@ -35,7 +35,7 @@ const AboutPage: React.FC = () => {
             </p>
             <p className="text-lg text-gray-100">
               E-commerce bridges innovation and success by offering powerful,
-              affordable, and beginner-friendly tools for digital advertising.
+              affordable, and beginner-friendly tools for product promotion.
               Entrepreneurs can rely on E-commerce to engage the right audience
               while they focus on growing their dream.
             </p>

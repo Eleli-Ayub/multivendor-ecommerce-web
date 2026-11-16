@@ -44,7 +44,7 @@ const AdsComp = () => {
                             />
                         ))
                     ) : (
-                        <p className="text-center"> You do not have any pending ads</p>
+                        <p className="text-center"> You do not have any pending products</p>
                     )}
                 </div>
             </div>

@@ -3,9 +3,9 @@ import { Typography } from "antd";
 const { Title, Text } = Typography;
 
 const txt = {
-  joinCommunity: "Join our Advert platform today",
+  joinCommunity: "Join our products marketplace today",
   dayGuarrantee: "30-day, hassle free, money back guarrantee",
-  gainAccess: "Become a Premium member today and post unlimited ads",
+  gainAccess: "Become a Premium member today and post unlimited products",
   perfect: "Or Become a Mega member for ++ benefits",
   monthlySub: "Monthly Subscription",
   dollar: "kes 1500",
@@ -15,7 +15,7 @@ const txt = {
   whyUs: "Kes 2500 -Mega package",
   msgs: [
     "Gain Unlimited access",
-    "Make your ads a priority",
+    "Make your products a priority",
     "Full access for a week At kes 700",
   ],
 };

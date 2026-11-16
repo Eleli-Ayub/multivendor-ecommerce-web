@@ -16,12 +16,12 @@ const AllTopAds = () => {
     useEffect(() => {
         // Fetch top products
         dispatch(FetchTopProductsAsync());
-        document.title = formatTitle('Top ads');
+        document.title = formatTitle('Top products');
     }, [dispatch]);
 
     useEffect(() => {
         dispatch(setSearchResults(Ads));
-        document.title = formatTitle(Ads && Ads.length > 0 ? 'Top ads' : 'No results found');
+        document.title = formatTitle(Ads && Ads.length > 0 ? 'Top products' : 'No results found');
     }, [Ads, dispatch]);
 
     return (
@@ -32,7 +32,7 @@ const AllTopAds = () => {
             <div className="flex-1 mx-auto  my-body px:0 md:px-3 ">
                 <div className="px-[6px] md:px-0">
                     <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-gray-light my-3 rounded-t-[8px] ">
-                        <h1 className="text-black-main my-2 font-bold">Browse Top Ads</h1>
+                        <h1 className="text-black-main my-2 font-bold">Browse Top Products</h1>
                     </div>
                 </div>
                 {isLoading && <Loader />}

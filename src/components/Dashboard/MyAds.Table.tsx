@@ -248,9 +248,9 @@ const AdsTable = () => {
         <div className="mt-4">
             <div className="text-gray-500 flex flex-col gap-3 px-[10px] lg:px-0">
                 <h2 className="underline font-bold">GuideLines</h2>
-                <p> * You cannot delete An Active Ad</p>
-                <p> * To delete an Ad, Deactivate it first</p>
-                <p> * Only the Admin can Approve and Suspend Your Ads</p>
+                <p> * You cannot delete an Active Product</p>
+                <p> * To delete a Product, deactivate it first</p>
+                <p> * Only the Admin can approve and suspend your Products</p>
             </div>
 
             <div className=" mt-4 table-responsive px-[10px] lg:px-0">

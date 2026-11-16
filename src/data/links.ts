@@ -44,7 +44,7 @@ export const Shortcuts = [
 
 export const DashboardLinks = [
   {
-    name: "My Ads",
+    name: "My Products",
     url: "profile/myads",
     icon: A1,
   },
@@ -78,7 +78,7 @@ export const DashboardLinks = [
 
 export const UserAdsLinks = [
   {
-    name: "My Ads",
+    name: "My Products",
     url: "/profile/myads",
   },
   {

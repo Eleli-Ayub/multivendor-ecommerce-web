@@ -17,7 +17,7 @@ const AllSponsoredAds = () => {
     useEffect(() => {
         dispatch(setSearchResults(Ads));
         if (Ads && Ads.length > 0) {
-            document.title = formatTitle('Sponsored ads');
+            document.title = formatTitle('Promoted products');
         } else {
             document.title = formatTitle('No results found');
         }
@@ -36,7 +36,7 @@ const AllSponsoredAds = () => {
             <div className="flex-1 mx-auto  my-body px:0 md:px-3 ">
                 <div className="px-[8px] md:px-0">
                     <div className="py-3 px-[20px]  flex flex-row items-center justify-between bg-gray-light my-3 rounded-t-[8px] ">
-                        <h1 className="text-black-main my-2 font-bold">Browse Sponsored Ads</h1>
+                        <h1 className="text-black-main my-2 font-bold">Browse Promoted Products</h1>
                     </div>
                 </div>
                 {isLoading && <Loader />}

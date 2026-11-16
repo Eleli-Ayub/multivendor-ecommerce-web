@@ -23,7 +23,7 @@ export const Accordions = [
   {
     id: 2,
     img: Shopping2,
-    tagline: "No. 1 Ads platform",
+    tagline: "No. 1 Products platform",
     navigate: "View Products",
     url: "",
     name: "Product Name",
