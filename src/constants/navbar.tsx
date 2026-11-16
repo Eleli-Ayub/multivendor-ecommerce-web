@@ -1,286 +1,248 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Links } from "../data/links";
-import close from "../assets/close.png";
-import menu from "../assets/menu.png";
-import logo from "../assets/logo.png";
-import { IconButton } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineMenuUnfold } from "react-icons/ai";
-import { setProfileOpener } from "../Redux/slices/opener";
-// import Searchbar from './searchbar';
-import { getLoggedInUser, setUser } from "../Redux/slices/AuthSlice";
-import { AppDispatch } from "../Redux/store";
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {
+    Close,
+    FavoriteBorder,
+    Menu,
+    PersonOutline,
+    Search,
+    ShoppingBagOutlined,
+} from '@mui/icons-material';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLoggedInUser, setUser } from '../Redux/slices/AuthSlice';
+import { AppDispatch } from '../Redux/store';
+import logo from '../assets/logo.png';
 
 type NavbarProps = {
-  SetShowLogin: React.Dispatch<React.SetStateAction<boolean>>;
-  SetShowAdsForm: React.Dispatch<React.SetStateAction<boolean>>;
+    SetShowLogin: React.Dispatch<React.SetStateAction<boolean>>;
+    SetShowAdsForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+const navigation = [
+    { name: 'Home', url: '/' },
+    { name: 'Marketplace', url: '/marketplace' },
+    { name: 'Products', url: '/products' },
+    { name: 'Promoted', url: '/sponsored_ads' },
+    { name: 'About', url: '/services' },
+    { name: 'Contact', url: '/contact' },
+];
+
 const Navbar: React.FC<NavbarProps> = ({ SetShowAdsForm }) => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
-  const [scrolled] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
-  const user = useSelector((state: any) => state.auth.user);
-  const { profileOpener } = useSelector((state: any) => state.opener);
-  const userToken = useSelector((state: any) => state.auth.userToken);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const [accountOpen, setAccountOpen] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const dispatch = useDispatch<AppDispatch>();
+    const user = useSelector((state: any) => state.auth.user);
+    const userToken = useSelector((state: any) => state.auth.userToken);
 
-  useEffect(() => {
-    dispatch(getLoggedInUser());
-  }, [dispatch, userToken]);
+    useEffect(() => {
+        dispatch(getLoggedInUser());
+    }, [dispatch, userToken]);
 
-  useEffect(() => {}, [user]);
-  const [userSmallnav, setUserSmallNav] = React.useState(false);
+    const closeMobileMenu = () => setMobileOpen(false);
 
-  const Logout = async () => {
-    localStorage.removeItem("userToken");
-    await dispatch(setUser(null));
-    navigate("/");
-  };
+    const openSellForm = () => {
+        closeMobileMenu();
+        if (user) {
+            SetShowAdsForm(true);
+        } else {
+            navigate('/login');
+        }
+    };
 
-  useEffect(() => {}, [userToken, user]);
-  return (
-    <nav
-      className={`w-full  flex flex-col items-center justify-center   py-0 px-[10px]  fixed price top-0 z-20 ${
-        scrolled ? "bg-white" : "bg-white"
-      }`}
-    >
-      <div className="w-full flex  justify-center md:justify-between items-center py-2 max-w-7xl mx-auto ">
-        <div className="flex gap-2 items-center  ">
-          {user && (
-            <AiOutlineMenuUnfold
-              size="32"
-              className="text-black bg-gray-light p-2 rounded-full md:hidden mt-[11px]"
-              onClick={() => {
-                dispatch(setProfileOpener(!profileOpener));
-                console.log("hello , this is my", profileOpener);
-              }}
-            />
-          )}
-          <Link
-            to="/"
-            className="flex flex-row gap-2 lg:flex-col items-center "
-            onClick={() => {
-              setActive("");
-              window.scrollTo(0, 0);
-            }}
-          >
-            <img
-              src={logo}
-              alt="logo"
-              className=" object-contain object-center rounded  logo"
-            />
-          </Link>
+    const logout = async () => {
+        localStorage.removeItem('userToken');
+        await dispatch(setUser(null));
+        setAccountOpen(false);
+        navigate('/');
+    };
 
-          <div className="p-2 ml-5 block sm:hidden">
-            <button
-              className="bg-primary-orange text-white p-1 capitalize rounded px-5 hover:bg-secondary-orange py-2 mt-2"
-              onClick={() => {
-                user ? SetShowAdsForm(true) : navigate("/login");
-              }}
-            >
-              Sell
-            </button>
-          </div>
-        </div>
+    const isActive = (url: string) =>
+        url === '/' ? location.pathname === '/' : location.pathname.startsWith(url);
 
-        <ul className="list-none hidden sm:flex flex-row gap-10">
-          <div>
-            <button
-              className="bg-primary-orange text-white p-1 capitalize rounded px-4 hover:bg-secondary-orange"
-              onClick={() => {
-                user ? SetShowAdsForm(true) : navigate("/login");
-              }}
-            >
-              Sell
-            </button>
-          </div>
-          {Links.map((nav) => (
-            <li
-              key={nav.name}
-              className={`${
-                active === nav.name ? "text-primary-orange" : "text-black"
-              } capitalize hover:text-primary-orange text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.name)}
-            >
-              <Link to={nav.url}>{nav.name}</Link>
-            </li>
-          ))}
-          {user ? (
-            <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
-              <div
-                className="h-[50px] w-[50px] rounded-full border border-slate-500 p-1 relative cursor-pointer"
-                onClick={() => {
-                  setUserSmallNav(!userSmallnav);
-                }}
-              >
-                <img
-                  className=" rounded-full w-full h-full object-cover object-top"
-                  src={`${user?.userimage}`}
-                  alt=""
-                />
-                {userSmallnav && (
-                  <div
-                    className=" absolute text-sm flex text-start justify-start items-start text-stone-600  flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200 right-4 w-[150px] "
-                    onClick={() => setToggle(false)}
-                    onMouseLeave={() => setUserSmallNav(false)}
-                  >
-                    <p
-                      className="hover:underline hover:text-green-400 cursor-pointer"
-                      onClick={() => navigate("/profile")}
-                    >
-                      profile
-                    </p>
-                    <p
-                      className="hover:underline hover:text-green-400 cursor-pointer"
-                      onClick={() => navigate("/profile/myads")}
-                    >
-                      dashboard
-                    </p>
-                    <p
-                      className="hover:underline hover:text-green-400 cursor-pointer"
-                      onClick={() => navigate("/notifications")}
-                    >
-                      notifications
-                    </p>
-                    <button
-                      className="hover:underline hover:text-green-400 cursor-pointer"
-                      onClick={Logout}
-                    >
-                      log out
-                    </button>
-                  </div>
-                )}
-              </div>
-            </ul>
-          ) : (
-            <div>
-              <button
-                className="bg-primary-orange text-white p-1 rounded px-4 hover:bg-secondary-orange"
-                onClick={() => navigate("/login")}
-              >
-                Sign in
-              </button>
-            </div>
-          )}
-        </ul>
-
-        <div className="sm:hidden flex flex-1 justify-end items-center">
-          <IconButton
-            style={{
-              color: "#991b1b",
-              backgroundColor: "#eee",
-              cursor: "pointer",
-              marginTop: "10px",
-            }}
-          >
-            <img
-              src={toggle ? close : menu}
-              alt="menu"
-              className="w-[20px] h-[20px] object-contain "
-              onClick={() => setToggle(!toggle)}
-            />
-          </IconButton>
-
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[300px]  text-white capitalize z-10 rounded-xl`}
-            onMouseLeave={() => {
-              setUserSmallNav(false);
-              setToggle(false);
-            }}
-          >
-            <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-              {Links.map((nav) => (
-                <li
-                  key={nav.name}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.name
-                      ? "text-primary-orange"
-                      : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.url);
-                  }}
-                >
-                  <Link to={nav.url}>{nav.name}</Link>
-                </li>
-              ))}
-              {user ? (
-                <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
-                  <div
-                    className="h-[50px] w-[50px] rounded-full border border-slate-500 p-1 relative cursor-pointer"
-                    onClick={() => {
-                      setUserSmallNav(!userSmallnav);
-                    }}
-                  >
-                    <img
-                      className=" rounded-full w-full h-full object-cover object-top"
-                      src={`${user?.userimage}`}
-                      alt=""
-                    />
-                    {userSmallnav && (
-                      <div
-                        className=" absolute text-sm flex text-start justify-start items-start text-stone-600  
-                                                flex-col gap-1 p-4 font-normal  rounded-[3px] bg-gray-200  right-4"
-                        onClick={() => setToggle(false)}
-                        onMouseLeave={() => {
-                          setUserSmallNav(false);
-                          setToggle(false);
-                        }}
-                      >
-                        <p
-                          className="hover:underline hover:text-green-400 cursor-pointer"
-                          onClick={() => navigate("/profile")}
-                        >
-                          profile
-                        </p>
-                        <p
-                          className="hover:underline hover:text-green-400 cursor-pointer"
-                          onClick={() => navigate("/profile/myads")}
-                        >
-                          dashboard
-                        </p>
-                        <p
-                          className="hover:underline hover:text-green-400 cursor-pointer"
-                          onClick={() => navigate("/notifications")}
-                        >
-                          notifications
-                        </p>
-                        <button
-                          className="hover:underline hover:text-green-400 cursor-pointer "
-                          onClick={Logout}
-                        >
-                          log out
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </ul>
-              ) : (
-                <div>
-                  <button
-                    className="bg-primary-orange text-white p-1 rounded px-4 hover:bg-secondary-orange"
-                    onClick={() => {
-                      navigate("/login");
-                      setToggle(false);
-                    }}
-                  >
-                    Sign in
-                  </button>
+    return (
+        <header className="fixed top-0 z-30 w-full border-b border-gray-200 bg-white text-gray-900 shadow-sm">
+            <div className="hidden border-b border-gray-100 bg-[#fafafa] lg:block">
+                <div className="mx-auto flex h-9 max-w-[1440px] items-center justify-between px-6 text-[11px] uppercase tracking-[0.14em] text-gray-500 xl:px-10">
+                    <span>Shop confidently from trusted sellers</span>
+                    <span>Secure checkout · Product marketplace</span>
+                    <span>English · KES</span>
                 </div>
-              )}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+            </div>
+
+            <div className="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 xl:px-10">
+                <div className="flex min-w-0 items-center gap-3">
+                    <button
+                        type="button"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-800 transition hover:border-gray-900 lg:hidden"
+                        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                        onClick={() => setMobileOpen((open) => !open)}
+                    >
+                        {mobileOpen ? <Close /> : <Menu />}
+                    </button>
+
+                    <Link
+                        to="/"
+                        className="flex shrink-0 items-center"
+                        aria-label="Marketplace home"
+                        onClick={closeMobileMenu}
+                    >
+                        <img src={logo} alt="Marketplace" className="h-10 w-auto max-w-[170px] object-contain" />
+                    </Link>
+                </div>
+
+                <nav className="hidden flex-1 items-center justify-center lg:flex" aria-label="Primary navigation">
+                    <ul className="flex items-center gap-7 xl:gap-10">
+                        {navigation.map((item) => (
+                            <li key={item.url}>
+                                <Link
+                                    to={item.url}
+                                    className={`relative py-7 text-sm font-medium transition-colors after:absolute after:bottom-4 after:left-0 after:h-px after:bg-gray-900 after:transition-all ${
+                                        isActive(item.url)
+                                            ? 'text-gray-950 after:w-full'
+                                            : 'text-gray-600 after:w-0 hover:text-gray-950 hover:after:w-full'
+                                    }`}
+                                >
+                                    {item.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+
+                <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+                    <button
+                        type="button"
+                        className="hidden h-10 w-10 items-center justify-center rounded-full text-gray-800 transition hover:bg-gray-100 sm:inline-flex"
+                        aria-label="Search products"
+                        onClick={() => navigate('/products')}
+                    >
+                        <Search />
+                    </button>
+
+                    <div className="relative hidden sm:block">
+                        <button
+                            type="button"
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-800 transition hover:bg-gray-100"
+                            aria-label={user ? 'Open account menu' : 'Sign in'}
+                            onClick={() => (user ? setAccountOpen((open) => !open) : navigate('/login'))}
+                        >
+                            {user?.userimage ? (
+                                <img src={user.userimage} alt="Account" className="h-8 w-8 rounded-full object-cover" />
+                            ) : (
+                                <PersonOutline />
+                            )}
+                        </button>
+                        {user && accountOpen && (
+                            <div className="absolute right-0 top-12 w-48 rounded-xl border border-gray-200 bg-white p-2 text-sm shadow-xl">
+                                <button className="block w-full rounded-lg px-3 py-2 text-left hover:bg-gray-50" onClick={() => navigate('/profile')}>
+                                    Profile
+                                </button>
+                                <button className="block w-full rounded-lg px-3 py-2 text-left hover:bg-gray-50" onClick={() => navigate('/profile/myads')}>
+                                    My products
+                                </button>
+                                <button className="block w-full rounded-lg px-3 py-2 text-left hover:bg-gray-50" onClick={() => navigate('/notifications')}>
+                                    Notifications
+                                </button>
+                                <button className="block w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-red-50" onClick={logout}>
+                                    Log out
+                                </button>
+                            </div>
+                        )}
+                    </div>
+
+                    <button
+                        type="button"
+                        className="hidden h-10 w-10 items-center justify-center rounded-full text-gray-800 transition hover:bg-gray-100 md:inline-flex"
+                        aria-label="Wishlist"
+                        onClick={() => (user ? navigate('/profile') : navigate('/login'))}
+                    >
+                        <FavoriteBorder />
+                    </button>
+
+                    <button
+                        type="button"
+                        className="hidden h-10 w-10 items-center justify-center rounded-full text-gray-800 transition hover:bg-gray-100 md:inline-flex"
+                        aria-label="Cart"
+                        onClick={() => navigate('/checkout')}
+                    >
+                        <ShoppingBagOutlined />
+                    </button>
+
+                    <button
+                        type="button"
+                        className="ml-1 rounded-full bg-gray-950 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-gray-700 sm:px-5"
+                        onClick={openSellForm}
+                    >
+                        Sell product
+                    </button>
+                </div>
+            </div>
+
+            {mobileOpen && (
+                <div className="border-t border-gray-100 bg-white px-4 py-5 shadow-lg lg:hidden">
+                    <nav aria-label="Mobile navigation">
+                        <ul className="space-y-1">
+                            {navigation.map((item) => (
+                                <li key={item.url}>
+                                    <Link
+                                        to={item.url}
+                                        onClick={closeMobileMenu}
+                                        className={`block rounded-lg px-3 py-3 text-base font-medium ${
+                                            isActive(item.url) ? 'bg-gray-100 text-gray-950' : 'text-gray-600 hover:bg-gray-50'
+                                        }`}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    <div className="mt-4 grid grid-cols-2 gap-2 border-t border-gray-100 pt-4">
+                        <button
+                            type="button"
+                            className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 px-3 py-3 text-sm font-medium"
+                            onClick={() => {
+                                navigate('/products');
+                                closeMobileMenu();
+                            }}
+                        >
+                            <Search fontSize="small" /> Search
+                        </button>
+                        <button
+                            type="button"
+                            className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 px-3 py-3 text-sm font-medium"
+                            onClick={openSellForm}
+                        >
+                            Sell product
+                        </button>
+                    </div>
+
+                    {user ? (
+                        <div className="mt-4 flex items-center justify-between border-t border-gray-100 pt-4 text-sm">
+                            <button onClick={() => { navigate('/profile'); closeMobileMenu(); }} className="font-medium">
+                                My account
+                            </button>
+                            <button onClick={logout} className="text-red-600">
+                                Log out
+                            </button>
+                        </div>
+                    ) : (
+                        <button
+                            type="button"
+                            className="mt-4 w-full rounded-lg bg-gray-950 px-4 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-white"
+                            onClick={() => { navigate('/login'); closeMobileMenu(); }}
+                        >
+                            Sign in
+                        </button>
+                    )}
+                </div>
+            )}
+        </header>
+    );
 };
 
 export default Navbar;

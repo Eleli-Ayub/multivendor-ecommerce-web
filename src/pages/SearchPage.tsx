@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Tune } from '@mui/icons-material';
+import { useSearchParams } from 'react-router-dom';
 import { productsAPI, categoriesAPI, brandsAPI, locationsAPI } from '../api/api';
+import EcomusProductCard, { CatalogProduct } from '../components/Global/EcomusProductCard';
 
-interface Product {
-    id: string;
-    name: string;
-    price: number;
-    discount: number;
-    main_image_url: string;
-    images: { image_url: string }[];
-    is_active: boolean;
-    vendor?: { is_deactivated_vendor_only?: boolean };
-}
+type Option = Record<string, unknown>;
+
+const optionId = (option: Option) => String(option.id || option.categoryid || option.brandid || '');
+const optionName = (option: Option) => String(option.name || option.category_name || option.categoryname || option.brandname || option.region_name || '');
 
 const SearchPage: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<CatalogProduct[]>([]);
     const [loading, setLoading] = useState(false);
     const [total, setTotal] = useState(0);
-    const [categories, setCategories] = useState<Record<string, unknown>[]>([]);
-    const [brands, setBrands] = useState<Record<string, unknown>[]>([]);
-    const [locations, setLocations] = useState<Record<string, unknown>[]>([]);
+    const [categories, setCategories] = useState<Option[]>([]);
+    const [brands, setBrands] = useState<Option[]>([]);
+    const [locations, setLocations] = useState<Option[]>([]);
     const [page, setPage] = useState(1);
+    const [filtersOpen, setFiltersOpen] = useState(false);
     const limit = 20;
 
     const filters = {
@@ -36,216 +33,163 @@ const SearchPage: React.FC = () => {
     };
 
     useEffect(() => {
-        categoriesAPI.getAll().then(res => setCategories(res.data.data || []));
-        brandsAPI.getAll().then(res => setBrands(res.data.data || []));
-        locationsAPI.getAll().then(res => setLocations(res.data.data || []));
+        Promise.all([categoriesAPI.getAll(), brandsAPI.getAll(), locationsAPI.getAll()])
+            .then(([categoryResponse, brandResponse, locationResponse]) => {
+                setCategories(categoryResponse.data.data || []);
+                setBrands(brandResponse.data.data || []);
+                setLocations(locationResponse.data.data || []);
+            })
+            .catch(() => undefined);
     }, []);
 
     useEffect(() => {
+        const fetchProducts = async () => {
+            setLoading(true);
+            try {
+                const params: Record<string, string | number> = { page, limit };
+                Object.entries(filters).forEach(([key, value]) => {
+                    if (value) params[key] = value;
+                });
+                const response = await productsAPI.filter(params);
+                setProducts((response.data.data as CatalogProduct[]) || []);
+                setTotal(response.data.total || 0);
+            } catch {
+                setProducts([]);
+                setTotal(0);
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchProducts();
+        // The URL is the source of truth for this view's filters.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchParams, page]);
 
-    const fetchProducts = async () => {
-        setLoading(true);
-        try {
-            const params: Record<string, string | number> = { page, limit };
-            Object.entries(filters).forEach(([k, v]) => { if (v) params[k] = v; });
-            const res = await productsAPI.filter(params);
-            setProducts((res.data.data as Product[]) || []);
-            setTotal(res.data.total || 0);
-        } catch {
-            setProducts([]);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     const updateFilter = (key: string, value: string) => {
-        const newParams = new URLSearchParams(searchParams.toString());
-        if (value) {
-            newParams.set(key, value);
-        } else {
-            newParams.delete(key);
-        }
-        setSearchParams(newParams);
+        const nextParams = new URLSearchParams(searchParams.toString());
+        if (value) nextParams.set(key, value);
+        else nextParams.delete(key);
+        setSearchParams(nextParams);
         setPage(1);
     };
 
-    return (
-        <div className="max-w-7xl mx-auto px-4 py-6">
-            <div className="flex gap-6">
-                {/* Filters Sidebar */}
-                <aside className="w-64 flex-shrink-0 hidden md:block">
-                    <div className="bg-white rounded-lg shadow p-4 sticky top-4">
-                        <h3 className="font-bold text-lg mb-4">Filters</h3>
+    const clearFilters = () => {
+        setSearchParams(new URLSearchParams());
+        setPage(1);
+    };
 
-                        {/* Keyword */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Search</label>
-                            <input
-                                type="text"
-                                value={filters.keyword}
-                                onChange={(e) => updateFilter('keyword', e.target.value)}
-                                placeholder="Keywords..."
-                                className="w-full border rounded px-3 py-2 text-sm"
-                            />
-                        </div>
+    const filtersPanel = (
+        <div className="space-y-5">
+            <div>
+                <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">Search</label>
+                <input
+                    type="search"
+                    value={filters.keyword}
+                    onChange={(event) => updateFilter('keyword', event.target.value)}
+                    placeholder="What are you looking for?"
+                    className="w-full border-0 border-b border-gray-300 bg-transparent px-0 py-2 text-sm outline-none focus:border-gray-950 focus:ring-0"
+                />
+            </div>
 
-                        {/* Category */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Category</label>
-                            <select
-                                value={filters.category_id}
-                                onChange={(e) => updateFilter('category_id', e.target.value)}
-                                className="w-full border rounded px-3 py-2 text-sm"
-                            >
-                                <option value="">All Categories</option>
-                                {categories.map((c: Record<string, unknown>) => (
-                                    <option key={c.id as string || c.categoryid as string} value={c.id as string || c.categoryid as string}>
-                                        {c.name as string || c.category_name as string}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+            {[
+                ['category_id', 'Category', categories],
+                ['brand_id', 'Brand', brands],
+                ['location_id', 'Location', locations],
+            ].map(([key, label, options]) => (
+                <div key={key as string}>
+                    <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">{label as string}</label>
+                    <select
+                        value={filters[key as keyof typeof filters]}
+                        onChange={(event) => updateFilter(key as string, event.target.value)}
+                        className="w-full border-0 border-b border-gray-300 bg-transparent px-0 py-2 text-sm outline-none focus:border-gray-950 focus:ring-0"
+                    >
+                        <option value="">All {label as string}s</option>
+                        {(options as Option[]).map((option) => (
+                            <option key={optionId(option)} value={optionId(option)}>{optionName(option)}</option>
+                        ))}
+                    </select>
+                </div>
+            ))}
 
-                        {/* Brand */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Brand</label>
-                            <select
-                                value={filters.brand_id}
-                                onChange={(e) => updateFilter('brand_id', e.target.value)}
-                                className="w-full border rounded px-3 py-2 text-sm"
-                            >
-                                <option value="">All Brands</option>
-                                {brands.map((b: Record<string, unknown>) => (
-                                    <option key={b.id as string || b.brandid as string} value={b.id as string || b.brandid as string}>
-                                        {b.name as string || b.brandname as string}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        {/* Location */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Location</label>
-                            <select
-                                value={filters.location_id}
-                                onChange={(e) => updateFilter('location_id', e.target.value)}
-                                className="w-full border rounded px-3 py-2 text-sm"
-                            >
-                                <option value="">All Locations</option>
-                                {locations.map((l: Record<string, unknown>) => (
-                                    <option key={l.id as string} value={l.id as string}>{l.region_name as string}</option>
-                                ))}
-                            </select>
-                        </div>
-
-                        {/* Price Range */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Price Range (KES)</label>
-                            <div className="flex gap-2">
-                                <input
-                                    type="number"
-                                    value={filters.min_price}
-                                    onChange={(e) => updateFilter('min_price', e.target.value)}
-                                    placeholder="Min"
-                                    className="w-1/2 border rounded px-2 py-1 text-sm"
-                                />
-                                <input
-                                    type="number"
-                                    value={filters.max_price}
-                                    onChange={(e) => updateFilter('max_price', e.target.value)}
-                                    placeholder="Max"
-                                    className="w-1/2 border rounded px-2 py-1 text-sm"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Sort */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-1">Sort By</label>
-                            <select
-                                value={filters.sort}
-                                onChange={(e) => updateFilter('sort', e.target.value)}
-                                className="w-full border rounded px-3 py-2 text-sm"
-                            >
-                                <option value="newest">Newest</option>
-                                <option value="most_viewed">Most Viewed</option>
-                                <option value="price_low">Price: Low to High</option>
-                                <option value="price_high">Price: High to Low</option>
-                            </select>
-                        </div>
-
-                        <button
-                            onClick={() => setSearchParams(new URLSearchParams())}
-                            className="w-full text-sm text-gray-500 hover:text-gray-700"
-                        >
-                            Clear all filters
-                        </button>
-                    </div>
-                </aside>
-
-                {/* Results */}
-                <div className="flex-1">
-                    <div className="flex items-center justify-between mb-4">
-                        <p className="text-gray-600 text-sm">{total} products found</p>
-                    </div>
-
-                    {loading ? (
-                        <div className="flex justify-center py-20">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                        </div>
-                    ) : products.length === 0 ? (
-                        <div className="text-center py-20 text-gray-500">No products found</div>
-                    ) : (
-                        <>
-                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                                {products.map((product) => {
-                                    const isUnavailable = !product.is_active || product.vendor?.is_deactivated_vendor_only;
-                                    const price = product.price * (1 - (product.discount || 0) / 100);
-                                    const imgUrl = product.images?.length > 0 ? product.images[0].image_url : product.main_image_url;
-                                    return (
-                                        <Link
-                                            key={product.id}
-                                            to={`/ad_info/${product.id}`}
-                                            className={`block bg-white rounded-lg shadow hover:shadow-md overflow-hidden ${isUnavailable ? 'opacity-60' : ''}`}
-                                        >
-                                            <div className="aspect-square bg-gray-100 relative">
-                                                {imgUrl && <img src={imgUrl} alt={product.name} className="w-full h-full object-cover" />}
-                                                {isUnavailable && (
-                                                    <div className="absolute inset-0 bg-gray-800/50 flex items-center justify-center">
-                                                        <span className="text-white text-xs font-medium bg-red-500 px-2 py-1 rounded">Unavailable</span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <div className="p-3">
-                                                <p className="text-sm font-medium truncate">{product.name}</p>
-                                                <p className="text-blue-600 font-bold text-sm mt-1">KES {price.toFixed(0)}</p>
-                                            </div>
-                                        </Link>
-                                    );
-                                })}
-                            </div>
-
-                            {/* Pagination */}
-                            <div className="flex justify-center mt-6 gap-2">
-                                {page > 1 && (
-                                    <button onClick={() => setPage(page - 1)} className="px-4 py-2 border rounded hover:bg-gray-50">
-                                        Previous
-                                    </button>
-                                )}
-                                <span className="px-4 py-2 text-sm text-gray-600">Page {page}</span>
-                                {products.length === limit && (
-                                    <button onClick={() => setPage(page + 1)} className="px-4 py-2 border rounded hover:bg-gray-50">
-                                        Next
-                                    </button>
-                                )}
-                            </div>
-                        </>
-                    )}
+            <div>
+                <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">Price range · KES</label>
+                <div className="flex gap-3">
+                    <input value={filters.min_price} onChange={(event) => updateFilter('min_price', event.target.value)} type="number" placeholder="Min" className="w-1/2 border-0 border-b border-gray-300 bg-transparent px-0 py-2 text-sm outline-none focus:border-gray-950 focus:ring-0" />
+                    <input value={filters.max_price} onChange={(event) => updateFilter('max_price', event.target.value)} type="number" placeholder="Max" className="w-1/2 border-0 border-b border-gray-300 bg-transparent px-0 py-2 text-sm outline-none focus:border-gray-950 focus:ring-0" />
                 </div>
             </div>
+
+            <div>
+                <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">Sort by</label>
+                <select value={filters.sort} onChange={(event) => updateFilter('sort', event.target.value)} className="w-full border-0 border-b border-gray-300 bg-transparent px-0 py-2 text-sm outline-none focus:border-gray-950 focus:ring-0">
+                    <option value="newest">Newest</option>
+                    <option value="most_viewed">Most viewed</option>
+                    <option value="price_low">Price: low to high</option>
+                    <option value="price_high">Price: high to low</option>
+                </select>
+            </div>
+
+            <button type="button" onClick={clearFilters} className="text-xs font-semibold uppercase tracking-[0.12em] text-gray-500 underline underline-offset-4 hover:text-gray-950">
+                Clear all filters
+            </button>
         </div>
+    );
+
+    return (
+        <main className="min-h-screen bg-white text-gray-900">
+            <section className="bg-[#f2f1e5] px-4 py-12 sm:px-8 lg:px-12">
+                <div className="mx-auto max-w-[1440px]">
+                    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#637545]">Marketplace</p>
+                    <h1 className="max-w-2xl text-4xl font-semibold tracking-[-0.04em] text-[#303828] sm:text-5xl">Shop products made for your everyday.</h1>
+                    <p className="mt-4 max-w-xl text-sm leading-6 text-gray-600">Explore products from trusted sellers, filter by what matters, and find your next favorite.</p>
+                </div>
+            </section>
+
+            <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12">
+                <button type="button" onClick={() => setFiltersOpen((open) => !open)} className="mb-6 inline-flex items-center gap-2 border border-gray-300 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] md:hidden">
+                    <Tune fontSize="small" /> {filtersOpen ? 'Hide filters' : 'Show filters'}
+                </button>
+
+                <div className="grid gap-10 md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
+                    <aside className={`${filtersOpen ? 'block' : 'hidden'} md:block`}>
+                        <div className="md:sticky md:top-28">
+                            <div className="mb-6 flex items-center justify-between border-b border-gray-200 pb-4">
+                                <h2 className="text-sm font-semibold uppercase tracking-[0.12em]">Filter products</h2>
+                            </div>
+                            {filtersPanel}
+                        </div>
+                    </aside>
+
+                    <section>
+                        <div className="mb-6 flex flex-wrap items-end justify-between gap-4 border-b border-gray-200 pb-5">
+                            <div>
+                                <p className="text-xs uppercase tracking-[0.12em] text-gray-500">{total} products</p>
+                                <h2 className="mt-1 text-2xl font-semibold tracking-[-0.03em]">{filters.keyword ? `Results for “${filters.keyword}”` : 'All products'}</h2>
+                            </div>
+                            <span className="text-xs text-gray-500">Page {page}</span>
+                        </div>
+
+                        {loading ? (
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+                                {Array.from({ length: 8 }).map((_, index) => <div key={index} className="aspect-[4/5] animate-pulse bg-gray-100" />)}
+                            </div>
+                        ) : products.length === 0 ? (
+                            <div className="border border-dashed border-gray-300 px-6 py-20 text-center text-sm text-gray-500">No products found. Try adjusting your filters.</div>
+                        ) : (
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-9 sm:grid-cols-3 lg:grid-cols-4">
+                                {products.map((product) => <EcomusProductCard key={String(product.id || product.producttid)} product={product} />)}
+                            </div>
+                        )}
+
+                        <div className="mt-10 flex items-center justify-center gap-3">
+                            <button type="button" disabled={page <= 1} onClick={() => setPage((current) => current - 1)} className="border border-gray-300 px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] disabled:cursor-not-allowed disabled:opacity-30">Previous</button>
+                            <button type="button" disabled={products.length < limit} onClick={() => setPage((current) => current + 1)} className="bg-gray-950 px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-white disabled:cursor-not-allowed disabled:opacity-30">Next</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
     );
 };
 

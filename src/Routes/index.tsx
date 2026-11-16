@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import Landing from '../pages/Landing';
 import LandingPage from '../pages/LandingPage';
 import ProductDetailPage from '../pages/ProductDetailPage';
 import VendorStorePage from '../pages/VendorStorePage';
@@ -22,7 +21,6 @@ import Footer from '../constants/footer';
 import Contact from '../pages/Contact';
 import Services from '../pages/services';
 import { ToastContainer } from 'react-toastify';
-import AdInfo from '../pages/AdInfo';
 import Terms from '../pages/Terms';
 import Navbar from '../constants/navbar';
 import AdsPage from '../pages/AdsPage';
@@ -85,7 +83,7 @@ const Index = () => {
 
             <ToastContainer position="top-center" />
             <AdsForm showAdsForm={showAdsForm} setShowAdsForm={setShowAdsForm} />
-            <div className=" mt-[170px] md:mt-[10rem] max-w-[100vw] " id="root">
+            <div className=" mt-[112px] lg:mt-[124px] max-w-[100vw] " id="root">
                 <div className="md:hidden lg:hidden">
                     <UserSidebar />
                 </div>
@@ -97,7 +95,7 @@ const Index = () => {
                     <Route path="/reset_password_request" element={<PassResetPage />} />
                     <Route path="/reset_password" element={<ResetPasswordPage />} />
                     <Route path="/confirm_code" element={<ConfirmCodePage />} />
-                    <Route path="/" element={<Landing />} />
+                    <Route path="/" element={<LandingPage />} />
                     <Route path="/marketplace" element={<LandingPage />} />
                     <Route path="/products" element={<SearchPage />} />
                     <Route path="/product/:id" element={<ProductDetailPage />} />
@@ -152,7 +150,7 @@ const Index = () => {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/eleli/faq" element={<FAQSPage />} />
-                    <Route path="/ad_info/:id" element={<AdInfo />} />
+                    <Route path="/ad_info/:id" element={<ProductDetailPage />} />
                     <Route path="/seller/store/:id" element={<SellersAds />} />
                     <Route path="/shop/:id" element={<VendorStorePage />} />
                     <Route path="/dashboard-new" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
