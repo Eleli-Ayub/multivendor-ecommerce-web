@@ -1,8 +1,8 @@
 name: Deploy web to CloudFront
 
 on:
+  # Deploy every branch push, including feature branches.
   push:
-    branches: [master]
   workflow_dispatch:
 
 permissions:
