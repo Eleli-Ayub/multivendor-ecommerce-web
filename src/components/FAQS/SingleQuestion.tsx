@@ -14,7 +14,7 @@ const SingleQuestion: React.FC<SingleQuestionProps> = ({ title, info }) => {
             <header>
                 <h5>{title}</h5>
                 <button
-                    className="question-btn bg-primary-orange text-white hover:bg-secondary-orange"
+                    className="question-btn bg-primary-olive text-white hover:bg-secondary-olive"
                     onClick={() => setShowInfo(!showInfo)}
                 >
                     {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}

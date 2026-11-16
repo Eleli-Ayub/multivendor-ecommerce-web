@@ -181,7 +181,7 @@ const AdsForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-primary-orange hover:bg-secondary-orange text-white text-xl h-12 rounded transition duration-300 ease-in-out transform hover:scale-105"
+          className="w-full bg-primary-olive hover:bg-secondary-olive text-white text-xl h-12 rounded transition duration-300 ease-in-out transform hover:scale-105"
         >
           Create
         </button>

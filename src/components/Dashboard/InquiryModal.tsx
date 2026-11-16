@@ -74,7 +74,7 @@ const InquiryModal: React.FC<ModalProps> = ({ setShowModal, id }) => {
                                 Send Email
                             </button>
                             <button
-                                className="bg-primary-orange hover:bg-secondary-orange text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-red"
+                                className="bg-primary-olive hover:bg-secondary-olive text-white px-4 py-2 rounded focus:outline-none focus:shadow-outline-red"
                                 onClick={() => setShowModal(false)}
                             >
                                 Close Inquiry

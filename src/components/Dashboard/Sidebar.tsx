@@ -46,11 +46,11 @@ const Sidebar = () => {
                         >
                             <NavLink
                                 to={`/${Menu.url}`}
-                                className={`flex rounded-md p-2 text-sm items-center gap-4 w-full hover:bg-secondary-orange ${
+                                className={`flex rounded-md p-2 text-sm items-center gap-4 w-full hover:bg-secondary-olive ${
                                     index === 0 ? 'bg-light-white' : ''
                                 } ${
                                     active === `/${Menu.url}`
-                                        ? 'bg-primary-orange text-white font-bold'
+                                        ? 'bg-primary-olive text-white font-bold'
                                         : 'bg-white'
                                 }`}
                             >
@@ -72,7 +72,7 @@ const Sidebar = () => {
                     <Avatar
                         alt="Jane Doe"
                         src={`${user?.userimage}`}
-                        className="h-24 w-24 border-4 border-primary-orange"
+                        className="h-24 w-24 border-4 border-primary-olive"
                     />
                     <span className="text mt-5 capitalize">{`${user?.firstname} ${user?.lastname}`}</span>
                 </div>
@@ -93,7 +93,7 @@ const Sidebar = () => {
                     }}
                 >
                     <div className="flex justify-end " onClick={handleProfileOpenerClose}>
-                        <CloseTwoTone className="bg-primary-orange p-1 rounded-full text-right h-24 text-white cursor-pointer" />
+                        <CloseTwoTone className="bg-primary-olive p-1 rounded-full text-right h-24 text-white cursor-pointer" />
                     </div>
                     <ul className="pt-6">
                         {DashboardLinks.map((Menu, index) => (
@@ -103,11 +103,11 @@ const Sidebar = () => {
                             >
                                 <NavLink
                                     to={`/${Menu.url}`}
-                                    className={`flex rounded-md p-2 text-sm items-center gap-4 w-full  hover:bg-secondary-orange ${
+                                    className={`flex rounded-md p-2 text-sm items-center gap-4 w-full  hover:bg-secondary-olive ${
                                         index === 0 ? 'bg-light-white' : ''
                                     } ${
                                         active === `/${Menu.url}`
-                                            ? 'bg-primary-orange text-white font-bold '
+                                            ? 'bg-primary-olive text-white font-bold '
                                             : 'bg-white'
                                     }`}
                                 >
@@ -134,7 +134,7 @@ const Sidebar = () => {
                             <Avatar
                                 alt="Jane Doe"
                                 src={`${user?.userimage}`}
-                                className="h-24 w-24 border-4 border-primary-orange"
+                                className="h-24 w-24 border-4 border-primary-olive"
                             />
                             <span className="text mt-5 capitalize">{`${user?.firstname} ${user?.lastname}`}</span>
                         </div>

@@ -138,7 +138,7 @@ const RegisterForm: React.FC = () => {
 
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition hover:text-primary-orange"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition hover:text-primary-olive"
             >
               <FaSignInAlt className="text-xs" />
               Sign In
@@ -166,7 +166,7 @@ const RegisterForm: React.FC = () => {
                       name="firstname"
                       value={formData.firstname}
                       onChange={handleChange}
-                      className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                      className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                       placeholder="First name"
                       minLength={2}
                       required
@@ -181,7 +181,7 @@ const RegisterForm: React.FC = () => {
                       name="middlename"
                       value={formData.middlename}
                       onChange={handleChange}
-                      className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                      className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                       placeholder="Middle name"
                       minLength={2}
                       required
@@ -198,7 +198,7 @@ const RegisterForm: React.FC = () => {
                       name="lastname"
                       value={formData.lastname}
                       onChange={handleChange}
-                      className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                      className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                       placeholder="Last name"
                       minLength={2}
                       required
@@ -213,7 +213,7 @@ const RegisterForm: React.FC = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                      className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                       placeholder="Phone number"
                       required
                     />
@@ -228,7 +228,7 @@ const RegisterForm: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                    className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                     placeholder="Email address"
                     required
                   />
@@ -241,7 +241,7 @@ const RegisterForm: React.FC = () => {
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
-                    className="h-12 w-full appearance-none rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                    className="h-12 w-full appearance-none rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                     required
                   >
                     <option value="">Select County</option>
@@ -261,7 +261,7 @@ const RegisterForm: React.FC = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-12 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                    className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-12 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                     placeholder="Create password"
                     minLength={6}
                     required
@@ -269,7 +269,7 @@ const RegisterForm: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-primary-orange"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-primary-olive"
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
@@ -281,7 +281,7 @@ const RegisterForm: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary-orange to-secondary-orange text-sm font-semibold text-white shadow-[0_10px_24px_rgba(255,106,0,0.24)] transition duration-300 hover:scale-[1.01]"
+                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary-olive to-secondary-olive text-sm font-semibold text-white shadow-[0_10px_24px_rgba(99,117,69,0.24)] transition duration-300 hover:scale-[1.01]"
                 >
                   <FaUserPlus />
                   Create Account
@@ -291,7 +291,7 @@ const RegisterForm: React.FC = () => {
                   Already have an account?
                   <Link
                     to="/login"
-                    className="ml-2 font-semibold text-primary-orange hover:underline"
+                    className="ml-2 font-semibold text-primary-olive hover:underline"
                   >
                     Sign in
                   </Link>

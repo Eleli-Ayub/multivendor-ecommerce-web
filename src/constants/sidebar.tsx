@@ -80,7 +80,7 @@ const Sidebar = () => {
       >
         {loading ? (
           <div className="flex justify-center items-center h-full">
-            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-primary-orange transition-all duration-300"></div>
+            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-primary-olive transition-all duration-300"></div>
           </div>
         ) : (
           <ul className="py-1">
@@ -126,7 +126,7 @@ const Sidebar = () => {
       <div>
         {submenuOpen && (
           <div
-            className=" absolute bg-gray-light  z-10 h-[55vh] w-[18vw] border-l-2 border-primary-orange px-5 shadow-custom overflow-y-auto text-sm pt-5"
+            className=" absolute bg-gray-light  z-10 h-[55vh] w-[18vw] border-l-2 border-primary-olive px-5 shadow-custom overflow-y-auto text-sm pt-5"
             style={{
               left: "18vw",
             }}
@@ -134,7 +134,7 @@ const Sidebar = () => {
           >
             {loading ? (
               <div className="flex justify-center items-center h-full">
-                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-orange transition-all duration-300"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-olive transition-all duration-300"></div>
               </div>
             ) : (
               <ul>

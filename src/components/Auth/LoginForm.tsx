@@ -102,7 +102,7 @@ const LoginForm: React.FC = () => {
 
             <Link
               to="/register"
-              className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition hover:text-primary-orange"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition hover:text-primary-olive"
             >
               <FaUserPlus className="text-xs" />
               Sign Up
@@ -129,7 +129,7 @@ const LoginForm: React.FC = () => {
                     name="username"
                     value={formData.username}
                     onChange={handleChange}
-                    className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                    className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-4 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                     placeholder="Email or Username"
                     required
                   />
@@ -143,14 +143,14 @@ const LoginForm: React.FC = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-12 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/10"
+                    className="h-12 w-full rounded-full border border-[#e6e1dc] bg-white pl-12 pr-12 text-sm font-medium text-gray-800 outline-none transition focus:border-primary-olive focus:ring-2 focus:ring-primary-olive/10"
                     placeholder="Password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-primary-orange"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 transition hover:text-primary-olive"
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
@@ -159,7 +159,7 @@ const LoginForm: React.FC = () => {
                 <div className="flex items-center justify-end">
                   <Link
                     to="/reset_password_request"
-                    className="text-sm font-medium text-primary-orange transition hover:underline"
+                    className="text-sm font-medium text-primary-olive transition hover:underline"
                   >
                     Forgot password?
                   </Link>
@@ -167,7 +167,7 @@ const LoginForm: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary-orange to-secondary-orange text-sm font-semibold text-white shadow-[0_10px_24px_rgba(255,106,0,0.24)] transition duration-300 hover:scale-[1.01]"
+                  className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary-olive to-secondary-olive text-sm font-semibold text-white shadow-[0_10px_24px_rgba(99,117,69,0.24)] transition duration-300 hover:scale-[1.01]"
                 >
                   <FaSignInAlt />
                   Sign In
@@ -177,7 +177,7 @@ const LoginForm: React.FC = () => {
                   Don&apos;t have an account?
                   <Link
                     to="/register"
-                    className="ml-2 font-semibold text-primary-orange hover:underline"
+                    className="ml-2 font-semibold text-primary-olive hover:underline"
                   >
                     Sign up
                   </Link>

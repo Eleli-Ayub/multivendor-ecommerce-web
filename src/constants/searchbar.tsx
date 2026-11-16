@@ -77,12 +77,12 @@ const SearchBar: React.FC = () => {
         }}
         className=" hidden  md:flex items-center w-screen max-w-7xl mx-auto bg-white mb-7"
       >
-        <div className="flex w-full border-2 border-secondary-orange rounded-[20px] justify-between px-0">
+        <div className="flex w-full border-2 border-secondary-olive rounded-[20px] justify-between px-0">
           <select
             id="categorySelect"
             value={category}
             onChange={handleCategoryChange}
-            className="px-5  border-r-2 border-secondary-orange  w-[200px]  bg-white outline-none rounded-l-[20px] py:5 text-sm text-stone-400"
+            className="px-5  border-r-2 border-secondary-olive  w-[200px]  bg-white outline-none rounded-l-[20px] py:5 text-sm text-stone-400"
           >
             <option value="all">Search for products</option>
           </select>
@@ -99,7 +99,7 @@ const SearchBar: React.FC = () => {
 
           <button
             type="submit"
-            className="bg-primary-orange capitalize text-white  hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none rounded-r-[15px] text-[20px] h-[50px]"
+            className="bg-primary-olive capitalize text-white  hover:bg-secondary-olive transition-colors delay-300 w-[250px] outline-none rounded-r-[15px] text-[20px] h-[50px]"
           >
             Search
           </button>
@@ -115,7 +115,7 @@ const SearchBar: React.FC = () => {
         }}
         className="search flex items-center justify-center my-2 px-1"
       >
-        <div className="flex w-full max-w-screen-md border-2 border-secondary-orange rounded-[20px]">
+        <div className="flex w-full max-w-screen-md border-2 border-secondary-olive rounded-[20px]">
           <select
             id="categorySelect"
             value={category}
@@ -135,7 +135,7 @@ const SearchBar: React.FC = () => {
 
           <button
             type="submit"
-            className="bg-primary-orange text-white  hover:bg-secondary-orange transition-colors delay-300 outline-none shadow-custom rounded-r-[15px] p-3"
+            className="bg-primary-olive text-white  hover:bg-secondary-olive transition-colors delay-300 outline-none shadow-custom rounded-r-[15px] p-3"
           >
             Search
           </button>

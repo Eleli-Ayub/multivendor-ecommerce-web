@@ -118,13 +118,13 @@ const ProductInfo = () => {
             )}
             <div className="absolute inset-0 flex items-center justify-between px-1">
               <IconButton
-                className="bg-[#eee] text-primary-orange"
+                className="bg-[#eee] text-primary-olive"
                 onClick={prevSlide}
               >
                 <ChevronLeft />
               </IconButton>
               <IconButton
-                className="bg-[#eee] text-primary-orange"
+                className="bg-[#eee] text-primary-olive"
                 onClick={nextSlide}
               >
                 <ChevronRight />
@@ -140,7 +140,7 @@ const ProductInfo = () => {
                 src={image}
                 className={`h-16 w-16 object-cover rounded-md cursor-pointer ${
                   index === selectedImageIndex
-                    ? "border-2 border-secondary-orange"
+                    ? "border-2 border-secondary-olive"
                     : "bg-gray-100"
                 }`}
                 onClick={() => setSelectedImageIndex(index)}
@@ -151,10 +151,10 @@ const ProductInfo = () => {
           {/* Category & Brand */}
           <div className="flex flex-col md:flex-row gap-4 px-2">
             <span>
-              Category: <i className="text-primary-orange">{ad?.category}</i>
+              Category: <i className="text-primary-olive">{ad?.category}</i>
             </span>
             <span>
-              Brand: <i className="text-primary-orange">{ad?.brand}</i>
+              Brand: <i className="text-primary-olive">{ad?.brand}</i>
             </span>
           </div>
         </div>
@@ -168,21 +168,21 @@ const ProductInfo = () => {
               <h2 className="text-2xl font-bold capitalize">
                 {ad?.productname}
               </h2>
-              <h3 className="text-2xl font-bold text-secondary-orange">
+              <h3 className="text-2xl font-bold text-secondary-olive">
                 KSh {ad?.productprice}
               </h3>
 
               <p className="text-gray-600 mt-2">{ad?.productdescription}</p>
 
               <div className="flex items-center mt-2">
-                <LocationOn className="text-secondary-orange" />
+                <LocationOn className="text-secondary-olive" />
                 <p className="text-gray-700 capitalize ml-1">
                   {seller?.seller_location}
                 </p>
               </div>
 
               <button
-                className="mt-4 p-2 bg-primary-orange text-white px-12 py-3 rounded hover:bg-secondary-orange transition-colors"
+                className="mt-4 p-2 bg-primary-olive text-white px-12 py-3 rounded hover:bg-secondary-olive transition-colors"
                 onClick={() => settoggle(!toggle)}
               >
                 <Link to={`tel:${seller?.seller_phonenumber}`} target="_blank">
@@ -192,7 +192,7 @@ const ProductInfo = () => {
 
               {/* Moved Seller Details Here */}
               <div className="mt-6 border rounded shadow-sm p-4 bg-gray-50 ">
-                <h3 className="text-lg font-semibold text-primary-orange mb-2">
+                <h3 className="text-lg font-semibold text-primary-olive mb-2">
                   Seller Details
                 </h3>
                 <div className="flex items-center gap-4">

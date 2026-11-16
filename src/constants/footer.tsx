@@ -4,6 +4,8 @@ import { IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
         <div className=" w-full relative">
             <div
@@ -121,7 +123,7 @@ const Footer = () => {
                                     target="_blank"
                                     className="text-white flex items-center"
                                 >
-                                    <FaEnvelope color="orange" />
+                                    <FaEnvelope color="#637545" />
                                 </Link>
                             </IconButton>
                         </li>
@@ -157,9 +159,9 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <div style={{ borderTop: ' solid 2px #DC5F00' }} className="w-full">
+                <div style={{ borderTop: ' solid 2px #637545' }} className="w-full">
                     <p className="text-center text-white py-2 mt-2">
-                        © ELELI 2023 || All Rights Reserved
+                        © ELELI {currentYear} || All Rights Reserved
                     </p>
                 </div>
             </div>

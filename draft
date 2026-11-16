@@ -58,7 +58,7 @@ s
                   className={
                     "h-16 w-16 object-cover rounded-md bg-gray-100 cursor-pointer" +
                     (index === selectedImageIndex
-                      ? " border-2 border-secondary-orange"
+                      ? " border-2 border-secondary-olive"
                       : "")
                   }
                   alt=""

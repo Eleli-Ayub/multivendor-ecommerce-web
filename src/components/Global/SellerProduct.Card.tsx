@@ -30,7 +30,7 @@ function Productcard({
                     </h1>
                     <p className="text-stone-500 text-sm font-bold">Ksh: {price}</p>
 
-                    <button className="p-2 bg-orange-600 rounded-[0.25rem] text-white">
+                    <button className="p-2 bg-olive-600 rounded-[0.25rem] text-white">
                         View Product
                     </button>
                 </div>

@@ -51,7 +51,7 @@ const SellersAdsComp = () => {
                             <Avatar
                                 src={` ${theSeller?.userimage}`}
                                 // src={image}
-                                className="w-[5rem] h-[5rem] object-cover mx-auto border border-primary-orange p-1"
+                                className="w-[5rem] h-[5rem] object-cover mx-auto border border-primary-olive p-1"
                                 style={{
                                     height: '100px',
                                     width: '100px',
@@ -100,7 +100,7 @@ const SellersAdsComp = () => {
                         <div className="flex flex-col items-center sm:items-start sm:pl-4 text-gray-300">
                             <p className="mb-2">
                                 Name:{' '}
-                                <span className="capitalize font-bold text-secondary-orange">
+                                <span className="capitalize font-bold text-secondary-olive">
                                     {`${theSeller?.firstname} ${theSeller?.middlename} ${theSeller?.lastname}`}
                                     {/* Emma Marcy */}
                                 </span>

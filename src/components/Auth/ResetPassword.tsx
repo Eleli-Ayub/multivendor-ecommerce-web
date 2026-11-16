@@ -73,7 +73,7 @@ const PasswordResetForm: React.FC = () => {
     <div>
       <div className="w-full max-w-xl mx-auto bg-white rounded-lg ">
         <div className="flex items-center justify-center gap-3">
-          <div className="text-primary-orange text-8xl">
+          <div className="text-primary-olive text-8xl">
             <FaCartPlus />
           </div>
         </div>
@@ -95,7 +95,7 @@ const PasswordResetForm: React.FC = () => {
                 type={showNewPassword ? "text" : "password"}
                 id="new-password"
                 name="newPassword"
-                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary-orange"
+                className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-primary-olive"
                 placeholder="Enter your new password"
                 value={formData.newPassword}
                 onChange={handleChange}
@@ -147,7 +147,7 @@ const PasswordResetForm: React.FC = () => {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-primary-orange hover:bg-secondary-orange text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline items-center w-full"
+              className="bg-primary-olive hover:bg-secondary-olive text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline items-center w-full"
               type="submit"
             >
               Reset Password

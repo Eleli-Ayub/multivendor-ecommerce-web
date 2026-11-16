@@ -49,7 +49,7 @@ const AdsTable = () => {
                 return (
                     <div className="flex mr-2 gap-3">
                         <Visibility
-                            className="text-primary-orange"
+                            className="text-primary-olive"
                             onClick={() => {
                                 navigate(`/product_info/${record.producttid}`), console.log(text);
                             }}

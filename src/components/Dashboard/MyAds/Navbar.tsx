@@ -39,7 +39,7 @@ const Navbar = () => {
                                 key={nav.name}
                                 className={`${
                                     location.pathname === nav.url
-                                        ? 'text-primary-orange'
+                                        ? 'text-primary-olive'
                                         : 'text-dark'
                                 } capitalize hover:text-white text-[18px] font-medium cursor-pointer`}
                             >
@@ -75,7 +75,7 @@ const Navbar = () => {
                                         key={nav.name}
                                         className={` cursor-pointer text-[16px] capitalize font-bold ${
                                             location.pathname === nav.url
-                                                ? 'text-secondary-orange'
+                                                ? 'text-secondary-olive'
                                                 : ' text-white'
                                         }`}
                                     >

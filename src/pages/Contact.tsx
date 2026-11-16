@@ -134,7 +134,7 @@ const Contact: React.FC = () => {
           </div>
           <div className="flex items-center justify-end">
             <button
-              className="bg-primary-orange hover:bg-secondary-orange text-white font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-primary-olive hover:bg-secondary-olive text-white font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Send
@@ -183,7 +183,7 @@ const Contact: React.FC = () => {
                   target="_blank"
                   className="text-white flex items-center"
                 >
-                  <FaEnvelope color="orange" />
+                  <FaEnvelope color="#637545" />
                 </Link>
               </IconButton>
             </li>

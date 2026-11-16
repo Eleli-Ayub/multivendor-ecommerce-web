@@ -6,16 +6,19 @@ import Robot from "../../assets/robot.avif";
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="bg-[#001e2b] text-white w-full py-20">
+    <div className="bg-[#455230] text-white w-full py-20">
       <div className="max-w-7xl mx-auto px-6 space-y-20">
         {/* Section 1: Starting a Business */}
         <div className="md:flex md:items-center md:gap-10">
           <div className="md:w-1/3 mb-8 md:mb-0">
+            <div className="mx-auto aspect-square w-full max-w-[420px] overflow-hidden rounded-3xl bg-[#EBEBD8] p-6 shadow-xl">
             <img
               src={Photo}
               alt="Starting a business illustration"
-              className="w-full h-auto object-cover rounded-full shadow-xl"
+              className="h-full w-full object-contain"
+              loading="lazy"
             />
+            </div>
           </div>
           <div className="md:w-2/3">
             <h2 className="text-4xl font-bold mb-4 text-center md:text-left">
@@ -66,11 +69,14 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className="md:w-1/3 mb-10 md:mb-0">
+            <div className="mx-auto aspect-square w-full max-w-[500px] overflow-hidden rounded-3xl bg-[#EBEBD8] p-6 shadow-xl">
             <img
               src={Robot}
               alt="Digital marketing technology illustration"
-              className="w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] object-cover rounded-full shadow-xl mx-auto"
+              className="h-full w-full object-contain"
+              loading="lazy"
             />
+            </div>
           </div>
         </div>
       </div>

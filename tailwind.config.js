@@ -4,14 +4,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary-orange": {
-          DEFAULT: "#F75A0D",
+        "primary-olive": {
+          DEFAULT: "#637545",
         },
-        "secondary-orange": {
-          DEFAULT: "#F34508",
+        "secondary-olive": {
+          DEFAULT: "#455230",
         },
-        "tertiary-orange": {
-          DEFAULT: "#D63505",
+        "tertiary-olive": {
+          DEFAULT: "#9BA685",
+        },
+        olive: {
+          100: "#f0f1e8",
+          200: "#EBEBD8",
+          300: "#dfe5d0",
+          400: "#9BA685",
+          500: "#637545",
+          600: "#455230",
+          700: "#455230",
+          800: "#455230",
         },
         black: {
           DEFAULT: "#000000",

@@ -78,7 +78,7 @@ const ConfirmCodeForm: React.FC = () => {
 
           <div className="flex items-center justify-between">
             <button
-              className="bg-primary-orange hover:bg-secondary-orange text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline items-center w-full"
+              className="bg-primary-olive hover:bg-secondary-olive text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline items-center w-full"
               type="submit"
             >
               Confirm Code

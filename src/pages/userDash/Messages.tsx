@@ -28,7 +28,7 @@ const Messages = () => {
                     className={`${
                         chatBodyActive
                             ? 'flex-[100%] lg:flex-[70%]'
-                            : 'hidden lg:block   lg:flex-[70%] lg:bg-tertiary-orange'
+                            : 'hidden lg:block   lg:flex-[70%] lg:bg-tertiary-olive'
                     } flex-[0.7]`}
                 >
                     <ChartBody

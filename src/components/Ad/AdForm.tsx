@@ -344,7 +344,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         name="productname"
                                         value={formData.productname}
                                         onChange={handleInputChange}
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         placeholder="Enter your product name"
                                         // maxLength={50}
                                         required
@@ -362,7 +362,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         name="productdescription"
                                         value={formData.productdescription}
                                         onChange={handleInputChange}
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange h-auto"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive h-auto"
                                         placeholder="Enter your product description"
                                         minLength={100}
                                         style={{ minHeight: '100px' }}
@@ -383,7 +383,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         name="productprice"
                                         value={formData.productprice}
                                         onChange={handleInputChange}
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         placeholder="Enter your product price"
                                         required
                                     />
@@ -401,7 +401,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         name="quantity"
                                         value={formData.quantity}
                                         onChange={handleInputChangeno}
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         placeholder="Enter your product quantity"
                                         required
                                     />
@@ -418,7 +418,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         onChange={handleCategoryChange}
                                         id="category"
                                         name="category"
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         required
                                     >
                                         <option value="">Select a Category</option>
@@ -442,7 +442,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         onChange={handleSelectChange}
                                         id="subcategory"
                                         name="subcategory"
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         required
                                     >
                                         <option value="">Select a Subcategory</option>
@@ -467,7 +467,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                     <select
                                         id="producttype"
                                         name="producttype"
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         required
                                         value={formData.producttype}
                                         onChange={handleSelectChange}
@@ -508,7 +508,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         name="brand"
                                         value={formData.brand}
                                         onChange={handleInputChange}
-                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         placeholder="Enter your brand"
                                         required
                                     />
@@ -538,7 +538,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         type="file"
                                         id="mainimage"
                                         name="mainimage"
-                                        className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         placeholder="Upload your cover image"
                                         onChange={handlemainimageChange}
                                         accept=".jpg, .jpeg, .png"
@@ -563,7 +563,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
                                         type="file"
                                         id="Productimages"
                                         name="Productimages"
-                                        className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-orange"
+                                        className="hidden w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-primary-olive"
                                         placeholder="Upload your cover image"
                                         onChange={handleGalleryUpload}
                                         accept=".jpg, .jpeg, .png"
@@ -595,7 +595,7 @@ const AdForm: React.FC<AdFormProps> = ({ showAdsForm, setShowAdsForm }) => {
 
                                 <button
                                     type="submit"
-                                    className="bg-primary-orange p-2 w-full rounded-xl text-white hover:bg-secondary-orange mt-3"
+                                    className="bg-primary-olive p-2 w-full rounded-xl text-white hover:bg-secondary-olive mt-3"
                                 >
                                     Add Product
                                 </button>

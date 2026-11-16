@@ -66,7 +66,7 @@ const ImageSlider = () => {
               <h2 className=" text-xl lg:text-2xl font-bold">
                 {image.tagline}
               </h2>
-              {/* <button className="border-secondary-orange border-spacing-1 bg-secondary-orange rounded p-2 capitalize m-2 font-normal text-sm hover:bg-primary-orange cursor-pointer">
+              {/* <button className="border-secondary-olive border-spacing-1 bg-secondary-olive rounded p-2 capitalize m-2 font-normal text-sm hover:bg-primary-olive cursor-pointer">
                                 {image.navigate}
                             </button> */}
             </div>

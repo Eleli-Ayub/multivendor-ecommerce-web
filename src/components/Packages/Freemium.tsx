@@ -112,7 +112,7 @@ const Freemium = () => {
                     </div>
 
                     <div className="flex flex-col price">
-                        <div className="bg-primary-orange p-4 rounded-t-[0.25rem] lg:text-center">
+                        <div className="bg-primary-olive p-4 rounded-t-[0.25rem] lg:text-center">
                             <p>Order Summary</p>
                         </div>
                         <div className="flex flex-col gap-4 bg-white text-gray-600 p-4 rounded-b-[0.25rem]">

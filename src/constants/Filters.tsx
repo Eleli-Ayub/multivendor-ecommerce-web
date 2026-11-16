@@ -150,7 +150,7 @@ const Filters = ({ Ads }: any) => {
             {/* Filter By Category */}
             <div className="p-4">
               <button
-                className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2"
+                className="px-3 py-1 bg-primary-olive text-white cursor-pointer rounded mb-2"
                 onClick={() => sortAds("category")}
               >
                 Category
@@ -179,7 +179,7 @@ const Filters = ({ Ads }: any) => {
 
             {/* Filter by Budget */}
             <div className="p-4">
-              <button className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2">
+              <button className="px-3 py-1 bg-primary-olive text-white cursor-pointer rounded mb-2">
                 Price (Kshs)
               </button>
 
@@ -205,7 +205,7 @@ const Filters = ({ Ads }: any) => {
                   </div>
                 </div>
                 <button
-                  className="px-3 py-1 text-primary-orange"
+                  className="px-3 py-1 text-primary-olive"
                   onClick={() => handleCustomPriceRange()}
                 >
                   Apply range
@@ -257,7 +257,7 @@ const Filters = ({ Ads }: any) => {
             {/* Filter by location*/}
             <div className="p-4">
               <button
-                className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2"
+                className="px-3 py-1 bg-primary-olive text-white cursor-pointer rounded mb-2"
                 onClick={() => sortAds("brand")}
               >
                 Sort by Location
@@ -288,7 +288,7 @@ const Filters = ({ Ads }: any) => {
             {/* Filter by Brand */}
             <div className="p-4">
               <button
-                className="px-3 py-1 bg-primary-orange text-white cursor-pointer rounded mb-2"
+                className="px-3 py-1 bg-primary-olive text-white cursor-pointer rounded mb-2"
                 onClick={() => sortAds("brand")}
               >
                 Sort by Brand

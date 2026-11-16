@@ -9,7 +9,7 @@ interface IconProps {
 const Icon: React.FC<IconProps> = ({
   icon: IconComponent,
   size = "8xl",
-  color = "primary-orange",
+  color = "primary-olive",
 }) => {
   return (
     <div className={`text-${color} text-${size}`}>

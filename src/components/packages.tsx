@@ -34,7 +34,7 @@ const TwoColorDiv = () => {
                         </p>
                         <p className="mt-4">Get up to 4 products a week</p>
                         <p className="mt-4">Start with our Freemium plan.</p>
-                        <button className="bg-black text-white p-2 rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
+                        <button className="bg-black text-white p-2 rounded hover:bg-secondary-olive transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
                             start
                         </button>
                     </div>
@@ -48,14 +48,14 @@ const TwoColorDiv = () => {
                         <p className="mt-4">Get upto 50 products per month</p>
                         <p className="mt-4">Get 2 priority products per month</p>
                         <p className="mt-4">Start with us today.</p>
-                        <button className="bg-black text-white p-2 rounded hover-bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
+                        <button className="bg-black text-white p-2 rounded hover-bg-secondary-olive transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
                             start
                         </button>
                     </div>
                     <div className="p-4 h-96 shadow-custom rounded border-t-4 border-red-600">
                         <div className="flex flex-col items-center justify-center">
-                            <PaymentIcon style={{ fontSize: 40, color: 'orange' }} />
-                            <h2 className="text-xl font-semibold ml-3 text-orange-300">
+                            <PaymentIcon style={{ fontSize: 40, color: '#637545' }} />
+                            <h2 className="text-xl font-semibold ml-3 text-olive-300">
                                 Standard plan
                             </h2>
                         </div>
@@ -64,14 +64,14 @@ const TwoColorDiv = () => {
                         <p className="mt-4">Get unlimited products per month</p>
                         <p className="mt-4">Get up to upto 10 priority products per month</p>
                         <p className="mt-4">Get sponsorship for your products</p>
-                        <button className="bg-black text-white p-2 rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
+                        <button className="bg-black text-white p-2 rounded hover:bg-secondary-olive transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5">
                             start
                         </button>
                     </div>
                     <div className="p-4 h-96 shadow-custom rounded border-t-4 border-green-600">
                         <div className="flex flex-col items-center justify-center">
-                            <PaymentIcon style={{ fontSize: 40 }} className="text-orange-600" />
-                            <h2 className="text-xl font-semibold ml-3 text-orange-600">
+                            <PaymentIcon style={{ fontSize: 40 }} className="text-olive-600" />
+                            <h2 className="text-xl font-semibold ml-3 text-olive-600">
                                 Premium plan
                             </h2>
                         </div>
@@ -80,7 +80,7 @@ const TwoColorDiv = () => {
                         <p className="mt-4">Get unlimited products per month</p>
                         <p className="mt-4">Get priority for your products</p>
                         <p className="mt-4">Get promotion for your products</p>
-                        <button className="bg-black text-white p-2 rounded hover:bg-secondary-orange transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5 ml-[20px]">
+                        <button className="bg-black text-white p-2 rounded hover:bg-secondary-olive transition-colors delay-300 w-[250px] outline-none shadow-custom mt-5 ml-[20px]">
                             start
                         </button>
                     </div>

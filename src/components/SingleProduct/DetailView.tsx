@@ -105,7 +105,7 @@ const ProductInfo = () => {
 
                                 <div className="flex items-center justify-between absolute inset-0 px-1">
                                     <IconButton
-                                        className="bg-[#eee] text-primary-orange"
+                                        className="bg-[#eee] text-primary-olive"
                                         style={{ color: '#f75a0d', backgroundColor: '#eee' }}
                                         onClick={prevSlide}
                                     >
@@ -114,7 +114,7 @@ const ProductInfo = () => {
 
                                     {/* Next button */}
                                     <IconButton
-                                        className="bg-[#eee] text-primary-orange"
+                                        className="bg-[#eee] text-primary-olive"
                                         onClick={nextSlide}
                                         style={{ color: '#f75a0d', backgroundColor: '#eee' }}
                                     >
@@ -133,7 +133,7 @@ const ProductInfo = () => {
                                         className={
                                             'h-16 w-16 object-cover rounded-md bg-gray-100 cursor-pointer' +
                                             (index === selectedImageIndex
-                                                ? ' border-2 border-secondary-orange'
+                                                ? ' border-2 border-secondary-olive'
                                                 : '')
                                         }
                                         alt=""
@@ -149,27 +149,27 @@ const ProductInfo = () => {
                 <div className="flex flex-col gap-2 md:flex-row md:gap-5 p-5">
                     {/* <span>{ad?.CreatedAt}</span> */}
                     <span>
-                        Category: <i className="text-primary-orange">{ad?.category}</i>
-                        {/* Category: <i className="text-primary-orange">Home and Office</i> */}
+                        Category: <i className="text-primary-olive">{ad?.category}</i>
+                        {/* Category: <i className="text-primary-olive">Home and Office</i> */}
                     </span>
                     <span>
-                        Brand: <i className="text-primary-orange">{ad?.brand}</i>{' '}
-                        {/* Brand: <i className="text-primary-orange">Innovia</i>{' '} */}
+                        Brand: <i className="text-primary-olive">{ad?.brand}</i>{' '}
+                        {/* Brand: <i className="text-primary-olive">Innovia</i>{' '} */}
                     </span>
                 </div>
 
                 <div className="flex gap-5 items-center p-4">
                     {/* <div>
-                        <Favorite className="text-secondary-orange font-bold  animate-pulse" />
+                        <Favorite className="text-secondary-olive font-bold  animate-pulse" />
                         <span className="text-gray-500">20</span>
                     </div> */}
 
                     {/* <div>
-                        <Reviews className="text-primary-orange font-bold " />
+                        <Reviews className="text-primary-olive font-bold " />
                         <span className="text-gray-500">20</span>
                     </div> */}
                     {/* <div>
-                        <Rating className="text-secondary-orange font-bold  " />
+                        <Rating className="text-secondary-olive font-bold  " />
                         <span></span>
                     </div> */}
                 </div>
@@ -181,7 +181,7 @@ const ProductInfo = () => {
                     <div>
                         <h2 className=" text-2xl capitalize font-bold">{ad?.productname}</h2>
                     </div>
-                    <div className="text-2xl font-bold text-secondary-orange">
+                    <div className="text-2xl font-bold text-secondary-olive">
                         {' '}
                         <h2> KSh {ad?.productprice}</h2>
                         {/* <span className="text-sm text-gray-500">
@@ -198,19 +198,19 @@ const ProductInfo = () => {
                         </p>
                     </div>
                     <div className="flex mt-2">
-                        <LocationOn className="text-secondary-orange" />
+                        <LocationOn className="text-secondary-olive" />
                         <p className="text-gray-700 capitalize">{seller?.seller_location} </p>
                     </div>
                     <div className="mt-2">
                         <p className="capitalize text-sm text-gray-700">
                             {' '}
-                            {/* ratings: <Rating className="text-secondary-orange font-bold  " /> */}
+                            {/* ratings: <Rating className="text-secondary-olive font-bold  " /> */}
                         </p>
                     </div>
                     <div>
                         {' '}
                         <button
-                            className="p-2  bg-primary-orange text-white px-12 py-3 mt-4 rounded  hover:secondary transition-colors delay-300"
+                            className="p-2  bg-primary-olive text-white px-12 py-3 mt-4 rounded  hover:secondary transition-colors delay-300"
                             onClick={() => settoggle(!toggle)}
                         >
                             <Link to={`tel:${seller?.seller_phonenumber}`} target="_blank">
@@ -278,7 +278,7 @@ const ProductInfo = () => {
                 <div className="mt-2 rounded" style={{ height: 'auto' }}>
                     <div className="flex flex-col md:flex-row gap-3 md:flex-1">
                         <div className=" price lg-w-[50%]" style={{ borderRadius: '0.25rem' }}>
-                            <h1 className="text-center py-4 mb-2 bg-primary-orange rounded-tl rounded-tr  text-white font-bold">
+                            <h1 className="text-center py-4 mb-2 bg-primary-olive rounded-tl rounded-tr  text-white font-bold">
                                 Seller Details
                             </h1>
                             {/* <hr
@@ -361,7 +361,7 @@ const ProductInfo = () => {
                                 <li className="list-decimal">Inspect Product Before payment</li>
                                 <li className="list-decimal">Ask Questions</li>
                             </ol>
-                            <button className="bg-primary-orange text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover-bg-white transition-colors delay-300">
+                            <button className="bg-primary-olive text-white px-10 py-2 mt-4 rounded hover:text-black-200 hover-bg-white transition-colors delay-300">
                                 Report Product
                             </button>
                         </div>

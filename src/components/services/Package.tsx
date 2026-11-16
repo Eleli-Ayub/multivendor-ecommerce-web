@@ -41,7 +41,7 @@ const Package = () => {
                                 {' '}
                                 {/* Pushes buttons to the bottom */}
                                 <button
-                                    className="bg-primary-orange text-white py-2 px-4 rounded-md hover:bg-secondary-orange transition-colors duration-300 w-full mx-10"
+                                    className="bg-primary-olive text-white py-2 px-4 rounded-md hover:bg-secondary-olive transition-colors duration-300 w-full mx-10"
                                     onClick={() => {
                                         navigate(item.button);
                                     }}

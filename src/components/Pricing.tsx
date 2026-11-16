@@ -69,7 +69,7 @@ function App() {
               <Text style={{ color: "#efefefdd", fontSize: "16px" }}>
                 {txt.fullAccess}
               </Text>
-              <button className="button bg-primary-orange">{txt.signUp}</button>
+              <button className="button bg-primary-olive">{txt.signUp}</button>
             </div>
             <div id="bottom-right-div" className="bottomRight">
               <Text className="heading" style={{ marginBottom: "12px" }}>
@@ -86,7 +86,7 @@ function App() {
                   {msg}
                 </Text>
               ))}
-              <button className="button bg-primary-orange">{txt.signUp}</button>
+              <button className="button bg-primary-olive">{txt.signUp}</button>
             </div>
           </div>
         </div>

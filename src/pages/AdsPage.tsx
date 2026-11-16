@@ -50,7 +50,7 @@ const AdsPage = () => {
                                 </p>
 
                                 <button
-                                    className="px-[10px] py-4 mt-3 bg-primary-orange hover:bg-secondary-orange text-white rounded"
+                                    className="px-[10px] py-4 mt-3 bg-primary-olive hover:bg-secondary-olive text-white rounded"
                                     onClick={() => navigate('/')}
                                 >
                                     Back to homepage

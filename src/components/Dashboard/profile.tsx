@@ -87,7 +87,7 @@ const Profile: React.FC = () => {
                 style={{ borderRadius: '0.25rem', minWidth: '350px' }}
             >
                 <div
-                    className="price bg-primary-orange p-4 text-white"
+                    className="price bg-primary-olive p-4 text-white"
                     style={{ borderRadius: '0.25rem' }}
                 >
                     <p>Account Settings</p>
@@ -133,7 +133,7 @@ const Profile: React.FC = () => {
                         {!isEditing && (
                             <button
                                 onClick={handleEdit}
-                                className="bg-primary-orange p-3 text-white rounded hover:bg-secondary-orange transition-colors delay-300 "
+                                className="bg-primary-olive p-3 text-white rounded hover:bg-secondary-olive transition-colors delay-300 "
                             >
                                 Update your Info
                             </button>
@@ -141,7 +141,7 @@ const Profile: React.FC = () => {
                         {isEditing && (
                             <button
                                 onClick={() => setIsEditing(false)}
-                                className="bg-primary-orange p-3 text-white rounded hover:bg-secondary-orange transition-colors delay-300 "
+                                className="bg-primary-olive p-3 text-white rounded hover:bg-secondary-olive transition-colors delay-300 "
                             >
                                 Cancel
                             </button>
@@ -267,7 +267,7 @@ const Profile: React.FC = () => {
                         {isEditing && (
                             <button
                                 type="submit"
-                                className="bg-primary-orange hover:bg-secondary-orange transition-colors delay-300 w-full p-3 rounded mt-5 text-white"
+                                className="bg-primary-olive hover:bg-secondary-olive transition-colors delay-300 w-full p-3 rounded mt-5 text-white"
                             >
                                 Save Changes
                             </button>

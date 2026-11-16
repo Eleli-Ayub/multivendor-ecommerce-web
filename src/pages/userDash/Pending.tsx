@@ -16,7 +16,7 @@ const Pending = () => {
                 <Navbar />
                 <div className="flex justify-end mr-5">
                     <button
-                        className="mt-2 mb-2 flex bg-primary-orange rounded p-[2px] text-white capitalize hover:bg-secondary-orange transition duration-300 ease-in-out transform hover:scale-105"
+                        className="mt-2 mb-2 flex bg-primary-olive rounded p-[2px] text-white capitalize hover:bg-secondary-olive transition duration-300 ease-in-out transform hover:scale-105"
                         onClick={() => {
                             setShowTable(!showTable);
                         }}

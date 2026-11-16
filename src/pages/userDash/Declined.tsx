@@ -14,7 +14,7 @@ const Declined = () => {
         <Navbar />
         <div className="flex justify-end">
           <button
-            className="mt-2 flex bg-primary-orange rounded p-2 text-white capitalize hover:bg-secondary-orange transition duration-300 ease-in-out transform hover:scale-105"
+            className="mt-2 flex bg-primary-olive rounded p-2 text-white capitalize hover:bg-secondary-olive transition duration-300 ease-in-out transform hover:scale-105"
             onClick={() => {
               setShowTable(!showTable);
             }}
